@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -40,12 +39,22 @@ public class Game implements Runnable {
     public static int WINDOW_HEIGHT = 720;
 
     /**
+     * Kehyksen otsikko
+     */
+    public static String WINDOW_TITLE = "2DPlatformGame";
+
+    /**
      * Logger
      */
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
+    
+    /**
+     * 60 päivitystä sekunnissa
+     */
+    private final int tickrate = 60;
 
     public Game() {
-        frame = new JFrame("Peli");
+        frame = new JFrame(WINDOW_TITLE);
         frame.setMaximumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         frame.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         frame.setMinimumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -95,7 +104,7 @@ public class Game implements Runnable {
         long lastTime = System.nanoTime();
 
         //Halutaan päivittää 60 kertaa sekunnissa
-        double tickInterval = 1000000000D / 60D;
+        double tickInterval = 1000000000D / tickrate;
 
         //Luotujen kehysten lukumäärä
         int frames = 0;
@@ -148,6 +157,15 @@ public class Game implements Runnable {
             //Piirrä kehys
             if (render) {
                 frames++;
+            }
+
+            int interval = 1000;
+            
+            if (System.currentTimeMillis() - lastTimer >= interval) {
+                lastTimer += interval;
+                frame.setTitle(WINDOW_TITLE + " (" + frames + " fps, " + ticks + " ticks)");
+                frames = 0;
+                ticks = 0;
             }
         }
     }
