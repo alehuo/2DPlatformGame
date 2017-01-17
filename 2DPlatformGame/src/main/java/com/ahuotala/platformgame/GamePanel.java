@@ -7,8 +7,6 @@ package com.ahuotala.platformgame;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -16,6 +14,11 @@ import javax.swing.JPanel;
  * @author alehuo
  */
 public class GamePanel extends JPanel {
+    
+    /**
+     * SerialVersionUID
+     */
+    private static final long serialVersionUID = 1L;
 
     public GamePanel() {
         super();
