@@ -15,36 +15,31 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package com.ahuotala.platformgame;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import javax.swing.JPanel;
+package com.ahuotala.platformgame.entity;
 
 /**
  *
  * @author ahuotala
  */
-public class GamePanel extends JPanel {
-    
-    /**
-     * SerialVersionUID
-     */
-    private static final long serialVersionUID = 1L;
+public abstract class Entity {
 
-    public GamePanel() {
-        super();
+    private int x;
+    private int y;
+
+    public int getX() {
+        return x;
     }
 
-    /**
-     * Tätä käytetään piirtämiseen
-     *
-     * @param g
-     */
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        g.setColor(Color.red);
-        g.fill3DRect(0, 0, Game.WINDOW_WIDTH, Game.WINDOW_HEIGHT, false);
+    public void setX(int x) {
+        this.x = x;
     }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
 }
