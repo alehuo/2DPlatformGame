@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2017 ahuotala
  *
  * This program is free software; you can redistribute it and/or
@@ -15,42 +15,34 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package com.ahuotala.platformgame;
+package com.ahuotala.platformgame.entity;
 
-import com.ahuotala.platformgame.entity.Player;
 import java.awt.Color;
 import java.awt.Graphics;
-import javax.swing.JPanel;
 
 /**
+ * Pelaaja -luokka
  *
  * @author ahuotala
  */
-public class GamePanel extends JPanel {
+public class Player extends Entity {
 
-    /**
-     * SerialVersionUID
-     */
-    private static final long serialVersionUID = 1L;
-    
-    public GamePanel() {
+    public Player() {
         super();
+
+        //Pelaaja on 24x32 kokoinen (leveys x korkeus)
+        super.setWidth(24);
+        super.setHeight(32);
     }
 
     /**
-     * Tätä käytetään piirtämiseen
+     * Piirrä pelaaja näytölle
      *
-     * @param g
+     * @param g Graphics -objekti
      */
     @Override
-    public void paint(Graphics g) {
-        Player player = new Player();
-        player.setX(50);
-        player.setY(50);
-        super.paint(g);
-        g.setColor(Color.BLACK);
-        g.fill3DRect(0, 0, Game.WINDOW_WIDTH, Game.WINDOW_HEIGHT, false);
-        player.render(g);
+    public void render(Graphics g) {
+        g.setColor(Color.CYAN);
+        g.fill3DRect(getX(), getY(), getWidth(), getHeight(), true);
     }
-    
 }

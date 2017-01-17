@@ -17,6 +17,7 @@
  */
 package com.ahuotala.platformgame;
 
+import com.ahuotala.platformgame.entity.Player;
 import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,7 +66,10 @@ public class Game implements Runnable {
      */
     private final int tickrate = 60;
 
-    private GamePanel gamePanel;
+    /**
+     * Piirtoalusta
+     */
+    private final GamePanel gamePanel;
 
     public Game() {
         frame = new JFrame(WINDOW_TITLE);

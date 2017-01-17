@@ -17,14 +17,26 @@
  */
 package com.ahuotala.platformgame.entity;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author ahuotala
  */
 public abstract class Entity {
 
-    private int x;
-    private int y;
+    protected int x;
+    protected int y;
+    protected int width;
+    protected int height;
+
+    public Entity() {
+    }
+
+    public Entity(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public int getX() {
         return x;
@@ -41,5 +53,43 @@ public abstract class Entity {
     public void setY(int y) {
         this.y = y;
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void moveLeft() {
+
+    }
+
+    public void moveRight() {
+
+    }
+
+    public void moveUp() {
+
+    }
+
+    public void moveDown() {
+
+    }
+
+    /**
+     * Entiteetin piirto
+     * @param g 
+     */
+    public abstract void render(Graphics g);
 
 }
