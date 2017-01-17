@@ -7,36 +7,38 @@ package com.ahuotala.platformgame;
 
 import java.awt.Dimension;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 /**
+ * Pääluokka
  *
  * @author ahuotala
  */
-public class Game extends JPanel implements Runnable {
+public class Game {
 
     private JFrame frame;
 
-    /**
-     * Aseta nimi, minimi-, maksimi- ja suositeltu koko
-     */
+    public static int WINDOW_WIDTH = 1280;
+    public static int WINDOW_HEIGHT = 720;
+
     public Game() {
         frame = new JFrame("Peli");
-        frame.setMaximumSize(new Dimension(1280, 720));
-        frame.setPreferredSize(new Dimension(1280, 720));
-        frame.setMinimumSize(new Dimension(1280, 720));
+        frame.setMaximumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+        frame.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+        frame.setMinimumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        frame.setContentPane(new GamePanel());
 
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }
 
-    @Override
-    public void run() {
-
+    public static void main(String[] args) {
+        //Kutsu peliä
+        Game g = new Game();
     }
-
 }
