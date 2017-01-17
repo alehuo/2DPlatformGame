@@ -20,6 +20,8 @@ package com.ahuotala.platformgame;
 import com.ahuotala.platformgame.entity.Player;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -28,13 +30,20 @@ import javax.swing.JPanel;
  */
 public class GamePanel extends JPanel {
 
+    private Player player;
+
     /**
      * SerialVersionUID
      */
     private static final long serialVersionUID = 1L;
-    
+
     public GamePanel() {
         super();
+
+        //Pelaaja
+        player = new Player();
+        player.setX(150);
+        player.setY(150);
     }
 
     /**
@@ -43,14 +52,28 @@ public class GamePanel extends JPanel {
      * @param g
      */
     @Override
-    public void paint(Graphics g) {
-        Player player = new Player();
-        player.setX(50);
-        player.setY(50);
-        super.paint(g);
+    public void paintComponent(Graphics g) {
+        
+        super.paintComponent(g);
+        
+        //Tausta
         g.setColor(Color.BLACK);
         g.fill3DRect(0, 0, Game.WINDOW_WIDTH, Game.WINDOW_HEIGHT, false);
-        player.render(g);
+
+        //Testausta  varten
+        if (player != null) {
+            player.render(g);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (player.getX() < Game.WINDOW_WIDTH - 100) {
+                player.setX(player.getX() + 2);
+            }
+
+        }
+
     }
-    
+
 }

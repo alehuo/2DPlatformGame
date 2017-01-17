@@ -174,6 +174,7 @@ public class Game implements Runnable {
 
             //Piirrä kehys
             if (render) {
+                gamePanel.repaint();
                 frames++;
             }
 
