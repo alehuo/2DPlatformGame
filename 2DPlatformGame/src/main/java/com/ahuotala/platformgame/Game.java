@@ -19,10 +19,12 @@ package com.ahuotala.platformgame;
 
 import com.ahuotala.platformgame.entity.Player;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  * Pääluokka
@@ -44,12 +46,12 @@ public class Game implements Runnable {
     /**
      * Kehyksen leveys
      */
-    public static int WINDOW_WIDTH = 1280;
+    public static int WINDOW_WIDTH = 640;
 
     /**
      * Kehyksen korkeus
      */
-    public static int WINDOW_HEIGHT = 720;
+    public static int WINDOW_HEIGHT = 480;
 
     /**
      * Kehyksen otsikko
@@ -71,15 +73,21 @@ public class Game implements Runnable {
      */
     private final GamePanel gamePanel;
 
+    private final Player player;
+
     public Game() {
+        player = new Player();
+        player.setX(200);
+        player.setY(200);
+
         frame = new JFrame(WINDOW_TITLE);
         frame.setMaximumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         frame.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         frame.setMinimumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         frame.setResizable(false);
-        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        gamePanel = new GamePanel();
+        gamePanel = new GamePanel(player);
 
         frame.setContentPane(gamePanel);
 
@@ -88,6 +96,8 @@ public class Game implements Runnable {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.requestFocusInWindow();
+
+        frame.addKeyListener(new KeyHandler());
 
     }
 
@@ -194,6 +204,34 @@ public class Game implements Runnable {
      * metodi on riippumaton ruudunpäivitysnopeudesta.
      */
     public void tick() {
+        if (player != null) {
+            player.move();
+        }
+    }
+
+    /**
+     * "Injektoidaan" pelin keylistener pelaajalle
+     */
+    private class KeyHandler implements KeyListener {
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (player != null) {
+                player.keyPressed(e);
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            if (player != null) {
+                player.keyReleased(e);
+            }
+        }
 
     }
 }

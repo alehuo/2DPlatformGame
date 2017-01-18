@@ -27,6 +27,8 @@ public abstract class Entity {
 
     protected int x;
     protected int y;
+    protected int dx = 0;
+    protected int dy = 0;
     protected int width;
     protected int height;
 
@@ -70,25 +72,15 @@ public abstract class Entity {
         this.height = height;
     }
 
-    public void moveLeft() {
-
-    }
-
-    public void moveRight() {
-
-    }
-
-    public void moveUp() {
-
-    }
-
-    public void moveDown() {
-
+    public void move() {
+        x += dx;
+        y += dy;
     }
 
     /**
      * Entiteetin piirto
-     * @param g 
+     *
+     * @param g
      */
     public abstract void render(Graphics g);
 

@@ -37,13 +37,15 @@ public class GamePanel extends JPanel {
      */
     private static final long serialVersionUID = 1L;
 
-    public GamePanel() {
+    public GamePanel(Player p) {
         super();
 
         //Pelaaja
-        player = new Player();
-        player.setX(150);
-        player.setY(150);
+        player = p;
+    }
+
+    public GamePanel() {
+        super();
     }
 
     /**
@@ -53,25 +55,19 @@ public class GamePanel extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-        
+
         super.paintComponent(g);
-        
+
         //Tausta
         g.setColor(Color.BLACK);
         g.fill3DRect(0, 0, Game.WINDOW_WIDTH, Game.WINDOW_HEIGHT, false);
 
-        //Testausta  varten
+        //Tähän väliin kartan, taustan sekä käyttöliittymän piirtäminen
+        //########################
+        
+        //Pelaaja
         if (player != null) {
             player.render(g);
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if (player.getX() < Game.WINDOW_WIDTH - 100) {
-                player.setX(player.getX() + 2);
-            }
-
         }
 
     }
