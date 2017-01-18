@@ -171,7 +171,7 @@ public class Game implements Runnable {
             lastTime = now;
 
             //Rajoita ruudunpäivitysnopeus asettamalla tähän "false"
-            boolean render = false;
+            boolean render = true;
 
             while (delta >= 1) {
                 ticks++;

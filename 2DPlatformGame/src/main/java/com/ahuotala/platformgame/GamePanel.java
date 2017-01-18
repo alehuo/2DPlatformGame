@@ -20,8 +20,11 @@ package com.ahuotala.platformgame;
 import com.ahuotala.platformgame.entity.Player;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -56,6 +59,12 @@ public class GamePanel extends JPanel {
         g.setColor(c);
         g.fill3DRect(0, 0, Game.WINDOW_WIDTH, Game.WINDOW_HEIGHT, false);
 
+        try {
+            BufferedImage image = ImageIO.read(Thread.currentThread().getContextClassLoader().getResourceAsStream("cloud.png"));
+            g.drawImage(image, 100, 50, image.getWidth()*3, image.getHeight()*3, null);
+        } catch (IOException ex) {
+            Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         //Tähän väliin kartan, taustan sekä käyttöliittymän piirtäminen
         //########################
         //Pelaaja
