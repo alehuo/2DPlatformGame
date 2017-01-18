@@ -37,13 +37,6 @@ public class GamePanel extends JPanel {
      */
     private static final long serialVersionUID = 1L;
 
-    public GamePanel(Player p) {
-        super();
-
-        //Pelaaja
-        player = p;
-    }
-
     public GamePanel() {
         super();
     }
@@ -59,12 +52,12 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
 
         //Tausta
-        g.setColor(Color.BLACK);
+        Color c = new Color(141, 159, 255);
+        g.setColor(c);
         g.fill3DRect(0, 0, Game.WINDOW_WIDTH, Game.WINDOW_HEIGHT, false);
 
         //Tähän väliin kartan, taustan sekä käyttöliittymän piirtäminen
         //########################
-        
         //Pelaaja
         if (player != null) {
             player.render(g);
@@ -72,4 +65,7 @@ public class GamePanel extends JPanel {
 
     }
 
+    public void setPlayer(Player p) {
+        player = p;
+    }
 }

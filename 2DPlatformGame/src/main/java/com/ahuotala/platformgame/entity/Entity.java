@@ -27,8 +27,10 @@ public abstract class Entity {
 
     protected int x;
     protected int y;
+    
     protected int dx = 0;
     protected int dy = 0;
+    
     protected int width;
     protected int height;
 

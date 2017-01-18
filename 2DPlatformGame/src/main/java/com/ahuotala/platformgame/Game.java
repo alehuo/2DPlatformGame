@@ -36,7 +36,7 @@ public class Game implements Runnable {
     /**
      * JFrame
      */
-    private JFrame frame;
+    private final JFrame frame;
 
     /**
      *
@@ -73,13 +73,19 @@ public class Game implements Runnable {
      */
     private final GamePanel gamePanel;
 
+    /**
+     * Pelaaja
+     */
     private final Player player;
 
     public Game() {
+        
+        //Luo pelaaja
         player = new Player();
         player.setX(200);
         player.setY(200);
 
+        //Luo kehys
         frame = new JFrame(WINDOW_TITLE);
         frame.setMaximumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         frame.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -87,7 +93,9 @@ public class Game implements Runnable {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        gamePanel = new GamePanel(player);
+        //Luo pelipaneeli ja lisää pelaaja sinne
+        gamePanel = new GamePanel();
+        gamePanel.setPlayer(player);
 
         frame.setContentPane(gamePanel);
 
@@ -163,7 +171,7 @@ public class Game implements Runnable {
             lastTime = now;
 
             //Rajoita ruudunpäivitysnopeus asettamalla tähän "false"
-            boolean render = true;
+            boolean render = false;
 
             while (delta >= 1) {
                 ticks++;
@@ -210,7 +218,7 @@ public class Game implements Runnable {
     }
 
     /**
-     * "Injektoidaan" pelin keylistener pelaajalle
+     * "Injektoidaan" pelin keylistener ja kytketään se pelaajalle
      */
     private class KeyHandler implements KeyListener {
 
