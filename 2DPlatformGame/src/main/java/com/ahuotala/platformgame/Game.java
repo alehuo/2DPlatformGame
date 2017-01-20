@@ -17,6 +17,7 @@
  */
 package com.ahuotala.platformgame;
 
+import com.ahuotala.platformgame.ui.GamePanel;
 import com.ahuotala.platformgame.entity.Player;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
