@@ -89,9 +89,9 @@ public class Player extends Entity implements KeyListener {
         }
 
         //Hyppy
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-
-        }
+//        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+//
+//        }
 
         LOG.log(Level.INFO, "dx: {0}, dy: {1}", new Object[]{dx, dy});
     }

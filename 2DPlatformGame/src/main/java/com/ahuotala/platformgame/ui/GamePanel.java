@@ -62,7 +62,7 @@ public class GamePanel extends JPanel {
 
         try {
             BufferedImage image = ImageIO.read(Thread.currentThread().getContextClassLoader().getResourceAsStream("cloud.png"));
-            g.drawImage(image, 100, 50, image.getWidth()*3, image.getHeight()*3, null);
+            g.drawImage(image, 100, 50, image.getWidth() * 3, image.getHeight() * 3, null);
         } catch (IOException ex) {
             Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
         }

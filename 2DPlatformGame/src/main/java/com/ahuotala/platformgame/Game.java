@@ -19,9 +19,8 @@ package com.ahuotala.platformgame;
 
 import com.ahuotala.platformgame.ui.GamePanel;
 import com.ahuotala.platformgame.entity.Player;
+import com.ahuotala.platformgame.input.KeyHandler;
 import java.awt.Dimension;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -80,7 +79,7 @@ public class Game implements Runnable {
     private final Player player;
 
     public Game() {
-        
+
         //Luo pelaaja
         player = new Player();
         player.setX(200);
@@ -88,9 +87,7 @@ public class Game implements Runnable {
 
         //Luo kehys
         frame = new JFrame(WINDOW_TITLE);
-        frame.setMaximumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         frame.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
-        frame.setMinimumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -106,15 +103,13 @@ public class Game implements Runnable {
         frame.setVisible(true);
         frame.requestFocusInWindow();
 
-        frame.addKeyListener(new KeyHandler());
+        frame.addKeyListener(new KeyHandler(player));
 
     }
 
     public static void main(String[] args) {
-        //Kutsu peliä
         Game g = new Game();
         g.start();
-//        SwingUtilities.invokeLater(g);
     }
 
     /**
@@ -157,10 +152,6 @@ public class Game implements Runnable {
 
         /*
         Pelilooppi, mikä on riippumaton ruudunpäivitysnopeudesta.
-        
-        Kun looppi käynnistyy, otetaan ylös tämän hetkinen aika.
-        Sen jälkeen kun on kulunut tickInterval verran aikaa, tarkistetaan onko delta suurempi tai yhtäsuuri kuin yksi.
-        Jos näin on, päivitetään pelilogiikka ja asetetaan delta takaisin nollan lähelle.
          */
         while (running) {
 
@@ -218,29 +209,4 @@ public class Game implements Runnable {
         }
     }
 
-    /**
-     * "Injektoidaan" pelin keylistener ja kytketään se pelaajalle
-     */
-    private class KeyHandler implements KeyListener {
-
-        @Override
-        public void keyTyped(KeyEvent e) {
-
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            if (player != null) {
-                player.keyPressed(e);
-            }
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-            if (player != null) {
-                player.keyReleased(e);
-            }
-        }
-
-    }
 }
