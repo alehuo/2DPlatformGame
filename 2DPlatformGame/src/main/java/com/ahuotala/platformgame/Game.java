@@ -21,6 +21,7 @@ import com.ahuotala.platformgame.entity.Coin;
 import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.ui.GamePanel;
 import com.ahuotala.platformgame.entity.Player;
+import com.ahuotala.platformgame.graphics.SpriteSheet;
 import com.ahuotala.platformgame.input.KeyHandler;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -83,6 +84,8 @@ public class Game implements Runnable {
     private final Player player;
 
     private final List<Entity> entities;
+
+    public static SpriteSheet spr = new SpriteSheet();
 
     public Game() {
 

@@ -70,15 +70,11 @@ public class GamePanel extends JPanel {
         g.setColor(c);
         g.fill3DRect(0, 0, Game.WINDOW_WIDTH, Game.WINDOW_HEIGHT, false);
 
-        try {
-            BufferedImage image = ImageIO.read(Thread.currentThread().getContextClassLoader().getResourceAsStream("cloud.png"));
-            g.drawImage(image, 100, 50, image.getWidth() * 3, image.getHeight() * 3, null);
-        } catch (IOException ex) {
-            Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        BufferedImage image = Game.spr.getSprite("cloud").getImage();
+        g.drawImage(image, 100, 50, image.getWidth() * 3, image.getHeight() * 3, null);
+
         //Tähän väliin kartan, taustan sekä käyttöliittymän piirtäminen
         //########################
-
         //Muut entiteetit
         entities.forEach((entity) -> {
             entity.render(g);
