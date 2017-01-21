@@ -20,6 +20,7 @@ package com.ahuotala.platformgame.ui;
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.entity.Player;
+import com.ahuotala.platformgame.graphics.Sprite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -69,9 +70,6 @@ public class GamePanel extends JPanel {
         Color c = new Color(141, 159, 255);
         g.setColor(c);
         g.fill3DRect(0, 0, Game.WINDOW_WIDTH, Game.WINDOW_HEIGHT, false);
-
-        BufferedImage image = Game.spr.getSprite("cloud").getImage();
-        g.drawImage(image, 100, 50, image.getWidth() * 3, image.getHeight() * 3, null);
 
         //Tähän väliin kartan, taustan sekä käyttöliittymän piirtäminen
         //########################

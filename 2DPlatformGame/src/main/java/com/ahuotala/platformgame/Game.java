@@ -17,6 +17,7 @@
  */
 package com.ahuotala.platformgame;
 
+import com.ahuotala.platformgame.entity.Cloud;
 import com.ahuotala.platformgame.entity.Coin;
 import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.ui.GamePanel;
@@ -97,8 +98,10 @@ public class Game implements Runnable {
         player.setY(200);
 
         //Luo tasoon entiteetit
-        entities.add(new Coin(250, 50));
-        entities.add(new Coin(250, 100));
+        entities.add(new Coin(350, 200));
+        entities.add(new Coin(250, 200));
+        entities.add(new Cloud(40, 40));
+        entities.add(new Cloud(250, 60));
 
         //Luo kehys
         frame = new JFrame(WINDOW_TITLE);
