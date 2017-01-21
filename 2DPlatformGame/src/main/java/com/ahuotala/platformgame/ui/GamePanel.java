@@ -18,11 +18,14 @@
 package com.ahuotala.platformgame.ui;
 
 import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.entity.Player;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -41,8 +44,15 @@ public class GamePanel extends JPanel {
      */
     private static final long serialVersionUID = 1L;
 
+    private List<Entity> entities;
+
     public GamePanel() {
         super();
+        entities = new ArrayList<>();
+    }
+
+    public void setEntities(List<Entity> entities) {
+        this.entities = entities;
     }
 
     /**
@@ -68,10 +78,21 @@ public class GamePanel extends JPanel {
         }
         //Tähän väliin kartan, taustan sekä käyttöliittymän piirtäminen
         //########################
+
+        //Muut entiteetit
+        entities.forEach((entity) -> {
+            entity.render(g);
+        });
+
         //Pelaaja
         if (player != null) {
             player.render(g);
+            g.setColor(Color.WHITE);
+            //Debuggausta varten x:t ja y:t jne..
+            g.drawString("Pelaajan X: " + player.getX(), 2, 10);
+            g.drawString("Pelaajan Y: " + player.getY(), 2, 22);
         }
+        g.drawString("Entiteettejä pelissä: " + entities.size(), 2, 34);
 
     }
 

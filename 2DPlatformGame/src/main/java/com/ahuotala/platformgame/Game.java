@@ -17,10 +17,14 @@
  */
 package com.ahuotala.platformgame;
 
+import com.ahuotala.platformgame.entity.Coin;
+import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.ui.GamePanel;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.input.KeyHandler;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -78,12 +82,20 @@ public class Game implements Runnable {
      */
     private final Player player;
 
+    private final List<Entity> entities;
+
     public Game() {
+
+        entities = new ArrayList<>();
 
         //Luo pelaaja
         player = new Player();
         player.setX(200);
         player.setY(200);
+
+        //Luo tasoon entiteetit
+        entities.add(new Coin(250, 50));
+        entities.add(new Coin(250, 100));
 
         //Luo kehys
         frame = new JFrame(WINDOW_TITLE);
@@ -91,9 +103,10 @@ public class Game implements Runnable {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        //Luo pelipaneeli ja lisää pelaaja sinne
+        //Luo pelipaneeli ja lisää pelaaja sinne sekä muut entiteetit
         gamePanel = new GamePanel();
         gamePanel.setPlayer(player);
+        gamePanel.setEntities(entities);
 
         frame.setContentPane(gamePanel);
 
