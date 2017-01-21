@@ -18,7 +18,6 @@ package com.ahuotala.platformgame.entity;
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-import com.ahuotala.platformgame.entity.Entity;
 import java.awt.Graphics;
 import org.junit.Before;
 import org.junit.Test;
@@ -77,7 +76,7 @@ public class EntityTest {
 
     private class TestEntity extends Entity {
 
-        public TestEntity() {
+        TestEntity() {
             super(234, 567);
         }
 

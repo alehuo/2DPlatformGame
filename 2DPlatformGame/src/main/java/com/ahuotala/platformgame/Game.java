@@ -20,10 +20,11 @@ package com.ahuotala.platformgame;
 import com.ahuotala.platformgame.entity.Cloud;
 import com.ahuotala.platformgame.entity.Coin;
 import com.ahuotala.platformgame.entity.Entity;
-import com.ahuotala.platformgame.ui.GamePanel;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.graphics.SpriteSheet;
 import com.ahuotala.platformgame.input.KeyHandler;
+import com.ahuotala.platformgame.level.GameLevel;
+import com.ahuotala.platformgame.ui.GamePanel;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,15 +40,6 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class Game implements Runnable {
 
-    /**
-     * JFrame
-     */
-    private final JFrame frame;
-
-    /**
-     *
-     */
-    private boolean running;
 
     /**
      * Kehyksen leveys
@@ -68,6 +60,19 @@ public class Game implements Runnable {
      * Logger
      */
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
+    public static SpriteSheet spr = new SpriteSheet();
+    public static void main(String[] args) {
+        Game g = new Game();
+        g.start();
+    }
+    /**
+     * JFrame
+     */
+    private final JFrame frame;
+    /**
+     *
+     */
+    private boolean running;
 
     /**
      * 60 päivitystä sekunnissa
@@ -86,13 +91,16 @@ public class Game implements Runnable {
 
     private final List<Entity> entities;
 
-    public static SpriteSheet spr = new SpriteSheet();
 
     public Game() {
+        //Luo kehys
+        frame = new JFrame(WINDOW_TITLE);
+        frame.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         entities = new ArrayList<>();
-
-        //Luo pelaaja
+//Luo pelaaja
         player = new Player();
         player.setX(200);
         player.setY(200);
@@ -103,16 +111,13 @@ public class Game implements Runnable {
         entities.add(new Cloud(40, 40));
         entities.add(new Cloud(250, 60));
 
-        //Luo kehys
-        frame = new JFrame(WINDOW_TITLE);
-        frame.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
-        frame.setResizable(false);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        GameLevel gameLevel = new GameLevel();
+        gameLevel.setEntitites(entities);
 
-        //Luo pelipaneeli ja lisää pelaaja sinne sekä muut entiteetit
+        //Luo pelipaneeli ja lisää pelaaja sinne sekä taso
         gamePanel = new GamePanel();
         gamePanel.setPlayer(player);
-        gamePanel.setEntities(entities);
+        gamePanel.setLevel(gameLevel);
 
         frame.setContentPane(gamePanel);
 
@@ -122,14 +127,11 @@ public class Game implements Runnable {
         frame.setVisible(true);
         frame.requestFocusInWindow();
 
+        //Lisää pelaajan näppäimistönkuuntelija
         frame.addKeyListener(new KeyHandler(player));
 
     }
 
-    public static void main(String[] args) {
-        Game g = new Game();
-        g.start();
-    }
 
     /**
      * Käynnistä peli

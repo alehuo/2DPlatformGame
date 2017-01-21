@@ -17,10 +17,31 @@
  */
 package com.ahuotala.platformgame.level;
 
+import com.ahuotala.platformgame.entity.Entity;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- *
+ * Tasoluokka.
+ * 
+ * Taso sisältää blokit sekä entiteetit.
+ * 
  * @author ahuotala
  */
-public class Level {
+public class GameLevel {
+
+    private List<Entity> entities;
+
+    public GameLevel() {
+        entities = new ArrayList();
+    }
+
+    public void setEntitites(List<Entity> entities) {
+        this.entities = entities;
+    }
+
+    public List<Entity> getEntities() {
+        return entities;
+    }
 
 }

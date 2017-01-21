@@ -33,6 +33,7 @@ import javax.imageio.ImageIO;
  * @author ahuotala
  */
 public class SpriteSheet {
+    private static final Logger LOG = Logger.getLogger(SpriteSheet.class.getName());
 
     private BufferedImage spriteSheet;
 
@@ -46,12 +47,10 @@ public class SpriteSheet {
      */
     private final String spriteSheetPath = "textures/spritesheet.png";
 
-    private static final Logger LOG = Logger.getLogger(SpriteSheet.class.getName());
 
     /**
      * Konstruktori lataa spritesheet -tiedoston muistiin
      *
-     * @throws java.io.IOException
      */
     public SpriteSheet() {
 
