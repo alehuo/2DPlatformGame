@@ -25,12 +25,15 @@ import java.awt.Graphics;
  */
 public abstract class Entity {
 
-    protected int x;
-    protected int y;
-    
+    protected int x = 0;
+    protected int y = 0;
+
     protected int dx = 0;
     protected int dy = 0;
-    
+
+    protected int xMovement = 1;
+    protected int yMovement = 1;
+
     protected int width;
     protected int height;
 
@@ -58,6 +61,38 @@ public abstract class Entity {
         this.y = y;
     }
 
+    public int getDx() {
+        return dx;
+    }
+
+    public void setDx(int dx) {
+        this.dx = dx;
+    }
+
+    public int getDy() {
+        return dy;
+    }
+
+    public void setDy(int dy) {
+        this.dy = dy;
+    }
+
+    public int getxMovement() {
+        return xMovement;
+    }
+
+    public void setxMovement(int xMovement) {
+        this.xMovement = xMovement;
+    }
+
+    public int getyMovement() {
+        return yMovement;
+    }
+
+    public void setyMovement(int yMovement) {
+        this.yMovement = yMovement;
+    }
+
     public int getWidth() {
         return width;
     }
@@ -75,8 +110,8 @@ public abstract class Entity {
     }
 
     public void move() {
-        x += dx;
-        y += dy;
+        x += getDx();
+        y += getDy();
     }
 
     /**
@@ -85,5 +120,10 @@ public abstract class Entity {
      * @param g
      */
     public abstract void render(Graphics g);
+
+    /**
+     * Entiteetin päivitys
+     */
+    public abstract void tick();
 
 }

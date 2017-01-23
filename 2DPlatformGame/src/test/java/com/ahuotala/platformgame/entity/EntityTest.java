@@ -17,7 +17,6 @@ package com.ahuotala.platformgame.entity;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
 import java.awt.Graphics;
 import org.junit.Before;
 import org.junit.Test;
@@ -74,6 +73,45 @@ public class EntityTest {
         assertEquals(32, entity.getWidth());
     }
 
+    @Test
+    public void asettaaLiikkuvuusMaaritteetOikein() {
+        entity.setxMovement(88);
+        assertEquals(88, entity.getxMovement());
+
+        entity.setyMovement(54);
+        assertEquals(54, entity.getyMovement());
+
+        entity.setDx(66);
+        assertEquals(66, entity.getDx());
+
+        entity.setDy(23);
+        assertEquals(23, entity.getDy());
+    }
+
+    @Test
+    public void parametritonKonstruktoriToimii() {
+        Entity entity2 = new TestEntity2();
+        assertEquals(0, entity2.getX());
+        assertEquals(0, entity2.getY());
+    }
+
+    @Test
+    public void liikkuuOikein() {
+        int xNyt = entity.getX();
+        int yNyt = entity.getY();
+
+        int xMaara = 22;
+        int yMaara = -12;
+
+        entity.setDx(xMaara);
+        entity.setDy(yMaara);
+
+        entity.move();
+
+        assertEquals(xNyt + xMaara, entity.getX());
+        assertEquals(yNyt + yMaara, entity.getY());
+    }
+
     private class TestEntity extends Entity {
 
         TestEntity() {
@@ -82,7 +120,30 @@ public class EntityTest {
 
         @Override
         public void render(Graphics g) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        }
+
+        @Override
+        public void tick() {
+
+        }
+
+    }
+
+    private class TestEntity2 extends Entity {
+
+        public TestEntity2() {
+            super();
+        }
+
+        @Override
+        public void render(Graphics g) {
+
+        }
+
+        @Override
+        public void tick() {
+
         }
 
     }

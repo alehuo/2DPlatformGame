@@ -27,6 +27,10 @@ import java.awt.Graphics;
  */
 public class Coin extends Entity {
 
+    private int xModifier = 0;
+    private int yModifier = 0;
+    private int index = 0;
+
     public Coin(int x, int y) {
         super(x, y);
         //Kolikko on 24x24 kokoinen (leveys x korkeus)
@@ -37,7 +41,18 @@ public class Coin extends Entity {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.YELLOW);
-        g.fillOval(getX(), getY(), getWidth(), getHeight());
+        g.fillOval(getX(), getY() + yModifier, getWidth(), getHeight());
+    }
+
+    @Override
+    public void tick() {
+//        yModifier = (int) Math.ceil(3 * Math.sin(Math.toRadians(index)));
+//
+//        if (index == 360) {
+//            index = 0;
+//        } else {
+//            index += 3;
+//        }
     }
 
 }

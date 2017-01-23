@@ -21,7 +21,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -38,6 +37,8 @@ public class Player extends Entity implements KeyListener {
         //Pelaaja on 24x32 kokoinen (leveys x korkeus)
         super.setWidth(24);
         super.setHeight(32);
+        super.setyMovement(0);
+        super.setxMovement(8);
     }
 
     /**
@@ -64,36 +65,31 @@ public class Player extends Entity implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-        //Tästä voi säätää miten nopeasti pelaaja liikkuu
-        int dy2 = 0;
-        int dx2 = 8;
-
         //Ylös
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            dy = -dy2;
+            setDy(-getyMovement());
         }
 
         //Vasen
         if (e.getKeyCode() == KeyEvent.VK_A) {
-            dx = -dx2;
+            setDx(-getxMovement());
         }
 
         //Alas
         if (e.getKeyCode() == KeyEvent.VK_S) {
-            dy = dy2;
+            setDy(getyMovement());
         }
 
         //Oikea
         if (e.getKeyCode() == KeyEvent.VK_D) {
-            dx = dx2;
+            setDx(getxMovement());
         }
 
         //Hyppy
 //        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 //
 //        }
-
-        LOG.log(Level.INFO, "dx: {0}, dy: {1}", new Object[]{dx, dy});
+//        LOG.log(Level.INFO, "dx: {0}, dy: {1}", new Object[]{getDx(), getDy()});
     }
 
     /**
@@ -106,22 +102,27 @@ public class Player extends Entity implements KeyListener {
 
         //Ylös
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            dy = 0;
+            setDy(0);
         }
 
         //Vasen
         if (e.getKeyCode() == KeyEvent.VK_A) {
-            dx = 0;
+            setDx(0);
         }
 
         //Alas
         if (e.getKeyCode() == KeyEvent.VK_S) {
-            dy = 0;
+            setDy(0);
         }
 
         //Oikea
         if (e.getKeyCode() == KeyEvent.VK_D) {
-            dx = 0;
+            setDx(0);
         }
+    }
+
+    @Override
+    public void tick() {
+
     }
 }

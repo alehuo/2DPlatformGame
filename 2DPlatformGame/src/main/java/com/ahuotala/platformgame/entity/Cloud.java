@@ -45,4 +45,9 @@ public class Cloud extends Entity {
         g.drawImage(sprite.getImage(), getX(), getY(), getWidth() * 2, getHeight() * 2, null);
     }
 
+    @Override
+    public void tick() {
+
+    }
+
 }

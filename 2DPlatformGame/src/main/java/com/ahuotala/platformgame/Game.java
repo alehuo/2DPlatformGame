@@ -40,7 +40,6 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class Game implements Runnable {
 
-
     /**
      * Kehyksen leveys
      */
@@ -61,6 +60,7 @@ public class Game implements Runnable {
      */
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
     public static SpriteSheet spr = new SpriteSheet();
+
     public static void main(String[] args) {
         Game g = new Game();
         g.start();
@@ -90,7 +90,6 @@ public class Game implements Runnable {
     private final Player player;
 
     private final List<Entity> entities;
-
 
     public Game() {
         //Luo kehys
@@ -132,7 +131,6 @@ public class Game implements Runnable {
 
     }
 
-
     /**
      * Käynnistä peli
      */
@@ -153,6 +151,7 @@ public class Game implements Runnable {
      */
     @Override
     public void run() {
+
         //Starting time
         long lastTime = System.nanoTime();
 
@@ -225,9 +224,14 @@ public class Game implements Runnable {
      * metodi on riippumaton ruudunpäivitysnopeudesta.
      */
     public void tick() {
+        //Liikuta pelaajaa
         if (player != null) {
             player.move();
         }
+        //Päivitä entiteetit
+        entities.stream().forEach((entity) -> {
+            entity.tick();
+        });
     }
 
 }
