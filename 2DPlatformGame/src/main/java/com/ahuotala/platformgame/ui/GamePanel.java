@@ -30,15 +30,14 @@ import javax.swing.JPanel;
  */
 public class GamePanel extends JPanel {
 
-
     /**
      * SerialVersionUID
      */
     private static final long serialVersionUID = 1L;
     private Player player;
-
+    
     private GameLevel level;
-
+    
     public GamePanel() {
         super();
     }
@@ -58,7 +57,7 @@ public class GamePanel extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-
+        
         super.paintComponent(g);
 
         //Tausta
@@ -68,6 +67,9 @@ public class GamePanel extends JPanel {
 
         //Taso
         if (level != null) {
+            level.getTiles().forEach((tile) -> {
+                tile.render(g);
+            });
             level.getEntities().forEach((entity) -> {
                 entity.render(g);
             });
@@ -85,7 +87,7 @@ public class GamePanel extends JPanel {
         //Käyttöliittymä
         //Todo..
     }
-
+    
     public void setPlayer(Player p) {
         player = p;
     }

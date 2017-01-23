@@ -101,8 +101,8 @@ public class Game implements Runnable {
         entities = new ArrayList<>();
         //Luo pelaaja
         player = new Player();
-        player.setX(200);
-        player.setY(200);
+        player.setX(WINDOW_WIDTH/2);
+        player.setY(WINDOW_HEIGHT/2);
 
         //Luo tasoon entiteetit
         entities.add(new Coin(350, 200));
