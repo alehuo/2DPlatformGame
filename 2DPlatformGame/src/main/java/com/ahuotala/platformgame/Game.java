@@ -99,7 +99,7 @@ public class Game implements Runnable {
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         entities = new ArrayList<>();
-//Luo pelaaja
+        //Luo pelaaja
         player = new Player();
         player.setX(200);
         player.setY(200);
