@@ -152,11 +152,6 @@ public class Player extends Entity implements KeyListener {
     @Override
     public void tick() {
         move();
-        if (jumping && !falling) {
-            setY(getY() - 63);
-            jumping = false;
-            falling = true;
-        }
         if (falling) {
             setY(getY() + verticalSpeed);
             if (verticalSpeed + gravity > terminalVelocity) {
@@ -166,6 +161,11 @@ public class Player extends Entity implements KeyListener {
             }
         } else {
             verticalSpeed = 0;
+        }
+        if (jumping && !falling) {
+            setY(getY() - 63);
+            jumping = false;
+            falling = true;
         }
     }
 }
