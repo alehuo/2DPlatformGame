@@ -23,6 +23,7 @@ import java.awt.Rectangle;
 import java.util.List;
 
 /**
+ * Entiteetti
  *
  * @author ahuotala
  */

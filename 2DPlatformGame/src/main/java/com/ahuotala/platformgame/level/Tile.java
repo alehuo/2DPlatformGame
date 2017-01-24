@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Aleksi Huotala
+ * Copyright (C) 2017 ahuotala
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -24,13 +24,15 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Aleksi Huotala
+ * @author ahuotala
  */
 public class Tile extends Entity {
 
     private final int widthHeight = 32;
 
     private String textureName;
+
+    private int tileLevel;
 
     public Tile(int x, int y, String textureName) {
         super(x, y);
@@ -56,14 +58,11 @@ public class Tile extends Entity {
     public void render(Graphics g) {
         Sprite spr = Game.spr.getSprite(textureName);
         if (spr != null) {
-            //Päivitä palikan rajat kun ruutua liikutetaan
-//            bounds.setLocation(x, y);
             //Piirrä tekstuuri
             g.drawImage(spr.getImage(), x, y, widthHeight, widthHeight, null);
-//            g.setColor(Color.red);
-//            g.drawRect(x, y, widthHeight, widthHeight);
-            drawBounds(g);
         }
+        //Piirrä rajat debuggausta varten
+        drawBounds(g);
     }
 
     @Override

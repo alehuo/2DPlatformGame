@@ -56,23 +56,14 @@ public class Game implements Runnable {
     public static String WINDOW_TITLE = "2DPlatformGame";
 
     /**
-     * Logger
+     * Spritesheet
      */
-    private static final Logger LOG = Logger.getLogger(Game.class.getName());
     public static SpriteSheet spr = new SpriteSheet();
 
-    public static void main(String[] args) {
-        Game g = new Game();
-        g.start();
-    }
     /**
      * JFrame
      */
     private final JFrame frame;
-    /**
-     *
-     */
-    private boolean running;
 
     /**
      * 60 päivitystä sekunnissa
@@ -89,9 +80,25 @@ public class Game implements Runnable {
      */
     private final Player player;
 
+    /**
+     * Entiteetit
+     */
     private final List<Entity> entities;
 
+    /**
+     * Pelitaso
+     */
     private final GameLevel gameLevel;
+
+    /**
+     * Logger
+     */
+    private static final Logger LOG = Logger.getLogger(Game.class.getName());
+
+    /**
+     * Suoritustila
+     */
+    private boolean running;
 
     public Game() {
         //Luo kehys
@@ -102,13 +109,13 @@ public class Game implements Runnable {
 
         entities = new ArrayList<>();
         //Luo pelaaja
-        player = new Player(WINDOW_WIDTH / 2 - 170, WINDOW_HEIGHT / 2 + 50);
+        player = new Player(100, WINDOW_HEIGHT / 2 + 50);
 
         //Luo tasoon entiteetit
-        entities.add(new Coin(350, 200));
-        entities.add(new Coin(250, 200));
-        entities.add(new Cloud(40, 40));
-        entities.add(new Cloud(250, 60));
+//        entities.add(new Coin(350, 200));
+//        entities.add(new Coin(250, 200));
+//        entities.add(new Cloud(40, 40));
+//        entities.add(new Cloud(250, 60));
 
         gameLevel = new GameLevel();
         gameLevel.setEntitites(entities);
@@ -129,6 +136,11 @@ public class Game implements Runnable {
         //Lisää pelaajan näppäimistönkuuntelija
         frame.addKeyListener(new KeyHandler(player));
 
+    }
+
+    public static void main(String[] args) {
+        Game g = new Game();
+        g.start();
     }
 
     /**
@@ -224,14 +236,7 @@ public class Game implements Runnable {
      * metodi on riippumaton ruudunpäivitysnopeudesta.
      */
     public void tick() {
-        //Liikuta pelaajaa
-        if (player != null) {
-            player.move();
-        }
-        //Päivitä entiteetit
-        entities.stream().forEach((entity) -> {
-            entity.tick();
-        });
+        gamePanel.tick();
     }
 
 }

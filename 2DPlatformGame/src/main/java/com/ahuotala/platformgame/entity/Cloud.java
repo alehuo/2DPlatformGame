@@ -22,7 +22,7 @@ import com.ahuotala.platformgame.graphics.Sprite;
 import java.awt.Graphics;
 
 /**
- * Pilvi
+ * Pilvi -entiteetti
  *
  * @author ahuotala
  */

@@ -46,13 +46,13 @@ public class Coin extends Entity {
 
     @Override
     public void tick() {
-//        yModifier = (int) Math.ceil(3 * Math.sin(Math.toRadians(index)));
-//
-//        if (index == 360) {
-//            index = 0;
-//        } else {
-//            index += 3;
-//        }
+        yModifier = (int) Math.ceil(3 * Math.sin(Math.toRadians(index)));
+
+        if (index == 360) {
+            index = 0;
+        } else {
+            index += 5;
+        }
     }
 
 }

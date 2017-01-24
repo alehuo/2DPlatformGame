@@ -108,4 +108,15 @@ public class GameLevel {
         this.tiles = tiles;
     }
 
+    public void tick() {
+        //Päivitä tiilet
+        getTiles().stream().forEach((tile) -> {
+            tile.tick();
+        });
+        //Päivitä entiteetit
+        getEntities().stream().forEach((entity) -> {
+            entity.tick();
+        });
+    }
+
 }

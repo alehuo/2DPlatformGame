@@ -83,7 +83,7 @@ public class GamePanel extends JPanel {
             //Debuggausta varten x:t ja y:t jne..
             g.drawString("Pelaajan X: " + player.getX(), 2, 10);
             g.drawString("Pelaajan Y: " + player.getY(), 2, 22);
-            player.drawBounds(g);
+            g.drawString("Pelaaja tippuu: " + player.isFalling(), 2, 34);
         }
 
         //Käyttöliittymä
@@ -92,5 +92,16 @@ public class GamePanel extends JPanel {
 
     public void setPlayer(Player p) {
         player = p;
+    }
+
+    public void tick() {
+        boolean collidesWithTiles = player.collides(level.getTiles());
+        if (player.isFalling() && collidesWithTiles) {
+            player.setFalling(false);
+        } else if (!collidesWithTiles) {
+            player.setFalling(true);
+        }
+        player.tick();
+        level.tick();
     }
 }
