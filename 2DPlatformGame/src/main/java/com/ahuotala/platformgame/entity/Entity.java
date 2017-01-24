@@ -17,7 +17,10 @@
  */
 package com.ahuotala.platformgame.entity;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.List;
 
 /**
  *
@@ -34,15 +37,15 @@ public abstract class Entity {
     protected int xMovement = 1;
     protected int yMovement = 1;
 
-    protected int width;
-    protected int height;
+    protected int width = 32;
+    protected int height = 32;
 
-    public Entity() {
-    }
+    protected Rectangle bounds;
 
     public Entity(int x, int y) {
         this.x = x;
         this.y = y;
+        bounds = new Rectangle(x, y, width, height);
     }
 
     public int getX() {
@@ -51,6 +54,7 @@ public abstract class Entity {
 
     public void setX(int x) {
         this.x = x;
+        bounds.setLocation(x, getY());
     }
 
     public int getY() {
@@ -59,6 +63,7 @@ public abstract class Entity {
 
     public void setY(int y) {
         this.y = y;
+        bounds.setLocation(getX(), y);
     }
 
     public int getDx() {
@@ -99,6 +104,7 @@ public abstract class Entity {
 
     public void setWidth(int width) {
         this.width = width;
+        bounds.setSize(width, height);
     }
 
     public int getHeight() {
@@ -107,11 +113,36 @@ public abstract class Entity {
 
     public void setHeight(int height) {
         this.height = height;
+        bounds.setSize(width, height);
     }
 
     public void move() {
         x += getDx();
         y += getDy();
+        bounds.setLocation(x, y);
+    }
+
+    public Rectangle getBounds() {
+        return bounds;
+    }
+
+    /**
+     * Palauttaa törmäävätkö entiteetit.
+     *
+     * @param e Entiteetti
+     * @return
+     */
+    public boolean collides(Entity e) {
+        return e.getBounds().intersects(getBounds());
+    }
+
+    public boolean collides(List<Entity> ents) {
+        return ents.stream().anyMatch((ent) -> (collides(ent)));
+    }
+
+    public void drawBounds(Graphics g) {
+        g.setColor(Color.red);
+        g.draw3DRect((int) getBounds().getX(), (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
     }
 
     /**

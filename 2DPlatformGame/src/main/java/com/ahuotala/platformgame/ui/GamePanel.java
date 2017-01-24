@@ -35,9 +35,9 @@ public class GamePanel extends JPanel {
      */
     private static final long serialVersionUID = 1L;
     private Player player;
-    
+
     private GameLevel level;
-    
+
     public GamePanel() {
         super();
     }
@@ -45,6 +45,7 @@ public class GamePanel extends JPanel {
     /**
      * Aseta taso
      *
+     * @param level
      */
     public void setLevel(GameLevel level) {
         this.level = level;
@@ -57,7 +58,7 @@ public class GamePanel extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-        
+
         super.paintComponent(g);
 
         //Tausta
@@ -82,12 +83,13 @@ public class GamePanel extends JPanel {
             //Debuggausta varten x:t ja y:t jne..
             g.drawString("Pelaajan X: " + player.getX(), 2, 10);
             g.drawString("Pelaajan Y: " + player.getY(), 2, 22);
+            player.drawBounds(g);
         }
 
         //Käyttöliittymä
         //Todo..
     }
-    
+
     public void setPlayer(Player p) {
         player = p;
     }

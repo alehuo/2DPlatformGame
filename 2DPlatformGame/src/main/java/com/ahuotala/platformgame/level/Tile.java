@@ -18,43 +18,25 @@
 package com.ahuotala.platformgame.level;
 
 import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.graphics.Sprite;
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 /**
  *
  * @author Aleksi Huotala
  */
-public class Tile {
+public class Tile extends Entity {
 
-    private int x;
-    private int y;
     private final int widthHeight = 32;
 
     private String textureName;
 
-    private Rectangle bounds;
-
-    public Tile() {
-        bounds = new Rectangle(x, y, widthHeight, widthHeight);
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+    public Tile(int x, int y, String textureName) {
+        super(x, y);
+        super.setWidth(widthHeight);
+        super.setHeight(widthHeight);
+        this.textureName = textureName;
     }
 
     public String getTextureName() {
@@ -70,16 +52,23 @@ public class Tile {
      *
      * @param g
      */
+    @Override
     public void render(Graphics g) {
         Sprite spr = Game.spr.getSprite(textureName);
         if (spr != null) {
             //Päivitä palikan rajat kun ruutua liikutetaan
 //            bounds.setLocation(x, y);
-//Piirrä tekstuuri
+            //Piirrä tekstuuri
             g.drawImage(spr.getImage(), x, y, widthHeight, widthHeight, null);
 //            g.setColor(Color.red);
 //            g.drawRect(x, y, widthHeight, widthHeight);
+            drawBounds(g);
         }
+    }
+
+    @Override
+    public void tick() {
+
     }
 
 }

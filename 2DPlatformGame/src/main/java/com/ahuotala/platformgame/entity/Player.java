@@ -32,8 +32,8 @@ public class Player extends Entity implements KeyListener {
 
     private static final Logger LOG = Logger.getLogger(Player.class.getName());
 
-    public Player() {
-        super();
+    public Player(int x, int y) {
+        super(x, y);
         //Pelaaja on 24x32 kokoinen (leveys x korkeus)
         super.setWidth(24);
         super.setHeight(32);

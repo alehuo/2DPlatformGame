@@ -91,6 +91,8 @@ public class Game implements Runnable {
 
     private final List<Entity> entities;
 
+    private final GameLevel gameLevel;
+
     public Game() {
         //Luo kehys
         frame = new JFrame(WINDOW_TITLE);
@@ -100,9 +102,7 @@ public class Game implements Runnable {
 
         entities = new ArrayList<>();
         //Luo pelaaja
-        player = new Player();
-        player.setX(WINDOW_WIDTH/2);
-        player.setY(WINDOW_HEIGHT/2);
+        player = new Player(WINDOW_WIDTH / 2 - 170, WINDOW_HEIGHT / 2 + 50);
 
         //Luo tasoon entiteetit
         entities.add(new Coin(350, 200));
@@ -110,7 +110,7 @@ public class Game implements Runnable {
         entities.add(new Cloud(40, 40));
         entities.add(new Cloud(250, 60));
 
-        GameLevel gameLevel = new GameLevel();
+        gameLevel = new GameLevel();
         gameLevel.setEntitites(entities);
 
         //Luo pelipaneeli ja lisää pelaaja sinne sekä taso

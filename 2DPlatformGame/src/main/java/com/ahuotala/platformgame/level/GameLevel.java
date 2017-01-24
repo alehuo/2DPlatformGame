@@ -19,17 +19,14 @@ package com.ahuotala.platformgame.level;
 
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Entity;
-import com.ahuotala.platformgame.graphics.Sprite;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 
 /**
  * Tasoluokka.
@@ -40,9 +37,15 @@ import javax.imageio.ImageIO;
  */
 public class GameLevel {
 
+    /**
+     * Tason entiteetit
+     */
     private List<Entity> entities;
 
-    private List<Tile> tiles;
+    /**
+     * Tason tiilit
+     */
+    private List<Entity> tiles;
 
     private static final Logger LOG = Logger.getLogger(GameLevel.class.getName());
 
@@ -72,10 +75,7 @@ public class GameLevel {
                         String[] lineData = line.split(",", -1);
                         for (int i = 0; i < lineData.length; i++) {
                             String textureName = lineData[i];
-                            Tile t = new Tile();
-                            t.setX(x);
-                            t.setY(y);
-                            t.setTextureName(textureName);
+                            Tile t = new Tile(x, y, textureName);
                             tiles.add(t);
                             LOG.log(Level.INFO, "Ladattu tiili ''{0}'' muistiin sijainnissa ({1},{2})", new Object[]{textureName, x, y});
                             y -= 32;
@@ -100,11 +100,11 @@ public class GameLevel {
         return entities;
     }
 
-    public List<Tile> getTiles() {
+    public List<Entity> getTiles() {
         return tiles;
     }
 
-    public void setTiles(List<Tile> tiles) {
+    public void setTiles(List<Entity> tiles) {
         this.tiles = tiles;
     }
 

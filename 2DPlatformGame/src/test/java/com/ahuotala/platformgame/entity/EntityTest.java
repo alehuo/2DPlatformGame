@@ -89,13 +89,6 @@ public class EntityTest {
     }
 
     @Test
-    public void parametritonKonstruktoriToimii() {
-        Entity entity2 = new TestEntity2();
-        assertEquals(0, entity2.getX());
-        assertEquals(0, entity2.getY());
-    }
-
-    @Test
     public void liikkuuOikein() {
         int xNyt = entity.getX();
         int yNyt = entity.getY();
@@ -116,24 +109,6 @@ public class EntityTest {
 
         TestEntity() {
             super(234, 567);
-        }
-
-        @Override
-        public void render(Graphics g) {
-
-        }
-
-        @Override
-        public void tick() {
-
-        }
-
-    }
-
-    private class TestEntity2 extends Entity {
-
-        public TestEntity2() {
-            super();
         }
 
         @Override
