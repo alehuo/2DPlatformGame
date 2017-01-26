@@ -19,10 +19,8 @@ package com.ahuotala.platformgame.entity;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.geom.Point2D;
 import java.util.logging.Logger;
 
 /**
@@ -31,9 +29,9 @@ import java.util.logging.Logger;
  * @author ahuotala
  */
 public class Player extends Entity implements KeyListener {
-
+    
     private static final Logger LOG = Logger.getLogger(Player.class.getName());
-
+    
     private boolean jumping = false;
     private boolean falling = true;
 
@@ -41,7 +39,7 @@ public class Player extends Entity implements KeyListener {
     private final int gravity = 1;
     private final int terminalVelocity = 5;
     private int verticalSpeed = 0;
-
+    
     public Player(int x, int y) {
         super(x, y);
         //Pelaaja on 24x32 kokoinen (leveys x korkeus)
@@ -50,10 +48,10 @@ public class Player extends Entity implements KeyListener {
         super.setyMovement(0);
         super.setxMovement(4);
     }
-
+    
     @Override
     public void keyTyped(KeyEvent e) {
-
+        
     }
 
     /**
@@ -115,21 +113,21 @@ public class Player extends Entity implements KeyListener {
             setDx(0);
         }
     }
-
+    
     public void jump() {
         if (!falling) {
             jumping = true;
         }
     }
-
+    
     public boolean isJumping() {
         return jumping;
     }
-
+    
     public boolean isFalling() {
         return falling;
     }
-
+    
     public void setFalling(boolean falling) {
         this.falling = falling;
     }
@@ -145,7 +143,7 @@ public class Player extends Entity implements KeyListener {
         g.fill3DRect(getX(), getY(), getWidth(), getHeight(), true);
         drawBounds(g);
     }
-
+    
     @Override
     public void tick() {
         move();

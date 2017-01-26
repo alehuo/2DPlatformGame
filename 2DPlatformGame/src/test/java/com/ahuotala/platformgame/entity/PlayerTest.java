@@ -18,7 +18,6 @@ package com.ahuotala.platformgame.entity;
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 import java.awt.AWTException;
-import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
 import org.junit.Before;
@@ -42,10 +41,8 @@ public class PlayerTest {
     public void alkutilaPelaajallaOikein() {
         assertEquals("X:ää ei aseteta oikein", 0, player.getX());
         assertEquals("Y:tä ei aseteta oikein", 0, player.getY());
-
-        Player plr2 = new Player(0, 0);
-        assertEquals("Leveyttä ei aseteta oikein", 24, plr2.getWidth());
-        assertEquals("Pituutta ei aseteta oikein", 32, plr2.getHeight());
+        assertEquals("Leveyttä ei aseteta oikein", 24, player.getWidth());
+        assertEquals("Pituutta ei aseteta oikein", 32, player.getHeight());
         assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 0, player.getyMovement());
         assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4, player.getxMovement());
     }
