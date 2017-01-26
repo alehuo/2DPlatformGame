@@ -43,17 +43,17 @@ public class Game implements Runnable {
     /**
      * Kehyksen leveys
      */
-    public static int WINDOW_WIDTH = 640;
+    public static int windowWidth = 640;
 
     /**
      * Kehyksen korkeus
      */
-    public static int WINDOW_HEIGHT = 480;
+    public static int windowHeight = 480;
 
     /**
      * Kehyksen otsikko
      */
-    public static String WINDOW_TITLE = "2DPlatformGame";
+    public static String windowTitle = "2DPlatformGame";
 
     /**
      * Spritesheet
@@ -102,21 +102,20 @@ public class Game implements Runnable {
 
     public Game() {
         //Luo kehys
-        frame = new JFrame(WINDOW_TITLE);
-        frame.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+        frame = new JFrame(windowTitle);
+        frame.setPreferredSize(new Dimension(windowWidth, windowHeight));
         frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         entities = new ArrayList<>();
         //Luo pelaaja
-        player = new Player(100, WINDOW_HEIGHT / 2 + 50);
+        player = new Player(100, windowHeight / 2 + 50);
 
         //Luo tasoon entiteetit
 //        entities.add(new Coin(350, 200));
 //        entities.add(new Coin(250, 200));
 //        entities.add(new Cloud(40, 40));
 //        entities.add(new Cloud(250, 60));
-
         gameLevel = new GameLevel();
         gameLevel.setEntitites(entities);
 
@@ -224,7 +223,7 @@ public class Game implements Runnable {
 
             if (System.currentTimeMillis() - lastTimer >= interval) {
                 lastTimer += interval;
-                frame.setTitle(WINDOW_TITLE + " (" + frames + " fps, " + ticks + " ticks)");
+                frame.setTitle(windowTitle + " (" + frames + " fps, " + ticks + " ticks)");
                 frames = 0;
                 ticks = 0;
             }

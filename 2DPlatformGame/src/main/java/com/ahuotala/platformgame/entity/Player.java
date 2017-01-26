@@ -80,7 +80,6 @@ public class Player extends Entity implements KeyListener {
         //Oikea
         if (e.getKeyCode() == KeyEvent.VK_D) {
             setDx(getxMovement());
-            Point2D p2d = new Point(x + getWidth() + 5, y + getHeight() / 2);
         }
 
         //Hyppy
@@ -99,20 +98,18 @@ public class Player extends Entity implements KeyListener {
     public void keyReleased(KeyEvent e) {
 
         //Ylös
-        if (e.getKeyCode() == KeyEvent.VK_W) {
-            setDy(0);
-        }
-
+//        if (e.getKeyCode() == KeyEvent.VK_W) {
+//            setDy(0);
+//        }
         //Vasen
         if (e.getKeyCode() == KeyEvent.VK_A) {
             setDx(0);
         }
 
         //Alas
-        if (e.getKeyCode() == KeyEvent.VK_S) {
-            setDy(0);
-        }
-
+//        if (e.getKeyCode() == KeyEvent.VK_S) {
+//            setDy(0);
+//        }
         //Oikea
         if (e.getKeyCode() == KeyEvent.VK_D) {
             setDx(0);

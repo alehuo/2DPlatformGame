@@ -63,9 +63,8 @@ public class GameLevel {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
                 if (stream != null) {
                     int x = 0;
-                    int y = Game.WINDOW_HEIGHT - 62;
                     while ((line = reader.readLine()) != null) {
-                        y = Game.WINDOW_HEIGHT - 62;
+                        int y = Game.windowHeight - 62;
                         //Jos rivi alkaa hashtagilla tai on tyhjä
                         if (line.startsWith("#") || line.isEmpty()) {
                             continue;
@@ -93,7 +92,7 @@ public class GameLevel {
     }
 
     public void setEntitites(List<Entity> entities) {
-        this.entities = entities;
+        this.entities = new ArrayList(entities);
     }
 
     public List<Entity> getEntities() {
@@ -105,7 +104,7 @@ public class GameLevel {
     }
 
     public void setTiles(List<Entity> tiles) {
-        this.tiles = tiles;
+        this.tiles = new ArrayList(tiles);
     }
 
     public void tick() {

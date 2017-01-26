@@ -32,7 +32,7 @@ public class Tile extends Entity {
 
     private String textureName;
 
-    private int tileLevel;
+    private Sprite spr;
 
     public Tile(int x, int y, String textureName) {
         super(x, y);
@@ -56,11 +56,13 @@ public class Tile extends Entity {
      */
     @Override
     public void render(Graphics g) {
-        Sprite spr = Game.spr.getSprite(textureName);
-        if (spr != null) {
-            //Piirrä tekstuuri
-            g.drawImage(spr.getImage(), x, y, widthHeight, widthHeight, null);
+        if (spr == null) {
+            spr = Game.spr.getSprite(textureName);
         }
+
+        //Piirrä tekstuuri
+        g.drawImage(spr.getImage(), x, y, widthHeight, widthHeight, null);
+
         //Piirrä rajat debuggausta varten
         drawBounds(g);
     }

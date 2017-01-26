@@ -64,7 +64,7 @@ public class GamePanel extends JPanel {
         //Tausta
         Color c = new Color(141, 159, 255);
         g.setColor(c);
-        g.fill3DRect(0, 0, Game.WINDOW_WIDTH, Game.WINDOW_HEIGHT, false);
+        g.fill3DRect(0, 0, Game.windowWidth, Game.windowHeight, false);
 
         //Taso
         if (level != null) {
@@ -81,9 +81,9 @@ public class GamePanel extends JPanel {
             player.render(g);
             g.setColor(Color.WHITE);
             //Debuggausta varten x:t ja y:t jne..
-            g.drawString("Pelaajan X: " + player.getX(), 2, 10);
-            g.drawString("Pelaajan Y: " + player.getY(), 2, 22);
-            g.drawString("Pelaaja tippuu: " + player.isFalling(), 2, 34);
+            g.drawString("playerX: " + player.getX(), 2, 10);
+            g.drawString("playerY: " + player.getY(), 2, 22);
+            g.drawString("isFalling: " + player.isFalling(), 2, 34);
         }
 
         //Käyttöliittymä
