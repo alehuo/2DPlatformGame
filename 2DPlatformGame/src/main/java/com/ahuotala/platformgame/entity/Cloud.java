@@ -42,7 +42,9 @@ public class Cloud extends Entity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(sprite.getImage(), getX(), getY(), getWidth() * 2, getHeight() * 2, null);
+        if (sprite != null) {
+            g.drawImage(sprite.getImage(), getX(), getY(), getWidth() * 2, getHeight() * 2, null);
+        }
     }
 
     @Override
