@@ -14,3 +14,6 @@ jollain kuvankäsittelyohjelmalla piirrettyjä kuvia. Tekstuurien ja animaatioiden
 * Liikkuminen (eteen, taakse, hyppy)
 * Kolikoiden kerääminen
 * Hirviöiden tappaminen
+
+## Luokkakaavio
+![luokkakaavio](Luokkakaavio.png)

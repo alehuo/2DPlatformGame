@@ -146,7 +146,7 @@ public class Player extends Entity implements KeyListener {
         g.setColor(Color.CYAN);
         g.fill3DRect(getX(), getY(), getWidth(), getHeight(), true);
         g.setColor(Color.GREEN);
-        drawBounds(g);
+//        drawBounds(g);
     }
 
     /**

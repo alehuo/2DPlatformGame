@@ -59,9 +59,6 @@ public class Game implements Runnable {
     //Pelipaneeli
     private final GamePanel gamePanel;
 
-    //Pelaaja
-    private final Player player;
-
     //Entiteetit
     private final List<Entity> entities = new ArrayList<>();
 
@@ -80,7 +77,7 @@ public class Game implements Runnable {
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //Luo pelaaja
-        player = new Player(100, windowHeight / 2 + 50);
+        Player player = new Player(100, windowHeight / 2 + 50);
 
         gameLevel = new GameLevel();
         gameLevel.setEntitites(entities);

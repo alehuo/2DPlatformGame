@@ -19,7 +19,6 @@ package com.ahuotala.platformgame.ui;
 
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Player;
-import com.ahuotala.platformgame.entity.WalkingDirection;
 import com.ahuotala.platformgame.level.GameLevel;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -35,8 +34,11 @@ public class GamePanel extends JPanel {
      * SerialVersionUID
      */
     private static final long serialVersionUID = 1L;
+    
+    //Pelaaja
     private Player player;
 
+    //Taso
     private GameLevel level;
 
     public GamePanel() {

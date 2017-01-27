@@ -64,7 +64,7 @@ public class Tile extends Entity {
         g.drawImage(spr.getImage(), x, y, widthHeight, widthHeight, null);
 
         //Piirrä rajat debuggausta varten
-        drawBounds(g);
+//        drawBounds(g);
     }
 
     @Override
