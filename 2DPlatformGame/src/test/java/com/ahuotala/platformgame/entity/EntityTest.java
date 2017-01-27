@@ -23,6 +23,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * Entity -luokan testit.
  *
  * @author ahuotala
  */
@@ -88,23 +89,22 @@ public class EntityTest {
         assertEquals(23, entity.getDy());
     }
 
-    @Test
-    public void liikkuuOikein() {
-        int xNyt = entity.getX();
-        int yNyt = entity.getY();
-
-        int xMaara = 22;
-        int yMaara = -12;
-
-        entity.setDx(xMaara);
-        entity.setDy(yMaara);
-
-        entity.move();
-
-        assertEquals(xNyt + xMaara, entity.getX());
-        assertEquals(yNyt + yMaara, entity.getY());
-    }
-
+//    @Test
+//    public void liikkuuOikein() {
+//        int xNyt = entity.getX();
+//        int yNyt = entity.getY();
+//
+//        int xMaara = 22;
+//        int yMaara = -12;
+//
+//        entity.setDx(xMaara);
+//        entity.setDy(yMaara);
+//
+//        entity.move();
+//
+//        assertEquals(xNyt + xMaara, entity.getX());
+//        assertEquals(yNyt + yMaara, entity.getY());
+//    }
     private class TestEntity extends Entity {
 
         TestEntity() {

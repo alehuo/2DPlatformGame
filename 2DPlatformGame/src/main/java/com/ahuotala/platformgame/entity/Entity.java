@@ -117,12 +117,6 @@ public abstract class Entity {
         bounds.setSize(width, height);
     }
 
-    public void move() {
-        x += getDx();
-        y += getDy();
-        bounds.setLocation(x, y);
-    }
-
     public Rectangle getBounds() {
         return bounds;
     }

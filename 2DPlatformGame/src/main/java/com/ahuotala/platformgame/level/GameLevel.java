@@ -17,6 +17,7 @@
  */
 package com.ahuotala.platformgame.level;
 
+import com.ahuotala.platformgame.entity.Tile;
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Entity;
 import java.io.BufferedReader;

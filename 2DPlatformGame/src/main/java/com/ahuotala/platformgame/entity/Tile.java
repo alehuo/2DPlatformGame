@@ -15,11 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package com.ahuotala.platformgame.level;
+package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
-import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.graphics.Sprite;
+import java.awt.Color;
 import java.awt.Graphics;
 
 /**
@@ -70,6 +70,12 @@ public class Tile extends Entity {
     @Override
     public void tick() {
 
+    }
+
+    @Override
+    public void drawBounds(Graphics g) {
+        g.setColor(Color.red);
+        g.draw3DRect((int) getBounds().getX(), (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
     }
 
 }

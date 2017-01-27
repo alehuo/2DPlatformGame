@@ -17,8 +17,6 @@
  */
 package com.ahuotala.platformgame;
 
-import com.ahuotala.platformgame.entity.Cloud;
-import com.ahuotala.platformgame.entity.Coin;
 import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.graphics.SpriteSheet;
@@ -40,64 +38,38 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class Game implements Runnable {
 
-    /**
-     * Kehyksen leveys
-     */
+    //Kehyksen leveys
     public static int windowWidth = 640;
 
-    /**
-     * Kehyksen korkeus
-     */
+    //Kehyksen korkeus
     public static int windowHeight = 480;
 
-    /**
-     * Kehyksen otsikko
-     */
+    //Kehyksen otsikko
     public static String windowTitle = "2DPlatformGame";
 
-    /**
-     * Spritesheet
-     */
+    //Spritesheet
     public static SpriteSheet spr = new SpriteSheet();
 
-    /**
-     * JFrame
-     */
+    //JFrame
     private final JFrame frame;
 
-    /**
-     * 60 päivitystä sekunnissa
-     */
-    private final int tickrate = 60;
+    //Päivitystahti
+    private final int tickrate = 120;
 
-    /**
-     * Piirtoalusta
-     */
+    //Pelipaneeli
     private final GamePanel gamePanel;
 
-    /**
-     * Pelaaja
-     */
+    //Pelaaja
     private final Player player;
 
-    /**
-     * Entiteetit
-     */
-    private final List<Entity> entities;
+    //Entiteetit
+    private final List<Entity> entities = new ArrayList<>();
 
-    /**
-     * Pelitaso
-     */
+    //Taso
     private final GameLevel gameLevel;
 
-    /**
-     * Logger
-     */
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
 
-    /**
-     * Suoritustila
-     */
     private boolean running;
 
     public Game() {
@@ -107,15 +79,9 @@ public class Game implements Runnable {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        entities = new ArrayList<>();
         //Luo pelaaja
         player = new Player(100, windowHeight / 2 + 50);
 
-        //Luo tasoon entiteetit
-//        entities.add(new Coin(350, 200));
-//        entities.add(new Coin(250, 200));
-//        entities.add(new Cloud(40, 40));
-//        entities.add(new Cloud(250, 60));
         gameLevel = new GameLevel();
         gameLevel.setEntitites(entities);
 
@@ -198,7 +164,7 @@ public class Game implements Runnable {
 
             while (delta >= 1) {
                 ticks++;
-                tick();
+                gamePanel.tick();
                 delta -= 1;
                 //Sallitaan pelin päivittää kehys kun ollaan päivitetty pelilogiikka
                 render = true;
@@ -228,14 +194,6 @@ public class Game implements Runnable {
                 ticks = 0;
             }
         }
-    }
-
-    /**
-     * Metodi joka suoritetaan 60 kertaa sekunnissa (16,66ms) tick(). Tämä
-     * metodi on riippumaton ruudunpäivitysnopeudesta.
-     */
-    public void tick() {
-        gamePanel.tick();
     }
 
 }

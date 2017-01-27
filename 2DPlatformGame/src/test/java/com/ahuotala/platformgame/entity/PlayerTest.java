@@ -19,12 +19,15 @@ package com.ahuotala.platformgame.entity;
  */
 import java.awt.AWTException;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JTextField;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * Pelaaja -luokan testit.
  *
  * @author ahuotala
  */
@@ -43,8 +46,8 @@ public class PlayerTest {
         assertEquals("Y:tä ei aseteta oikein", 0, player.getY());
         assertEquals("Leveyttä ei aseteta oikein", 24, player.getWidth());
         assertEquals("Pituutta ei aseteta oikein", 32, player.getHeight());
-        assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 0, player.getyMovement());
-        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4, player.getxMovement());
+        assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 1, player.getyMovement());
+        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 2, player.getxMovement());
     }
 
     @Test
@@ -105,7 +108,9 @@ public class PlayerTest {
         player.setDx(xMaara);
         player.setDy(yMaara);
 
-        player.move();
+        List<Entity> entities = new ArrayList();
+
+        player.move(entities);
 
         assertEquals(xNyt + xMaara, player.getX());
         assertEquals(yNyt + yMaara, player.getY());
@@ -155,5 +160,14 @@ public class PlayerTest {
         player.keyPressed(ke);
 
         assertTrue("Pelaajalle ei asetettu hyppytilaa, vaikka välilyöntiä painettiin", player.isJumping());
+    }
+
+    @Test
+    public void liikkumissuuntaOikein() {
+        assertEquals(WalkingDirection.RIGHT, player.getWd());
+
+        player.setWd(WalkingDirection.LEFT);
+
+        assertEquals(WalkingDirection.LEFT, player.getWd());
     }
 }

@@ -21,6 +21,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -29,54 +30,55 @@ import java.util.logging.Logger;
  * @author ahuotala
  */
 public class Player extends Entity implements KeyListener {
-    
+
     private static final Logger LOG = Logger.getLogger(Player.class.getName());
-    
+
     private boolean jumping = false;
     private boolean falling = true;
 
     //Painovoiman simuloimista varten
-    private final int gravity = 1;
-    private final int terminalVelocity = 5;
-    private int verticalSpeed = 0;
-    
+//    private int fallTicks = 0;
+//    private int factor = 4;
+    private WalkingDirection wd;
+
     public Player(int x, int y) {
         super(x, y);
         //Pelaaja on 24x32 kokoinen (leveys x korkeus)
         super.setWidth(24);
         super.setHeight(32);
-        super.setyMovement(0);
-        super.setxMovement(4);
+
+        //Halutaan että y-suunnassa tiputaan yksi yksikkö ja x-suunnassa napin 
+        //painallus liikuttaa pelaajaa 2 yksikköä
+        super.setyMovement(1);
+        super.setDy(super.getyMovement());
+
+        super.setxMovement(2);
+
+        wd = WalkingDirection.RIGHT;
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
-        
+
     }
 
     /**
-     * Näppäimen painallus. Tämän metodin avulla liikutetaan pelaajaa
+     * Näppäimen painallus: tämän metodin avulla liikutetaan pelaajaa.
      *
      * @param e
      */
     @Override
     public void keyPressed(KeyEvent e) {
 
-        //Ylös
-//        if (e.getKeyCode() == KeyEvent.VK_W) {
-//            setDy(-getyMovement());
-//        }
-        //Alas
-//        if (e.getKeyCode() == KeyEvent.VK_S) {
-//            setDy(getyMovement());
-//        }
         //Vasen
         if (e.getKeyCode() == KeyEvent.VK_A) {
+            wd = WalkingDirection.LEFT;
             setDx(-getxMovement());
         }
 
         //Oikea
         if (e.getKeyCode() == KeyEvent.VK_D) {
+            wd = WalkingDirection.RIGHT;
             setDx(getxMovement());
         }
 
@@ -84,56 +86,58 @@ public class Player extends Entity implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             jump();
         }
-//        LOG.log(Level.INFO, "dx: {0}, dy: {1}", new Object[]{getDx(), getDy()});
     }
 
     /**
-     * Napin päästäminen pohjasta
+     * Napin päästäminen pohjasta.
      *
      * @param e
      */
     @Override
     public void keyReleased(KeyEvent e) {
 
-        //Ylös
-//        if (e.getKeyCode() == KeyEvent.VK_W) {
-//            setDy(0);
-//        }
         //Vasen
         if (e.getKeyCode() == KeyEvent.VK_A) {
             setDx(0);
         }
 
-        //Alas
-//        if (e.getKeyCode() == KeyEvent.VK_S) {
-//            setDy(0);
-//        }
         //Oikea
         if (e.getKeyCode() == KeyEvent.VK_D) {
             setDx(0);
         }
     }
-    
+
+    /**
+     * Hyppää.
+     */
     public void jump() {
         if (!falling) {
             jumping = true;
         }
     }
-    
+
     public boolean isJumping() {
         return jumping;
     }
-    
+
     public boolean isFalling() {
         return falling;
     }
-    
+
     public void setFalling(boolean falling) {
         this.falling = falling;
     }
 
+    public WalkingDirection getWd() {
+        return wd;
+    }
+
+    public void setWd(WalkingDirection wd) {
+        this.wd = wd;
+    }
+
     /**
-     * Piirrä pelaaja näytölle
+     * Piirrä pelaaja näytölle.
      *
      * @param g Graphics -objekti
      */
@@ -141,26 +145,42 @@ public class Player extends Entity implements KeyListener {
     public void render(Graphics g) {
         g.setColor(Color.CYAN);
         g.fill3DRect(getX(), getY(), getWidth(), getHeight(), true);
+        g.setColor(Color.GREEN);
         drawBounds(g);
     }
-    
+
+    /**
+     * Pelaajan tick -toiminnallisuus on vastuussa pelaajan liikkumisesta sekä
+     * hyppimisestä.
+     */
     @Override
     public void tick() {
-        move();
-        if (falling) {
-            setY(getY() + verticalSpeed);
-            if (verticalSpeed + gravity > terminalVelocity) {
-                verticalSpeed = terminalVelocity;
-            } else {
-                verticalSpeed += gravity;
-            }
-        } else {
-            verticalSpeed = 0;
-        }
         if (jumping && !falling) {
-            setY(getY() - 63);
+            setY(getY() - 64);
             jumping = false;
             falling = true;
         }
     }
+
+    public void move(List<Entity> tiles) {
+        bounds.setLocation(getX(), getY());
+
+        //Y-suunta (putoaminen)
+        setY(getY() + getDy());
+        for (Entity tile : tiles) {
+            if (tile.collides(this)) {
+                falling = false;
+                setY(getY() - getDy());
+            }
+        }
+        //X-suunta (siirtyminen)
+        setX(getX() + getDx());
+        for (Entity tile : tiles) {
+            if (tile.collides(this)) {
+                falling = false;
+                setX(getX() - getDx());
+            }
+        }
+    }
+
 }

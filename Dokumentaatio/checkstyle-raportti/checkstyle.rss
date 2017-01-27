@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 5,
-             Errors: 4,
+      <title>File: 12,
+             Errors: 0,
              Warnings: 0,
              Infos: 0
       </title>
@@ -47,6 +47,34 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Entity.java">com/ahuotala/platformgame/entity/Entity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.graphics.Sprite.java">com/ahuotala/platformgame/graphics/Sprite.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Coin.java">com/ahuotala/platformgame/entity/Coin.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +116,63 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Cloud.java">com/ahuotala/platformgame/entity/Cloud.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Tile.java">com/ahuotala/platformgame/entity/Tile.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.input.KeyHandler.java">com/ahuotala/platformgame/input/KeyHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.graphics.SpriteSheet.java">com/ahuotala/platformgame/graphics/SpriteSheet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.level.GameLevel.java">com/ahuotala/platformgame/level/GameLevel.java</a>
                 </td>
                 <td>
                   0
@@ -111,7 +195,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.WalkingDirection.java">com/ahuotala/platformgame/entity/WalkingDirection.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                       </tbody>

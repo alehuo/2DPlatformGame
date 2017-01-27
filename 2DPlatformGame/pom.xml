@@ -40,6 +40,10 @@
                     <targetTests>
                         <param>com.ahuotala.platformgame.entity.*</param>
                     </targetTests>
+                    <excludedMethods>
+                        <param>render</param>
+                        <param>drawBounds</param>
+                    </excludedMethods>
                 </configuration>
             </plugin>
             <plugin>

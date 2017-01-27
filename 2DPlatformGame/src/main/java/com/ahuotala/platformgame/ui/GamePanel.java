@@ -19,6 +19,7 @@ package com.ahuotala.platformgame.ui;
 
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Player;
+import com.ahuotala.platformgame.entity.WalkingDirection;
 import com.ahuotala.platformgame.level.GameLevel;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -84,6 +85,7 @@ public class GamePanel extends JPanel {
             g.drawString("playerX: " + player.getX(), 2, 10);
             g.drawString("playerY: " + player.getY(), 2, 22);
             g.drawString("isFalling: " + player.isFalling(), 2, 34);
+            g.drawString("walkingDirection: " + player.getWd(), 2, 46);
         }
 
         //Käyttöliittymä
@@ -95,12 +97,19 @@ public class GamePanel extends JPanel {
     }
 
     public void tick() {
-        boolean collidesWithTiles = player.collides(level.getTiles());
-        if (player.isFalling() && collidesWithTiles) {
-            player.setFalling(false);
-        } else if (!collidesWithTiles) {
-            player.setFalling(true);
-        }
+//        boolean collidesWithTiles = player.collides(level.getTiles());
+//        if (player.isFalling() && collidesWithTiles) {
+//            player.setFalling(false);
+//        } else if (!player.isFalling() && collidesWithTiles) {
+//            if (player.getWd() == WalkingDirection.RIGHT) {
+//                player.setX(player.getX() - 1);
+//            } else if (player.getWd() == WalkingDirection.LEFT) {
+//                player.setX(player.getX() + 1);
+//            }
+//        } else if (!collidesWithTiles) {
+//            player.setFalling(true);
+//        }
+        player.move(level.getTiles());
         player.tick();
         level.tick();
     }

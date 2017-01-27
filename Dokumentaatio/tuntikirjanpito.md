@@ -9,4 +9,5 @@ Päivä | Tunnit | Kuvaus
 23.01.2017 | 1h | Paranneltu EntityTest -testin kattavuutta, päivitetty Pit -raportti ja lisäty Entity -luokalla tick() -metodi jolla voidaan päivittää Entiteettien tila
 23.01.2017 | 1h | Luotu Tiili -luokka joka on Entiteetti -luokan aliluokka
 24.01.2017 | 1h | Toteutettu perus hyppytoiminnallisuus pelaajalle. Pelaaja myös pysyy nyt tasolla, eikä tipu sen läpi.
+27.1.2017 | 1h | Saatu pelaaja pysymään kentässä. Nyt pelaaja pysähtyy jos vastaan tulee korkeampi este, eikä mene sen läpi niin kuin aiemmin. Lisätty muutama JUnit -testi ja päivitetty Pit- sekä Checkstyle -raportit.
 ... | ... | ...
