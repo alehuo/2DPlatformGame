@@ -25,6 +25,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
+ * Pelipaneeli piirtää tason, entiteetit sekä pelaajan
  *
  * @author ahuotala
  */
@@ -34,9 +35,6 @@ public class GamePanel extends JPanel {
      * SerialVersionUID
      */
     private static final long serialVersionUID = 1L;
-    
-    //Pelaaja
-    private Player player;
 
     //Taso
     private GameLevel level;
@@ -79,6 +77,8 @@ public class GamePanel extends JPanel {
             });
         }
 
+        Player player = level.getPlayer();
+
         //Pelaaja
         if (player != null) {
             player.render(g);
@@ -94,25 +94,7 @@ public class GamePanel extends JPanel {
         //Todo..
     }
 
-    public void setPlayer(Player p) {
-        player = p;
-    }
-
     public void tick() {
-//        boolean collidesWithTiles = player.collides(level.getTiles());
-//        if (player.isFalling() && collidesWithTiles) {
-//            player.setFalling(false);
-//        } else if (!player.isFalling() && collidesWithTiles) {
-//            if (player.getWd() == WalkingDirection.RIGHT) {
-//                player.setX(player.getX() - 1);
-//            } else if (player.getWd() == WalkingDirection.LEFT) {
-//                player.setX(player.getX() + 1);
-//            }
-//        } else if (!collidesWithTiles) {
-//            player.setFalling(true);
-//        }
-        player.move(level.getTiles());
-        player.tick();
         level.tick();
     }
 }

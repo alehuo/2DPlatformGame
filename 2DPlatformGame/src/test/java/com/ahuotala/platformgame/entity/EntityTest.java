@@ -18,9 +18,9 @@ package com.ahuotala.platformgame.entity;
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 import java.awt.Graphics;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  * Entity -luokan testit.

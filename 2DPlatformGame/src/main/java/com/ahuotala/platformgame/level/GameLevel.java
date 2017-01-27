@@ -17,9 +17,10 @@
  */
 package com.ahuotala.platformgame.level;
 
-import com.ahuotala.platformgame.entity.Tile;
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Entity;
+import com.ahuotala.platformgame.entity.Player;
+import com.ahuotala.platformgame.entity.Tile;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,11 +33,13 @@ import java.util.logging.Logger;
 /**
  * Tasoluokka.
  *
- * Taso sisältää blokit sekä entiteetit.
+ * Taso sisältää blokit, entiteetit sekä pelaajan.
  *
  * @author ahuotala
  */
 public class GameLevel {
+
+    private static final Logger LOG = Logger.getLogger(GameLevel.class.getName());
 
     /**
      * Tason entiteetit
@@ -44,11 +47,14 @@ public class GameLevel {
     private List<Entity> entities;
 
     /**
+     * Pelaaja
+     */
+    private Player player;
+
+    /**
      * Tason tiilit
      */
     private List<Entity> tiles;
-
-    private static final Logger LOG = Logger.getLogger(GameLevel.class.getName());
 
     public GameLevel() {
         entities = new ArrayList();
@@ -73,8 +79,7 @@ public class GameLevel {
 
                         //Parsi tasot
                         String[] lineData = line.split(",", -1);
-                        for (int i = 0; i < lineData.length; i++) {
-                            String textureName = lineData[i];
+                        for (String textureName : lineData) {
                             Tile t = new Tile(x, y, textureName);
                             tiles.add(t);
                             LOG.log(Level.INFO, "Ladattu tiili ''{0}'' muistiin sijainnissa ({1},{2})", new Object[]{textureName, x, y});
@@ -117,6 +122,18 @@ public class GameLevel {
         getEntities().stream().forEach((entity) -> {
             entity.tick();
         });
+
+        //Päivitä pelaaja
+        player.move(getTiles());
+        player.tick();
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
 }

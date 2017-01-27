@@ -50,6 +50,14 @@ public class Game implements Runnable {
     //Spritesheet
     public static SpriteSheet spr = new SpriteSheet();
 
+    //Logger
+    private static final Logger LOG = Logger.getLogger(Game.class.getName());
+
+    public static void main(String[] args) {
+        Game g = new Game();
+        g.start();
+    }
+
     //JFrame
     private final JFrame frame;
 
@@ -59,14 +67,7 @@ public class Game implements Runnable {
     //Pelipaneeli
     private final GamePanel gamePanel;
 
-    //Entiteetit
-    private final List<Entity> entities = new ArrayList<>();
-
-    //Taso
-    private final GameLevel gameLevel;
-
-    private static final Logger LOG = Logger.getLogger(Game.class.getName());
-
+    //Suoritustila
     private boolean running;
 
     public Game() {
@@ -76,17 +77,22 @@ public class Game implements Runnable {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        //Pelitaso
+        GameLevel gameLevel = new GameLevel();
+
         //Luo pelaaja
         Player player = new Player(100, windowHeight / 2 + 50);
+        gameLevel.setPlayer(player);
 
-        gameLevel = new GameLevel();
+        //Entiteetit
+        List<Entity> entities = new ArrayList<>();
         gameLevel.setEntitites(entities);
 
-        //Luo pelipaneeli ja lisää pelaaja sinne sekä taso
+        //Luo pelipaneeli ja lisää pelitaso sinne
         gamePanel = new GamePanel();
-        gamePanel.setPlayer(player);
         gamePanel.setLevel(gameLevel);
 
+        //Aseta pelipaneeli contentPaneen
         frame.setContentPane(gamePanel);
 
         frame.pack();
@@ -98,11 +104,6 @@ public class Game implements Runnable {
         //Lisää pelaajan näppäimistönkuuntelija
         frame.addKeyListener(new KeyHandler(player));
 
-    }
-
-    public static void main(String[] args) {
-        Game g = new Game();
-        g.start();
     }
 
     /**
