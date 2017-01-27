@@ -6,5 +6,5 @@ Pelin ideana on liikkua tasolla keräten kolikoita matkan varrelta ja tappaa mah
 Pelin lopussa näytetään loppupisteytys, joka koostuu suoritusajasta, kerätyistä kolikoista sekä tapetuista hirviöistä.
 
 # Dokumentaatio
-* [Aiheen kuvaus ja rakenne](dokumentaatio/aiheenKuvausJaRakenne.md)
-* [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
+* [Aiheen kuvaus ja rakenne](Dokumentaatio/aiheenKuvausJaRakenne.md)
+* [Tuntikirjanpito](Dokumentaatio/tuntikirjanpito.md)
