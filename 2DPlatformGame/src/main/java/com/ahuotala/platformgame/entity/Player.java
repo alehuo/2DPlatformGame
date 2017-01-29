@@ -49,10 +49,10 @@ public class Player extends Entity implements KeyListener {
 
         //Halutaan että y-suunnassa tiputaan yksi yksikkö ja x-suunnassa napin 
         //painallus liikuttaa pelaajaa 2 yksikköä
-        super.setyMovement(1);
+        super.setyMovement(3);
         super.setDy(super.getyMovement());
 
-        super.setxMovement(2);
+        super.setxMovement(4);
 
         wd = WalkingDirection.RIGHT;
     }

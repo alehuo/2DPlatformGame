@@ -62,7 +62,7 @@ public class Game implements Runnable {
     private final JFrame frame;
 
     //Päivitystahti
-    private final int tickrate = 120;
+    private final int tickrate = 60;
 
     //Pelipaneeli
     private final GamePanel gamePanel;
