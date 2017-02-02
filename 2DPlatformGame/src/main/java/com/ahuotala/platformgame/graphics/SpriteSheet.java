@@ -33,6 +33,7 @@ import javax.imageio.ImageIO;
  * @author ahuotala
  */
 public class SpriteSheet {
+
     private static final Logger LOG = Logger.getLogger(SpriteSheet.class.getName());
 
     private BufferedImage spriteSheet;
@@ -45,8 +46,7 @@ public class SpriteSheet {
     /**
      * Spritesheet-tiedoston sijainti
      */
-    private final String spriteSheetPath = "textures/spritesheet.png";
-
+    public static final String SPRITESHEETPATH = "textures/spritesheet.png";
 
     /**
      * Konstruktori lataa spritesheet -tiedoston muistiin
@@ -59,7 +59,7 @@ public class SpriteSheet {
         try {
 
             //Ladataan spritesheet
-            spriteSheet = ImageIO.read(cl.getResourceAsStream(spriteSheetPath));
+            spriteSheet = ImageIO.read(cl.getResourceAsStream(SPRITESHEETPATH));
 
             sprites = new HashMap();
 
@@ -86,7 +86,7 @@ public class SpriteSheet {
                         Sprite tmpSprite = new Sprite();
                         tmpSprite.setImage(spriteSheet.getSubimage(x, y, width, height));
                         sprites.put(name, tmpSprite);
-                        LOG.log(Level.INFO, "Ladattu tekstuuri ''{0}'' muistiin.", name);
+//                        LOG.log(Level.INFO, "Ladattu tekstuuri ''{0}'' muistiin.", name);
                     }
                     stream.close();
                 }

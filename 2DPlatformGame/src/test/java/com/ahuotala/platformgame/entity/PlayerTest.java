@@ -17,6 +17,8 @@ package com.ahuotala.platformgame.entity;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.level.GameLevel;
 import java.awt.AWTException;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -37,17 +39,17 @@ public class PlayerTest {
 
     @Before
     public void setUp() {
-        player = new Player(0, 0);
+        player = new Player(Game.WINDOWWIDTH / 2, 0);
     }
 
     @Test
     public void alkutilaPelaajallaOikein() {
-        assertEquals("X:ää ei aseteta oikein", 0, player.getX());
+        assertEquals("X:ää ei aseteta oikein", Game.WINDOWWIDTH / 2, player.getX());
         assertEquals("Y:tä ei aseteta oikein", 0, player.getY());
         assertEquals("Leveyttä ei aseteta oikein", 24, player.getWidth());
         assertEquals("Pituutta ei aseteta oikein", 32, player.getHeight());
-        assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 1, player.getyMovement());
-        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 2, player.getxMovement());
+        assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3, player.getyMovement());
+        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4, player.getxMovement());
     }
 
     @Test
@@ -99,7 +101,11 @@ public class PlayerTest {
 
     @Test
     public void liikkuuOikein() {
-        int xNyt = player.getX();
+        
+        //Asetetaan kentän leveys, ettei rajojen tarkistus hajota testiä
+        GameLevel.levelWidth = 9001;
+
+        int xNyt = player.getRealX();
         int yNyt = player.getY();
 
         int xMaara = 22;
@@ -108,11 +114,12 @@ public class PlayerTest {
         player.setDx(xMaara);
         player.setDy(yMaara);
 
+
         List<Entity> entities = new ArrayList();
 
         player.move(entities);
-
-        assertEquals(xNyt + xMaara, player.getX());
+        
+        assertEquals(xNyt + xMaara, player.getRealX());
         assertEquals(yNyt + yMaara, player.getY());
     }
 

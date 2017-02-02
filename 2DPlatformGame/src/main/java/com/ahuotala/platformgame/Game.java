@@ -39,20 +39,22 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Game implements Runnable {
 
     //Kehyksen leveys
-    public static int windowWidth = 640;
+    public static final int WINDOWWIDTH = 1280;
 
     //Kehyksen korkeus
-    public static int windowHeight = 480;
+    public static final int WINDOWHEIGHT = 720;
+    
+    public static final int STARTINGOFFSET = WINDOWWIDTH / 2 - 64;
 
     //Kehyksen otsikko
-    public static String windowTitle = "2DPlatformGame";
+    public static final String WINDOWTITLE = "2DPlatformGame";
 
     //Spritesheet
     public static SpriteSheet spr = new SpriteSheet();
 
     //Logger
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
-
+    
     public static void main(String[] args) {
         Game g = new Game();
         g.start();
@@ -69,11 +71,11 @@ public class Game implements Runnable {
 
     //Suoritustila
     private boolean running;
-
+    
     public Game() {
         //Luo kehys
-        frame = new JFrame(windowTitle);
-        frame.setPreferredSize(new Dimension(windowWidth, windowHeight));
+        frame = new JFrame(WINDOWTITLE);
+        frame.setPreferredSize(new Dimension(WINDOWWIDTH, WINDOWHEIGHT));
         frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -81,7 +83,7 @@ public class Game implements Runnable {
         GameLevel gameLevel = new GameLevel();
 
         //Luo pelaaja
-        Player player = new Player(100, windowHeight / 2 + 50);
+        Player player = new Player(WINDOWWIDTH / 2, WINDOWHEIGHT / 2 + (int) Math.floor(0.1 * WINDOWHEIGHT / 2));
         gameLevel.setPlayer(player);
 
         //Entiteetit
@@ -94,7 +96,7 @@ public class Game implements Runnable {
 
         //Aseta pelipaneeli contentPaneen
         frame.setContentPane(gamePanel);
-
+        
         frame.pack();
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -103,7 +105,7 @@ public class Game implements Runnable {
 
         //Lisää pelaajan näppäimistönkuuntelija
         frame.addKeyListener(new KeyHandler(player));
-
+        
     }
 
     /**
@@ -152,14 +154,14 @@ public class Game implements Runnable {
 
             //Aika tällä hetkellä
             long now = System.nanoTime();
-
+            
             delta += (now - lastTime) / tickInterval;
-
+            
             lastTime = now;
 
             //Rajoita ruudunpäivitysnopeus asettamalla tähän "false"
             boolean render = false;
-
+            
             while (delta >= 1) {
                 ticks++;
                 gamePanel.tick();
@@ -182,16 +184,16 @@ public class Game implements Runnable {
                 gamePanel.repaint();
                 frames++;
             }
-
+            
             int interval = 1000;
-
+            
             if (System.currentTimeMillis() - lastTimer >= interval) {
                 lastTimer += interval;
-                frame.setTitle(windowTitle + " (" + frames + " fps, " + ticks + " ticks)");
+                frame.setTitle(WINDOWTITLE + " (" + frames + " fps, " + ticks + " ticks)");
                 frames = 0;
                 ticks = 0;
             }
         }
     }
-
+    
 }

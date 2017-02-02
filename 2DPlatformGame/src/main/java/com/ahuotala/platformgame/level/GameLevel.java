@@ -56,6 +56,8 @@ public class GameLevel {
      */
     private List<Entity> tiles;
 
+    public static int levelWidth;
+
     public GameLevel() {
         entities = new ArrayList();
         tiles = new ArrayList();
@@ -69,9 +71,9 @@ public class GameLevel {
             InputStream stream = cl.getResourceAsStream("maps/map1.cfg");
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
                 if (stream != null) {
-                    int x = 0;
+                    int x = Game.STARTINGOFFSET;
                     while ((line = reader.readLine()) != null) {
-                        int y = Game.windowHeight - 62;
+                        int y = (Game.WINDOWHEIGHT - 62);
                         //Jos rivi alkaa hashtagilla tai on tyhjä
                         if (line.startsWith("#") || line.isEmpty()) {
                             continue;
@@ -82,12 +84,13 @@ public class GameLevel {
                         for (String textureName : lineData) {
                             Tile t = new Tile(x, y, textureName);
                             tiles.add(t);
-                            LOG.log(Level.INFO, "Ladattu tiili ''{0}'' muistiin sijainnissa ({1},{2})", new Object[]{textureName, x, y});
+//                            LOG.log(Level.INFO, "Ladattu tiili ''{0}'' muistiin sijainnissa ({1},{2})", new Object[]{textureName, x, y});
                             y -= 32;
                         }
 
                         x += 32;
                     }
+                    levelWidth = x;
                     stream.close();
                 }
             }

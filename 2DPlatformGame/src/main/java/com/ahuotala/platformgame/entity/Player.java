@@ -17,6 +17,8 @@
  */
 package com.ahuotala.platformgame.entity;
 
+import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.level.GameLevel;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -36,10 +38,9 @@ public class Player extends Entity implements KeyListener {
     private boolean jumping = false;
     private boolean falling = true;
 
-    //Painovoiman simuloimista varten
-//    private int fallTicks = 0;
-//    private int factor = 4;
     private WalkingDirection wd;
+
+    public static int offsetX;
 
     public Player(int x, int y) {
         super(x, y);
@@ -113,6 +114,7 @@ public class Player extends Entity implements KeyListener {
     public void jump() {
         if (!falling) {
             jumping = true;
+            setDy(super.getyMovement());
         }
     }
 
@@ -163,24 +165,33 @@ public class Player extends Entity implements KeyListener {
     }
 
     public void move(List<Entity> tiles) {
-        bounds.setLocation(getX(), getY());
-
         //Y-suunta (putoaminen)
         setY(getY() + getDy());
+
         for (Entity tile : tiles) {
             if (tile.collides(this)) {
                 falling = false;
                 setY(getY() - getDy());
             }
         }
+
         //X-suunta (siirtyminen)
-        setX(getX() + getDx());
+        offsetX = offsetX + getDx();
+        //Estetään pelaajan liikkuminen kartan rajojen yli
+        if (getRealX() < 0 || getRealX() > GameLevel.levelWidth - Game.STARTINGOFFSET - getWidth()) {
+            offsetX = offsetX - getDx();
+        }
+
         for (Entity tile : tiles) {
             if (tile.collides(this)) {
-                falling = false;
-                setX(getX() - getDx());
+                offsetX = offsetX - getDx();
             }
         }
+
+    }
+
+    public int getRealX() {
+        return getX() - Game.STARTINGOFFSET + offsetX;
     }
 
 }

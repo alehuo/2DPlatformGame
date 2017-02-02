@@ -63,9 +63,9 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
 
         //Tausta
-        Color c = new Color(141, 159, 255);
+        Color c = new Color(93, 148, 251);
         g.setColor(c);
-        g.fill3DRect(0, 0, Game.windowWidth, Game.windowHeight, false);
+        g.fill3DRect(0, 0, Game.WINDOWWIDTH, Game.WINDOWHEIGHT, false);
 
         //Taso
         if (level != null) {
@@ -84,7 +84,7 @@ public class GamePanel extends JPanel {
             player.render(g);
             g.setColor(Color.WHITE);
             //Debuggausta varten x:t ja y:t jne..
-            g.drawString("playerX: " + player.getX(), 2, 10);
+            g.drawString("playerX: " + player.getRealX(), 2, 10);
             g.drawString("playerY: " + player.getY(), 2, 22);
             g.drawString("isFalling: " + player.isFalling(), 2, 34);
             g.drawString("walkingDirection: " + player.getWd(), 2, 46);
