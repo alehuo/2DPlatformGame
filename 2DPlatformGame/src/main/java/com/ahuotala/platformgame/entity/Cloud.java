@@ -40,16 +40,27 @@ public class Cloud extends Entity {
         sprite = Game.spr.getSprite("cloud");
     }
 
+    public Cloud() {
+        super(0, 0);
+        //Kolikko on 24x24 kokoinen (leveys x korkeus)
+        super.setWidth(64);
+        super.setHeight(32);
+
+        //Ladataan sprite
+        sprite = Game.spr.getSprite("cloud");
+    }
+
     @Override
     public void render(Graphics g) {
-        if (sprite != null) {
-            g.drawImage(sprite.getImage(), getX(), getY(), getWidth() * 2, getHeight() * 2, null);
+        if (sprite != null && isVisible()) {
+            g.drawImage(sprite.getImage(), getX() - Player.offsetX, getY(), getWidth() * 2, getHeight() * 2, null);
+            drawBounds(g);
         }
     }
 
     @Override
     public void tick() {
-
+        getBounds().setBounds(getX() - Player.offsetX, getY(), getWidth() * 2, getHeight() * 2);
     }
 
 }

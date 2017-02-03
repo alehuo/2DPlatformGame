@@ -8,3 +8,5 @@ Pelin lopussa näytetään loppupisteytys, joka koostuu suoritusajasta, kerätyi
 # Dokumentaatio
 * [Aiheen kuvaus ja rakenne](Dokumentaatio/aiheenKuvausJaRakenne.md)
 * [Tuntikirjanpito](Dokumentaatio/tuntikirjanpito.md)
+* [CheckStyle-raportti](https://htmlpreview.github.io/?https://github.com/alehuo/2DPlatformGame/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
+* [pit-raportti](https://htmlpreview.github.io/?https://github.com/alehuo/2DPlatformGame/blob/master/dokumentaatio/pit-raportti/201702032304/index.html)

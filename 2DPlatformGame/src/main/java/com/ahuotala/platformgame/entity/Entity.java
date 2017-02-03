@@ -43,6 +43,8 @@ public abstract class Entity {
 
     protected Rectangle bounds;
 
+    protected boolean visible = true;
+
     public Entity(int x, int y) {
         this.x = x;
         this.y = y;
@@ -121,6 +123,14 @@ public abstract class Entity {
         return bounds;
     }
 
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
     /**
      * Palauttaa törmäävätkö entiteetit.
      *
@@ -128,11 +138,11 @@ public abstract class Entity {
      * @return
      */
     public boolean collides(Entity e) {
-        return e.getBounds().intersects(getBounds());
+        return visible && e.getBounds().intersects(getBounds());
     }
 
     public boolean collides(List<Entity> ents) {
-        return ents.stream().anyMatch((ent) -> (collides(ent)));
+        return visible && ents.stream().anyMatch((ent) -> (collides(ent)));
     }
 
     public void drawBounds(Graphics g) {

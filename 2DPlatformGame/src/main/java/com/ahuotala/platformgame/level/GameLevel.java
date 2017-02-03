@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 public class GameLevel {
 
     private static final Logger LOG = Logger.getLogger(GameLevel.class.getName());
+
     public static int levelWidth;
 
     /**
@@ -71,17 +72,14 @@ public class GameLevel {
                                 String className = textureName.replaceAll("entity_", "");
                                 //Parsitaan luokan nimi
                                 className = className.substring(0, 1).toUpperCase() + className.substring(1).toLowerCase();
-                                try {
-                                    //Ladataan luokka
-                                    Class cls = Class.forName("com.ahuotala.platformgame.entity." + className);
-                                    Entity obj = (Entity) cls.newInstance();
-                                    obj.setX(x);
-                                    obj.setY(y);
-                                    entities.add(obj);
+                                //Ladataan luokka
+                                Class cls = Class.forName("com.ahuotala.platformgame.entity." + className);
+                                Entity obj = (Entity) cls.newInstance();
+                                obj.setX(x);
+                                obj.setY(y);
+                                entities.add(obj);
 //                                    LOG.log(Level.INFO, "Ladattu entiteetti ''{0}'' muistiin sijainnissa ({1},{2})", new Object[]{className, x, y});
-                                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-//                                    ex.printStackTrace();
-                                }
+
                             } else {
                                 Tile t = new Tile(x, y, textureName);
                                 tiles.add(t);
@@ -96,9 +94,9 @@ public class GameLevel {
                     stream.close();
                 }
             }
-        } catch (IOException | NumberFormatException e) {
-            LOG.log(Level.SEVERE, null, e);
-            System.exit(0);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IOException | NumberFormatException e) {
+//            LOG.log(Level.SEVERE, null, e);
+//            System.exit(0);
         }
     }
 

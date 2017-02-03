@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 12,
+      <title>File: 13,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -44,34 +44,6 @@ under the License.
             </tr>
           </thead>
           <tbody>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Entity.java">com/ahuotala/platformgame/entity/Entity.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.graphics.Sprite.java">com/ahuotala/platformgame/graphics/Sprite.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Coin.java">com/ahuotala/platformgame/entity/Coin.java</a>
@@ -116,34 +88,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Cloud.java">com/ahuotala/platformgame/entity/Cloud.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Tile.java">com/ahuotala/platformgame/entity/Tile.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.input.KeyHandler.java">com/ahuotala/platformgame/input/KeyHandler.java</a>
                 </td>
                 <td>
@@ -173,6 +117,76 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.level.GameLevel.java">com/ahuotala/platformgame/level/GameLevel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Entity.java">com/ahuotala/platformgame/entity/Entity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.graphics.Sprite.java">com/ahuotala/platformgame/graphics/Sprite.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Cloud.java">com/ahuotala/platformgame/entity/Cloud.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Tile.java">com/ahuotala/platformgame/entity/Tile.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.level.Score.java">com/ahuotala/platformgame/level/Score.java</a>
                 </td>
                 <td>
                   0

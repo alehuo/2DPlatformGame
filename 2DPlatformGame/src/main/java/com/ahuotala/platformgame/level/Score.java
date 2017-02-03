@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package com.ahuotala.platformgame;
+package com.ahuotala.platformgame.level;
 
 /**
  * Pisteytysjärjestelmä.
@@ -60,6 +60,48 @@ public class Score {
 
     public long getDeltaTime() {
         return deltaTime;
+    }
+
+    public void setValue(int value) {
+        if (value < 0) {
+            value = 0;
+        }
+        this.value = value;
+    }
+
+    public void setCollectedCoins(int collectedCoins) {
+        if (collectedCoins < 0) {
+            collectedCoins = 0;
+        }
+        this.collectedCoins = collectedCoins;
+    }
+
+    public void setDefeatedMonsters(int defeatedMonsters) {
+        if (defeatedMonsters < 0) {
+            defeatedMonsters = 0;
+        }
+        this.defeatedMonsters = defeatedMonsters;
+    }
+
+    public void setStartingTime(long startingTime) {
+        if (startingTime < 0) {
+            startingTime = 0;
+        }
+        this.startingTime = startingTime;
+    }
+
+    public void setEndingTime(long endingTime) {
+        if (endingTime < 0) {
+            endingTime = 0;
+        }
+        this.endingTime = endingTime;
+    }
+
+    public void setDeltaTime(long deltaTime) {
+        if (deltaTime < 0) {
+            deltaTime = 0;
+        }
+        this.deltaTime = deltaTime;
     }
 
     /**

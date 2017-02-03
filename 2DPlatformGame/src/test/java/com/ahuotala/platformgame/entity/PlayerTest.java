@@ -18,7 +18,9 @@ package com.ahuotala.platformgame.entity;
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 import com.ahuotala.platformgame.Game;
+import static com.ahuotala.platformgame.entity.Player.offsetX;
 import com.ahuotala.platformgame.level.GameLevel;
+import com.ahuotala.platformgame.level.Score;
 import java.awt.AWTException;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -50,6 +52,7 @@ public class PlayerTest {
         assertEquals("Pituutta ei aseteta oikein", 32, player.getHeight());
         assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3, player.getyMovement());
         assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4, player.getxMovement());
+        assertTrue("Aloitusaikaa ei aseteta oikein", player.getScore().getStartingTime() > 0);
     }
 
     @Test
@@ -101,11 +104,11 @@ public class PlayerTest {
 
     @Test
     public void liikkuuOikein() {
-        
+
         //Asetetaan kentän leveys, ettei rajojen tarkistus hajota testiä
         GameLevel.levelWidth = 9001;
 
-        int xNyt = player.getRealX();
+        int xNyt = player.getX() - Game.STARTINGOFFSET + Player.offsetX;
         int yNyt = player.getY();
 
         int xMaara = 22;
@@ -114,12 +117,11 @@ public class PlayerTest {
         player.setDx(xMaara);
         player.setDy(yMaara);
 
-
         List<Entity> entities = new ArrayList();
 
         player.move(entities);
-        
-        assertEquals(xNyt + xMaara, player.getRealX());
+
+        assertEquals(xNyt + xMaara, player.getX() - Game.STARTINGOFFSET + Player.offsetX);
         assertEquals(yNyt + yMaara, player.getY());
     }
 
@@ -176,5 +178,21 @@ public class PlayerTest {
         player.setWd(WalkingDirection.LEFT);
 
         assertEquals(WalkingDirection.LEFT, player.getWd());
+    }
+
+    @Test
+    public void hyppaaOikein() {
+        player.setDy(0);
+        player.setFalling(false);
+        player.jump();
+        assertEquals(player.getyMovement(), player.getDy());
+    }
+
+    @Test
+    public void pistemaaraOlioAsettuuOikein() {
+        Score s = new Score();
+        assertEquals(s.getCollectedCoins(), player.getScore().getCollectedCoins());
+        assertEquals(s.getDefeatedMonsters(), player.getScore().getDefeatedMonsters());
+        assertEquals(s.getValue(), player.getScore().getValue());
     }
 }

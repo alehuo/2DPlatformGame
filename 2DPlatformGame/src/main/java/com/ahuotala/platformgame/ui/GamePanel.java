@@ -21,6 +21,7 @@ import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.level.GameLevel;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
@@ -84,13 +85,18 @@ public class GamePanel extends JPanel {
             player.render(g);
             g.setColor(Color.WHITE);
             //Debuggausta varten x:t ja y:t jne..
-            g.drawString("playerX: " + player.getRealX(), 2, 10);
+            g.drawString("playerX: " + (player.getX() - Game.STARTINGOFFSET + Player.offsetX), 2, 10);
             g.drawString("playerY: " + player.getY(), 2, 22);
             g.drawString("isFalling: " + player.isFalling(), 2, 34);
             g.drawString("walkingDirection: " + player.getWd(), 2, 46);
+
+            //Pisteytys
+            Font f = g.getFont();
+            Font newF = f.deriveFont(f.getSize() * 5F);
+            g.setFont(newF);
+            g.drawString("Score: " + player.getScore().getValue(), Game.WINDOWWIDTH / 2, 64);
         }
 
-        //Käyttöliittymä
         //Todo..
     }
 

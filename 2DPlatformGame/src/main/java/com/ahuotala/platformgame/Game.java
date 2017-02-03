@@ -17,15 +17,12 @@
  */
 package com.ahuotala.platformgame;
 
-import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.graphics.SpriteSheet;
 import com.ahuotala.platformgame.input.KeyHandler;
 import com.ahuotala.platformgame.level.GameLevel;
 import com.ahuotala.platformgame.ui.GamePanel;
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -85,10 +82,6 @@ public class Game implements Runnable {
         //Luo pelaaja
         Player player = new Player(WINDOWWIDTH / 2, WINDOWHEIGHT / 2 + (int) Math.floor(0.1 * WINDOWHEIGHT / 2));
         gameLevel.setPlayer(player);
-
-        //Entiteetit
-        List<Entity> entities = new ArrayList<>();
-        gameLevel.setEntitites(entities);
 
         //Luo pelipaneeli ja lisää pelitaso sinne
         gamePanel = new GamePanel();

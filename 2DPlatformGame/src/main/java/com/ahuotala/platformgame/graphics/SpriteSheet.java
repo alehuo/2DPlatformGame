@@ -35,6 +35,10 @@ import javax.imageio.ImageIO;
 public class SpriteSheet {
 
     private static final Logger LOG = Logger.getLogger(SpriteSheet.class.getName());
+    /**
+     * Spritesheet-tiedoston sijainti
+     */
+    public static final String SPRITESHEETPATH = "textures/spritesheet.png";
 
     private BufferedImage spriteSheet;
 
@@ -43,10 +47,6 @@ public class SpriteSheet {
      */
     private HashMap<String, Sprite> sprites;
 
-    /**
-     * Spritesheet-tiedoston sijainti
-     */
-    public static final String SPRITESHEETPATH = "textures/spritesheet.png";
 
     /**
      * Konstruktori lataa spritesheet -tiedoston muistiin

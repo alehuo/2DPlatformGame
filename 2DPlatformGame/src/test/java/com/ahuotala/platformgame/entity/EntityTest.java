@@ -18,6 +18,7 @@ package com.ahuotala.platformgame.entity;
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,40 +39,66 @@ public class EntityTest {
 
     @Test
     public void alkutilaOikein() {
-        assertEquals(234, entity.getX());
-        assertEquals(567, entity.getY());
+
+        int x = 234;
+        int y = 567;
+        int width = 32;
+        int height = 32;
+
+        assertEquals(x, entity.getX());
+        assertEquals(y, entity.getY());
+
+        Rectangle r = new Rectangle(x, y, width, height);
+        assertEquals(r, entity.getBounds());
+
+        assertTrue(entity.isVisible());
+    }
+
+    @Test
+    public void asettaaNakyvyyden() {
+        assertTrue(entity.isVisible());
+        entity.setVisible(false);
+        assertFalse(entity.isVisible());
     }
 
     @Test
     public void asettaaXnOikein() {
         entity.setX(55);
         assertEquals(55, entity.getX());
+        assertEquals(55, entity.getBounds().getX(), 1.0);
         entity.setX(11);
         assertEquals(11, entity.getX());
+        assertEquals(11, entity.getBounds().getX(), 1.0);
     }
 
     @Test
     public void asettaaYnOikein() {
         entity.setY(23);
         assertEquals(23, entity.getY());
+        assertEquals(23, entity.getBounds().getY(), 1.0);
         entity.setY(42);
         assertEquals(42, entity.getY());
+        assertEquals(42, entity.getBounds().getY(), 1.0);
     }
 
     @Test
     public void asettaaKorkeudenOikein() {
         entity.setHeight(88);
         assertEquals(88, entity.getHeight());
+        assertEquals(88, entity.getBounds().getHeight(), 1.0);
         entity.setHeight(77);
         assertEquals(77, entity.getHeight());
+        assertEquals(77, entity.getBounds().getHeight(), 1.0);
     }
 
     @Test
     public void asettaaLeveydenOikein() {
         entity.setWidth(54);
         assertEquals(54, entity.getWidth());
+        assertEquals(54, entity.getBounds().getWidth(), 1.0);
         entity.setWidth(32);
         assertEquals(32, entity.getWidth());
+        assertEquals(32, entity.getBounds().getWidth(), 1.0);
     }
 
     @Test
@@ -89,22 +116,6 @@ public class EntityTest {
         assertEquals(23, entity.getDy());
     }
 
-//    @Test
-//    public void liikkuuOikein() {
-//        int xNyt = entity.getX();
-//        int yNyt = entity.getY();
-//
-//        int xMaara = 22;
-//        int yMaara = -12;
-//
-//        entity.setDx(xMaara);
-//        entity.setDy(yMaara);
-//
-//        entity.move();
-//
-//        assertEquals(xNyt + xMaara, entity.getX());
-//        assertEquals(yNyt + yMaara, entity.getY());
-//    }
     private class TestEntity extends Entity {
 
         TestEntity() {

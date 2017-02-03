@@ -26,41 +26,34 @@ import org.junit.Test;
  *
  * @author ahuotala
  */
-public class TileTest {
+public class CoinTest {
 
-    private Tile tile;
+    private Coin coin;
 
     @Before
     public void setUp() {
-        tile = new Tile(16, 26, "Test");
+        coin = new Coin(12, 24);
     }
 
     @Test
     public void asettaaKoonOikein() {
-        assertEquals(32, tile.getWidth());
-        assertEquals(32, tile.getBounds().getWidth(), 1.0);
-        assertEquals(32, tile.getHeight());
-        assertEquals(32, tile.getBounds().getHeight(), 1.0);
+        assertEquals(24, coin.getWidth());
+        assertEquals(24, coin.getBounds().getWidth(), 1.0);
+        assertEquals(24, coin.getHeight());
+        assertEquals(24, coin.getBounds().getHeight(), 1.0);
 
-        tile.setWidth(55);
-        assertEquals(55, tile.getWidth());
-        assertEquals(55, tile.getBounds().getWidth(), 1.0);
+        coin.setWidth(55);
+        assertEquals(55, coin.getWidth());
+        assertEquals(55, coin.getBounds().getWidth(), 1.0);
 
-        tile.setHeight(52);
-        assertEquals(52, tile.getHeight());
-        assertEquals(52, tile.getBounds().getHeight(), 1.0);
+        coin.setHeight(52);
+        assertEquals(52, coin.getHeight());
+        assertEquals(52, coin.getBounds().getHeight(), 1.0);
     }
 
     @Test
     public void asettaaKoordinaatitOikein() {
-        assertEquals(16, tile.getX());
-        assertEquals(26, tile.getY());
-    }
-
-    @Test
-    public void asettaaTekstuurinNimenOikein() {
-        assertEquals("Test", tile.getTextureName());
-        tile.setTextureName("12345");
-        assertEquals("12345", tile.getTextureName());
+        assertEquals(12, coin.getX());
+        assertEquals(24, coin.getY());
     }
 }

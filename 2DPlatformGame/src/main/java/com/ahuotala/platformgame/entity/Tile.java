@@ -18,7 +18,6 @@
 package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
-import static com.ahuotala.platformgame.entity.Player.offsetX;
 import com.ahuotala.platformgame.graphics.Sprite;
 import java.awt.Color;
 import java.awt.Graphics;

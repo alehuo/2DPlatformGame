@@ -36,14 +36,21 @@
                 <configuration>
                     <targetClasses>
                         <param>com.ahuotala.platformgame.entity.*</param>
+                        <param>com.ahuotala.platformgame.level.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>com.ahuotala.platformgame.entity.*</param>
+                        <param>com.ahuotala.platformgame.level.*</param>
                     </targetTests>
                     <excludedMethods>
                         <param>render</param>
                         <param>drawBounds</param>
+                        <param>collides</param>
+                        <param>tick</param>
                     </excludedMethods>
+                    <excludedClasses>
+                        <param>com.ahuotala.platformgame.level.GameLevel</param>
+                    </excludedClasses>
                 </configuration>
             </plugin>
             <plugin>
