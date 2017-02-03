@@ -19,17 +19,18 @@ package com.ahuotala.platformgame.entity;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 /**
- * Kolikko
+ * Kolikko.
  *
  * @author ahuotala
  */
 public class Coin extends Entity {
 
-    private int xModifier = 0;
     private int yModifier = 0;
     private int index = 0;
+    private boolean visible = true;
 
     public Coin(int x, int y) {
         super(x, y);
@@ -38,21 +39,31 @@ public class Coin extends Entity {
         super.setHeight(24);
     }
 
+    public Coin() {
+        super(0, 0);
+        super.setWidth(24);
+        super.setHeight(24);
+    }
+
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.YELLOW);
-        g.fillOval(getX(), getY() + yModifier, getWidth(), getHeight());
+        if (isVisible()) {
+            g.setColor(Color.YELLOW);
+            g.fillOval(getX() - Player.offsetX, getY() + yModifier, getWidth(), getHeight());
+//            drawBounds(g);
+        }
     }
 
     @Override
     public void tick() {
+        Random r = new Random();
         yModifier = (int) Math.ceil(3 * Math.sin(Math.toRadians(index)));
-
         if (index == 360) {
             index = 0;
-        } else {
+        } else if (index % (r.nextInt(5) + 1) == 0) {
             index += 5;
         }
+        getBounds().setBounds(getX() - Player.offsetX, getY() + yModifier, getWidth(), getHeight());
     }
 
 }
