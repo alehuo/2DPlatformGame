@@ -1,23 +1,8 @@
-/*
- * Copyright (C) 2017 ahuotala
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- */
 package com.ahuotala.platformgame.level;
 
 import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.entity.Cloud;
+import com.ahuotala.platformgame.entity.Coin;
 import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.entity.Tile;
@@ -40,6 +25,7 @@ import java.util.logging.Logger;
 public class GameLevel {
 
     private static final Logger LOG = Logger.getLogger(GameLevel.class.getName());
+    public static int levelWidth;
 
     /**
      * Tason entiteetit
@@ -55,8 +41,6 @@ public class GameLevel {
      * Tason tiilit
      */
     private List<Entity> tiles;
-
-    public static int levelWidth;
 
     public GameLevel() {
         entities = new ArrayList();
@@ -82,9 +66,27 @@ public class GameLevel {
                         //Parsi tasot
                         String[] lineData = line.split(",", -1);
                         for (String textureName : lineData) {
-                            Tile t = new Tile(x, y, textureName);
-                            tiles.add(t);
-//                            LOG.log(Level.INFO, "Ladattu tiili ''{0}'' muistiin sijainnissa ({1},{2})", new Object[]{textureName, x, y});
+                            //Jos tekstuurin nimi alkaa "entity_" -merkkijonolla, niin ladataan se entiteetteihin
+                            if (textureName.startsWith("entity_")) {
+                                String className = textureName.replaceAll("entity_", "");
+                                //Parsitaan luokan nimi
+                                className = className.substring(0, 1).toUpperCase() + className.substring(1).toLowerCase();
+                                try {
+                                    //Ladataan luokka
+                                    Class cls = Class.forName("com.ahuotala.platformgame.entity." + className);
+                                    Entity obj = (Entity) cls.newInstance();
+                                    obj.setX(x);
+                                    obj.setY(y);
+                                    entities.add(obj);
+//                                    LOG.log(Level.INFO, "Ladattu entiteetti ''{0}'' muistiin sijainnissa ({1},{2})", new Object[]{className, x, y});
+                                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+//                                    ex.printStackTrace();
+                                }
+                            } else {
+                                Tile t = new Tile(x, y, textureName);
+                                tiles.add(t);
+//                                LOG.log(Level.INFO, "Ladattu tiili ''{0}'' muistiin sijainnissa ({1},{2})", new Object[]{textureName, x, y});
+                            }
                             y -= 32;
                         }
 
@@ -124,6 +126,14 @@ public class GameLevel {
         //Päivitä entiteetit
         getEntities().stream().forEach((entity) -> {
             entity.tick();
+
+            //Jos entiteetti osuu pelaajaan
+            if (entity.collides(player)) {
+                //Kerää kolikko
+                player.getScore().collectCoin();
+                entity.setVisible(false);
+            }
+
         });
 
         //Päivitä pelaaja
