@@ -4,12 +4,14 @@ import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.entity.Tile;
+import com.ahuotala.platformgame.utils.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -51,54 +53,64 @@ public class GameLevel {
 
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
+        InputStream stream = cl.getResourceAsStream("maps/map1.cfg");
         try {
 
-            //Erotellaan kartasta rivit
-            String line = "";
-            InputStream stream = cl.getResourceAsStream("maps/map1.cfg");
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
-                if (stream != null) {
-                    int x = Game.STARTINGOFFSET;
-                    while ((line = reader.readLine()) != null) {
-                        int y = (Game.WINDOWHEIGHT - 62);
-                        //Jos rivi alkaa hashtagilla tai on tyhjä
-                        if (line.startsWith("#") || line.isEmpty()) {
-                            continue;
-                        }
+            //Avataan FileReader, joka lataa rivit muistiin
+            FileReader fr = new FileReader(stream);
 
-                        //Parsi tasot
-                        String[] lineData = line.split(",", -1);
-                        for (String textureName : lineData) {
-                            //Jos tekstuurin nimi alkaa "entity_" -merkkijonolla, niin ladataan se entiteetteihin
-                            if (textureName.startsWith("entity_")) {
-                                String className = textureName.replaceAll("entity_", "");
-                                //Parsitaan luokan nimi
-                                className = className.substring(0, 1).toUpperCase() + className.substring(1).toLowerCase();
-                                //Ladataan luokka
-                                Class cls = Class.forName("com.ahuotala.platformgame.entity." + className);
-                                Entity obj = (Entity) cls.newInstance();
-                                obj.setX(x);
-                                obj.setY(y);
-                                entities.add(obj);
-//                                    LOG.log(Level.INFO, "Ladattu entiteetti ''{0}'' muistiin sijainnissa ({1},{2})", new Object[]{className, x, y});
+            //x-koordinaatti
+            int x = Game.STARTINGOFFSET;
 
-                            } else {
-                                Tile t = new Tile(x, y, textureName);
-                                tiles.add(t);
-//                                LOG.log(Level.INFO, "Ladattu tiili ''{0}'' muistiin sijainnissa ({1},{2})", new Object[]{textureName, x, y});
-                            }
-                            y -= 32;
-                        }
+            for (String line : fr.getLines()) {
 
-                        x += 32;
-                    }
-                    levelWidth = x;
-                    stream.close();
+                //y-koordinaatti
+                int y = (Game.WINDOWHEIGHT - 62);
+
+                //Jos rivi alkaa hashtagilla tai on tyhjä
+                if (line.startsWith("#") || line.isEmpty()) {
+                    continue;
                 }
+
+                //Parsi tasot
+                String[] lineData = line.split(",", -1);
+
+                //Käy tasot läpi yksitellen
+                for (String textureName : lineData) {
+                    //Jos tekstuurin nimi alkaa "entity_" -merkkijonolla, niin ladataan se entiteetteihin
+                    if (textureName.startsWith("entity_")) {
+                        String className = textureName.replaceAll("entity_", "");
+                        //Parsitaan luokan nimi
+                        className = className.substring(0, 1).toUpperCase() + className.substring(1).toLowerCase();
+                        //Ladataan luokka
+                        Class cls = Class.forName("com.ahuotala.platformgame.entity." + className);
+                        Entity obj = (Entity) cls.newInstance();
+                        obj.setX(x);
+                        obj.setY(y);
+                        //Lisätään se entities -listaan
+                        entities.add(obj);
+                    } else {
+                        //Luodaan uusi tiili
+                        Tile t = new Tile(x, y, textureName);
+                        //Lisätään se tiles -listaan
+                        tiles.add(t);
+                    }
+                    //Kasvata y:tä
+                    y -= 32;
+                }
+                //Kasvata x:ää
+                x += 32;
+                levelWidth = x;
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IOException | NumberFormatException e) {
-//            LOG.log(Level.SEVERE, null, e);
-//            System.exit(0);
+
+        } catch (IOException ex) {
+            Logger.getLogger(GameLevel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GameLevel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(GameLevel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(GameLevel.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         score = new Score();

@@ -17,6 +17,7 @@
  */
 package com.ahuotala.platformgame.graphics;
 
+import com.ahuotala.platformgame.utils.FileReader;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,7 +48,6 @@ public class SpriteSheet {
      */
     private HashMap<String, Sprite> sprites;
 
-
     /**
      * Konstruktori lataa spritesheet -tiedoston muistiin
      *
@@ -58,39 +58,41 @@ public class SpriteSheet {
 
         try {
 
-            //Ladataan spritesheet
+            //Ladataan spritesheet-kuva
             spriteSheet = ImageIO.read(cl.getResourceAsStream(SPRITESHEETPATH));
 
             sprites = new HashMap();
 
             //Erotellaan spritesheetistä spritet ja lisätään ne listaan
-            String line = "";
             InputStream stream = cl.getResourceAsStream("tiles/tiles.cfg");
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
-                if (stream != null) {
-                    while ((line = reader.readLine()) != null) {
 
-                        //Jos rivi alkaa hashtagilla tai on tyhjä
-                        if (line.startsWith("#") || line.isEmpty()) {
-                            continue;
-                        }
+            FileReader fr = new FileReader(stream);
 
-                        //Parse variables
-                        String[] lineData = line.split(",", -1);
-                        String name = lineData[0];
-                        int x = Integer.parseInt(lineData[1]);
-                        int y = Integer.parseInt(lineData[2]);
-                        int width = Integer.parseInt(lineData[3]);
-                        int height = Integer.parseInt(lineData[4]);
-
-                        Sprite tmpSprite = new Sprite();
-                        tmpSprite.setImage(spriteSheet.getSubimage(x, y, width, height));
-                        sprites.put(name, tmpSprite);
-//                        LOG.log(Level.INFO, "Ladattu tekstuuri ''{0}'' muistiin.", name);
-                    }
-                    stream.close();
+            for (String line : fr.getLines()) {
+                //Jos rivi alkaa hashtagilla tai on tyhjä
+                if (line.startsWith("#") || line.isEmpty()) {
+                    continue;
                 }
+
+                //Parsi muuttujat
+                String[] lineData = line.split(",", -1);
+                //Nimi
+                String name = lineData[0];
+                //x-koordinaatti
+                int x = Integer.parseInt(lineData[1]);
+                //y-koordinaatti
+                int y = Integer.parseInt(lineData[2]);
+                //leveys
+                int width = Integer.parseInt(lineData[3]);
+                //korkeus
+                int height = Integer.parseInt(lineData[4]);
+
+                Sprite tmpSprite = new Sprite();
+                tmpSprite.setImage(spriteSheet.getSubimage(x, y, width, height));
+                //Lisää tekstuuri sprites -listaan
+                sprites.put(name, tmpSprite);
             }
+
         } catch (IOException | NumberFormatException e) {
             LOG.log(Level.SEVERE, null, e);
             System.exit(0);
