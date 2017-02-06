@@ -151,7 +151,8 @@ public class Player extends Entity implements KeyListener {
     }
 
     /**
-     * Pelaajan tick -toiminnallisuus on vastuussa pelaajan y-suuntaisesta hyppimisestä.
+     * Pelaajan tick -toiminnallisuus on vastuussa pelaajan y-suuntaisesta
+     * hyppimisestä.
      */
     @Override
     public void tick() {
@@ -164,6 +165,7 @@ public class Player extends Entity implements KeyListener {
 
     /**
      * move -metodi hoitaa pelaajan liikuttamisen.
+     *
      * @param tiles Lista pelin tiileistä, joiden avulla tarkistetaan törmäys.
      */
     public void move(List<Entity> tiles) {
@@ -173,6 +175,7 @@ public class Player extends Entity implements KeyListener {
             if (tile.collides(this)) {
                 falling = false;
                 setY(getY() - getDy());
+                break;
             }
         }
         //X-suunta (siirtyminen)

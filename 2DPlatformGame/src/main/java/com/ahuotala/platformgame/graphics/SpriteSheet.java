@@ -19,10 +19,8 @@ package com.ahuotala.platformgame.graphics;
 
 import com.ahuotala.platformgame.utils.FileReader;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
