@@ -1,8 +1,6 @@
 package com.ahuotala.platformgame.level;
 
 import com.ahuotala.platformgame.Game;
-import com.ahuotala.platformgame.entity.Cloud;
-import com.ahuotala.platformgame.entity.Coin;
 import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.entity.Tile;
@@ -12,7 +10,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**

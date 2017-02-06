@@ -23,7 +23,8 @@ import java.awt.Rectangle;
 import java.util.List;
 
 /**
- * Entiteetti
+ * Entiteetti -luokka, jonka perivät kaikki ne luokat, joiden halutaan olevan
+ * pelin sisällä.
  *
  * @author ahuotala
  */
@@ -127,6 +128,11 @@ public abstract class Entity {
         return visible;
     }
 
+    /**
+     * Asettaa entiteetin näkyvyystilan
+     *
+     * @param visible Näkyvyys
+     */
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
@@ -145,20 +151,26 @@ public abstract class Entity {
         return visible && ents.stream().anyMatch((ent) -> (collides(ent)));
     }
 
+    /**
+     * Piirtää entiteetin rajat näytölle
+     *
+     * @param g Graphics -objekti
+     */
     public void drawBounds(Graphics g) {
         g.setColor(Color.red);
         g.draw3DRect((int) getBounds().getX(), (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
     }
 
     /**
-     * Entiteetin piirto
+     * Piirtää entiteetin näytölle (Tämä metodi toteutetaan tarpeen mukaan).
      *
-     * @param g
+     * @param g Graphics -objekti
      */
     public abstract void render(Graphics g);
 
     /**
-     * Entiteetin päivitys
+     * Päivittää entiteetin, jos sille on tarve (Tämä metodi toteutetaan tarpeen
+     * mukaan).
      */
     public abstract void tick();
 

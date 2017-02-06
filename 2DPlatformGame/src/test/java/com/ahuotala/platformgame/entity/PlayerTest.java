@@ -19,7 +19,6 @@ package com.ahuotala.platformgame.entity;
  */
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.level.GameLevel;
-import com.ahuotala.platformgame.level.Score;
 import java.awt.AWTException;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;

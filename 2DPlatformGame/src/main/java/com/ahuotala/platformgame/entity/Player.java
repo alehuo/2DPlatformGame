@@ -18,7 +18,6 @@
 package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
-import com.ahuotala.platformgame.level.Score;
 import com.ahuotala.platformgame.level.GameLevel;
 import java.awt.Color;
 import java.awt.Graphics;
