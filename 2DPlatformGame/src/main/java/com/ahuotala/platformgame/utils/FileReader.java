@@ -51,7 +51,11 @@ public class FileReader {
 
         if (in != null) {
             while ((line = br.readLine()) != null) {
-                lines.add(line);
+                //Jos rivi alkaa hashtagilla tai se on tyhjä, niin ohitetaan se
+                //Muuten lisätään rivi listaan
+                if (!line.startsWith("#") && !line.isEmpty()) {
+                    lines.add(line);
+                }
             }
 
             br.close();

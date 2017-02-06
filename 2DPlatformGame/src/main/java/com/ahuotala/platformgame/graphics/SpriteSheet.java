@@ -69,10 +69,6 @@ public class SpriteSheet {
             FileReader fr = new FileReader(stream);
 
             for (String line : fr.getLines()) {
-                //Jos rivi alkaa hashtagilla tai on tyhjä
-                if (line.startsWith("#") || line.isEmpty()) {
-                    continue;
-                }
 
                 //Parsi muuttujat
                 String[] lineData = line.split(",", -1);
@@ -95,7 +91,6 @@ public class SpriteSheet {
 
         } catch (IOException | NumberFormatException e) {
             LOG.log(Level.SEVERE, null, e);
-            System.exit(0);
         }
     }
 
