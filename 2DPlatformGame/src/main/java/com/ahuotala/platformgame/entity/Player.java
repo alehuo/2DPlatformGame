@@ -43,9 +43,6 @@ public class Player extends Entity implements KeyListener {
 
     private WalkingDirection wd;
 
-    //Pisteytys
-    private final Score score;
-
     public Player(int x, int y) {
         super(x, y);
         //Pelaaja on 24x32 kokoinen (leveys x korkeus)
@@ -60,9 +57,6 @@ public class Player extends Entity implements KeyListener {
         super.setxMovement(4);
 
         wd = WalkingDirection.RIGHT;
-
-        score = new Score();
-        score.start();
     }
 
     @Override
@@ -145,10 +139,6 @@ public class Player extends Entity implements KeyListener {
         this.wd = wd;
     }
 
-    public Score getScore() {
-        return score;
-    }
-
     /**
      * Piirrä pelaaja näytölle.
      *
@@ -162,8 +152,7 @@ public class Player extends Entity implements KeyListener {
     }
 
     /**
-     * Pelaajan tick -toiminnallisuus on vastuussa pelaajan liikkumisesta sekä
-     * hyppimisestä.
+     * Pelaajan tick -toiminnallisuus on vastuussa pelaajan y-suuntaisesta hyppimisestä.
      */
     @Override
     public void tick() {
@@ -174,6 +163,10 @@ public class Player extends Entity implements KeyListener {
         }
     }
 
+    /**
+     * move -metodi hoitaa pelaajan liikuttamisen.
+     * @param tiles Lista pelin tiileistä, joiden avulla tarkistetaan törmäys.
+     */
     public void move(List<Entity> tiles) {
         //Y-suunta (putoaminen)
         setY(getY() + getDy());

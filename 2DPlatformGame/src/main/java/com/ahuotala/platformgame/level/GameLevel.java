@@ -43,6 +43,11 @@ public class GameLevel {
      */
     private List<Entity> tiles;
 
+    /**
+     * Pisteytys
+     */
+    private Score score;
+
     public GameLevel() {
         entities = new ArrayList();
         tiles = new ArrayList();
@@ -98,6 +103,9 @@ public class GameLevel {
 //            LOG.log(Level.SEVERE, null, e);
 //            System.exit(0);
         }
+
+        score = new Score();
+        score.start();
     }
 
     public void setEntitites(List<Entity> entities) {
@@ -128,7 +136,7 @@ public class GameLevel {
             //Jos entiteetti osuu pelaajaan
             if (entity.collides(player)) {
                 //Kerää kolikko
-                player.getScore().collectCoin();
+                score.collectCoin();
                 entity.setVisible(false);
             }
 
@@ -145,6 +153,10 @@ public class GameLevel {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public Score getScore() {
+        return score;
     }
 
 }

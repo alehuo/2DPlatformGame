@@ -18,7 +18,6 @@ package com.ahuotala.platformgame.entity;
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 import com.ahuotala.platformgame.Game;
-import static com.ahuotala.platformgame.entity.Player.offsetX;
 import com.ahuotala.platformgame.level.GameLevel;
 import com.ahuotala.platformgame.level.Score;
 import java.awt.AWTException;
@@ -52,7 +51,6 @@ public class PlayerTest {
         assertEquals("Pituutta ei aseteta oikein", 32, player.getHeight());
         assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3, player.getyMovement());
         assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4, player.getxMovement());
-        assertTrue("Aloitusaikaa ei aseteta oikein", player.getScore().getStartingTime() > 0);
     }
 
     @Test
@@ -187,12 +185,5 @@ public class PlayerTest {
         player.jump();
         assertEquals(player.getyMovement(), player.getDy());
     }
-
-    @Test
-    public void pistemaaraOlioAsettuuOikein() {
-        Score s = new Score();
-        assertEquals(s.getCollectedCoins(), player.getScore().getCollectedCoins());
-        assertEquals(s.getDefeatedMonsters(), player.getScore().getDefeatedMonsters());
-        assertEquals(s.getValue(), player.getScore().getValue());
-    }
+    
 }

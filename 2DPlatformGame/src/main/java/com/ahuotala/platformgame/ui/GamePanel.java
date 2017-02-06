@@ -94,7 +94,7 @@ public class GamePanel extends JPanel {
             Font f = g.getFont();
             Font newF = f.deriveFont(f.getSize() * 5F);
             g.setFont(newF);
-            g.drawString("Score: " + player.getScore().getValue(), Game.WINDOWWIDTH / 2, 64);
+            g.drawString("Score: " + level.getScore().getValue(), Game.WINDOWWIDTH / 2, 64);
         }
 
         //Todo..

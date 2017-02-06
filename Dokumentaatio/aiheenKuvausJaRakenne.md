@@ -7,7 +7,7 @@ vaikuttavat loppupisteytykseen. Kun käyttäjä on suorittanut kaikki kolme tasoa, 
 yleisellä tulostaululla. Tulostaulu tallennetaan tiedostoon jota pystyy jälkikäteen selaamaan.
 	Pelissä on myös tarkoitus olla tekstuureja sekä tekstuureista koostuvia animaatioita (esim. kolikon pyörittäminen ja pelaajan kävely). Näitä varten tarvitaan konfiguraatiotiedostoja sekä
 jollain kuvankäsittelyohjelmalla piirrettyjä kuvia. Tekstuurien ja animaatioiden suunnittelussa käytetään Pyxel Edit -ohjelmistoa.
-
+	Liikkumiseen pelissä käytetään A- ja D -näppäintä sekä välilyöntiä, jolla pelaaja hyppää.
 **Käyttäjät:** Peliä käyttää vain yksi käyttäjä ja lisäksi pelissä on tietokoneohjattuja hirviöitä.
 
 ## Kaikkien käyttäjien toiminnot
