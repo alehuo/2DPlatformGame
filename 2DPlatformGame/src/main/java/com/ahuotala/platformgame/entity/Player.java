@@ -33,8 +33,6 @@ import java.util.logging.Logger;
  */
 public class Player extends Entity implements KeyListener {
 
-    private static final Logger LOG = Logger.getLogger(Player.class.getName());
-
     public static int offsetX;
 
     private boolean jumping = false;
@@ -42,19 +40,16 @@ public class Player extends Entity implements KeyListener {
 
     private WalkingDirection wd;
 
-    private boolean colliding = false;
-
     public Player(int x, int y) {
         super(x, y);
         //Pelaaja on 24x32 kokoinen (leveys x korkeus)
         super.setWidth(24);
         super.setHeight(32);
 
-        //Halutaan että y-suunnassa tiputaan yksi yksikkö ja x-suunnassa napin 
-        //painallus liikuttaa pelaajaa 2 yksikköä
+        //y-suunnassa tiputaan kolme yksikköä
         super.setyMovement(3);
         super.setDy(super.getyMovement());
-
+        //x-suunnassa napin painallus liikuttaa pelaajaa 4 yksikköä
         super.setxMovement(4);
 
         wd = WalkingDirection.RIGHT;
@@ -72,18 +67,16 @@ public class Player extends Entity implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        if (!colliding) {
-            //Vasen
-            if (e.getKeyCode() == KeyEvent.VK_A) {
-                wd = WalkingDirection.LEFT;
-                setDx(-getxMovement());
-            }
+        //Vasen
+        if (e.getKeyCode() == KeyEvent.VK_A) {
+            wd = WalkingDirection.LEFT;
+            setDx(-getxMovement());
+        }
 
-            //Oikea
-            if (e.getKeyCode() == KeyEvent.VK_D) {
-                wd = WalkingDirection.RIGHT;
-                setDx(getxMovement());
-            }
+        //Oikea
+        if (e.getKeyCode() == KeyEvent.VK_D) {
+            wd = WalkingDirection.RIGHT;
+            setDx(getxMovement());
         }
 
         //Hyppy
@@ -191,12 +184,8 @@ public class Player extends Entity implements KeyListener {
         }
 
         for (Entity tile : tiles) {
-            //Päivitä tiilen sijainti
-            //Tämä rikkoo sinänsä Single responsibility -periaatetta.
-            //Keksitään tälle jokin parempi keino. (Tämä nyt tässä väliaikaisesti)
-            Tile t = (Tile) tile;
-            t.updateBounds();
-
+            //Päivitä tiilen sijainti (Tämä kuitenkin rikkoo Single responsibility -periaatetta)
+            ((Tile) tile).updateBounds();
             if (tile.collides(this)) {
 //                setX(getX() - getDx());
                 offsetX = offsetX - getDx();

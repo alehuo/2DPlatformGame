@@ -70,15 +70,17 @@ public class SpriteSheet {
 
                 //Parsi muuttujat
                 String[] lineData = line.split(",", -1);
+                
+                
                 //Nimi
                 String name = lineData[0];
-                //x-koordinaatti
+                //X-koordinaatti
                 int x = Integer.parseInt(lineData[1]);
-                //y-koordinaatti
+                //Y-koordinaatti
                 int y = Integer.parseInt(lineData[2]);
-                //leveys
+                //Lleveys
                 int width = Integer.parseInt(lineData[3]);
-                //korkeus
+                //Korkeus
                 int height = Integer.parseInt(lineData[4]);
 
                 Sprite tmpSprite = new Sprite();
