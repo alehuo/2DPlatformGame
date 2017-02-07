@@ -71,13 +71,17 @@ public class Tile extends Entity {
 
     @Override
     public void tick() {
-        super.getBounds().setLocation(x - Player.offsetX, y);
+        updateBounds();
     }
 
     @Override
     public void drawBounds(Graphics g) {
         g.setColor(Color.red);
         g.draw3DRect((int) getBounds().getX(), (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
+    }
+
+    public void updateBounds() {
+        super.getBounds().setLocation(x - Player.offsetX, y);
     }
 
 }

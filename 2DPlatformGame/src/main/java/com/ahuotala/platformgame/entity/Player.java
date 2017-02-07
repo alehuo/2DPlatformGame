@@ -194,7 +194,9 @@ public class Player extends Entity implements KeyListener {
             //Päivitä tiilen sijainti
             //Tämä rikkoo sinänsä Single responsibility -periaatetta.
             //Keksitään tälle jokin parempi keino. (Tämä nyt tässä väliaikaisesti)
-            tile.getBounds().setLocation(tile.getX() - offsetX, tile.getY());
+            Tile t = (Tile) tile;
+            t.updateBounds();
+
             if (tile.collides(this)) {
 //                setX(getX() - getDx());
                 offsetX = offsetX - getDx();
