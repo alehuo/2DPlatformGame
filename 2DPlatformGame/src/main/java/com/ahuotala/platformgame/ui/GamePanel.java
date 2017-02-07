@@ -84,14 +84,18 @@ public class GamePanel extends JPanel {
         if (player != null) {
             player.render(g);
             g.setColor(Color.WHITE);
+
             //Debuggausta varten x:t ja y:t jne..
-            g.drawString("playerX: " + (player.getX() - Game.STARTINGOFFSET + Player.offsetX), 2, 10);
-            g.drawString("playerY: " + player.getY(), 2, 22);
-            g.drawString("isFalling: " + player.isFalling(), 2, 34);
-            g.drawString("walkingDirection: " + player.getWd(), 2, 46);
-            g.drawString("playerBoundsX: " + (player.getBounds().getX()), 2, 58);
-            g.drawString("playerBoundsY: " + (player.getBounds().getY()), 2, 70);
-            
+            g.drawString("playerX: " + (player.getX() - Game.STARTINGOFFSET + Player.offsetX), 4, 10);
+            g.drawString("playerY: " + player.getY(), 4, 22);
+            g.drawString("isFalling: " + player.isFalling(), 4, 34);
+            g.drawString("walkingDirection: " + player.getWd(), 4, 46);
+            g.drawString("playerBoundsX: " + (player.getBounds().getX()), 4, 58);
+            g.drawString("playerBoundsY: " + (player.getBounds().getY()), 4, 70);
+
+            //Ohjeet
+            g.drawString("[A] Vasen  [D] Oikea  [Space]  Hyppää", 4, Game.WINDOWHEIGHT - 16);
+
             //Pisteytys
             Font f = g.getFont();
             Font newF = f.deriveFont(f.getSize() * 5F);
