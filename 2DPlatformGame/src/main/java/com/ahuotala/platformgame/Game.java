@@ -40,7 +40,7 @@ public class Game implements Runnable {
 
     //Kehyksen korkeus
     public static final int WINDOWHEIGHT = 720;
-    
+
     public static final int STARTINGOFFSET = WINDOWWIDTH / 2 - 64;
 
     //Kehyksen otsikko
@@ -51,7 +51,7 @@ public class Game implements Runnable {
 
     //Logger
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
-    
+
     public static void main(String[] args) {
         Game g = new Game();
         g.start();
@@ -68,7 +68,7 @@ public class Game implements Runnable {
 
     //Suoritustila
     private boolean running;
-    
+
     public Game() {
         //Luo kehys
         frame = new JFrame(WINDOWTITLE);
@@ -89,7 +89,7 @@ public class Game implements Runnable {
 
         //Aseta pelipaneeli contentPaneen
         frame.setContentPane(gamePanel);
-        
+
         frame.pack();
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -98,7 +98,7 @@ public class Game implements Runnable {
 
         //Lisää pelaajan näppäimistönkuuntelija
         frame.addKeyListener(new KeyHandler(player));
-        
+
     }
 
     /**
@@ -147,14 +147,14 @@ public class Game implements Runnable {
 
             //Aika tällä hetkellä
             long now = System.nanoTime();
-            
+
             delta += (now - lastTime) / tickInterval;
-            
+
             lastTime = now;
 
             //Rajoita ruudunpäivitysnopeus asettamalla tähän "false"
             boolean render = false;
-            
+
             while (delta >= 1) {
                 ticks++;
                 gamePanel.tick();
@@ -177,9 +177,9 @@ public class Game implements Runnable {
                 gamePanel.repaint();
                 frames++;
             }
-            
+
             int interval = 1000;
-            
+
             if (System.currentTimeMillis() - lastTimer >= interval) {
                 lastTimer += interval;
                 frame.setTitle(WINDOWTITLE + " (" + frames + " fps, " + ticks + " ticks)");
@@ -188,5 +188,5 @@ public class Game implements Runnable {
             }
         }
     }
-    
+
 }

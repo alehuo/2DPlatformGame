@@ -58,7 +58,7 @@ public abstract class Entity {
 
     public void setX(int x) {
         this.x = x;
-        bounds.setLocation(x, getY());
+        bounds.setLocation(x, y);
     }
 
     public int getY() {
@@ -67,7 +67,7 @@ public abstract class Entity {
 
     public void setY(int y) {
         this.y = y;
-        bounds.setLocation(getX(), y);
+        bounds.setLocation(x, y);
     }
 
     public int getDx() {

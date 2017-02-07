@@ -50,6 +50,7 @@ public class Coin extends Entity {
         if (isVisible()) {
             g.setColor(Color.YELLOW);
             g.fillOval(getX() - Player.offsetX, getY() + yModifier, getWidth(), getHeight());
+            super.getBounds().setBounds(getX() - Player.offsetX, getY() + yModifier, getWidth(), getHeight());
 //            drawBounds(g);
         }
     }
@@ -63,7 +64,6 @@ public class Coin extends Entity {
         } else if (index % (r.nextInt(5) + 1) == 0) {
             index += 5;
         }
-        getBounds().setBounds(getX() - Player.offsetX, getY() + yModifier, getWidth(), getHeight());
     }
 
 }

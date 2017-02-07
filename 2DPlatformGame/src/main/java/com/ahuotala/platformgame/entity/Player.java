@@ -42,6 +42,8 @@ public class Player extends Entity implements KeyListener {
 
     private WalkingDirection wd;
 
+    private boolean colliding = false;
+
     public Player(int x, int y) {
         super(x, y);
         //Pelaaja on 24x32 kokoinen (leveys x korkeus)
@@ -70,17 +72,18 @@ public class Player extends Entity implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
+        if (!colliding) {
+            //Vasen
+            if (e.getKeyCode() == KeyEvent.VK_A) {
+                wd = WalkingDirection.LEFT;
+                setDx(-getxMovement());
+            }
 
-        //Vasen
-        if (e.getKeyCode() == KeyEvent.VK_A) {
-            wd = WalkingDirection.LEFT;
-            setDx(-getxMovement());
-        }
-
-        //Oikea
-        if (e.getKeyCode() == KeyEvent.VK_D) {
-            wd = WalkingDirection.RIGHT;
-            setDx(getxMovement());
+            //Oikea
+            if (e.getKeyCode() == KeyEvent.VK_D) {
+                wd = WalkingDirection.RIGHT;
+                setDx(getxMovement());
+            }
         }
 
         //Hyppy
@@ -147,7 +150,7 @@ public class Player extends Entity implements KeyListener {
     public void render(Graphics g) {
         g.setColor(Color.CYAN);
         g.fill3DRect(getX(), getY(), getWidth(), getHeight(), true);
-        g.setColor(Color.GREEN);
+//        drawBounds(g);
     }
 
     /**
@@ -178,15 +181,24 @@ public class Player extends Entity implements KeyListener {
                 break;
             }
         }
-        //X-suunta (siirtyminen)
+
+//        setX(getX() + getDx());
         offsetX = offsetX + getDx();
+
         //Estetään pelaajan liikkuminen kartan rajojen yli
         if (getX() - Game.STARTINGOFFSET + offsetX < 0 || getX() - Game.STARTINGOFFSET + offsetX > GameLevel.levelWidth - Game.STARTINGOFFSET - getWidth()) {
             offsetX = offsetX - getDx();
         }
+
         for (Entity tile : tiles) {
+            //Päivitä tiilen sijainti
+            //Tämä rikkoo sinänsä Single responsibility -periaatetta.
+            //Keksitään tälle jokin parempi keino. (Tämä nyt tässä väliaikaisesti)
+            tile.getBounds().setLocation(tile.getX() - offsetX, tile.getY());
             if (tile.collides(this)) {
+//                setX(getX() - getDx());
                 offsetX = offsetX - getDx();
+                break;
             }
         }
     }

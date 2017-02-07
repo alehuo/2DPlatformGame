@@ -142,6 +142,9 @@ public class GameLevel {
         getTiles().stream().forEach((tile) -> {
             tile.tick();
         });
+        //Päivitä pelaaja
+        player.move(getTiles());
+        player.tick();
         //Päivitä entiteetit
         getEntities().stream().forEach((entity) -> {
             entity.tick();
@@ -155,9 +158,6 @@ public class GameLevel {
 
         });
 
-        //Päivitä pelaaja
-        player.move(getTiles());
-        player.tick();
     }
 
     public void setPlayer(Player player) {

@@ -61,15 +61,17 @@ public class Tile extends Entity {
         }
 
         //Piirrä tekstuuri
+//        g.drawImage(sprite.getImage(), x, y, widthHeight, widthHeight, null);
+//        super.getBounds().setLocation(x, y);
         g.drawImage(sprite.getImage(), x - Player.offsetX, y, widthHeight, widthHeight, null);
-        super.getBounds().setLocation(x - Player.offsetX, y);
+
         //Piirrä rajat debuggausta varten
 //        drawBounds(g);
     }
 
     @Override
     public void tick() {
-//        super.getBounds().setLocation(x - Player.getOffsetX(), y);
+        super.getBounds().setLocation(x - Player.offsetX, y);
     }
 
     @Override

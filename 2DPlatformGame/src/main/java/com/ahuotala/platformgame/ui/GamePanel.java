@@ -89,7 +89,9 @@ public class GamePanel extends JPanel {
             g.drawString("playerY: " + player.getY(), 2, 22);
             g.drawString("isFalling: " + player.isFalling(), 2, 34);
             g.drawString("walkingDirection: " + player.getWd(), 2, 46);
-
+            g.drawString("playerBoundsX: " + (player.getBounds().getX()), 2, 58);
+            g.drawString("playerBoundsY: " + (player.getBounds().getY()), 2, 70);
+            
             //Pisteytys
             Font f = g.getFont();
             Font newF = f.deriveFont(f.getSize() * 5F);
