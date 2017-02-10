@@ -60,14 +60,18 @@ public class AnimationTest {
         }
 
         assertEquals(0, ani.getIndex());
+        int startIndex = ani.getIndex();
         for (int i = 0; i < 10; i++) {
             ani.nextIndex();
+            assertEquals(startIndex + i + 1, ani.getIndex());
             assertNotNull(ani.currentFrame());
         }
         assertEquals(10, ani.getIndex());
 
+        startIndex = ani.getIndex();
         for (int i = 0; i < 39; i++) {
             ani.nextIndex();
+            assertEquals(startIndex + i + 1, ani.getIndex());
             assertNotNull(ani.currentFrame());
         }
 
