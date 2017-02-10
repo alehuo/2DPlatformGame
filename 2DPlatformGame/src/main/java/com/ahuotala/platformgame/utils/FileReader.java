@@ -59,7 +59,6 @@ public class FileReader {
             }
 
             br.close();
-            in.close();
         }
     }
 
@@ -79,14 +78,13 @@ public class FileReader {
         InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
 
         BufferedReader br = new BufferedReader(isr);
-
         String line = "";
         while ((line = br.readLine()) != null) {
             lines.add(line);
         }
 
         br.close();
-        isr.close();
+
     }
 
     /**

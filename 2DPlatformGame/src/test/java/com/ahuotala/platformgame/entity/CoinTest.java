@@ -36,6 +36,21 @@ public class CoinTest {
     }
 
     @Test
+    public void alkutilaOikein() {
+        assertEquals(30, coin.getHeight());
+        assertEquals(30, coin.getWidth());
+    }
+
+    @Test
+    public void alkutilaOikein2() {
+        Coin coin2 = new Coin();
+        assertEquals(0, coin2.getX());
+        assertEquals(0, coin2.getY());
+        assertEquals(30, coin2.getWidth());
+        assertEquals(30, coin2.getHeight());
+    }
+
+    @Test
     public void asettaaKoonOikein() {
 
         int width = 52;

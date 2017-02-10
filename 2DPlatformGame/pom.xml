@@ -38,11 +38,12 @@
                         <param>com.ahuotala.platformgame.entity.*</param>
                         <param>com.ahuotala.platformgame.level.Score</param>
                         <param>com.ahuotala.platformgame.graphics.Animation</param>
+                        <param>com.ahuotala.platformgame.utils.FileReader</param>
                     </targetClasses>
                     <targetTests>
                         <param>com.ahuotala.platformgame.entity.*</param>
                         <param>com.ahuotala.platformgame.level.*</param>
-                        <param>com.ahuotala.platformgame.graphics.*</param>
+                        <param>com.ahuotala.platformgame.utils.*</param>
                     </targetTests>
                     <excludedMethods>
                         <param>render</param>

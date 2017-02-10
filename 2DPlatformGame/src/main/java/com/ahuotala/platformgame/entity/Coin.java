@@ -44,9 +44,9 @@ public class Coin extends Entity {
      */
     public Coin(int x, int y) {
         super(x, y);
-        //Kolikko on 32x32 kokoinen (leveys x korkeus)
-        super.setWidth(32);
-        super.setHeight(32);
+        //Kolikko on 30x30 kokoinen (leveys x korkeus)
+        super.setWidth(30);
+        super.setHeight(30);
     }
 
     /**
@@ -54,8 +54,8 @@ public class Coin extends Entity {
      */
     public Coin() {
         super(0, 0);
-        super.setWidth(32);
-        super.setHeight(32);
+        super.setWidth(30);
+        super.setHeight(30);
     }
 
     /**
