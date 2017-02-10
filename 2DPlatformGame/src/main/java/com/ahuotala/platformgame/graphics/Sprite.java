@@ -20,7 +20,8 @@ package com.ahuotala.platformgame.graphics;
 import java.awt.image.BufferedImage;
 
 /**
- * Yksittäinen sprite varastoidaan tänne
+ * Sprite -luokka on luokka, joka varastoi tekstuurin. Käytetään mm. Animation
+ * -luokassa.
  *
  * @author alehuo
  */

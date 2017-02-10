@@ -62,6 +62,9 @@ public class GameLevel {
      */
     private Score score;
 
+    /**
+     * Tasoluokka. Ladataan ensin tiilet ja sen jälkeen entiteetit muistiin.
+     */
     public GameLevel() {
         entities = new ArrayList();
         tiles = new ArrayList();
@@ -137,6 +140,9 @@ public class GameLevel {
         this.tiles = new ArrayList(tiles);
     }
 
+    /**
+     * tick() -metodi päivittää tason tiilet, entiteetit ja pelaajan.
+     */
     public void tick() {
         //Päivitä tiilet
         getTiles().stream().forEach((tile) -> {

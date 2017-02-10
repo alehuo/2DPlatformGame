@@ -27,12 +27,15 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- * Texture-tiedoston avaamiseen käytetty luokka
+ * Texture-tiedoston avaamiseen käytetty luokka.
  *
  * @author ahuotala
  */
 public class SpriteSheet {
 
+    /**
+     * Logger
+     */
     private static final Logger LOG = Logger.getLogger(SpriteSheet.class.getName());
 
     /**
@@ -51,7 +54,7 @@ public class SpriteSheet {
     private static HashMap<String, Sprite> sprites;
 
     /**
-     * Konstruktori lataa spritesheet -tiedoston muistiin
+     * Konstruktori lataa spritesheet -tiedoston muistiin.
      *
      */
     public SpriteSheet() {
@@ -97,6 +100,11 @@ public class SpriteSheet {
         }
     }
 
+    /**
+     * Palauttaa spriten
+     * @param name Spriten nimi
+     * @return Sprite
+     */
     public static Sprite getSprite(String name) {
         if (sprites.containsKey(name)) {
             return sprites.get(name);

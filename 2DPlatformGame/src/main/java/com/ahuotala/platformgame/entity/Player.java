@@ -24,7 +24,6 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Pelaaja -luokka
@@ -40,6 +39,11 @@ public class Player extends Entity implements KeyListener {
 
     private WalkingDirection wd;
 
+    /**
+     * Konstruktori
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     */
     public Player(int x, int y) {
         super(x, y);
         //Pelaaja on 24x32 kokoinen (leveys x korkeus)

@@ -30,7 +30,7 @@ import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
- * Pääluokka
+ * Pääluokka 2DPlatformGame -pelille.
  *
  * @author ahuotala
  */
@@ -55,6 +55,11 @@ public class Game implements Runnable {
     //Logger
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
 
+    /**
+     * Main -metodi aloittaa uuden pelin.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Game g = new Game();
         g.start();
@@ -72,6 +77,10 @@ public class Game implements Runnable {
     //Suoritustila
     private boolean running;
 
+    /**
+     * Konstruktori, missä luodaan kehys ja luodaan sekä pelaaja että
+     * pelipaneeli
+     */
     public Game() {
         //Luo kehys
         frame = new JFrame(WINDOWTITLE);
@@ -113,14 +122,8 @@ public class Game implements Runnable {
     }
 
     /**
-     * Pysäytä peli
-     */
-    private synchronized void stop() {
-        running = false;
-    }
-
-    /**
-     *
+     * run() -metodi on ns. "Game loop", eli se suorittaa piirtämisen ja
+     * pelilogiikan päivittämisen.
      */
     @Override
     public void run() {

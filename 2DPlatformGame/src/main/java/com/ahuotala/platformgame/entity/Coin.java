@@ -24,7 +24,7 @@ import java.awt.Graphics;
 import java.util.Random;
 
 /**
- * Kolikko.
+ * Kolikko-entiteetin luokka
  *
  * @author ahuotala
  */
@@ -37,6 +37,11 @@ public class Coin extends Entity {
     //Kolikon animaatio
     private Animation coinAnimation;
 
+    /**
+     * Konstruktori
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     */
     public Coin(int x, int y) {
         super(x, y);
         //Kolikko on 32x32 kokoinen (leveys x korkeus)
@@ -44,12 +49,19 @@ public class Coin extends Entity {
         super.setHeight(32);
     }
 
+    /**
+     * Konstruktori. Asettaa kolikon pisteeseen (0,0)
+     */
     public Coin() {
         super(0, 0);
         super.setWidth(32);
         super.setHeight(32);
     }
 
+    /**
+     * Piirtää kolikon näytölle
+     * @param g Graphics -objekti
+     */
     @Override
     public void render(Graphics g) {
         if (isVisible()) {
@@ -63,6 +75,11 @@ public class Coin extends Entity {
         }
     }
 
+    /**
+     * Päivittää kolikon.
+     * - Saa kolikon "hyppimään" ruudulla
+     * - Päivittää animaatiota
+     */
     @Override
     public void tick() {
         if (coinAnimation != null) {

@@ -18,10 +18,8 @@
 package com.ahuotala.platformgame.graphics;
 
 import com.ahuotala.platformgame.utils.FileReader;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,8 +31,12 @@ import java.util.logging.Logger;
  */
 public class AnimationLoader {
 
-    private static final HashMap<String, Animation> animations = new HashMap();
+    private static final HashMap<String, Animation> ANIMATIONS = new HashMap();
 
+    /**
+     * AnimationLoader hakee animaatiotiedostot animations/ -kansiosta ja lisää
+     * ne animaatiolistaan, joka on staattinen.
+     */
     public AnimationLoader() {
 
         //ClassLoader
@@ -52,7 +54,6 @@ public class AnimationLoader {
                 Animation animaatio = new Animation(interval);
 
                 String tiedostoNimi = f.getName();
-                System.out.println(tiedostoNimi);
 
                 FileReader animationReader = new FileReader(cl.getResourceAsStream("animations/" + tiedostoNimi));
 
@@ -80,9 +81,8 @@ public class AnimationLoader {
                     }
                 }
                 //Animaation luku valmis, lisätään se listaan
-                animations.put(tiedostoNimi.replace(".cfg", ""), animaatio);
+                ANIMATIONS.put(tiedostoNimi.replace(".cfg", ""), animaatio);
             }
-            System.out.println(animations.toString());
         } catch (IOException ex) {
             Logger.getLogger(AnimationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -95,8 +95,8 @@ public class AnimationLoader {
      * @return Animaatio
      */
     public static Animation getAnimation(String name) {
-        if (animations.containsKey(name)) {
-            return animations.get(name);
+        if (ANIMATIONS.containsKey(name)) {
+            return ANIMATIONS.get(name);
         }
         return null;
     }

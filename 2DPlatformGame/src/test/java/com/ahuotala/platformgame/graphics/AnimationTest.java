@@ -18,6 +18,7 @@
 package com.ahuotala.platformgame.graphics;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,6 +38,7 @@ public class AnimationTest {
     @Test
     public void alkutilaOikein() {
         assertEquals(0, ani.getFrames().size());
+        assertNotNull(ani.getFrames());
     }
 
     @Test
@@ -44,7 +46,37 @@ public class AnimationTest {
         Sprite spr = new Sprite();
         ani.addFrame(spr);
         assertEquals(1, ani.getFrames().size());
+        assertNotNull(ani.getFrames());
         ani.addFrame(spr);
         assertEquals(2, ani.getFrames().size());
+        assertNotNull(ani.getFrames());
+    }
+
+    @Test
+    public void nextIndexToimii() {
+        int count = 50;
+        for (int i = 0; i < count; i++) {
+            ani.addFrame(new Sprite());
+        }
+
+        assertEquals(0, ani.getIndex());
+        for (int i = 0; i < 10; i++) {
+            ani.nextIndex();
+            assertNotNull(ani.currentFrame());
+        }
+        assertEquals(10, ani.getIndex());
+
+        for (int i = 0; i < 39; i++) {
+            ani.nextIndex();
+            assertNotNull(ani.currentFrame());
+        }
+
+        assertEquals(49, ani.getIndex());
+
+        ani.nextIndex();
+
+        assertEquals(0, ani.getIndex());
+
+        assertNotNull(ani.currentFrame());
     }
 }

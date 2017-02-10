@@ -36,11 +36,13 @@
                 <configuration>
                     <targetClasses>
                         <param>com.ahuotala.platformgame.entity.*</param>
-                        <param>com.ahuotala.platformgame.level.*</param>
+                        <param>com.ahuotala.platformgame.level.Score</param>
+                        <param>com.ahuotala.platformgame.graphics.Animation</param>
                     </targetClasses>
                     <targetTests>
                         <param>com.ahuotala.platformgame.entity.*</param>
                         <param>com.ahuotala.platformgame.level.*</param>
+                        <param>com.ahuotala.platformgame.graphics.*</param>
                     </targetTests>
                     <excludedMethods>
                         <param>render</param>
@@ -48,9 +50,6 @@
                         <param>collides</param>
                         <param>tick</param>
                     </excludedMethods>
-                    <excludedClasses>
-                        <param>com.ahuotala.platformgame.level.GameLevel</param>
-                    </excludedClasses>
                 </configuration>
             </plugin>
             <plugin>

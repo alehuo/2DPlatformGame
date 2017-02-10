@@ -17,6 +17,7 @@
  */
 package com.ahuotala.platformgame.entity;
 
+import java.awt.Rectangle;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,6 +38,8 @@ public class TileTest {
 
     @Test
     public void asettaaKoonOikein() {
+        Player.offsetX = 0;
+
         assertEquals(32, tile.getWidth());
         assertEquals(32, tile.getBounds().getWidth(), 1.0);
         assertEquals(32, tile.getHeight());
@@ -49,6 +52,9 @@ public class TileTest {
         tile.setHeight(52);
         assertEquals(52, tile.getHeight());
         assertEquals(52, tile.getBounds().getHeight(), 1.0);
+
+        assertEquals(16, tile.getBounds().getX(), 1.0);
+        assertEquals(26, tile.getBounds().getY(), 1.0);
     }
 
     @Test
@@ -62,5 +68,22 @@ public class TileTest {
         assertEquals("Test", tile.getTextureName());
         tile.setTextureName("12345");
         assertEquals("12345", tile.getTextureName());
+    }
+
+    @Test
+    public void rajojenPaivitysToimii() {
+        Player.offsetX = 0;
+        tile.setX(58);
+        tile.updateBounds();
+        Rectangle bounds = tile.getBounds();
+        assertEquals(58, bounds.getX(), 1.0);
+        tile.setX(22);
+        bounds = tile.getBounds();
+        assertEquals(22, bounds.getX(), 1.0);
+
+        tile.setY(492);
+        tile.updateBounds();
+        bounds = tile.getBounds();
+        assertEquals(492, bounds.getY(), 1.0);
     }
 }

@@ -19,10 +19,12 @@ package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.graphics.Sprite;
+import com.ahuotala.platformgame.graphics.SpriteSheet;
 import java.awt.Color;
 import java.awt.Graphics;
 
 /**
+ * Tiili -luokka
  *
  * @author ahuotala
  */
@@ -34,6 +36,13 @@ public class Tile extends Entity {
 
     private Sprite sprite;
 
+    /**
+     * Konstruktori
+     *
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     * @param textureName Tekstuurin nimi
+     */
     public Tile(int x, int y, String textureName) {
         super(x, y);
         super.setWidth(widthHeight);
@@ -57,12 +66,10 @@ public class Tile extends Entity {
     @Override
     public void render(Graphics g) {
         if (sprite == null) {
-            sprite = Game.spr.getSprite(textureName);
+            sprite = SpriteSheet.getSprite(textureName);
         }
 
         //Piirrä tekstuuri
-//        g.drawImage(sprite.getImage(), x, y, widthHeight, widthHeight, null);
-//        super.getBounds().setLocation(x, y);
         g.drawImage(sprite.getImage(), x - Player.offsetX, y, widthHeight, widthHeight, null);
 
         //Piirrä rajat debuggausta varten
@@ -80,6 +87,9 @@ public class Tile extends Entity {
         g.draw3DRect((int) getBounds().getX(), (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
     }
 
+    /**
+     * Päivitä rajat
+     */
     public void updateBounds() {
         super.getBounds().setLocation(x - Player.offsetX, y);
     }

@@ -22,6 +22,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
+ * Näppäimistönkuuntelija
  *
  * @author ahuotala
  */
@@ -29,6 +30,11 @@ public class KeyHandler implements KeyListener {
 
     private Player player;
 
+    /**
+     * Näppäimistönkuuntelija, joka "injektoi" pelaajan sisälleen.
+     *
+     * @param player Pelaaja
+     */
     public KeyHandler(Player player) {
         this.player = player;
     }
@@ -38,6 +44,11 @@ public class KeyHandler implements KeyListener {
 
     }
 
+    /**
+     * Kun näppäintä painetaan, lähetetään KeyPressed-tapahtuma pelaajalle
+     *
+     * @param e KeyEvent
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if (player != null) {
@@ -45,6 +56,11 @@ public class KeyHandler implements KeyListener {
         }
     }
 
+    /**
+     * Kun näppäin nostetaan, lähetetään KeyReleased-tapahtuma pelaajalle
+     *
+     * @param e
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         if (player != null) {

@@ -17,11 +17,38 @@
  */
 package com.ahuotala.platformgame.entity;
 
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+
 /**
- * Pelaajan kävelemisen suunta
+ * Pilvi -luokan testit
  *
  * @author ahuotala
  */
-public enum WalkingDirection {
-    LEFT, RIGHT;
+public class CloudTest {
+
+    private Cloud cloud;
+
+    @Before
+    public void init() {
+        cloud = new Cloud();
+    }
+
+    @Test
+    public void alkutilaOikein() {
+        assertEquals(64, cloud.getWidth());
+        assertEquals(32, cloud.getHeight());
+        assertEquals(0, cloud.getX());
+        assertEquals(0, cloud.getY());
+    }
+
+    @Test
+    public void toinenKonstruktoriToimii() {
+        Cloud cloud2 = new Cloud(42, 55);
+        assertEquals(42, cloud2.getX());
+        assertEquals(55, cloud2.getY());
+        assertEquals(64, cloud2.getWidth());
+        assertEquals(32, cloud2.getHeight());
+    }
 }

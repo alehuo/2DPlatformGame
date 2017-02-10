@@ -46,6 +46,12 @@ public abstract class Entity {
 
     protected boolean visible = true;
 
+    /**
+     * Entiteetin konstruktori
+     *
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     */
     public Entity(int x, int y) {
         this.x = x;
         this.y = y;
@@ -56,6 +62,11 @@ public abstract class Entity {
         return x;
     }
 
+    /**
+     * Asettaa x-koordinaatin ja päivittää samalla rajat
+     *
+     * @param x-koordinaatti
+     */
     public void setX(int x) {
         this.x = x;
         bounds.setLocation(x, y);
@@ -65,6 +76,11 @@ public abstract class Entity {
         return y;
     }
 
+    /**
+     * Asettaa y-koordinaatin ja päivittää samalla rajat
+     *
+     * @param y-koordinaatti
+     */
     public void setY(int y) {
         this.y = y;
         bounds.setLocation(x, y);
@@ -106,6 +122,11 @@ public abstract class Entity {
         return width;
     }
 
+    /**
+     * Asettaa entiteetin leveyden ja päivittää samalla rajat
+     *
+     * @param width Entiteetin leveys
+     */
     public void setWidth(int width) {
         this.width = width;
         bounds.setSize(width, height);
@@ -115,6 +136,11 @@ public abstract class Entity {
         return height;
     }
 
+    /**
+     * Asettaa entiteetin korkeuden ja päivittää samalla rajat
+     *
+     * @param height Entiteetin korkeus
+     */
     public void setHeight(int height) {
         this.height = height;
         bounds.setSize(width, height);
@@ -128,11 +154,6 @@ public abstract class Entity {
         return visible;
     }
 
-    /**
-     * Asettaa entiteetin näkyvyystilan
-     *
-     * @param visible Näkyvyys
-     */
     public void setVisible(boolean visible) {
         this.visible = visible;
     }

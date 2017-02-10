@@ -116,6 +116,9 @@ public class EntityTest {
         assertEquals(23, entity.getDy());
     }
 
+    /**
+     * Testientiteetti
+     */
     private class TestEntity extends Entity {
 
         TestEntity() {

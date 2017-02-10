@@ -62,6 +62,11 @@ public class Score {
         return deltaTime;
     }
 
+    /**
+     * Asettaa pistemäärän. Jos määrä on negatiivinen, annetaan arvoksi nolla.
+     *
+     * @param value Pistemäärä
+     */
     public void setValue(int value) {
         if (value < 0) {
             value = 0;
@@ -69,6 +74,12 @@ public class Score {
         this.value = value;
     }
 
+    /**
+     * Asettaa kerätyt kolikot. Jos määrä on negatiivinen, annetaan arvoksi
+     * nolla.
+     *
+     * @param collectedCoins Kerätyt kolikot
+     */
     public void setCollectedCoins(int collectedCoins) {
         if (collectedCoins < 0) {
             collectedCoins = 0;
@@ -76,6 +87,12 @@ public class Score {
         this.collectedCoins = collectedCoins;
     }
 
+    /**
+     * Asettaa tuhotut hirviöt. Jos määrä on negatiivinen, annetaan arvoksi
+     * nolla.
+     *
+     * @param defeatedMonsters Tuhotut hirviöt
+     */
     public void setDefeatedMonsters(int defeatedMonsters) {
         if (defeatedMonsters < 0) {
             defeatedMonsters = 0;
@@ -83,6 +100,11 @@ public class Score {
         this.defeatedMonsters = defeatedMonsters;
     }
 
+    /**
+     * Asettaa aloitusajan. Jos määrä on negatiivinen, annetaan arvoksi nolla.
+     *
+     * @param startingTime Aloitusaika
+     */
     public void setStartingTime(long startingTime) {
         if (startingTime < 0) {
             startingTime = 0;
@@ -90,6 +112,11 @@ public class Score {
         this.startingTime = startingTime;
     }
 
+    /**
+     * Asettaa lopetusajan. Jos määrä on negatiivinen, annetaan arvoksi nolla.
+     *
+     * @param endingTime Lopetusaika
+     */
     public void setEndingTime(long endingTime) {
         if (endingTime < 0) {
             endingTime = 0;
@@ -97,6 +124,11 @@ public class Score {
         this.endingTime = endingTime;
     }
 
+    /**
+     * Asettaa delta -ajan. Jos määrä on negatiivinen, annetaan arvoksi nolla.
+     *
+     * @param deltaTime Delta -aika (lopetus - aloitus)
+     */
     public void setDeltaTime(long deltaTime) {
         if (deltaTime < 0) {
             deltaTime = 0;
@@ -145,6 +177,11 @@ public class Score {
         value += 250;
     }
 
+    /**
+     * toString -metodi palauttaa pisteytyksen yhteenvedon.
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Pistemäärä: " + value + ", kerätyt kolikot: " + collectedCoins + ", tapetut hirviöt: " + defeatedMonsters + ", tason suoritukseen kulunut aika: " + deltaTime + "s"; //To change body of generated methods, choose Tools | Templates.

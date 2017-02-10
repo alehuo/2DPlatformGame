@@ -30,6 +30,12 @@ public class Cloud extends Entity {
 
     private Sprite sprite;
 
+    /**
+     * Konstruktori Pilvi-entiteetille
+     *
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     */
     public Cloud(int x, int y) {
         super(x, y);
         //Kolikko on 24x24 kokoinen (leveys x korkeus)
@@ -40,6 +46,10 @@ public class Cloud extends Entity {
         sprite = Game.spr.getSprite("cloud");
     }
 
+    /**
+     * Konstruktori Pilvi-entiteetille, jossa pilvi asetetaan koordinaattiin
+     * (0,0).
+     */
     public Cloud() {
         super(0, 0);
         //Kolikko on 24x24 kokoinen (leveys x korkeus)
@@ -50,6 +60,11 @@ public class Cloud extends Entity {
         sprite = Game.spr.getSprite("cloud");
     }
 
+    /**
+     * Piirtää pilven ruudulle
+     *
+     * @param g
+     */
     @Override
     public void render(Graphics g) {
         if (sprite != null && isVisible()) {
@@ -58,6 +73,10 @@ public class Cloud extends Entity {
         }
     }
 
+    /**
+     * Päivittää entiteetin (kun pelaaja liikkuu, on päivitettävä entiteetin
+     * rajat).
+     */
     @Override
     public void tick() {
         getBounds().setBounds(getX() - Player.offsetX, getY(), getWidth() * 2, getHeight() * 2);

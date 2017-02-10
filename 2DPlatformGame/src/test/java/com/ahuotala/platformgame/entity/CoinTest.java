@@ -37,10 +37,16 @@ public class CoinTest {
 
     @Test
     public void asettaaKoonOikein() {
-        assertEquals(24, coin.getWidth());
-        assertEquals(24, coin.getBounds().getWidth(), 1.0);
-        assertEquals(24, coin.getHeight());
-        assertEquals(24, coin.getBounds().getHeight(), 1.0);
+
+        int width = 52;
+        int height = 66;
+        coin.setWidth(width);
+        coin.setHeight(height);
+
+        assertEquals(width, coin.getWidth());
+        assertEquals(width, coin.getBounds().getWidth(), 1.0);
+        assertEquals(height, coin.getHeight());
+        assertEquals(height, coin.getBounds().getHeight(), 1.0);
 
         coin.setWidth(55);
         assertEquals(55, coin.getWidth());

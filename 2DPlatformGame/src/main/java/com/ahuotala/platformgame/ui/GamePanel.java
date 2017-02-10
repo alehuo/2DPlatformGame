@@ -95,7 +95,6 @@ public class GamePanel extends JPanel {
 //            g.drawString("walkingDirection: " + player.getWd(), 4, 80);
 //            g.drawString("playerBoundsX: " + (player.getBounds().getX()), 4, 95);
 //            g.drawString("playerBoundsY: " + (player.getBounds().getY()), 4, 110);
-
             //Pisteytys
             Font f = g.getFont();
             Font newF = f.deriveFont(f.getSize() * 5F);
@@ -106,6 +105,9 @@ public class GamePanel extends JPanel {
         //Todo..
     }
 
+    /**
+     * Antaa päivityskutsun tasolle.
+     */
     public void tick() {
         level.tick();
     }
