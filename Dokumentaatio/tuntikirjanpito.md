@@ -14,5 +14,6 @@ Päivä | Tunnit | Kuvaus
 3.2.2017 | 3h | Lisätty mahdollisuus lisätä entiteettejä suoraan tasotiedostoon ja luotu Score -luokka. Lisätty testit Score -luokalle sekä paranneltu vanhoja testejä. Pelaajan pistemäärä näkyy nyt näytöllä.
 6.2.2017 | 2h | Luotu FileReader-luokka tiedostojen lukemista varten. Siirretty pistekirjanpito GameLevel -luokkaan, koska pisteet ovat tasokohtaisia.
 7.2.2017 | 2h | Korjauttu törmäyksentunnistus ja lisätty ohjeistusta, että miten pelissä liikutaan.
-19.2.2017 | 3h | Luotu Animaatio -luokka sekä animaatioita lataava AnimationLoader. Lisäksi tehty kolikon pyörimisanimaatio Pyxel Edit -ohjelmiston avulla ja lisätty se peliin.
+10.2.2017 | 3h | Luotu Animaatio -luokka sekä animaatioita lataava AnimationLoader. Lisäksi tehty kolikon pyörimisanimaatio Pyxel Edit -ohjelmiston avulla ja lisätty se peliin.
+11.2.2017 | 1h | Paranneltu kolikon pyörimisanimaatiota ja lisätty valmius pelaajan kävelemisanimaatioille.
 ... | ... | ...
