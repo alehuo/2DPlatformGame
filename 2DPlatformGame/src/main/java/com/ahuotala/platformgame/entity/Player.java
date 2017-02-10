@@ -18,6 +18,8 @@
 package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.graphics.Sprite;
+import com.ahuotala.platformgame.graphics.SpriteSheet;
 import com.ahuotala.platformgame.level.GameLevel;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -38,6 +40,9 @@ public class Player extends Entity implements KeyListener {
     private boolean falling = true;
 
     private WalkingDirection wd;
+
+    private Sprite left;
+    private Sprite right;
 
     /**
      * Konstruktori
@@ -145,8 +150,19 @@ public class Player extends Entity implements KeyListener {
      */
     @Override
     public void render(Graphics g) {
+        if (left == null) {
+            left = SpriteSheet.getSprite("plr_left");
+        }
+        if (right == null) {
+            right = SpriteSheet.getSprite("plr_right");
+        }
         g.setColor(Color.CYAN);
-        g.fill3DRect(getX(), getY(), getWidth(), getHeight(), true);
+        if (wd == WalkingDirection.LEFT) {
+            g.drawImage(left.getImage(), getX(), getY(), getWidth(), getHeight(), null);
+        } else {
+            g.drawImage(right.getImage(), getX(), getY(), getWidth(), getHeight(), null);
+        }
+//        g.fill3DRect(getX(), getY(), getWidth(), getHeight(), true);
 //        drawBounds(g);
     }
 
