@@ -41,6 +41,7 @@ public class Player extends Entity implements KeyListener {
 
     /**
      * Konstruktori
+     *
      * @param x x-koordinaatti
      * @param y y-koordinaatti
      */
@@ -61,7 +62,6 @@ public class Player extends Entity implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     /**
@@ -179,7 +179,6 @@ public class Player extends Entity implements KeyListener {
             }
         }
 
-//        setX(getX() + getDx());
         offsetX = offsetX + getDx();
 
         //Estetään pelaajan liikkuminen kartan rajojen yli
@@ -191,7 +190,6 @@ public class Player extends Entity implements KeyListener {
             //Päivitä tiilen sijainti (Tämä kuitenkin rikkoo Single responsibility -periaatetta)
             ((Tile) tile).updateBounds();
             if (tile.collides(this)) {
-//                setX(getX() - getDx());
                 offsetX = offsetX - getDx();
                 break;
             }

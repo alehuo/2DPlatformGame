@@ -92,26 +92,34 @@
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>          <strong class="jxr_keyword">if</strong> (player != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>              player.render(g);
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>              g.setColor(Color.WHITE);
-<a class="jxr_linenumber" name="L87" href="#L87">87</a>              <em class="jxr_comment">//Debuggausta varten x:t ja y:t jne..</em>
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>              g.drawString(<span class="jxr_string">"playerX: "</span> + (player.getX() - Game.STARTINGOFFSET + Player.offsetX), 2, 10);
-<a class="jxr_linenumber" name="L89" href="#L89">89</a>              g.drawString(<span class="jxr_string">"playerY: "</span> + player.getY(), 2, 22);
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>              g.drawString(<span class="jxr_string">"isFalling: "</span> + player.isFalling(), 2, 34);
-<a class="jxr_linenumber" name="L91" href="#L91">91</a>              g.drawString(<span class="jxr_string">"walkingDirection: "</span> + player.getWd(), 2, 46);
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>  
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>              <em class="jxr_comment">//Pisteytys</em>
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>              Font f = g.getFont();
-<a class="jxr_linenumber" name="L95" href="#L95">95</a>              Font newF = f.deriveFont(f.getSize() * 5F);
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>              g.setFont(newF);
-<a class="jxr_linenumber" name="L97" href="#L97">97</a>              g.drawString(<span class="jxr_string">"Score: "</span> + player.getScore().getValue(), Game.WINDOWWIDTH / 2, 64);
-<a class="jxr_linenumber" name="L98" href="#L98">98</a>          }
-<a class="jxr_linenumber" name="L99" href="#L99">99</a>  
-<a class="jxr_linenumber" name="L100" href="#L100">100</a>         <em class="jxr_comment">//Todo..</em>
-<a class="jxr_linenumber" name="L101" href="#L101">101</a>     }
-<a class="jxr_linenumber" name="L102" href="#L102">102</a> 
-<a class="jxr_linenumber" name="L103" href="#L103">103</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> tick() {
-<a class="jxr_linenumber" name="L104" href="#L104">104</a>         level.tick();
-<a class="jxr_linenumber" name="L105" href="#L105">105</a>     }
-<a class="jxr_linenumber" name="L106" href="#L106">106</a> }
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>  
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>              <em class="jxr_comment">//Ohjeet</em>
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>              g.drawString(<span class="jxr_string">"[A] Vasen  [D] Oikea  [Space]  Hyppää"</span>, 4, 20);
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>              <em class="jxr_comment">//Debuggausta varten x:t ja y:t jne..</em>
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>  <em class="jxr_comment">//            g.drawString("playerX: " + (player.getX() - Game.STARTINGOFFSET + Player.offsetX), 4, 35);</em>
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>  <em class="jxr_comment">//            g.drawString("playerY: " + player.getY(), 4, 50);</em>
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>  <em class="jxr_comment">//            g.drawString("isFalling: " + player.isFalling(), 4, 65);</em>
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>  <em class="jxr_comment">//            g.drawString("walkingDirection: " + player.getWd(), 4, 80);</em>
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>  <em class="jxr_comment">//            g.drawString("playerBoundsX: " + (player.getBounds().getX()), 4, 95);</em>
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>  <em class="jxr_comment">//            g.drawString("playerBoundsY: " + (player.getBounds().getY()), 4, 110);</em>
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>              <em class="jxr_comment">//Pisteytys</em>
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>              Font f = g.getFont();
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>             Font newF = f.deriveFont(f.getSize() * 5F);
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>             g.setFont(newF);
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>             g.drawString(<span class="jxr_string">"Score: "</span> + level.getScore().getValue(), Game.WINDOWWIDTH / 2, 64);
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>         }
+<a class="jxr_linenumber" name="L104" href="#L104">104</a> 
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>         <em class="jxr_comment">//Todo..</em>
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>     }
+<a class="jxr_linenumber" name="L107" href="#L107">107</a> 
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> <em class="jxr_javadoccomment">     * Antaa päivityskutsun tasolle.</em>
+<a class="jxr_linenumber" name="L110" href="#L110">110</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> tick() {
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>         level.tick();
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>     }
+<a class="jxr_linenumber" name="L114" href="#L114">114</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>
