@@ -18,6 +18,7 @@
 package com.ahuotala.platformgame;
 
 import com.ahuotala.platformgame.entity.Player;
+import com.ahuotala.platformgame.graphics.AnimationLoader;
 import com.ahuotala.platformgame.graphics.SpriteSheet;
 import com.ahuotala.platformgame.input.KeyHandler;
 import com.ahuotala.platformgame.level.GameLevel;
@@ -48,6 +49,8 @@ public class Game implements Runnable {
 
     //Spritesheet
     public static SpriteSheet spr = new SpriteSheet();
+
+    public static AnimationLoader animationLoader = new AnimationLoader();
 
     //Logger
     private static final Logger LOG = Logger.getLogger(Game.class.getName());

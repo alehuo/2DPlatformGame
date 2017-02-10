@@ -17,6 +17,8 @@
  */
 package com.ahuotala.platformgame.entity;
 
+import com.ahuotala.platformgame.graphics.Animation;
+import com.ahuotala.platformgame.graphics.AnimationLoader;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
@@ -32,24 +34,30 @@ public class Coin extends Entity {
     private int index = 0;
     private boolean visible = true;
 
+    //Kolikon animaatio
+    private Animation coinAnimation;
+
     public Coin(int x, int y) {
         super(x, y);
-        //Kolikko on 24x24 kokoinen (leveys x korkeus)
-        super.setWidth(24);
-        super.setHeight(24);
+        //Kolikko on 32x32 kokoinen (leveys x korkeus)
+        super.setWidth(32);
+        super.setHeight(32);
     }
 
     public Coin() {
         super(0, 0);
-        super.setWidth(24);
-        super.setHeight(24);
+        super.setWidth(32);
+        super.setHeight(32);
     }
 
     @Override
     public void render(Graphics g) {
         if (isVisible()) {
+            if (coinAnimation == null) {
+                coinAnimation = AnimationLoader.getAnimation("coin");
+            }
             g.setColor(Color.YELLOW);
-            g.fillOval(getX() - Player.offsetX, getY() + yModifier, getWidth(), getHeight());
+            g.drawImage(coinAnimation.currentFrame().getImage(), getX() - Player.offsetX, getY() + yModifier, getWidth(), getHeight(), null);
             super.getBounds().setBounds(getX() - Player.offsetX, getY() + yModifier, getWidth(), getHeight());
 //            drawBounds(g);
         }
@@ -57,6 +65,9 @@ public class Coin extends Entity {
 
     @Override
     public void tick() {
+        if (coinAnimation != null) {
+            coinAnimation.tick();
+        }
         Random r = new Random();
         yModifier = (int) Math.ceil(3 * Math.sin(Math.toRadians(index)));
         if (index == 360) {

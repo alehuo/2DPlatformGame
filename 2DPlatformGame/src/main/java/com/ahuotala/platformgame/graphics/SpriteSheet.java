@@ -34,17 +34,21 @@ import javax.imageio.ImageIO;
 public class SpriteSheet {
 
     private static final Logger LOG = Logger.getLogger(SpriteSheet.class.getName());
+
     /**
      * Spritesheet-tiedoston sijainti
      */
     public static final String SPRITESHEETPATH = "textures/spritesheet.png";
 
-    private BufferedImage spriteSheet;
+    /**
+     * SpriteSheet -kuva
+     */
+    public static BufferedImage spriteSheet;
 
     /**
      * Yksittäiset spritet
      */
-    private HashMap<String, Sprite> sprites;
+    private static HashMap<String, Sprite> sprites;
 
     /**
      * Konstruktori lataa spritesheet -tiedoston muistiin
@@ -70,8 +74,7 @@ public class SpriteSheet {
 
                 //Parsi muuttujat
                 String[] lineData = line.split(",", -1);
-                
-                
+
                 //Nimi
                 String name = lineData[0];
                 //X-koordinaatti
@@ -94,8 +97,11 @@ public class SpriteSheet {
         }
     }
 
-    public Sprite getSprite(String name) {
-        return sprites.get(name);
+    public static Sprite getSprite(String name) {
+        if (sprites.containsKey(name)) {
+            return sprites.get(name);
+        }
+        return null;
     }
 
 }
