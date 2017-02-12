@@ -97,9 +97,10 @@ public class GamePanel extends JPanel {
 //            g.drawString("playerBoundsY: " + (player.getBounds().getY()), 4, 110);
             //Pisteytys
             Font f = g.getFont();
-            Font newF = f.deriveFont(f.getSize() * 5F);
+            Font newF = f.deriveFont(f.getSize() * 3F);
             g.setFont(newF);
-            g.drawString("Score: " + level.getScore().getValue(), Game.WINDOWWIDTH / 2, 64);
+            g.drawString("Score: " + level.getScore().getValue(), Game.WINDOWWIDTH / 2, 32);
+            g.drawString("Time: " + level.getScore().getCurrentTime() / 1000 + " s", Game.WINDOWWIDTH / 2, 70);
         }
 
         //Todo..

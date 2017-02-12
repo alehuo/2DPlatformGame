@@ -162,8 +162,6 @@ public class Player extends Entity implements KeyListener {
         } else {
             g.drawImage(right.getImage(), getX(), getY(), getWidth(), getHeight(), null);
         }
-//        g.fill3DRect(getX(), getY(), getWidth(), getHeight(), true);
-//        drawBounds(g);
     }
 
     /**

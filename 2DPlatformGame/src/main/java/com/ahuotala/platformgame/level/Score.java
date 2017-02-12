@@ -136,6 +136,10 @@ public class Score {
         this.deltaTime = deltaTime;
     }
 
+    public long getCurrentTime() {
+        return System.currentTimeMillis() - startingTime;
+    }
+
     /**
      * Aloita peli.
      */
