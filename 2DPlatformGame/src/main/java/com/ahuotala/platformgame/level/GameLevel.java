@@ -22,6 +22,7 @@ import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.entity.Tile;
 import com.ahuotala.platformgame.utils.FileReader;
+import com.ahuotala.platformgame.utils.StopWatch;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -61,6 +62,11 @@ public class GameLevel {
      * Pisteytys
      */
     private Score score;
+
+    /**
+     * Sekuntikello
+     */
+    private StopWatch stopWatch;
 
     /**
      * Tasoluokka. Ladataan ensin tiilet ja sen jälkeen entiteetit muistiin.
@@ -119,8 +125,8 @@ public class GameLevel {
         } catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             LOG.log(Level.SEVERE, null, ex);
         }
-
-        score = new Score();
+        stopWatch = new StopWatch();
+        score = new Score(stopWatch);
         score.start();
     }
 
@@ -144,6 +150,10 @@ public class GameLevel {
      * tick() -metodi päivittää tason tiilet, entiteetit ja pelaajan.
      */
     public void tick() {
+        //Päivitä sekuntikello
+        if (stopWatch != null) {
+            stopWatch.tick();
+        }
         //Päivitä tiilet
         getTiles().stream().forEach((tile) -> {
             tile.tick();

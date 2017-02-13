@@ -17,6 +17,8 @@
  */
 package com.ahuotala.platformgame.level;
 
+import com.ahuotala.platformgame.utils.StopWatch;
+
 /**
  * Pisteytysjärjestelmä.
  *
@@ -29,14 +31,17 @@ public class Score {
     private int collectedCoins = 0;
     private int defeatedMonsters = 0;
 
-    //Aloitusaika
-    private long startingTime;
+    private StopWatch stopWatch;
 
-    //Lopetusaika
-    private long endingTime;
-
-    //Kulunut aika (sekunneissa)
-    private long deltaTime;
+    /**
+     * "Injektoidaan" sekuntikello pisteytykseen
+     *
+     * @param s Sekuntikello
+     */
+    public Score(StopWatch s) {
+        stopWatch = s;
+        stopWatch.currentMs(System.currentTimeMillis());
+    }
 
     public int getValue() {
         return value;
@@ -50,16 +55,8 @@ public class Score {
         return defeatedMonsters;
     }
 
-    public long getStartingTime() {
-        return startingTime;
-    }
-
-    public long getEndingTime() {
-        return endingTime;
-    }
-
     public long getDeltaTime() {
-        return deltaTime;
+        return stopWatch.getTotalMilliseconds();
     }
 
     /**
@@ -100,52 +97,18 @@ public class Score {
         this.defeatedMonsters = defeatedMonsters;
     }
 
-    /**
-     * Asettaa aloitusajan. Jos määrä on negatiivinen, annetaan arvoksi nolla.
-     *
-     * @param startingTime Aloitusaika
-     */
-    public void setStartingTime(long startingTime) {
-        if (startingTime < 0) {
-            startingTime = 0;
-        }
-        this.startingTime = startingTime;
-    }
-
-    /**
-     * Asettaa lopetusajan. Jos määrä on negatiivinen, annetaan arvoksi nolla.
-     *
-     * @param endingTime Lopetusaika
-     */
-    public void setEndingTime(long endingTime) {
-        if (endingTime < 0) {
-            endingTime = 0;
-        }
-        this.endingTime = endingTime;
-    }
-
-    /**
-     * Asettaa delta -ajan. Jos määrä on negatiivinen, annetaan arvoksi nolla.
-     *
-     * @param deltaTime Delta -aika (lopetus - aloitus)
-     */
-    public void setDeltaTime(long deltaTime) {
-        if (deltaTime < 0) {
-            deltaTime = 0;
-        }
-        this.deltaTime = deltaTime;
-    }
-
     public long getCurrentTime() {
-        return System.currentTimeMillis() - startingTime;
+        return stopWatch.getCurrentMilliseconds();
     }
 
     /**
      * Aloita peli.
      */
     public void start() {
-        //Nykyinen aika
-        startingTime = System.currentTimeMillis();
+        //Nollaa sekuntikello ennen käynnistämistä
+        stopWatch.reset();
+        //Käynnistä sekuntikello
+        stopWatch.start();
 
         //Pisteytys
         value = 0;
@@ -161,8 +124,8 @@ public class Score {
      * Lopeta peli.
      */
     public void stop() {
-        endingTime = System.currentTimeMillis();
-        deltaTime = (endingTime - startingTime) / 1000;
+        //Pysäytä sekuntikello
+        stopWatch.stop();
     }
 
     /**
@@ -188,7 +151,7 @@ public class Score {
      */
     @Override
     public String toString() {
-        return "Pistemäärä: " + value + ", kerätyt kolikot: " + collectedCoins + ", tapetut hirviöt: " + defeatedMonsters + ", tason suoritukseen kulunut aika: " + deltaTime + "s"; //To change body of generated methods, choose Tools | Templates.
+        return "Pistemäärä: " + value + ", kerätyt kolikot: " + collectedCoins + ", tapetut hirviöt: " + defeatedMonsters + ", tason suoritukseen kulunut aika: " + stopWatch.getTotalSeconds() + "s"; //To change body of generated methods, choose Tools | Templates.
     }
 
 }

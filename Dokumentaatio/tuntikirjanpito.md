@@ -16,4 +16,5 @@ Päivä | Tunnit | Kuvaus
 7.02.2017 | 2h | Korjauttu törmäyksentunnistus ja lisätty ohjeistusta, että miten pelissä liikutaan.
 10.02.2017 | 3h | Luotu Animaatio -luokka sekä animaatioita lataava AnimationLoader. Lisäksi tehty kolikon pyörimisanimaatio Pyxel Edit -ohjelmiston avulla ja lisätty se peliin.
 11.02.2017 | 1h | Paranneltu kolikon pyörimisanimaatiota ja lisätty valmius pelaajan kävelemisanimaatioille.
+12.02.2017 | 1h | Siirretty sekuntikello omaksi luokakseen Score -luokasta. Lisäksi luotu Clock -rajapinta, joka mahdollistaa Sekuntikellon testauksen helposti.
 ... | ... | ...

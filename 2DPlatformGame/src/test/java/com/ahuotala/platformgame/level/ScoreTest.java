@@ -17,10 +17,8 @@
  */
 package com.ahuotala.platformgame.level;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.ahuotala.platformgame.utils.StopWatch;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,133 +29,75 @@ import org.junit.Test;
  */
 public class ScoreTest {
 
-    private Score s;
+    private Score score;
+    private StopWatch stopWatch;
 
     @Before
     public void init() {
-        s = new Score();
+        stopWatch = new StopWatch();
+        score = new Score(stopWatch);
     }
 
     @Test
     public void alkutilaOikein() {
-        assertEquals(0, s.getCollectedCoins());
-        assertEquals(0, s.getDefeatedMonsters());
-        assertEquals(0, s.getValue());
-        assertEquals(0, s.getStartingTime());
-        assertEquals(0, s.getEndingTime());
-        assertEquals(0, s.getDeltaTime());
-    }
-
-    @Test
-    public void aloitusOnnistuu() {
-        s.start();
-        assertTrue(s.getStartingTime() != 0);
+        assertEquals(0, score.getCollectedCoins());
+        assertEquals(0, score.getDefeatedMonsters());
+        assertEquals(0, score.getValue());
+        assertEquals(0, score.getDeltaTime());
     }
 
     @Test
     public void setteritToimivat() {
-        
+
         int r1 = 561;
         int r2 = 264;
-        int r3 = 127;
 
-        s.setCollectedCoins(r1);
-        assertEquals(r1, s.getCollectedCoins());
+        score.setCollectedCoins(r1);
+        assertEquals(r1, score.getCollectedCoins());
 
-        s.setCollectedCoins(-r1);
-        assertEquals(0, s.getCollectedCoins());
+        score.setCollectedCoins(-r1);
+        assertEquals(0, score.getCollectedCoins());
 
-        s.setCollectedCoins(0);
-        assertEquals(0, s.getCollectedCoins());
+        score.setCollectedCoins(0);
+        assertEquals(0, score.getCollectedCoins());
 
-        s.setDefeatedMonsters(r2);
-        assertEquals(r2, s.getDefeatedMonsters());
+        score.setDefeatedMonsters(r2);
+        assertEquals(r2, score.getDefeatedMonsters());
 
-        s.setDefeatedMonsters(-r2);
-        assertEquals(0, s.getDefeatedMonsters());
+        score.setDefeatedMonsters(-r2);
+        assertEquals(0, score.getDefeatedMonsters());
 
-        s.setDefeatedMonsters(0);
-        assertEquals(0, s.getDefeatedMonsters());
+        score.setDefeatedMonsters(0);
+        assertEquals(0, score.getDefeatedMonsters());
 
-        s.setDeltaTime(r3);
-        assertEquals(r3, s.getDeltaTime());
+        score.setValue(r1 * r2);
+        assertEquals(r1 * r2, score.getValue());
 
-        s.setDeltaTime(-r3);
-        assertEquals(0, s.getDeltaTime());
+        score.setValue(-(r1 * r2));
+        assertEquals(0, score.getValue());
 
-        s.setDeltaTime(0);
-        assertEquals(0, s.getDeltaTime());
-
-        s.setStartingTime(r3 * 2 + r2);
-        assertEquals(r3 * 2 + r2, s.getStartingTime());
-
-        s.setStartingTime(-(r3 * 2 + r2));
-        assertEquals(0, s.getStartingTime());
-
-        s.setStartingTime(0);
-        assertEquals(0, s.getStartingTime());
-
-        s.setEndingTime(r1 * 2 + r3);
-        assertEquals(r1 * 2 + r3, s.getEndingTime());
-
-        s.setEndingTime(-(r1 * 2 + r3));
-        assertEquals(0, s.getEndingTime());
-
-        s.setEndingTime(0);
-        assertEquals(0, s.getEndingTime());
-
-        s.setValue(r1 * r2);
-        assertEquals(r1 * r2, s.getValue());
-
-        s.setValue(-(r1 * r2));
-        assertEquals(0, s.getValue());
-
-        s.setValue(0);
-        assertEquals(0, s.getValue());
+        score.setValue(0);
+        assertEquals(0, score.getValue());
 
     }
 
     @Test
     public void pisteetKeraantyvatOikein() {
-        s.start();
+        score.start();
 
-        assertEquals(0, s.getCollectedCoins());
+        assertEquals(0, score.getCollectedCoins());
 
-        s.collectCoin();
-        assertEquals(50, s.getValue());
-        assertEquals(1, s.getCollectedCoins());
+        score.collectCoin();
+        assertEquals(50, score.getValue());
+        assertEquals(1, score.getCollectedCoins());
 
-        s.collectCoin();
-        assertEquals(100, s.getValue());
-        assertEquals(2, s.getCollectedCoins());
+        score.collectCoin();
+        assertEquals(100, score.getValue());
+        assertEquals(2, score.getCollectedCoins());
 
-        s.defeatMonster();
-        assertEquals(350, s.getValue());
-        assertEquals(1, s.getDefeatedMonsters());
-
-        //Asetetaan vielä kulunut aika
-        s.setDeltaTime(550);
-
-        assertEquals("Pistemäärä: 350, kerätyt kolikot: 2, tapetut hirviöt: 1, tason suoritukseen kulunut aika: 550s", s.toString());
-    }
-
-    @Test
-    public void lopetusOnnistuu() {
-
-        s.start();
-
-        try {
-            //Nukutaan hetki
-            Thread.sleep(1500);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ScoreTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        s.stop();
-
-        assertTrue(s.getStartingTime() > 0);
-        assertTrue(s.getEndingTime() > 0);
-        assertTrue(s.getDeltaTime() > 0);
+        score.defeatMonster();
+        assertEquals(350, score.getValue());
+        assertEquals(1, score.getDefeatedMonsters());
     }
 
 }

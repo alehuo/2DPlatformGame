@@ -39,6 +39,7 @@
                         <param>com.ahuotala.platformgame.level.Score</param>
                         <param>com.ahuotala.platformgame.graphics.Animation</param>
                         <param>com.ahuotala.platformgame.utils.FileReader</param>
+                        <param>com.ahuotala.platformgame.utils.StopWatch</param>
                     </targetClasses>
                     <targetTests>
                         <param>com.ahuotala.platformgame.entity.*</param>
