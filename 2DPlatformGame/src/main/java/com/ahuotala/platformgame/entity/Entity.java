@@ -17,6 +17,8 @@
  */
 package com.ahuotala.platformgame.entity;
 
+import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.utils.Tickable;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -28,7 +30,7 @@ import java.util.List;
  *
  * @author ahuotala
  */
-public abstract class Entity {
+public abstract class Entity implements Tickable {
 
     protected int x = 0;
     protected int y = 0;
@@ -55,7 +57,7 @@ public abstract class Entity {
     public Entity(int x, int y) {
         this.x = x;
         this.y = y;
-        bounds = new Rectangle(x, y, width, height);
+        bounds = new Rectangle(x, y, width * Game.SCALE, height * Game.SCALE);
     }
 
     public int getX() {
@@ -128,8 +130,8 @@ public abstract class Entity {
      * @param width Entiteetin leveys
      */
     public void setWidth(int width) {
-        this.width = width;
-        bounds.setSize(width, height);
+        this.width = width * Game.SCALE;
+        bounds.setSize(width * Game.SCALE, height);
     }
 
     public int getHeight() {
@@ -142,8 +144,8 @@ public abstract class Entity {
      * @param height Entiteetin korkeus
      */
     public void setHeight(int height) {
-        this.height = height;
-        bounds.setSize(width, height);
+        this.height = height * Game.SCALE;
+        bounds.setSize(width, height * Game.SCALE);
     }
 
     public Rectangle getBounds() {
@@ -193,6 +195,7 @@ public abstract class Entity {
      * Päivittää entiteetin, jos sille on tarve (Tämä metodi toteutetaan tarpeen
      * mukaan).
      */
+    @Override
     public abstract void tick();
 
 }

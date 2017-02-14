@@ -89,7 +89,7 @@ public class GameLevel {
             for (String line : fr.getLines()) {
 
                 //y-koordinaatti
-                int y = (Game.WINDOWHEIGHT - 62);
+                int y = (Game.WINDOWHEIGHT - 62 / Game.SCALE);
 
                 //Parsi tasot
                 String[] lineData = line.split(",", -1);
@@ -115,10 +115,10 @@ public class GameLevel {
                         tiles.add(t);
                     }
                     //Kasvata y:tä
-                    y -= 32;
+                    y -= 32 * Game.SCALE;
                 }
                 //Kasvata x:ää
-                x += 32;
+                x += 32 * Game.SCALE;
                 levelWidth = x;
             }
 

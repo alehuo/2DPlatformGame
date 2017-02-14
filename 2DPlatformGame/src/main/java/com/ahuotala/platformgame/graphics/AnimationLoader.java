@@ -20,6 +20,8 @@ package com.ahuotala.platformgame.graphics;
 import com.ahuotala.platformgame.utils.FileReader;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,28 +35,32 @@ public class AnimationLoader {
 
     private static final HashMap<String, Animation> ANIMATIONS = new HashMap();
 
+    private ArrayList<String> animationFiles;
+
     /**
      * AnimationLoader hakee animaatiotiedostot animations/ -kansiosta ja lisää
      * ne animaatiolistaan, joka on staattinen.
+     *
      */
     public AnimationLoader() {
+        animationFiles = new ArrayList();
+        animationFiles.add("coin.cfg");
 
         //ClassLoader
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
-        //Avataan kansio
-        File kansio = new File(cl.getResource("animations/.").getFile());
-
         int interval = 60;
 
         try {
+
+            //Avataan kansio
+//            File kansio = new File(URLDecoder.decode(cl.getResource("animations/.").getPath(), "UTF-8"));
             //Käydään tiedostot rivi riviltä läpi
-            for (File f : kansio.listFiles()) {
+            for (String tiedostoNimi : animationFiles) {
 
                 Animation animaatio = new Animation(interval);
 
-                String tiedostoNimi = f.getName();
-
+//                String tiedostoNimi = f.getName();
                 FileReader animationReader = new FileReader(cl.getResourceAsStream("animations/" + tiedostoNimi));
 
                 //Tässä käydään animaatiotiedosto rivi riviltä läpi

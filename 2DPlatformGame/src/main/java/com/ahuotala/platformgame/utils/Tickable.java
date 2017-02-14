@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 ahuotala
+ * Copyright (C) 2017 alehuo
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,11 +18,14 @@
 package com.ahuotala.platformgame.utils;
 
 /**
- * Tickable -rajapinnan perivät ne luokat joiden halutaan päivittävän logiikkaa.
+ * Tickable -rajapinta mahodllistaa entiteettien jne. päivittämisen.
  *
  * @author ahuotala
  */
 public interface Tickable {
 
-    void tick();
+    /**
+     * Tick-metodila päivitetään entiteettejä jne.
+     */
+    abstract void tick();
 }

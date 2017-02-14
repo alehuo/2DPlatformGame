@@ -42,6 +42,9 @@ public class Game implements Runnable {
     //Kehyksen korkeus
     public static final int WINDOWHEIGHT = 720;
 
+    //Pelin skaalaus
+    public static final int SCALE = 2;
+
     public static final int STARTINGOFFSET = WINDOWWIDTH / 2 - 64;
 
     //Kehyksen otsikko

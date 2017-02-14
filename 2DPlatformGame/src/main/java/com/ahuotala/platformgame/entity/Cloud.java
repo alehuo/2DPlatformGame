@@ -19,6 +19,7 @@ package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.graphics.Sprite;
+import com.ahuotala.platformgame.graphics.SpriteSheet;
 import java.awt.Graphics;
 
 /**
@@ -30,6 +31,9 @@ public class Cloud extends Entity {
 
     private Sprite sprite;
 
+    private final int cloudWidth = 128;
+    private final int cloudHeight = 64;
+
     /**
      * Konstruktori Pilvi-entiteetille
      *
@@ -38,12 +42,12 @@ public class Cloud extends Entity {
      */
     public Cloud(int x, int y) {
         super(x, y);
-        //Kolikko on 24x24 kokoinen (leveys x korkeus)
-        super.setWidth(64);
-        super.setHeight(32);
+        //Pilvi on 128x64 kokoinen (leveys x korkeus)
+        super.setWidth(cloudWidth);
+        super.setHeight(cloudHeight);
 
         //Ladataan sprite
-        sprite = Game.spr.getSprite("cloud");
+        sprite = SpriteSheet.getSprite("cloud");
     }
 
     /**
@@ -52,12 +56,12 @@ public class Cloud extends Entity {
      */
     public Cloud() {
         super(0, 0);
-        //Kolikko on 24x24 kokoinen (leveys x korkeus)
-        super.setWidth(64);
-        super.setHeight(32);
+        //Pilvi on 128x64 kokoinen (leveys x korkeus)
+        super.setWidth(cloudWidth);
+        super.setHeight(cloudHeight);
 
         //Ladataan sprite
-        sprite = Game.spr.getSprite("cloud");
+        sprite = SpriteSheet.getSprite("cloud");
     }
 
     /**
@@ -68,7 +72,7 @@ public class Cloud extends Entity {
     @Override
     public void render(Graphics g) {
         if (sprite != null && isVisible()) {
-            g.drawImage(sprite.getImage(), getX() - Player.offsetX, getY(), getWidth() * 2, getHeight() * 2, null);
+            g.drawImage(sprite.getImage(), getX() - Player.offsetX, getY(), getWidth(), getHeight(), null);
             drawBounds(g);
         }
     }
@@ -79,7 +83,7 @@ public class Cloud extends Entity {
      */
     @Override
     public void tick() {
-        getBounds().setBounds(getX() - Player.offsetX, getY(), getWidth() * 2, getHeight() * 2);
+        getBounds().setBounds(getX() - Player.offsetX, getY(), getWidth(), getHeight());
     }
 
 }

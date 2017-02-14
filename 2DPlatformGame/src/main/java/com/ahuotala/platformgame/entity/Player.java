@@ -57,10 +57,10 @@ public class Player extends Entity implements KeyListener {
         super.setHeight(32);
 
         //y-suunnassa tiputaan kolme yksikköä
-        super.setyMovement(3);
+        super.setyMovement(3 * Game.SCALE);
         super.setDy(super.getyMovement());
         //x-suunnassa napin painallus liikuttaa pelaajaa 4 yksikköä
-        super.setxMovement(4);
+        super.setxMovement(4 * Game.SCALE);
 
         wd = WalkingDirection.RIGHT;
     }
@@ -171,7 +171,7 @@ public class Player extends Entity implements KeyListener {
     @Override
     public void tick() {
         if (jumping && !falling) {
-            setY(getY() - 64);
+            setY(getY() - 64 * Game.SCALE);
             jumping = false;
             falling = true;
         }

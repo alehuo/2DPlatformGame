@@ -17,7 +17,6 @@
  */
 package com.ahuotala.platformgame.entity;
 
-import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.graphics.Sprite;
 import com.ahuotala.platformgame.graphics.SpriteSheet;
 import java.awt.Color;
@@ -70,7 +69,7 @@ public class Tile extends Entity {
         }
 
         //Piirrä tekstuuri
-        g.drawImage(sprite.getImage(), x - Player.offsetX, y, widthHeight, widthHeight, null);
+        g.drawImage(sprite.getImage(), x - Player.offsetX, y, getWidth(), getHeight(), null);
 
         //Piirrä rajat debuggausta varten
 //        drawBounds(g);
