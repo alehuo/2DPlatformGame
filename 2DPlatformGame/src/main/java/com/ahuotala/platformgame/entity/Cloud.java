@@ -17,9 +17,8 @@
  */
 package com.ahuotala.platformgame.entity;
 
-import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.graphics.Sprite;
-import com.ahuotala.platformgame.graphics.SpriteSheet;
+import com.ahuotala.platformgame.graphics.SpriteLoader;
 import java.awt.Graphics;
 
 /**
@@ -47,7 +46,7 @@ public class Cloud extends Entity {
         super.setHeight(cloudHeight);
 
         //Ladataan sprite
-        sprite = SpriteSheet.getSprite("cloud");
+        sprite = SpriteLoader.getSprite("cloud");
     }
 
     /**
@@ -61,7 +60,7 @@ public class Cloud extends Entity {
         super.setHeight(cloudHeight);
 
         //Ladataan sprite
-        sprite = SpriteSheet.getSprite("cloud");
+        sprite = SpriteLoader.getSprite("cloud");
     }
 
     /**

@@ -17,6 +17,7 @@ package com.ahuotala.platformgame.entity;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+import com.ahuotala.platformgame.Game;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import static org.junit.Assert.*;
@@ -48,7 +49,7 @@ public class EntityTest {
         assertEquals(x, entity.getX());
         assertEquals(y, entity.getY());
 
-        Rectangle r = new Rectangle(x, y, width, height);
+        Rectangle r = new Rectangle(x, y, width * Game.SCALE, height * Game.SCALE);
         assertEquals(r, entity.getBounds());
 
         assertTrue(entity.isVisible());
@@ -84,21 +85,21 @@ public class EntityTest {
     @Test
     public void asettaaKorkeudenOikein() {
         entity.setHeight(88);
-        assertEquals(88, entity.getHeight());
-        assertEquals(88, entity.getBounds().getHeight(), 1.0);
+        assertEquals(88 * Game.SCALE, entity.getHeight());
+        assertEquals(88 * Game.SCALE, entity.getBounds().getHeight(), 1.0);
         entity.setHeight(77);
-        assertEquals(77, entity.getHeight());
-        assertEquals(77, entity.getBounds().getHeight(), 1.0);
+        assertEquals(77 * Game.SCALE, entity.getHeight());
+        assertEquals(77 * Game.SCALE, entity.getBounds().getHeight(), 1.0);
     }
 
     @Test
     public void asettaaLeveydenOikein() {
         entity.setWidth(54);
-        assertEquals(54, entity.getWidth());
-        assertEquals(54, entity.getBounds().getWidth(), 1.0);
+        assertEquals(54 * Game.SCALE, entity.getWidth());
+        assertEquals(54 * Game.SCALE, entity.getBounds().getWidth(), 1.0);
         entity.setWidth(32);
-        assertEquals(32, entity.getWidth());
-        assertEquals(32, entity.getBounds().getWidth(), 1.0);
+        assertEquals(32 * Game.SCALE, entity.getWidth());
+        assertEquals(32 * Game.SCALE, entity.getBounds().getWidth(), 1.0);
     }
 
     @Test

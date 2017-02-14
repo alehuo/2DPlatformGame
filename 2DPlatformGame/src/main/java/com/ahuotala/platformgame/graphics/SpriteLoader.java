@@ -31,12 +31,12 @@ import javax.imageio.ImageIO;
  *
  * @author ahuotala
  */
-public class SpriteSheet {
+public class SpriteLoader {
 
     /**
      * Logger
      */
-    private static final Logger LOG = Logger.getLogger(SpriteSheet.class.getName());
+    private static final Logger LOG = Logger.getLogger(SpriteLoader.class.getName());
 
     /**
      * Spritesheet-tiedoston sijainti
@@ -44,7 +44,7 @@ public class SpriteSheet {
     public static final String SPRITESHEETPATH = "textures/spritesheet.png";
 
     /**
-     * SpriteSheet -kuva
+     * SpriteLoader -kuva
      */
     public static BufferedImage spriteSheet;
 
@@ -57,7 +57,7 @@ public class SpriteSheet {
      * Konstruktori lataa spritesheet -tiedoston muistiin.
      *
      */
-    public SpriteSheet() {
+    public SpriteLoader() {
 
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
@@ -102,11 +102,12 @@ public class SpriteSheet {
 
     /**
      * Palauttaa spriten
+     *
      * @param name Spriten nimi
      * @return Sprite
      */
     public static Sprite getSprite(String name) {
-        if (sprites.containsKey(name)) {
+        if (sprites != null && sprites.containsKey(name)) {
             return sprites.get(name);
         }
         return null;

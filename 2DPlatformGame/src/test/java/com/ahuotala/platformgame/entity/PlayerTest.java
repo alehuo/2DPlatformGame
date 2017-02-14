@@ -46,10 +46,10 @@ public class PlayerTest {
     public void alkutilaPelaajallaOikein() {
         assertEquals("X:ää ei aseteta oikein", Game.WINDOWWIDTH / 2, player.getX());
         assertEquals("Y:tä ei aseteta oikein", 0, player.getY());
-        assertEquals("Leveyttä ei aseteta oikein", 24, player.getWidth());
-        assertEquals("Pituutta ei aseteta oikein", 32, player.getHeight());
-        assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3, player.getyMovement());
-        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4, player.getxMovement());
+        assertEquals("Leveyttä ei aseteta oikein", 24 * Game.SCALE, player.getWidth());
+        assertEquals("Pituutta ei aseteta oikein", 32 * Game.SCALE, player.getHeight());
+        assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3 * Game.SCALE, player.getyMovement());
+        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4 * Game.SCALE, player.getxMovement());
     }
 
     @Test
@@ -71,17 +71,17 @@ public class PlayerTest {
     @Test
     public void asettaaKorkeudenOikein() {
         player.setHeight(88);
-        assertEquals(88, player.getHeight());
+        assertEquals(88 * Game.SCALE, player.getHeight());
         player.setHeight(77);
-        assertEquals(77, player.getHeight());
+        assertEquals(77 * Game.SCALE, player.getHeight());
     }
 
     @Test
     public void asettaaLeveydenOikein() {
         player.setWidth(54);
-        assertEquals(54, player.getWidth());
+        assertEquals(54 * Game.SCALE, player.getWidth());
         player.setWidth(32);
-        assertEquals(32, player.getWidth());
+        assertEquals(32 * Game.SCALE, player.getWidth());
     }
 
     @Test
@@ -184,5 +184,5 @@ public class PlayerTest {
         player.jump();
         assertEquals(player.getyMovement(), player.getDy());
     }
-    
+
 }

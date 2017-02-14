@@ -17,6 +17,7 @@
  */
 package com.ahuotala.platformgame.entity;
 
+import com.ahuotala.platformgame.Game;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,8 +38,8 @@ public class CloudTest {
 
     @Test
     public void alkutilaOikein() {
-        assertEquals(64, cloud.getWidth());
-        assertEquals(32, cloud.getHeight());
+        assertEquals(128 * Game.SCALE, cloud.getWidth());
+        assertEquals(64 * Game.SCALE, cloud.getHeight());
         assertEquals(0, cloud.getX());
         assertEquals(0, cloud.getY());
     }
@@ -48,7 +49,7 @@ public class CloudTest {
         Cloud cloud2 = new Cloud(42, 55);
         assertEquals(42, cloud2.getX());
         assertEquals(55, cloud2.getY());
-        assertEquals(64, cloud2.getWidth());
-        assertEquals(32, cloud2.getHeight());
+        assertEquals(128 * Game.SCALE, cloud2.getWidth());
+        assertEquals(64 * Game.SCALE, cloud2.getHeight());
     }
 }

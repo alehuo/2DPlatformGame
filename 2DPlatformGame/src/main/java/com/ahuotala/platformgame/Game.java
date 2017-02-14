@@ -19,7 +19,7 @@ package com.ahuotala.platformgame;
 
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.graphics.AnimationLoader;
-import com.ahuotala.platformgame.graphics.SpriteSheet;
+import com.ahuotala.platformgame.graphics.SpriteLoader;
 import com.ahuotala.platformgame.input.KeyHandler;
 import com.ahuotala.platformgame.level.GameLevel;
 import com.ahuotala.platformgame.ui.GamePanel;
@@ -51,7 +51,7 @@ public class Game implements Runnable {
     public static final String WINDOWTITLE = "2DPlatformGame";
 
     //Spritesheet
-    public static SpriteSheet spr = new SpriteSheet();
+    public static SpriteLoader spr = new SpriteLoader();
 
     public static AnimationLoader animationLoader = new AnimationLoader();
 

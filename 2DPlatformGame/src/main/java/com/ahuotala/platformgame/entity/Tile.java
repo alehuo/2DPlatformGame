@@ -18,7 +18,7 @@
 package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.graphics.Sprite;
-import com.ahuotala.platformgame.graphics.SpriteSheet;
+import com.ahuotala.platformgame.graphics.SpriteLoader;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -65,7 +65,7 @@ public class Tile extends Entity {
     @Override
     public void render(Graphics g) {
         if (sprite == null) {
-            sprite = SpriteSheet.getSprite(textureName);
+            sprite = SpriteLoader.getSprite(textureName);
         }
 
         //Piirrä tekstuuri

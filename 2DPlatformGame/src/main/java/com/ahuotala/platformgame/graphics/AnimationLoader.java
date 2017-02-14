@@ -75,7 +75,7 @@ public class AnimationLoader {
                     } else {
                         try {
                             String spriteName = rivi.trim();
-                            Sprite spr = SpriteSheet.getSprite(spriteName);
+                            Sprite spr = SpriteLoader.getSprite(spriteName);
                             if (spr != null) {
                                 animaatio.addFrame(spr);
                             }

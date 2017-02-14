@@ -17,6 +17,7 @@
  */
 package com.ahuotala.platformgame.entity;
 
+import com.ahuotala.platformgame.Game;
 import java.awt.Rectangle;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -40,18 +41,18 @@ public class TileTest {
     public void asettaaKoonOikein() {
         Player.offsetX = 0;
 
-        assertEquals(32, tile.getWidth());
-        assertEquals(32, tile.getBounds().getWidth(), 1.0);
-        assertEquals(32, tile.getHeight());
-        assertEquals(32, tile.getBounds().getHeight(), 1.0);
+        assertEquals(32 * Game.SCALE, tile.getWidth());
+        assertEquals(32 * Game.SCALE, tile.getBounds().getWidth(), 1.0);
+        assertEquals(32 * Game.SCALE, tile.getHeight());
+        assertEquals(32 * Game.SCALE, tile.getBounds().getHeight(), 1.0);
 
         tile.setWidth(55);
-        assertEquals(55, tile.getWidth());
-        assertEquals(55, tile.getBounds().getWidth(), 1.0);
+        assertEquals(55 * Game.SCALE, tile.getWidth());
+        assertEquals(55 * Game.SCALE, tile.getBounds().getWidth(), 1.0);
 
         tile.setHeight(52);
-        assertEquals(52, tile.getHeight());
-        assertEquals(52, tile.getBounds().getHeight(), 1.0);
+        assertEquals(52 * Game.SCALE, tile.getHeight());
+        assertEquals(52 * Game.SCALE, tile.getBounds().getHeight(), 1.0);
 
         assertEquals(16, tile.getBounds().getX(), 1.0);
         assertEquals(26, tile.getBounds().getY(), 1.0);

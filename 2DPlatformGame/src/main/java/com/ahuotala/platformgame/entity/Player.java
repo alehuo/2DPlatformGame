@@ -19,7 +19,7 @@ package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.graphics.Sprite;
-import com.ahuotala.platformgame.graphics.SpriteSheet;
+import com.ahuotala.platformgame.graphics.SpriteLoader;
 import com.ahuotala.platformgame.level.GameLevel;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -151,10 +151,10 @@ public class Player extends Entity implements KeyListener {
     @Override
     public void render(Graphics g) {
         if (left == null) {
-            left = SpriteSheet.getSprite("plr_left");
+            left = SpriteLoader.getSprite("plr_left");
         }
         if (right == null) {
-            right = SpriteSheet.getSprite("plr_right");
+            right = SpriteLoader.getSprite("plr_right");
         }
         g.setColor(Color.CYAN);
         if (wd == WalkingDirection.LEFT) {
