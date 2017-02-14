@@ -50,11 +50,6 @@ public class Game implements Runnable {
     //Kehyksen otsikko
     public static final String WINDOWTITLE = "2DPlatformGame";
 
-    //Spritesheet
-    public static SpriteLoader spr = new SpriteLoader();
-
-    public static AnimationLoader animationLoader = new AnimationLoader();
-
     //Logger
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
 

@@ -18,9 +18,7 @@
 package com.ahuotala.platformgame.graphics;
 
 import com.ahuotala.platformgame.utils.FileReader;
-import java.io.File;
 import java.io.IOException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -35,16 +33,16 @@ public class AnimationLoader {
 
     private static final HashMap<String, Animation> ANIMATIONS = new HashMap();
 
-    private ArrayList<String> animationFiles;
+    private static final String[] animationFiles = {"coin.cfg"};
+
+    private static boolean animationsLoaded = false;
 
     /**
      * AnimationLoader hakee animaatiotiedostot animations/ -kansiosta ja lisää
      * ne animaatiolistaan, joka on staattinen.
      *
      */
-    public AnimationLoader() {
-        animationFiles = new ArrayList();
-        animationFiles.add("coin.cfg");
+    private static void load() {
 
         //ClassLoader
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
@@ -53,14 +51,11 @@ public class AnimationLoader {
 
         try {
 
-            //Avataan kansio
-//            File kansio = new File(URLDecoder.decode(cl.getResource("animations/.").getPath(), "UTF-8"));
             //Käydään tiedostot rivi riviltä läpi
             for (String tiedostoNimi : animationFiles) {
 
                 Animation animaatio = new Animation(interval);
 
-//                String tiedostoNimi = f.getName();
                 FileReader animationReader = new FileReader(cl.getResourceAsStream("animations/" + tiedostoNimi));
 
                 //Tässä käydään animaatiotiedosto rivi riviltä läpi
@@ -89,6 +84,9 @@ public class AnimationLoader {
                 //Animaation luku valmis, lisätään se listaan
                 ANIMATIONS.put(tiedostoNimi.replace(".cfg", ""), animaatio);
             }
+
+            animationsLoaded = true;
+
         } catch (IOException ex) {
             Logger.getLogger(AnimationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -101,7 +99,10 @@ public class AnimationLoader {
      * @return Animaatio
      */
     public static Animation getAnimation(String name) {
-        if (ANIMATIONS.containsKey(name)) {
+        if (!animationsLoaded) {
+            load();
+        }
+        if (ANIMATIONS != null && ANIMATIONS.containsKey(name)) {
             return ANIMATIONS.get(name);
         }
         return null;

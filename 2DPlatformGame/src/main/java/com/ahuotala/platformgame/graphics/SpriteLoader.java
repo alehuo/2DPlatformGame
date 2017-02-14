@@ -53,11 +53,12 @@ public class SpriteLoader {
      */
     private static HashMap<String, Sprite> sprites;
 
+    private static boolean spritesLoaded = false;
+
     /**
-     * Konstruktori lataa spritesheet -tiedoston muistiin.
-     *
+     * Tämä metodi lataa spritet muistiin.
      */
-    public SpriteLoader() {
+    private static void load() {
 
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
@@ -94,7 +95,7 @@ public class SpriteLoader {
                 //Lisää tekstuuri sprites -listaan
                 sprites.put(name, tmpSprite);
             }
-
+            spritesLoaded = true;
         } catch (IOException | NumberFormatException e) {
             LOG.log(Level.SEVERE, null, e);
         }
@@ -107,6 +108,9 @@ public class SpriteLoader {
      * @return Sprite
      */
     public static Sprite getSprite(String name) {
+        if (!spritesLoaded) {
+            load();
+        }
         if (sprites != null && sprites.containsKey(name)) {
             return sprites.get(name);
         }
