@@ -21,10 +21,10 @@ import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.graphics.Sprite;
 import com.ahuotala.platformgame.graphics.SpriteLoader;
 import com.ahuotala.platformgame.level.GameLevel;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -41,8 +41,7 @@ public class Player extends Entity implements KeyListener {
 
     private WalkingDirection wd;
 
-    private Sprite left;
-    private Sprite right;
+    private HashMap<WalkingDirection, Sprite> sprites;
 
     /**
      * Konstruktori
@@ -52,6 +51,10 @@ public class Player extends Entity implements KeyListener {
      */
     public Player(int x, int y) {
         super(x, y);
+
+        //Alusta HashMap
+        sprites = new HashMap();
+
         //Pelaaja on 24x32 kokoinen (leveys x korkeus)
         super.setWidth(24);
         super.setHeight(32);
@@ -150,18 +153,13 @@ public class Player extends Entity implements KeyListener {
      */
     @Override
     public void render(Graphics g) {
-        if (left == null) {
-            left = SpriteLoader.getSprite("plr_left");
+        if (sprites.get(WalkingDirection.LEFT) == null) {
+            sprites.put(WalkingDirection.LEFT, SpriteLoader.getSprite("plr_left"));
         }
-        if (right == null) {
-            right = SpriteLoader.getSprite("plr_right");
+        if (sprites.get(WalkingDirection.RIGHT) == null) {
+            sprites.put(WalkingDirection.RIGHT, SpriteLoader.getSprite("plr_right"));
         }
-        g.setColor(Color.CYAN);
-        if (wd == WalkingDirection.LEFT) {
-            g.drawImage(left.getImage(), getX(), getY(), getWidth(), getHeight(), null);
-        } else {
-            g.drawImage(right.getImage(), getX(), getY(), getWidth(), getHeight(), null);
-        }
+        g.drawImage(sprites.get(wd).getImage(), getX(), getY(), getWidth(), getHeight(), null);
     }
 
     /**

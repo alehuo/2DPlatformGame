@@ -25,7 +25,8 @@ package com.ahuotala.platformgame.utils;
 public interface Tickable {
 
     /**
-     * Tick-metodila päivitetään entiteettejä jne.
+     * Päivittää entiteetin, jos sille on tarve (Tämä metodi toteutetaan tarpeen
+     * mukaan).
      */
     abstract void tick();
 }

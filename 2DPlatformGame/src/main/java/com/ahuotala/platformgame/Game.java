@@ -18,8 +18,6 @@
 package com.ahuotala.platformgame;
 
 import com.ahuotala.platformgame.entity.Player;
-import com.ahuotala.platformgame.graphics.AnimationLoader;
-import com.ahuotala.platformgame.graphics.SpriteLoader;
 import com.ahuotala.platformgame.input.KeyHandler;
 import com.ahuotala.platformgame.level.GameLevel;
 import com.ahuotala.platformgame.ui.GamePanel;

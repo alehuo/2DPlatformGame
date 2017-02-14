@@ -19,7 +19,6 @@ package com.ahuotala.platformgame.graphics;
 
 import com.ahuotala.platformgame.utils.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +32,10 @@ public class AnimationLoader {
 
     private static final HashMap<String, Animation> ANIMATIONS = new HashMap();
 
-    private static final String[] animationFiles = {"coin.cfg"};
+    /**
+     * Lisää tänne ladattavat animaatiotiedostot.
+     */
+    private static final String[] ANIMATIONFILES = {"coin.cfg"};
 
     private static boolean animationsLoaded = false;
 
@@ -52,7 +54,7 @@ public class AnimationLoader {
         try {
 
             //Käydään tiedostot rivi riviltä läpi
-            for (String tiedostoNimi : animationFiles) {
+            for (String tiedostoNimi : ANIMATIONFILES) {
 
                 Animation animaatio = new Animation(interval);
 

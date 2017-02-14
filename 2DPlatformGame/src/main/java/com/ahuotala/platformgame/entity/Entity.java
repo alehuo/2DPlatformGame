@@ -191,11 +191,4 @@ public abstract class Entity implements Tickable {
      */
     public abstract void render(Graphics g);
 
-    /**
-     * Päivittää entiteetin, jos sille on tarve (Tämä metodi toteutetaan tarpeen
-     * mukaan).
-     */
-    @Override
-    public abstract void tick();
-
 }
