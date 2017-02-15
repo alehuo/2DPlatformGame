@@ -38,6 +38,8 @@ public class Coin extends Entity {
     //Kolikon animaatio
     private Animation coinAnimation;
 
+    private int coinWidthHeight = 18;
+
     /**
      * Konstruktori
      *
@@ -46,9 +48,8 @@ public class Coin extends Entity {
      */
     public Coin(int x, int y) {
         super(x, y);
-        //Kolikko on 30x30 kokoinen (leveys x korkeus)
-        super.setWidth(30);
-        super.setHeight(30);
+        super.setWidth(coinWidthHeight);
+        super.setHeight(coinWidthHeight);
     }
 
     /**
@@ -56,8 +57,8 @@ public class Coin extends Entity {
      */
     public Coin() {
         super(0, 0);
-        super.setWidth(30);
-        super.setHeight(30);
+        super.setWidth(coinWidthHeight);
+        super.setHeight(coinWidthHeight);
     }
 
     /**
@@ -85,7 +86,7 @@ public class Coin extends Entity {
     @Override
     public void tick() {
 
-        int yDelta = 5 * Game.SCALE;
+        int yDelta = 5;
 
         if (coinAnimation != null) {
             coinAnimation.tick();

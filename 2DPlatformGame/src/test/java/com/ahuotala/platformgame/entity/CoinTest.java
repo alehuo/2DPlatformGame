@@ -31,8 +31,8 @@ public class CoinTest {
 
     private Coin coin;
 
-    private int coinWidth = 30;
-    private int coinHeight = 30;
+    private int coinWidth = 18;
+    private int coinHeight = 18;
 
     @Before
     public void setUp() {
