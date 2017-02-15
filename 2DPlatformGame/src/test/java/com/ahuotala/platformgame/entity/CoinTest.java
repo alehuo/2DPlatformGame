@@ -31,8 +31,7 @@ public class CoinTest {
 
     private Coin coin;
 
-    private int coinWidth = 18;
-    private int coinHeight = 18;
+    private final int coinWidthHeight = 18;
 
     @Before
     public void setUp() {
@@ -41,8 +40,8 @@ public class CoinTest {
 
     @Test
     public void alkutilaOikein() {
-        assertEquals(coinHeight * Game.SCALE, coin.getHeight());
-        assertEquals(coinWidth * Game.SCALE, coin.getWidth());
+        assertEquals(coinWidthHeight * Game.SCALE, coin.getHeight());
+        assertEquals(coinWidthHeight * Game.SCALE, coin.getWidth());
     }
 
     @Test
@@ -50,8 +49,8 @@ public class CoinTest {
         Coin coin2 = new Coin();
         assertEquals(0, coin2.getX());
         assertEquals(0, coin2.getY());
-        assertEquals(coinWidth * Game.SCALE, coin2.getWidth());
-        assertEquals(coinHeight * Game.SCALE, coin2.getHeight());
+        assertEquals(coinWidthHeight * Game.SCALE, coin2.getWidth());
+        assertEquals(coinWidthHeight * Game.SCALE, coin2.getHeight());
     }
 
     @Test
