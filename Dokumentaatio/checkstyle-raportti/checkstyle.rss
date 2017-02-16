@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 16,
-             Errors: 0,
+      <title>File: 19,
+             Errors: 9,
              Warnings: 0,
              Infos: 0
       </title>
@@ -69,6 +69,20 @@ under the License.
                   0
                 </td>
                 <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.utils.StopWatch.java">com/ahuotala/platformgame/utils/StopWatch.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
                   0
                 </td>
               </tr>
@@ -102,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.input.KeyHandler.java">com/ahuotala/platformgame/input/KeyHandler.java</a>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.graphics.SpriteLoader.java">com/ahuotala/platformgame/graphics/SpriteLoader.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.graphics.SpriteSheet.java">com/ahuotala/platformgame/graphics/SpriteSheet.java</a>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.input.KeyHandler.java">com/ahuotala/platformgame/input/KeyHandler.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +158,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.utils.Clock.java">com/ahuotala/platformgame/utils/Clock.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.entity.Entity.java">com/ahuotala/platformgame/entity/Entity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.utils.Tickable.java">com/ahuotala/platformgame/utils/Tickable.java</a>
                 </td>
                 <td>
                   0
@@ -181,7 +223,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  3
                 </td>
               </tr>
                           <tr>
