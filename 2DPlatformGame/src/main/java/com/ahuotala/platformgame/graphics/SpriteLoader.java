@@ -39,7 +39,9 @@ public class SpriteLoader {
     //Spritesheet-tiedoston sijainti
     private static final String SPRITESHEETPATH = "textures/spritesheet.png";
 
-    //Spritesheet-kuva
+    /**
+     * SpriteSheet.
+     */
     public static BufferedImage spriteSheet;
 
     //Yksittäiset spritet

@@ -30,11 +30,13 @@ import java.util.logging.Logger;
  */
 public class AnimationLoader {
 
+    //Animaatiot
     private static final HashMap<String, Animation> ANIMATIONS = new HashMap();
 
     //Lisää tänne ladattavat animaatiotiedostot.
     private static final String[] ANIMATIONFILES = {"coin.cfg"};
 
+    //Kertoo, onko animaatiot ladattu.
     private static boolean animationsLoaded = false;
 
     /**

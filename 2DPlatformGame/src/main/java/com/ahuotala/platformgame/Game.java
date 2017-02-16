@@ -34,19 +34,28 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class Game implements Runnable {
 
-    //Kehyksen leveys
+    /**
+     * Kehyksen leveys.
+     */
     public static final int WINDOWWIDTH = 1280;
 
-    //Kehyksen korkeus
+    /**
+     * Kehyksen korkeus.
+     */
     public static final int WINDOWHEIGHT = 720;
 
-    //Pelin skaalaus
+    /**
+     * Pelin skaalaus.
+     */
     public static final int SCALE = 2;
 
+    /**
+     * Aloitussiirtymä.
+     */
     public static final int STARTINGOFFSET = WINDOWWIDTH / 2 - 64;
 
     //Kehyksen otsikko
-    public static final String WINDOWTITLE = "2DPlatformGame";
+    private final String WINDOWTITLE = "2DPlatformGame";
 
     //Logger
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
@@ -141,16 +150,12 @@ public class Game implements Runnable {
         //Väliaika
         double delta = 0;
 
-        /*
-        Pelilooppi, mikä on riippumaton ruudunpäivitysnopeudesta.
-         */
+        //Pelilooppi, mikä on riippumaton ruudunpäivitysnopeudesta.
         while (running) {
 
             //Aika tällä hetkellä
             long now = System.nanoTime();
-
             delta += (now - lastTime) / tickInterval;
-
             lastTime = now;
 
             //Rajoita ruudunpäivitysnopeus asettamalla tähän "false"
