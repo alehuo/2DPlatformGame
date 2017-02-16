@@ -39,34 +39,26 @@ import java.util.logging.Logger;
  */
 public class GameLevel {
 
+    //Logger
     private static final Logger LOG = Logger.getLogger(GameLevel.class.getName());
 
+    //Tason leveys
     public static int levelWidth;
 
-    /**
-     * Tason entiteetit
-     */
+    //Tason entiteetit
     private List<Entity> entities;
 
-    /**
-     * Pelaaja
-     */
+    //Pelaaja
     private Player player;
 
-    /**
-     * Tason tiilit
-     */
+    //Tiilet
     private List<Entity> tiles;
 
-    /**
-     * Pisteytys
-     */
-    private Score score;
+    //Pistetytys
+    private final Score score;
 
-    /**
-     * Sekuntikello
-     */
-    private StopWatch stopWatch;
+    //Sekuntikello
+    private final StopWatch stopWatch;
 
     /**
      * Tasoluokka. Ladataan ensin tiilet ja sen jälkeen entiteetit muistiin.

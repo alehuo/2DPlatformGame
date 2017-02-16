@@ -26,12 +26,17 @@ import com.ahuotala.platformgame.utils.StopWatch;
  */
 public class Score {
 
+    //Kokonaispisteet
     private int value = 0;
 
+    //Kerätyt kolikot
     private int collectedCoins = 0;
+
+    //Tuhotut hirviöt
     private int defeatedMonsters = 0;
 
-    private StopWatch stopWatch;
+    //Sekuntikello
+    private final StopWatch stopWatch;
 
     /**
      * "Injektoidaan" sekuntikello pisteytykseen.

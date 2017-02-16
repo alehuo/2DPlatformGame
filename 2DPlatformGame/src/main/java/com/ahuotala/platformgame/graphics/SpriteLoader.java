@@ -33,26 +33,19 @@ import javax.imageio.ImageIO;
  */
 public class SpriteLoader {
 
-    /**
-     * Logger.
-     */
+    //Logger
     private static final Logger LOG = Logger.getLogger(SpriteLoader.class.getName());
 
-    /**
-     * Spritesheet-tiedoston sijainti.
-     */
-    public static final String SPRITESHEETPATH = "textures/spritesheet.png";
+    //Spritesheet-tiedoston sijainti
+    private static final String SPRITESHEETPATH = "textures/spritesheet.png";
 
-    /**
-     * SpriteLoader -kuva.
-     */
+    //Spritesheet-kuva
     public static BufferedImage spriteSheet;
 
-    /**
-     * Yksittäiset spritet.
-     */
+    //Yksittäiset spritet
     private static HashMap<String, Sprite> sprites;
 
+    //Kertoo, onko kaikki spritet ladattu
     private static boolean spritesLoaded = false;
 
     /**
@@ -61,7 +54,7 @@ public class SpriteLoader {
     private static void load() {
 
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
-        
+
         try {
 
             //Ladataan spritesheet-kuva

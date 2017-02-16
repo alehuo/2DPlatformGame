@@ -32,9 +32,7 @@ public class AnimationLoader {
 
     private static final HashMap<String, Animation> ANIMATIONS = new HashMap();
 
-    /**
-     * Lisää tänne ladattavat animaatiotiedostot.
-     */
+    //Lisää tänne ladattavat animaatiotiedostot.
     private static final String[] ANIMATIONFILES = {"coin.cfg"};
 
     private static boolean animationsLoaded = false;

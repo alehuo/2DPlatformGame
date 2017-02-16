@@ -32,14 +32,10 @@ import javax.swing.JPanel;
  */
 public class GamePanel extends JPanel {
 
-    /**
-     * SerialVersionUID.
-     */
+    //SerialVersionUID
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Taso.
-     */
+    //Taso
     private GameLevel level;
 
     /**
