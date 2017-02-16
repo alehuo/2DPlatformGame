@@ -19,6 +19,7 @@ package com.ahuotala.platformgame.level;
 
 import com.ahuotala.platformgame.utils.StopWatch;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,6 +41,7 @@ public class ScoreTest {
 
     @Test
     public void alkutilaOikein() {
+        assertTrue(stopWatch.currentMs() != 0);
         assertEquals(0, score.getCollectedCoins());
         assertEquals(0, score.getDefeatedMonsters());
         assertEquals(0, score.getValue());
@@ -54,6 +56,7 @@ public class ScoreTest {
 
         score.setCollectedCoins(r1);
         assertEquals(r1, score.getCollectedCoins());
+        assertTrue(score.getCollectedCoins() != 0);
 
         score.setCollectedCoins(-r1);
         assertEquals(0, score.getCollectedCoins());
@@ -63,6 +66,7 @@ public class ScoreTest {
 
         score.setDefeatedMonsters(r2);
         assertEquals(r2, score.getDefeatedMonsters());
+        assertTrue(score.getDefeatedMonsters() != 0);
 
         score.setDefeatedMonsters(-r2);
         assertEquals(0, score.getDefeatedMonsters());
@@ -72,11 +76,15 @@ public class ScoreTest {
 
         score.setValue(r1 * r2);
         assertEquals(r1 * r2, score.getValue());
+        assertTrue(score.getValue() != 0);
 
         score.setValue(-(r1 * r2));
         assertEquals(0, score.getValue());
 
         score.setValue(0);
+        assertEquals(0, score.getValue());
+
+        score.setValue(-8);
         assertEquals(0, score.getValue());
 
     }
@@ -98,6 +106,30 @@ public class ScoreTest {
         score.defeatMonster();
         assertEquals(350, score.getValue());
         assertEquals(1, score.getDefeatedMonsters());
+    }
+
+    @Test
+    public void kaynnistysJaPysaytysToimii() throws InterruptedException {
+        score.start();
+        assertEquals(0, score.getValue());
+        assertEquals(0, score.getCollectedCoins());
+        assertEquals(0, score.getDefeatedMonsters());
+        assertTrue(stopWatch.currentMs() != 0);
+        Thread.sleep(500);
+        long currentMilliseconds = System.currentTimeMillis();
+        stopWatch.currentMs(currentMilliseconds);
+        assertEquals(currentMilliseconds - stopWatch.getStartingTime(), score.getCurrentTime());
+        score.stop();
+        assertTrue(stopWatch.getTotalSeconds() > 0);
+        assertTrue(stopWatch.getEndingTime() != 0);
+
+        stopWatch.reset();
+        assertEquals(0, stopWatch.getStartingTime());
+        assertEquals(0, stopWatch.getEndingTime());
+        assertEquals(currentMilliseconds / 1000, stopWatch.getCurrentSeconds(), 1.0);
+        assertEquals(currentMilliseconds, stopWatch.getCurrentMilliseconds());
+        assertEquals(0, stopWatch.getTotalSeconds(), 1.0);
+        assertEquals(0, stopWatch.getTotalMilliseconds());
     }
 
 }

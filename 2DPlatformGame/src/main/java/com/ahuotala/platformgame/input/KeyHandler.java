@@ -22,7 +22,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * Näppäimistönkuuntelija
+ * Näppäimistönkuuntelija.
  *
  * @author ahuotala
  */
@@ -45,7 +45,7 @@ public class KeyHandler implements KeyListener {
     }
 
     /**
-     * Kun näppäintä painetaan, lähetetään KeyPressed-tapahtuma pelaajalle
+     * Kun näppäintä painetaan, lähetetään KeyPressed-tapahtuma pelaajalle.
      *
      * @param e KeyEvent
      */
@@ -57,7 +57,7 @@ public class KeyHandler implements KeyListener {
     }
 
     /**
-     * Kun näppäin nostetaan, lähetetään KeyReleased-tapahtuma pelaajalle
+     * Kun näppäin nostetaan, lähetetään KeyReleased-tapahtuma pelaajalle.
      *
      * @param e
      */

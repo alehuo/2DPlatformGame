@@ -36,7 +36,7 @@ public class FileReader {
     private final ArrayList<String> lines;
 
     /**
-     * FileReader -luokka lataa tiedoston rivi riviltä muistiin
+     * FileReader -luokka lataa tiedoston rivi riviltä muistiin.
      *
      * @param in InputStream -objekti
      * @throws IOException
@@ -63,10 +63,11 @@ public class FileReader {
     }
 
     /**
-     * FileReader -luokka lataa tiedoston rivi riviltä muistiin
+     * FileReader -luokka lataa tiedoston rivi riviltä muistiin.
      *
      * @param filename Tiedostonimi
      * @throws FileNotFoundException
+     * @throws IOException
      */
     public FileReader(String filename) throws FileNotFoundException, IOException {
         //Alusta lista
@@ -88,7 +89,7 @@ public class FileReader {
     }
 
     /**
-     * Palauttaa luetut rivit
+     * Palauttaa luetut rivit.
      *
      * @return Luetut rivit
      */

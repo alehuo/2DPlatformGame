@@ -17,7 +17,6 @@
  */
 package com.ahuotala.platformgame.entity;
 
-import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.graphics.Animation;
 import com.ahuotala.platformgame.graphics.AnimationLoader;
 import java.awt.Color;
@@ -25,7 +24,7 @@ import java.awt.Graphics;
 import java.util.Random;
 
 /**
- * Kolikko-entiteetin luokka
+ * Kolikko-entiteetin luokka.
  *
  * @author ahuotala
  */
@@ -41,7 +40,7 @@ public class Coin extends Entity {
     private int coinWidthHeight = 18;
 
     /**
-     * Konstruktori
+     * Konstruktori.
      *
      * @param x x-koordinaatti
      * @param y y-koordinaatti
@@ -62,7 +61,7 @@ public class Coin extends Entity {
     }
 
     /**
-     * Piirtää kolikon näytölle
+     * Piirtää kolikon näytölle.
      *
      * @param g Graphics -objekti
      */
@@ -80,8 +79,7 @@ public class Coin extends Entity {
     }
 
     /**
-     * Päivittää kolikon. - Saa kolikon "hyppimään" ruudulla - Päivittää
-     * animaatiota
+     * Päivittää kolikon saaden sen "hyppimään" ruudulla.
      */
     @Override
     public void tick() {

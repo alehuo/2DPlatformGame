@@ -23,7 +23,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
- * Tiili -luokka
+ * Tiili -luokka.
  *
  * @author ahuotala
  */
@@ -36,7 +36,7 @@ public class Tile extends Entity {
     private Sprite sprite;
 
     /**
-     * Konstruktori
+     * Konstruktori.
      *
      * @param x x-koordinaatti
      * @param y y-koordinaatti
@@ -58,7 +58,7 @@ public class Tile extends Entity {
     }
 
     /**
-     * Piirrä tiili
+     * Piirrä tiili.
      *
      * @param g
      */
@@ -87,7 +87,7 @@ public class Tile extends Entity {
     }
 
     /**
-     * Päivitä rajat
+     * Päivitä rajat.
      */
     public void updateBounds() {
         super.getBounds().setLocation(x - Player.offsetX, y);

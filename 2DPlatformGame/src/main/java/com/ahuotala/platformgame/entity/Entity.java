@@ -49,7 +49,7 @@ public abstract class Entity implements Tickable {
     protected boolean visible = true;
 
     /**
-     * Entiteetin konstruktori
+     * Entiteetin konstruktori.
      *
      * @param x x-koordinaatti
      * @param y y-koordinaatti
@@ -65,9 +65,9 @@ public abstract class Entity implements Tickable {
     }
 
     /**
-     * Asettaa x-koordinaatin ja päivittää samalla rajat
+     * Asettaa x-koordinaatin ja päivittää samalla rajat.
      *
-     * @param x-koordinaatti
+     * @param x x-koordinaatti
      */
     public void setX(int x) {
         this.x = x;
@@ -79,9 +79,9 @@ public abstract class Entity implements Tickable {
     }
 
     /**
-     * Asettaa y-koordinaatin ja päivittää samalla rajat
+     * Asettaa y-koordinaatin ja päivittää samalla rajat.
      *
-     * @param y-koordinaatti
+     * @param y y-koordinaatti
      */
     public void setY(int y) {
         this.y = y;
@@ -125,7 +125,7 @@ public abstract class Entity implements Tickable {
     }
 
     /**
-     * Asettaa entiteetin leveyden ja päivittää samalla rajat
+     * Asettaa entiteetin leveyden ja päivittää samalla rajat.
      *
      * @param width Entiteetin leveys
      */
@@ -139,7 +139,7 @@ public abstract class Entity implements Tickable {
     }
 
     /**
-     * Asettaa entiteetin korkeuden ja päivittää samalla rajat
+     * Asettaa entiteetin korkeuden ja päivittää samalla rajat.
      *
      * @param height Entiteetin korkeus
      */
@@ -164,7 +164,7 @@ public abstract class Entity implements Tickable {
      * Palauttaa törmäävätkö entiteetit.
      *
      * @param e Entiteetti
-     * @return
+     * @return Törmäävätkö entiteetit
      */
     public boolean collides(Entity e) {
         return visible && e.getBounds().intersects(getBounds());
@@ -175,7 +175,7 @@ public abstract class Entity implements Tickable {
     }
 
     /**
-     * Piirtää entiteetin rajat näytölle
+     * Piirtää entiteetin rajat näytölle.
      *
      * @param g Graphics -objekti
      */

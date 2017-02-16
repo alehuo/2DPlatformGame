@@ -19,11 +19,22 @@ package com.ahuotala.platformgame.utils;
 
 /**
  * Clock -rajapintaa käytetään helpottamaan sekuntikellon testausta.
+ *
  * @author ahuotala
  */
 public interface Clock {
 
+    /**
+     * Palauttaa nykyisen aikaleiman.
+     *
+     * @return Aikaleima
+     */
     long currentMs();
 
+    /**
+     * Asettaa nykyisen aikaleiman.
+     *
+     * @param currentMs Aikaleima
+     */
     void currentMs(long currentMs);
 }

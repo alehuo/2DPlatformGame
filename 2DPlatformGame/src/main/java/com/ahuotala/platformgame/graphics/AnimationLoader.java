@@ -95,7 +95,7 @@ public class AnimationLoader {
     }
 
     /**
-     * Hakee animaation
+     * Hakee animaation.
      *
      * @param name Animaation nimi (ilman .cfg -päätettä)
      * @return Animaatio

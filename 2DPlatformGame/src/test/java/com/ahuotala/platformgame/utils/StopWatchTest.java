@@ -26,6 +26,7 @@ import org.junit.Test;
 
 /**
  * Sekuntikellon testaukseen käytetyt luokat
+ *
  * @author alehuo
  */
 public class StopWatchTest {
@@ -110,6 +111,18 @@ public class StopWatchTest {
 
         assertEquals(2.0 * delta / 1000, s.getTotalSeconds(), 1.0);
         assertTrue(s.getTotalSeconds() > 0);
+    }
+
+    @Test
+    public void setteritToimivat() {
+        s.setRunning(false);
+        assertFalse(s.isRunning());
+        s.setRunning(true);
+        assertTrue(s.isRunning());
+        s.setStartingTime(555);
+        assertEquals(555, s.getStartingTime());
+        s.setEndingTime(5555);
+        assertEquals(5555, s.getEndingTime());
     }
 
     public void updateCurrentMs() {

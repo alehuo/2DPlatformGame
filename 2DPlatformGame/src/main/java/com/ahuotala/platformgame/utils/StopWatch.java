@@ -18,7 +18,7 @@
 package com.ahuotala.platformgame.utils;
 
 /**
- * Sekuntikello
+ * Sekuntikello.
  *
  * @author ahuotala
  */
@@ -29,6 +29,9 @@ public class StopWatch implements Clock, Tickable {
     private long currentMs;
     private boolean running;
 
+    /**
+     * Sekuntikellon konstruktori.
+     */
     public StopWatch() {
         startingTime = 0;
         endingTime = 0;
@@ -36,7 +39,7 @@ public class StopWatch implements Clock, Tickable {
     }
 
     /**
-     * Käynnistää sekuntikellon
+     * Käynnistää sekuntikellon.
      */
     public void start() {
         if (!running) {
@@ -46,7 +49,7 @@ public class StopWatch implements Clock, Tickable {
     }
 
     /**
-     * Pysäyttää sekuntikellon
+     * Pysäyttää sekuntikellon.
      */
     public void stop() {
         if (running) {
@@ -56,7 +59,7 @@ public class StopWatch implements Clock, Tickable {
     }
 
     /**
-     * Nollaa sekuntikellon
+     * Nollaa sekuntikellon.
      */
     public void reset() {
         startingTime = 0;
@@ -65,7 +68,7 @@ public class StopWatch implements Clock, Tickable {
     }
 
     /**
-     * Palauttaa käynnissä olevan kellon kuluneen ajan
+     * Palauttaa käynnissä olevan kellon kuluneen ajan.
      *
      * @return Kulunut aika sekunteina
      */
@@ -74,7 +77,7 @@ public class StopWatch implements Clock, Tickable {
     }
 
     /**
-     * Palauttaa käynnissä olevan kellon kuluneen ajan
+     * Palauttaa käynnissä olevan kellon kuluneen ajan.
      *
      * @return Kulunut aika millisekunteina
      */

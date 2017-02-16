@@ -50,6 +50,7 @@ public class PlayerTest {
         assertEquals("Pituutta ei aseteta oikein", 32 * Game.SCALE, player.getHeight());
         assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3 * Game.SCALE, player.getyMovement());
         assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4 * Game.SCALE, player.getxMovement());
+        assertEquals("Y-suuntaista putoamista ei aseteta oikein", 3 * Game.SCALE, player.getDy());
     }
 
     @Test

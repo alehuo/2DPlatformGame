@@ -34,7 +34,7 @@ public class Score {
     private StopWatch stopWatch;
 
     /**
-     * "Injektoidaan" sekuntikello pisteytykseen
+     * "Injektoidaan" sekuntikello pisteytykseen.
      *
      * @param s Sekuntikello
      */

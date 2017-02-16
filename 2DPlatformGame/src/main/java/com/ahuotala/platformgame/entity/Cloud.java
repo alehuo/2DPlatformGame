@@ -22,7 +22,7 @@ import com.ahuotala.platformgame.graphics.SpriteLoader;
 import java.awt.Graphics;
 
 /**
- * Pilvi -entiteetti
+ * Pilvi -entiteetti.
  *
  * @author ahuotala
  */
@@ -34,7 +34,7 @@ public class Cloud extends Entity {
     private final int cloudHeight = 64;
 
     /**
-     * Konstruktori Pilvi-entiteetille
+     * Konstruktori Pilvi-entiteetille.
      *
      * @param x x-koordinaatti
      * @param y y-koordinaatti
@@ -64,7 +64,7 @@ public class Cloud extends Entity {
     }
 
     /**
-     * Piirtää pilven ruudulle
+     * Piirtää pilven ruudulle.
      *
      * @param g
      */

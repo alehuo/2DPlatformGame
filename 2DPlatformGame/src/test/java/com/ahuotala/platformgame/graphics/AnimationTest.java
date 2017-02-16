@@ -83,4 +83,10 @@ public class AnimationTest {
 
         assertNotNull(ani.currentFrame());
     }
+
+    @Test
+    public void intervalToimii() {
+        ani.setInterval(55);
+        assertEquals(55, ani.getInterval());
+    }
 }

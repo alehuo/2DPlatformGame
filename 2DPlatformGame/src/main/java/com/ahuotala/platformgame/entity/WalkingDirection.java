@@ -18,7 +18,7 @@
 package com.ahuotala.platformgame.entity;
 
 /**
- * Pelaajan kävelemisen suunta
+ * Pelaajan kävelemisen suunta.
  *
  * @author ahuotala
  */

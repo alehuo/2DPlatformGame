@@ -26,35 +26,41 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
- * Pelipaneeli piirtää tason, entiteetit sekä pelaajan
+ * Pelipaneeli piirtää tason, entiteetit sekä pelaajan.
  *
  * @author ahuotala
  */
 public class GamePanel extends JPanel {
 
     /**
-     * SerialVersionUID
+     * SerialVersionUID.
      */
     private static final long serialVersionUID = 1L;
 
-    //Taso
+    /**
+     * Taso.
+     */
     private GameLevel level;
 
+    /**
+     * Pelipaneelin konstruktori.
+     */
     public GamePanel() {
         super();
     }
 
     /**
-     * Aseta taso
+     * Aseta pelitaso pelipaneeliin, jotta sen entiteetit voidaan piirtää
+     * näytölle (ja päivittää niitä).
      *
-     * @param level
+     * @param level pelitaso
      */
     public void setLevel(GameLevel level) {
         this.level = level;
     }
 
     /**
-     * Tätä käytetään piirtämiseen
+     * Tätä käytetään piirtämiseen.
      *
      * @param g
      */

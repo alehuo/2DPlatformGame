@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Pelaaja -luokka
+ * Pelaaja -luokka.
  *
  * @author ahuotala
  */
@@ -44,7 +44,7 @@ public class Player extends Entity implements KeyListener {
     private HashMap<WalkingDirection, Sprite> sprites;
 
     /**
-     * Konstruktori
+     * Konstruktori.
      *
      * @param x x-koordinaatti
      * @param y y-koordinaatti
@@ -191,18 +191,18 @@ public class Player extends Entity implements KeyListener {
             }
         }
 
-        offsetX = offsetX + getDx();
+        offsetX += getDx();
 
         //Estetään pelaajan liikkuminen kartan rajojen yli
         if (getX() - Game.STARTINGOFFSET + offsetX < 0 || getX() - Game.STARTINGOFFSET + offsetX > GameLevel.levelWidth - Game.STARTINGOFFSET - getWidth()) {
-            offsetX = offsetX - getDx();
+            offsetX -= getDx();
         }
 
         for (Entity tile : tiles) {
             //Päivitä tiilen sijainti (Tämä kuitenkin rikkoo Single responsibility -periaatetta)
             ((Tile) tile).updateBounds();
             if (tile.collides(this)) {
-                offsetX = offsetX - getDx();
+                offsetX -= getDx();
                 break;
             }
         }

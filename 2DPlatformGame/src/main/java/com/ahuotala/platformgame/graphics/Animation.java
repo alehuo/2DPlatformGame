@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Animaatio -luokka
+ * Animaatio -luokka.
  *
  * @author ahuotala
  */
@@ -33,7 +33,7 @@ public class Animation {
     private int count = 0;
 
     /**
-     * Animaatio
+     * Animaatio.
      *
      * @param interval Aika kehysten välillä
      */
@@ -43,7 +43,7 @@ public class Animation {
     }
 
     /**
-     * Lisää kehyksen listaan
+     * Lisää kehyksen listaan.
      *
      * @param sprite Kehys
      */
@@ -53,7 +53,7 @@ public class Animation {
     }
 
     /**
-     * Palauttaa nykyisen kehyksen
+     * Palauttaa nykyisen kehyksen.
      *
      * @return Nykyinen kehys
      */
@@ -71,7 +71,7 @@ public class Animation {
 
     /**
      * Kasvattaa indeksiä yhdellä (ja siirtyy nollaan, jos kehyksen indeksi on
-     * suurin mahdollinen.)
+     * suurin mahdollinen).
      */
     public void nextIndex() {
         if (index == frames.size() - 1) {
@@ -82,13 +82,17 @@ public class Animation {
     }
 
     /**
-     * Asettaa kehyksen aikavälin nollaten laskurin
+     * Asettaa kehyksen aikavälin nollaten laskurin.
      *
      * @param interval Kehyksen aikaväli
      */
     public void setInterval(int interval) {
         this.interval = interval;
         count = 0;
+    }
+
+    public int getInterval() {
+        return interval;
     }
 
     /**

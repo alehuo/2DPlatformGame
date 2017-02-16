@@ -10,10 +10,10 @@ jollain kuvankäsittelyohjelmalla piirrettyjä kuvia. Tekstuurien ja animaatioiden
 	Liikkumiseen pelissä käytetään A- ja D -näppäintä sekä välilyöntiä, jolla pelaaja hyppää.
 **Käyttäjät:** Peliä käyttää vain yksi käyttäjä ja lisäksi pelissä on tietokoneohjattuja hirviöitä.
 
-## Kaikkien käyttäjien toiminnot
+### Kaikkien käyttäjien toiminnot & käyttötapaukset
 * Liikkuminen (eteen, taakse, hyppy)
 * Kolikoiden kerääminen
 * Hirviöiden tappaminen
 
-## Luokkakaavio
+### Luokkakaavio
 ![luokkakaavio](Luokkakaavio.png)

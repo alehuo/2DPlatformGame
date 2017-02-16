@@ -54,7 +54,7 @@ public class Game implements Runnable {
     /**
      * Main -metodi aloittaa uuden pelin.
      *
-     * @param args
+     * @param args Console-käskyt
      */
     public static void main(String[] args) {
         Game g = new Game();
@@ -74,8 +74,7 @@ public class Game implements Runnable {
     private boolean running;
 
     /**
-     * Konstruktori, missä luodaan kehys ja luodaan sekä pelaaja että
-     * pelipaneeli
+     * Konstruktori, missä luodaan sekä kehys, pelaaja että pelipaneeli.
      */
     public Game() {
         //Luo kehys

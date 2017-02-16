@@ -34,22 +34,22 @@ import javax.imageio.ImageIO;
 public class SpriteLoader {
 
     /**
-     * Logger
+     * Logger.
      */
     private static final Logger LOG = Logger.getLogger(SpriteLoader.class.getName());
 
     /**
-     * Spritesheet-tiedoston sijainti
+     * Spritesheet-tiedoston sijainti.
      */
     public static final String SPRITESHEETPATH = "textures/spritesheet.png";
 
     /**
-     * SpriteLoader -kuva
+     * SpriteLoader -kuva.
      */
     public static BufferedImage spriteSheet;
 
     /**
-     * Yksittäiset spritet
+     * Yksittäiset spritet.
      */
     private static HashMap<String, Sprite> sprites;
 
@@ -61,7 +61,7 @@ public class SpriteLoader {
     private static void load() {
 
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
-
+        
         try {
 
             //Ladataan spritesheet-kuva
@@ -102,7 +102,7 @@ public class SpriteLoader {
     }
 
     /**
-     * Palauttaa spriten
+     * Palauttaa spriten.
      *
      * @param name Spriten nimi
      * @return Sprite
