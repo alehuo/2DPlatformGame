@@ -55,7 +55,7 @@ public class Game implements Runnable {
     public static final int STARTINGOFFSET = WINDOWWIDTH / 2 - 64;
 
     //Kehyksen otsikko
-    private final String WINDOWTITLE = "2DPlatformGame";
+    private final String windowTitle = "2DPlatformGame";
 
     //Logger
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
@@ -87,7 +87,7 @@ public class Game implements Runnable {
      */
     public Game() {
         //Luo kehys
-        frame = new JFrame(WINDOWTITLE);
+        frame = new JFrame(windowTitle);
         frame.setPreferredSize(new Dimension(WINDOWWIDTH, WINDOWHEIGHT));
         frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -188,7 +188,7 @@ public class Game implements Runnable {
 
             if (System.currentTimeMillis() - lastTimer >= interval) {
                 lastTimer += interval;
-                frame.setTitle(WINDOWTITLE + " (" + frames + " fps, " + ticks + " ticks)");
+                frame.setTitle(windowTitle + " (" + frames + " fps, " + ticks + " ticks)");
                 frames = 0;
                 ticks = 0;
             }
