@@ -7,10 +7,10 @@ Pelaaja saa pisteitä kerätessään kolikoita sekä menettää "healthia" jos hän epäo
 Lisäksi tason suoritusaika, kerätyt kolikot sekä tuhotut hirviöt (Hirviöt pystyy tuhoamaan hyppäämällä niiden päälle)
 vaikuttavat loppupisteytykseen. Kun käyttäjä on suorittanut tason, peli loppuu. Pelin loputtua pelaajan loppupisteet näytetään näytöllä.
 	
-	Pelissä on myös tarkoitus olla tekstuureja sekä tekstuureista koostuvia animaatioita (esim. kolikon pyörittäminen ja pelaajan kävely). Näitä varten tarvitaan konfiguraatiotiedostoja sekä
+Pelissä on myös tarkoitus olla tekstuureja sekä tekstuureista koostuvia animaatioita (esim. kolikon pyörittäminen ja pelaajan kävely). Näitä varten tarvitaan konfiguraatiotiedostoja sekä
 jollain kuvankäsittelyohjelmalla piirrettyjä kuvia. Tekstuurien ja animaatioiden suunnittelussa käytetään Pyxel Edit -ohjelmistoa.
 	
-	Liikkumiseen pelissä käytetään A- ja D -näppäintä sekä välilyöntiä, jolla pelaaja hyppää.
+Liikkumiseen pelissä käytetään A- ja D -näppäintä sekä välilyöntiä, jolla pelaaja hyppää.
 
 	
 **Käyttäjät:** Peliä käyttää vain yksi käyttäjä ja lisäksi pelissä on tietokoneohjattuja hirviöitä.
