@@ -20,4 +20,5 @@ Päivä | Tunnit | Kuvaus
 14.02.2017 | 0.5h | Tehty pelaajalle tekstuurit
 15.02.2017 | 1.5h | Päivitetty luokkien testejä ja lisätty mahdollisuus skaalata peliä.
 16.02.2017 | 1h | Paranneltu testejä rivikattavuuden ja mutaatioiden osalta.
+17.02.2017 | 1h | Päivitetty Javadoccia, Checkstyle- ja Pit- raportit sekä luotu Monster ja MonsterAi -luokat (Luokkia ei ole vielä liitetty mihinkään).
 ... | ... | ...
