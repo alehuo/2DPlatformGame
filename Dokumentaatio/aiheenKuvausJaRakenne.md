@@ -1,5 +1,7 @@
 ### Aiheen kuvaus ja rakenne
 **Aihe:** Projektin aiheena on Super Mario Bros -tyylinen tasohyppelypeli.
+
+
 Pelissä tulee olemaan yksi taso, joka sisältää hirviöitä ja kerättäviä kolikoita.
 Pelaaja saa pisteitä kerätessään kolikoita sekä menettää "healthia" jos hän epäonnistuu väistämään monstereita.
 Lisäksi tason suoritusaika, kerätyt kolikot sekä tuhotut hirviöt (Hirviöt pystyy tuhoamaan hyppäämällä niiden päälle)
