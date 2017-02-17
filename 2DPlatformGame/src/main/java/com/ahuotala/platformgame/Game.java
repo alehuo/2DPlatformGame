@@ -54,8 +54,6 @@ public class Game implements Runnable {
      */
     public static final int STARTINGOFFSET = WINDOWWIDTH / 2 - 64;
 
-    //Kehyksen otsikko
-    private final String windowTitle = "2DPlatformGame";
 
     //Logger
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
@@ -69,6 +67,9 @@ public class Game implements Runnable {
         Game g = new Game();
         g.start();
     }
+    
+    //Kehyksen otsikko
+    private final String windowTitle = "2DPlatformGame";
 
     //JFrame
     private final JFrame frame;
