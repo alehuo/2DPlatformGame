@@ -28,13 +28,16 @@ Liikkumiseen pelissä käytetään A- ja D -näppäintä sekä välilyöntiä, jolla pelaaj
 
 ## Pelin alustus ja peliloopin toiminta
 ![Peliloopin toiminta](sekvenssikaavio_peliloopin_toiminta.png)
+
 Kaavio näyttää, miten pelin käynnistyminen tapahtuu ja mitä pelilooppi tekee pelin pyöriessä.
 
 ## Pelaajan liikkuminen
 ![Pelaajan liikkuminen](sekvenssikaavio_pelaajan_liikkuminen.png)
+
 Kaavio sisältää pelaajan liikkumisen alkaen näppäimen painalluksesta peliloopin käsittelemään liikkumistoiminnallisuuteen.
 Myös näppäimen päästäminen pohjasta on mallinnettu.
 
 ## Kolikoiden kerääminen
 ![Kolikoiden kerääminen](sekvenssikaavio_kolikoiden_keraaminen.png)
+
 Kaavio näyttää, miten kolikoita kerätään pelissä. Koodinpätkä on itse asiassa peliloopin sisällä (Ylimmässä luokkakaaviossa, joka kuvaa peliloopin toimintaa, on jätetty pois kolikoiden kerääminen selvyyden takia).
