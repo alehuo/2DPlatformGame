@@ -63,7 +63,7 @@ public class Game implements Runnable {
     /**
      * Main -metodi aloittaa uuden pelin.
      *
-     * @param args Console-käskyt
+     * @param args args
      */
     public static void main(String[] args) {
         Game g = new Game();

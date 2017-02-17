@@ -112,19 +112,19 @@
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>         <strong class="jxr_keyword">this</strong>.dy = dy;
 <a class="jxr_linenumber" name="L105" href="#L105">105</a>     }
 <a class="jxr_linenumber" name="L106" href="#L106">106</a> 
-<a class="jxr_linenumber" name="L107" href="#L107">107</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getxMovement() {
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getXMovement() {
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>         <strong class="jxr_keyword">return</strong> xMovement;
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>     }
 <a class="jxr_linenumber" name="L110" href="#L110">110</a> 
-<a class="jxr_linenumber" name="L111" href="#L111">111</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setxMovement(<strong class="jxr_keyword">int</strong> xMovement) {
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setXMovement(<strong class="jxr_keyword">int</strong> xMovement) {
 <a class="jxr_linenumber" name="L112" href="#L112">112</a>         <strong class="jxr_keyword">this</strong>.xMovement = xMovement;
 <a class="jxr_linenumber" name="L113" href="#L113">113</a>     }
 <a class="jxr_linenumber" name="L114" href="#L114">114</a> 
-<a class="jxr_linenumber" name="L115" href="#L115">115</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getyMovement() {
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getYMovement() {
 <a class="jxr_linenumber" name="L116" href="#L116">116</a>         <strong class="jxr_keyword">return</strong> yMovement;
 <a class="jxr_linenumber" name="L117" href="#L117">117</a>     }
 <a class="jxr_linenumber" name="L118" href="#L118">118</a> 
-<a class="jxr_linenumber" name="L119" href="#L119">119</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setyMovement(<strong class="jxr_keyword">int</strong> yMovement) {
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setYMovement(<strong class="jxr_keyword">int</strong> yMovement) {
 <a class="jxr_linenumber" name="L120" href="#L120">120</a>         <strong class="jxr_keyword">this</strong>.yMovement = yMovement;
 <a class="jxr_linenumber" name="L121" href="#L121">121</a>     }
 <a class="jxr_linenumber" name="L122" href="#L122">122</a> 
@@ -169,7 +169,7 @@
 <a class="jxr_linenumber" name="L161" href="#L161">161</a>     }
 <a class="jxr_linenumber" name="L162" href="#L162">162</a> 
 <a class="jxr_linenumber" name="L163" href="#L163">163</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L164" href="#L164">164</a> <em class="jxr_javadoccomment">     * Palauttaa törmäävätkö entiteetit.</em>
+<a class="jxr_linenumber" name="L164" href="#L164">164</a> <em class="jxr_javadoccomment">     * Palauttaa törmääkö mikään entiteetti yhden toisen entiteetin kanssa.</em>
 <a class="jxr_linenumber" name="L165" href="#L165">165</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="L166" href="#L166">166</a> <em class="jxr_javadoccomment">     * @param e Entiteetti</em>
 <a class="jxr_linenumber" name="L167" href="#L167">167</a> <em class="jxr_javadoccomment">     * @return Törmäävätkö entiteetit</em>
@@ -178,28 +178,34 @@
 <a class="jxr_linenumber" name="L170" href="#L170">170</a>         <strong class="jxr_keyword">return</strong> visible &amp;&amp; e.getBounds().intersects(getBounds());
 <a class="jxr_linenumber" name="L171" href="#L171">171</a>     }
 <a class="jxr_linenumber" name="L172" href="#L172">172</a> 
-<a class="jxr_linenumber" name="L173" href="#L173">173</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> collides(List&lt;Entity&gt; ents) {
-<a class="jxr_linenumber" name="L174" href="#L174">174</a>         <strong class="jxr_keyword">return</strong> visible &amp;&amp; ents.stream().anyMatch((ent) -&gt; (collides(ent)));
-<a class="jxr_linenumber" name="L175" href="#L175">175</a>     }
-<a class="jxr_linenumber" name="L176" href="#L176">176</a> 
-<a class="jxr_linenumber" name="L177" href="#L177">177</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L178" href="#L178">178</a> <em class="jxr_javadoccomment">     * Piirtää entiteetin rajat näytölle.</em>
-<a class="jxr_linenumber" name="L179" href="#L179">179</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L180" href="#L180">180</a> <em class="jxr_javadoccomment">     * @param g Graphics -objekti</em>
-<a class="jxr_linenumber" name="L181" href="#L181">181</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L182" href="#L182">182</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> drawBounds(Graphics g) {
-<a class="jxr_linenumber" name="L183" href="#L183">183</a>         g.setColor(Color.red);
-<a class="jxr_linenumber" name="L184" href="#L184">184</a>         g.draw3DRect((<strong class="jxr_keyword">int</strong>) getBounds().getX(), (<strong class="jxr_keyword">int</strong>) getBounds().getY(), (<strong class="jxr_keyword">int</strong>) getBounds().getWidth(), (<strong class="jxr_keyword">int</strong>) getBounds().getHeight(), <strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="L185" href="#L185">185</a>     }
-<a class="jxr_linenumber" name="L186" href="#L186">186</a> 
-<a class="jxr_linenumber" name="L187" href="#L187">187</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L188" href="#L188">188</a> <em class="jxr_javadoccomment">     * Piirtää entiteetin näytölle (Tämä metodi toteutetaan tarpeen mukaan).</em>
-<a class="jxr_linenumber" name="L189" href="#L189">189</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L190" href="#L190">190</a> <em class="jxr_javadoccomment">     * @param g Graphics -objekti</em>
-<a class="jxr_linenumber" name="L191" href="#L191">191</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L192" href="#L192">192</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">void</strong> render(Graphics g);
-<a class="jxr_linenumber" name="L193" href="#L193">193</a> 
-<a class="jxr_linenumber" name="L194" href="#L194">194</a> }
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L174" href="#L174">174</a> <em class="jxr_javadoccomment">     * Palauttaa törmäävätkö kaksi entiteettiä keskenään.</em>
+<a class="jxr_linenumber" name="L175" href="#L175">175</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L176" href="#L176">176</a> <em class="jxr_javadoccomment">     * @param ents Entiteettilista</em>
+<a class="jxr_linenumber" name="L177" href="#L177">177</a> <em class="jxr_javadoccomment">     * @return Törmäävätkö entiteetit</em>
+<a class="jxr_linenumber" name="L178" href="#L178">178</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> collides(List&lt;Entity&gt; ents) {
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>         <strong class="jxr_keyword">return</strong> visible &amp;&amp; ents.stream().anyMatch((ent) -&gt; (collides(ent)));
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>     }
+<a class="jxr_linenumber" name="L182" href="#L182">182</a> 
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L184" href="#L184">184</a> <em class="jxr_javadoccomment">     * Piirtää entiteetin rajat näytölle.</em>
+<a class="jxr_linenumber" name="L185" href="#L185">185</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L186" href="#L186">186</a> <em class="jxr_javadoccomment">     * @param g Graphics -objekti</em>
+<a class="jxr_linenumber" name="L187" href="#L187">187</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> drawBounds(Graphics g) {
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>         g.setColor(Color.red);
+<a class="jxr_linenumber" name="L190" href="#L190">190</a>         g.draw3DRect((<strong class="jxr_keyword">int</strong>) getBounds().getX(), (<strong class="jxr_keyword">int</strong>) getBounds().getY(), (<strong class="jxr_keyword">int</strong>) getBounds().getWidth(), (<strong class="jxr_keyword">int</strong>) getBounds().getHeight(), <strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>     }
+<a class="jxr_linenumber" name="L192" href="#L192">192</a> 
+<a class="jxr_linenumber" name="L193" href="#L193">193</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L194" href="#L194">194</a> <em class="jxr_javadoccomment">     * Piirtää entiteetin näytölle (Tämä metodi toteutetaan tarpeen mukaan).</em>
+<a class="jxr_linenumber" name="L195" href="#L195">195</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L196" href="#L196">196</a> <em class="jxr_javadoccomment">     * @param g Graphics -objekti</em>
+<a class="jxr_linenumber" name="L197" href="#L197">197</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">void</strong> render(Graphics g);
+<a class="jxr_linenumber" name="L199" href="#L199">199</a> 
+<a class="jxr_linenumber" name="L200" href="#L200">200</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>

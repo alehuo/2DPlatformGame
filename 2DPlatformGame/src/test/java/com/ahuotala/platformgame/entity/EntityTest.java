@@ -104,11 +104,11 @@ public class EntityTest {
 
     @Test
     public void asettaaLiikkuvuusMaaritteetOikein() {
-        entity.setxMovement(88);
-        assertEquals(88, entity.getxMovement());
+        entity.setXMovement(88);
+        assertEquals(88, entity.getXMovement());
 
-        entity.setyMovement(54);
-        assertEquals(54, entity.getyMovement());
+        entity.setYMovement(54);
+        assertEquals(54, entity.getYMovement());
 
         entity.setDx(66);
         assertEquals(66, entity.getDx());

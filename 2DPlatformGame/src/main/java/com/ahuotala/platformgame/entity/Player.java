@@ -60,10 +60,10 @@ public class Player extends Entity implements KeyListener {
         super.setHeight(32);
 
         //y-suunnassa tiputaan kolme yksikköä
-        super.setyMovement(3 * Game.SCALE);
-        super.setDy(super.getyMovement());
+        super.setYMovement(3 * Game.SCALE);
+        super.setDy(super.getYMovement());
         //x-suunnassa napin painallus liikuttaa pelaajaa 4 yksikköä
-        super.setxMovement(4 * Game.SCALE);
+        super.setXMovement(4 * Game.SCALE);
 
         wd = WalkingDirection.RIGHT;
     }
@@ -79,20 +79,14 @@ public class Player extends Entity implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        //Vasen
+        //Vasen, oikea ja hyppy
         if (e.getKeyCode() == KeyEvent.VK_A) {
             wd = WalkingDirection.LEFT;
-            setDx(-getxMovement());
-        }
-
-        //Oikea
-        if (e.getKeyCode() == KeyEvent.VK_D) {
+            setDx(-getXMovement());
+        } else if (e.getKeyCode() == KeyEvent.VK_D) {
             wd = WalkingDirection.RIGHT;
-            setDx(getxMovement());
-        }
-
-        //Hyppy
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            setDx(getXMovement());
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             jump();
         }
     }
@@ -104,14 +98,10 @@ public class Player extends Entity implements KeyListener {
      */
     @Override
     public void keyReleased(KeyEvent e) {
-
-        //Vasen
+        //Vasen, oikea
         if (e.getKeyCode() == KeyEvent.VK_A) {
             setDx(0);
-        }
-
-        //Oikea
-        if (e.getKeyCode() == KeyEvent.VK_D) {
+        } else if (e.getKeyCode() == KeyEvent.VK_D) {
             setDx(0);
         }
     }
@@ -122,7 +112,7 @@ public class Player extends Entity implements KeyListener {
     public void jump() {
         if (!falling) {
             jumping = true;
-            setDy(super.getyMovement());
+            setDy(super.getYMovement());
         }
     }
 
@@ -181,7 +171,7 @@ public class Player extends Entity implements KeyListener {
      * @param tiles Lista pelin tiileistä, joiden avulla tarkistetaan törmäys.
      */
     public void move(List<Entity> tiles) {
-        //Y-suunta (putoaminen)
+        //Loopataan entiteetit ensin Y-suunnassa ja sitten X-suunnassa.
         setY(getY() + getDy());
         for (Entity tile : tiles) {
             if (tile.collides(this)) {
@@ -190,7 +180,6 @@ public class Player extends Entity implements KeyListener {
                 break;
             }
         }
-
         offsetX += getDx();
 
         //Estetään pelaajan liikkuminen kartan rajojen yli
@@ -199,7 +188,6 @@ public class Player extends Entity implements KeyListener {
         }
 
         for (Entity tile : tiles) {
-            //Päivitä tiilen sijainti (Tämä kuitenkin rikkoo Single responsibility -periaatetta)
             ((Tile) tile).updateBounds();
             if (tile.collides(this)) {
                 offsetX -= getDx();

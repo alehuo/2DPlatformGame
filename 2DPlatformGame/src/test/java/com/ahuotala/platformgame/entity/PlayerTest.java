@@ -48,8 +48,8 @@ public class PlayerTest {
         assertEquals("Y:tä ei aseteta oikein", 0, player.getY());
         assertEquals("Leveyttä ei aseteta oikein", 24 * Game.SCALE, player.getWidth());
         assertEquals("Pituutta ei aseteta oikein", 32 * Game.SCALE, player.getHeight());
-        assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3 * Game.SCALE, player.getyMovement());
-        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4 * Game.SCALE, player.getxMovement());
+        assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3 * Game.SCALE, player.getYMovement());
+        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4 * Game.SCALE, player.getXMovement());
         assertEquals("Y-suuntaista putoamista ei aseteta oikein", 3 * Game.SCALE, player.getDy());
     }
 
@@ -87,11 +87,11 @@ public class PlayerTest {
 
     @Test
     public void asettaaLiikkuvuusMaaritteetOikein() {
-        player.setxMovement(88);
-        assertEquals(88, player.getxMovement());
+        player.setXMovement(88);
+        assertEquals(88, player.getXMovement());
 
-        player.setyMovement(54);
-        assertEquals(54, player.getyMovement());
+        player.setYMovement(54);
+        assertEquals(54, player.getYMovement());
 
         player.setDx(66);
         assertEquals(66, player.getDx());
@@ -126,7 +126,7 @@ public class PlayerTest {
     @Test
     public void keyListenerToimii() throws AWTException {
 
-        int xMovement = player.getxMovement();
+        int xMovement = player.getXMovement();
 
         JTextField inputField = new JTextField();
 
@@ -183,7 +183,7 @@ public class PlayerTest {
         player.setDy(0);
         player.setFalling(false);
         player.jump();
-        assertEquals(player.getyMovement(), player.getDy());
+        assertEquals(player.getYMovement(), player.getDy());
     }
 
 }

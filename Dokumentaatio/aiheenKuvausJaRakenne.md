@@ -17,3 +17,14 @@ jollain kuvankäsittelyohjelmalla piirrettyjä kuvia. Tekstuurien ja animaatioiden
 
 ### Luokkakaavio
 ![luokkakaavio](Luokkakaavio.png)
+
+### Sekvenssikaaviot
+
+## Pelin alustus ja peliloopin toiminta
+![Peliloopin toiminta](sekvenssikaavio_peliloopin_toiminta.png)
+Kaavio näyttää, miten pelin käynnistyminen tapahtuu ja mitä pelilooppi tekee pelin pyöriessä.
+
+## Pelaajan liikkuminen
+![Pelaajan liikkuminen](sekvenssikaavio_peliloopin_toiminta.png)
+Kaavio sisältää pelaajan liikkumisen alkaen näppäimen painalluksesta peliloopin käsittelemään liikkumistoiminnallisuuteen.
+Myös näppäimen päästäminen pohjasta on mallinnettu.

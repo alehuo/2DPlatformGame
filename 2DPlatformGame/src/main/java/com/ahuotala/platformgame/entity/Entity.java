@@ -104,19 +104,19 @@ public abstract class Entity implements Tickable {
         this.dy = dy;
     }
 
-    public int getxMovement() {
+    public int getXMovement() {
         return xMovement;
     }
 
-    public void setxMovement(int xMovement) {
+    public void setXMovement(int xMovement) {
         this.xMovement = xMovement;
     }
 
-    public int getyMovement() {
+    public int getYMovement() {
         return yMovement;
     }
 
-    public void setyMovement(int yMovement) {
+    public void setYMovement(int yMovement) {
         this.yMovement = yMovement;
     }
 
@@ -161,7 +161,7 @@ public abstract class Entity implements Tickable {
     }
 
     /**
-     * Palauttaa törmäävätkö entiteetit.
+     * Palauttaa törmääkö mikään entiteetti yhden toisen entiteetin kanssa.
      *
      * @param e Entiteetti
      * @return Törmäävätkö entiteetit
@@ -170,6 +170,12 @@ public abstract class Entity implements Tickable {
         return visible && e.getBounds().intersects(getBounds());
     }
 
+    /**
+     * Palauttaa törmäävätkö kaksi entiteettiä keskenään.
+     *
+     * @param ents Entiteettilista
+     * @return Törmäävätkö entiteetit
+     */
     public boolean collides(List<Entity> ents) {
         return visible && ents.stream().anyMatch((ent) -> (collides(ent)));
     }

@@ -39,7 +39,7 @@ public class FileReader {
      * FileReader -luokka lataa tiedoston rivi riviltä muistiin.
      *
      * @param in InputStream -objekti
-     * @throws IOException
+     * @throws IOException IOException
      */
     public FileReader(InputStream in) throws IOException {
         //Alusta lista
@@ -66,8 +66,8 @@ public class FileReader {
      * FileReader -luokka lataa tiedoston rivi riviltä muistiin.
      *
      * @param filename Tiedostonimi
-     * @throws FileNotFoundException
-     * @throws IOException
+     * @throws FileNotFoundException FileNotFoundException
+     * @throws IOException IOExceptopn
      */
     public FileReader(String filename) throws FileNotFoundException, IOException {
         //Alusta lista
