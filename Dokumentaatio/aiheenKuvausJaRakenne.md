@@ -24,6 +24,6 @@ jollain kuvankäsittelyohjelmalla piirrettyjä kuvia. Tekstuurien ja animaatioiden
 Kaavio näyttää, miten pelin käynnistyminen tapahtuu ja mitä pelilooppi tekee pelin pyöriessä.
 
 ## Pelaajan liikkuminen
-![Pelaajan liikkuminen](sekvenssikaavio_peliloopin_toiminta.png)
+![Pelaajan liikkuminen](sekvenssikaavio_pelaajan_liikkuminen.png)
 Kaavio sisältää pelaajan liikkumisen alkaen näppäimen painalluksesta peliloopin käsittelemään liikkumistoiminnallisuuteen.
 Myös näppäimen päästäminen pohjasta on mallinnettu.
