@@ -34,3 +34,7 @@ Kaavio n‰ytt‰‰, miten pelin k‰ynnistyminen tapahtuu ja mit‰ pelilooppi tekee pel
 ![Pelaajan liikkuminen](sekvenssikaavio_pelaajan_liikkuminen.png)
 Kaavio sis‰lt‰‰ pelaajan liikkumisen alkaen n‰pp‰imen painalluksesta peliloopin k‰sittelem‰‰n liikkumistoiminnallisuuteen.
 Myˆs n‰pp‰imen p‰‰st‰minen pohjasta on mallinnettu.
+
+## Kolikoiden ker‰‰minen
+![Kolikoiden ker‰‰minen](sekvenssikaavio_kolikoiden_keraaminen.png)
+Kaavio n‰ytt‰‰, miten kolikoita ker‰t‰‰n peliss‰. Koodinp‰tk‰ on itse asiassa peliloopin sis‰ll‰ (Ylimm‰ss‰ luokkakaaviossa, joka kuvaa peliloopin toimintaa, on j‰tetty pois kolikoiden ker‰‰minen selvyyden takia).
