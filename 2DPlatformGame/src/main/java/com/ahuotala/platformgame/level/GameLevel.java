@@ -160,7 +160,7 @@ public class GameLevel {
         player.move(tileArray);
 
         //Päivitä entiteetit
-        getEntities().stream().forEach((entity) -> {
+        getEntities().stream().forEach((Entity entity) -> {
             entity.tick();
             //Jos entiteetti on monsteri, liikuta sitä
             if (entity instanceof Monster) {

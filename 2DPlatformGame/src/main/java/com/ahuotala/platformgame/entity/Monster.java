@@ -48,8 +48,7 @@ public class Monster extends Entity {
         super.setYMovement(3 * Game.SCALE);
         super.setDy(super.getYMovement());
         //x-suunnassa napin painallus liikuttaa pelaajaa 4 yksikköä
-        super.setXMovement(4 * Game.SCALE);
-
+        super.setXMovement(2);
     }
 
     /**
@@ -101,6 +100,7 @@ public class Monster extends Entity {
             jumping = false;
             falling = true;
         }
+        goRight();
     }
 
     /**
@@ -123,8 +123,9 @@ public class Monster extends Entity {
         setX(getX() + getDx());
 
         //Estetään monsterin liikkuminen kartan rajojen yli
-        if (getX() - Game.STARTINGOFFSET + Player.offsetX < 0 || getX() - Game.STARTINGOFFSET + Player.offsetX > GameLevel.levelWidth - Game.STARTINGOFFSET - getWidth()) {
+        if (getX() - Game.STARTINGOFFSET + Player.offsetX < 0 || getX() - Game.STARTINGOFFSET > GameLevel.levelWidth - Game.STARTINGOFFSET - getWidth()) {
             setX(getX() - getDx());
+
         }
 
         for (Entity tile : tiles) {
@@ -134,6 +135,7 @@ public class Monster extends Entity {
                 break;
             }
         }
+        updateBounds();
     }
 
     /**
@@ -146,7 +148,21 @@ public class Monster extends Entity {
     @Override
     public void drawBounds(Graphics g) {
         g.setColor(Color.red);
-        g.draw3DRect((int) getBounds().getX() - Player.offsetX, (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
+        g.draw3DRect((int) getBounds().getX(), (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
+//        g.draw3DRect((int) getBounds().getX(), (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
+
+    }
+
+    @Override
+    public void setX(int x) {
+        this.x = x;
+        updateBounds();
+    }
+
+    @Override
+    public void setY(int y) {
+        this.y = y;
+        updateBounds();
     }
 
 }

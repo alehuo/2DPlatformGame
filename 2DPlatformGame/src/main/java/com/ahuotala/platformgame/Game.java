@@ -37,12 +37,12 @@ public class Game implements Runnable {
     /**
      * Kehyksen leveys.
      */
-    public static final int WINDOWWIDTH = 1280;
+    public static final int WINDOWWIDTH = 1000;
 
     /**
      * Kehyksen korkeus.
      */
-    public static final int WINDOWHEIGHT = 720;
+    public static final int WINDOWHEIGHT = 600;
 
     /**
      * Pelin skaalaus.
