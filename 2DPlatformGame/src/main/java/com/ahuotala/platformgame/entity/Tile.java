@@ -72,7 +72,7 @@ public class Tile extends Entity {
         g.drawImage(sprite.getImage(), x - Player.offsetX, y, getWidth(), getHeight(), null);
 
         //Piirrä rajat debuggausta varten
-//        drawBounds(g);
+        drawBounds(g);
     }
 
     @Override
@@ -91,6 +91,19 @@ public class Tile extends Entity {
      */
     public void updateBounds() {
         super.getBounds().setLocation(x - Player.offsetX, y);
+    }
+
+    /**
+     * Palauttaa, törmääkö entiteetti.
+     *
+     * @param e Entiteetti
+     * @return Törmääkö entiteetti
+     */
+    @Override
+    public boolean collides(Entity e) {
+        //Päivittää rajat
+        updateBounds();
+        return super.collides(e);
     }
 
 }

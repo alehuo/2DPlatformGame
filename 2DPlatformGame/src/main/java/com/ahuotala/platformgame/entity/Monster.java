@@ -17,8 +17,11 @@
  */
 package com.ahuotala.platformgame.entity;
 
-import com.ahuotala.platformgame.ai.MonsterAi;
+import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.level.GameLevel;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.util.List;
 
 /**
  * Monsteri-luokka.
@@ -27,7 +30,8 @@ import java.awt.Graphics;
  */
 public class Monster extends Entity {
 
-    private final MonsterAi ai;
+    private boolean jumping = false;
+    private boolean falling = true;
 
     /**
      * Konstruktori.
@@ -38,17 +42,111 @@ public class Monster extends Entity {
     public Monster(int x, int y) {
         //Työn alla
         super(x, y);
-        ai = new MonsterAi();
+        super.setWidth(32);
+        super.setHeight(20);
+        //y-suunnassa tiputaan kolme yksikköä
+        super.setYMovement(3 * Game.SCALE);
+        super.setDy(super.getYMovement());
+        //x-suunnassa napin painallus liikuttaa pelaajaa 4 yksikköä
+        super.setXMovement(4 * Game.SCALE);
+
+    }
+
+    /**
+     * Konstruktori.
+     */
+    public Monster() {
+        this(0, 0);
+    }
+
+    /**
+     * Liiku vasemmalle.
+     */
+    public void goLeft() {
+        setDx(-getXMovement());
+    }
+
+    /**
+     * Liiku oikealle.
+     */
+    public void goRight() {
+        setDx(getXMovement());
+    }
+
+    /**
+     * Hyppää.
+     */
+    public void jump() {
+        if (!falling) {
+            jumping = true;
+            setDy(super.getYMovement());
+        }
     }
 
     @Override
     public void render(Graphics g) {
         //Työn alla
+        g.setColor(Color.blue);
+        g.fillRect(x - Player.offsetX, getY(), getWidth(), getHeight());
+        g.setColor(Color.red);
+        drawBounds(g);
     }
 
     @Override
     public void tick() {
+        updateBounds();
         //Työn alla
+        if (jumping && !falling) {
+            setY(getY() - 64 * Game.SCALE);
+            jumping = false;
+            falling = true;
+        }
+    }
+
+    /**
+     * move -metodi hoitaa monsterin liikuttamisen. (Tämä toiminnallisuus on
+     * kutakuinkin sama kuin Player -luokassa.)
+     *
+     * @param tiles Lista pelin tiileistä, joiden avulla tarkistetaan törmäys.
+     */
+    public void move(List<Entity> tiles) {
+        //Loopataan entiteetit ensin Y-suunnassa ja sitten X-suunnassa.
+        setY(getY() + getDy());
+        for (Entity tile : tiles) {
+            if (tile.collides(this)) {
+                falling = false;
+                setY(getY() - getDy());
+                break;
+            }
+        }
+
+        setX(getX() + getDx());
+
+        //Estetään monsterin liikkuminen kartan rajojen yli
+        if (getX() - Game.STARTINGOFFSET + Player.offsetX < 0 || getX() - Game.STARTINGOFFSET + Player.offsetX > GameLevel.levelWidth - Game.STARTINGOFFSET - getWidth()) {
+            setX(getX() - getDx());
+        }
+
+        for (Entity tile : tiles) {
+            if (tile.collides(this)) {
+                jump();
+                setX(getX() - getDx());
+                break;
+            }
+        }
+    }
+
+    /**
+     * Päivitä rajat.
+     */
+    public void updateBounds() {
+        super.getBounds().setLocation(x - Player.offsetX, getY());
+    }
+
+    @Override
+    public void drawBounds(Graphics g) {
+        g.setColor(Color.red);
+        g.draw3DRect((int) getBounds().getX() - Player.offsetX, (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
     }
 
 }

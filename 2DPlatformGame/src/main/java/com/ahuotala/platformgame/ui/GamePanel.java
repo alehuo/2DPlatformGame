@@ -91,12 +91,12 @@ public class GamePanel extends JPanel {
             g.drawString("[A] Vasen  [D] Oikea  [Space]  Hyppää", 4, 20);
 
             //Debuggausta varten x:t ja y:t jne..
-//            g.drawString("playerX: " + (player.getX() - Game.STARTINGOFFSET + Player.offsetX), 4, 35);
-//            g.drawString("playerY: " + player.getY(), 4, 50);
-//            g.drawString("isFalling: " + player.isFalling(), 4, 65);
-//            g.drawString("walkingDirection: " + player.getWd(), 4, 80);
-//            g.drawString("playerBoundsX: " + (player.getBounds().getX()), 4, 95);
-//            g.drawString("playerBoundsY: " + (player.getBounds().getY()), 4, 110);
+            g.drawString("playerX: " + (player.getX() - Game.STARTINGOFFSET + Player.offsetX), 4, 35);
+            g.drawString("playerY: " + player.getY(), 4, 50);
+            g.drawString("isFalling: " + player.isFalling(), 4, 65);
+            g.drawString("walkingDirection: " + player.getWd(), 4, 80);
+            g.drawString("playerBoundsX: " + (player.getBounds().getX()), 4, 95);
+            g.drawString("playerBoundsY: " + (player.getBounds().getY()), 4, 110);
             //Pisteytys
             Font f = g.getFont();
             Font newF = f.deriveFont(f.getSize() * 3F);

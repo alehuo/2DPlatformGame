@@ -188,7 +188,6 @@ public class Player extends Entity implements KeyListener {
         }
 
         for (Entity tile : tiles) {
-            ((Tile) tile).updateBounds();
             if (tile.collides(this)) {
                 offsetX -= getDx();
                 break;

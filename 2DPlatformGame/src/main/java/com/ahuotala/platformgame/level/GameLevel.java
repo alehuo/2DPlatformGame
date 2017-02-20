@@ -18,7 +18,9 @@
 package com.ahuotala.platformgame.level;
 
 import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.entity.Coin;
 import com.ahuotala.platformgame.entity.Entity;
+import com.ahuotala.platformgame.entity.Monster;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.entity.Tile;
 import com.ahuotala.platformgame.utils.FileReader;
@@ -88,8 +90,9 @@ public class GameLevel {
 
                 //Käy tasot läpi yksitellen
                 for (String textureName : lineData) {
+
                     //Jos tekstuurin nimi alkaa "entity_" -merkkijonolla, niin ladataan se entiteetteihin
-                    if (textureName.startsWith("entity_")) {
+                    if (!textureName.isEmpty() && textureName.startsWith("entity_")) {
                         String className = textureName.replaceAll("entity_", "");
                         //Parsitaan luokan nimi
                         className = className.substring(0, 1).toUpperCase() + className.substring(1).toLowerCase();
@@ -100,7 +103,7 @@ public class GameLevel {
                         obj.setY(y);
                         //Lisätään se entities -listaan
                         entities.add(obj);
-                    } else {
+                    } else if (!textureName.isEmpty()) {
                         //Luodaan uusi tiili
                         Tile t = new Tile(x, y, textureName);
                         //Lisätään se tiles -listaan
@@ -142,26 +145,34 @@ public class GameLevel {
      * tick() -metodi päivittää tason tiilet, entiteetit ja pelaajan.
      */
     public void tick() {
+        //Tiilet
+        List<Entity> tileArray = getTiles();
         //Päivitä sekuntikello
         if (stopWatch != null) {
             stopWatch.tick();
         }
         //Päivitä tiilet
-        getTiles().stream().forEach((tile) -> {
+        tileArray.stream().forEach((tile) -> {
             tile.tick();
         });
         //Päivitä pelaaja
-        player.move(getTiles());
         player.tick();
+        player.move(tileArray);
+
         //Päivitä entiteetit
         getEntities().stream().forEach((entity) -> {
             entity.tick();
-
-            //Jos entiteetti osuu pelaajaan
-            if (entity.collides(player)) {
-                //Kerää kolikko
-                score.collectCoin();
-                entity.setVisible(false);
+            //Jos entiteetti on monsteri, liikuta sitä
+            if (entity instanceof Monster) {
+                ((Monster) entity).move(tileArray);
+            } else if (entity instanceof Coin) {
+                //Jos kolikko osuu pelaajaan
+                if (entity.collides(player)) {
+                    //Kerää kolikko
+                    score.collectCoin();
+                    //Aseta kolikko läpinäkymättömäksi
+                    entity.setVisible(false);
+                }
             }
 
         });

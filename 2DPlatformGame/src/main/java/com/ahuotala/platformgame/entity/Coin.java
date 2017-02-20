@@ -55,9 +55,7 @@ public class Coin extends Entity {
      * Konstruktori. Asettaa kolikon pisteeseen (0,0)
      */
     public Coin() {
-        super(0, 0);
-        super.setWidth(coinWidthHeight);
-        super.setHeight(coinWidthHeight);
+        this(0, 0);
     }
 
     /**
