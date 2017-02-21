@@ -83,7 +83,7 @@ public class GameLevel {
             for (String line : fr.getLines()) {
 
                 //y-koordinaatti
-                int y = (Game.WINDOWHEIGHT - 62 / Game.SCALE);
+                int y = (Game.WINDOWHEIGHT - 62 / Game.scale);
 
                 //Parsi tasot
                 String[] lineData = line.split(",", -1);
@@ -110,20 +110,20 @@ public class GameLevel {
                         tiles.add(t);
                     }
                     //Kasvata y:tä
-                    y -= 32 * Game.SCALE;
+                    y -= 32 * Game.scale;
                     finalY = y;
                 }
                 //Kasvata x:ää
-                x += 32 * Game.SCALE;
+                x += 32 * Game.scale;
                 levelWidth = x;
             }
 
             //Lisätään vielä maaliviiva
             int finishHeight = 2;
-            int finishX = x - 32 * Game.SCALE;
-            int startY = finalY - finishHeight * 32 * Game.SCALE + 32 * Game.SCALE;
+            int finishX = x - 32 * Game.scale;
+            int startY = finalY - finishHeight * 32 * Game.scale + 32 * Game.scale;
             for (int i = 0; i < finishHeight; i++) {
-                Tile finishTile = new Tile(finishX, startY + 32 * Game.SCALE * i, "finish");
+                Tile finishTile = new Tile(finishX, startY + 32 * Game.scale * i, "finish");
                 finishTile.setCollisionDetectionEnabled(false);
                 tiles.add(finishTile);
             }

@@ -57,7 +57,7 @@ public abstract class Entity implements Tickable {
     public Entity(int x, int y) {
         this.x = x;
         this.y = y;
-        bounds = new Rectangle(x, y, width * Game.SCALE, height * Game.SCALE);
+        bounds = new Rectangle(x, y, width * Game.scale, height * Game.scale);
     }
 
     public int getX() {
@@ -130,8 +130,8 @@ public abstract class Entity implements Tickable {
      * @param width Entiteetin leveys
      */
     public void setWidth(int width) {
-        this.width = width * Game.SCALE;
-        bounds.setSize(width * Game.SCALE, height);
+        this.width = width * Game.scale;
+        bounds.setSize(width * Game.scale, height);
     }
 
     public int getHeight() {
@@ -144,8 +144,8 @@ public abstract class Entity implements Tickable {
      * @param height Entiteetin korkeus
      */
     public void setHeight(int height) {
-        this.height = height * Game.SCALE;
-        bounds.setSize(width, height * Game.SCALE);
+        this.height = height * Game.scale;
+        bounds.setSize(width, height * Game.scale);
     }
 
     public Rectangle getBounds() {

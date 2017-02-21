@@ -41,18 +41,18 @@ public class TileTest {
     public void asettaaKoonOikein() {
         Player.offsetX = 0;
 
-        assertEquals(32 * Game.SCALE, tile.getWidth());
-        assertEquals(32 * Game.SCALE, tile.getBounds().getWidth(), 1.0);
-        assertEquals(32 * Game.SCALE, tile.getHeight());
-        assertEquals(32 * Game.SCALE, tile.getBounds().getHeight(), 1.0);
+        assertEquals(32 * Game.scale, tile.getWidth());
+        assertEquals(32 * Game.scale, tile.getBounds().getWidth(), 1.0);
+        assertEquals(32 * Game.scale, tile.getHeight());
+        assertEquals(32 * Game.scale, tile.getBounds().getHeight(), 1.0);
 
         tile.setWidth(55);
-        assertEquals(55 * Game.SCALE, tile.getWidth());
-        assertEquals(55 * Game.SCALE, tile.getBounds().getWidth(), 1.0);
+        assertEquals(55 * Game.scale, tile.getWidth());
+        assertEquals(55 * Game.scale, tile.getBounds().getWidth(), 1.0);
 
         tile.setHeight(52);
-        assertEquals(52 * Game.SCALE, tile.getHeight());
-        assertEquals(52 * Game.SCALE, tile.getBounds().getHeight(), 1.0);
+        assertEquals(52 * Game.scale, tile.getHeight());
+        assertEquals(52 * Game.scale, tile.getBounds().getHeight(), 1.0);
 
         assertEquals(16, tile.getBounds().getX(), 1.0);
         assertEquals(26, tile.getBounds().getY(), 1.0);

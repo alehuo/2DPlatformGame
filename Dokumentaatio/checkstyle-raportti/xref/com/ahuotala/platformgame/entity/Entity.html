@@ -65,7 +65,7 @@
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../com/ahuotala/platformgame/entity/Entity.html">Entity</a>(<strong class="jxr_keyword">int</strong> x, <strong class="jxr_keyword">int</strong> y) {
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>          <strong class="jxr_keyword">this</strong>.x = x;
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>          <strong class="jxr_keyword">this</strong>.y = y;
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>          bounds = <strong class="jxr_keyword">new</strong> Rectangle(x, y, width * Game.SCALE, height * Game.SCALE);
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          bounds = <strong class="jxr_keyword">new</strong> Rectangle(x, y, width * Game.scale, height * Game.scale);
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>      }
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>  
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getX() {
@@ -138,8 +138,8 @@
 <a class="jxr_linenumber" name="L130" href="#L130">130</a> <em class="jxr_javadoccomment">     * @param width Entiteetin leveys</em>
 <a class="jxr_linenumber" name="L131" href="#L131">131</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L132" href="#L132">132</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setWidth(<strong class="jxr_keyword">int</strong> width) {
-<a class="jxr_linenumber" name="L133" href="#L133">133</a>         <strong class="jxr_keyword">this</strong>.width = width * Game.SCALE;
-<a class="jxr_linenumber" name="L134" href="#L134">134</a>         bounds.setSize(width * Game.SCALE, height);
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>         <strong class="jxr_keyword">this</strong>.width = width * Game.scale;
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>         bounds.setSize(width * Game.scale, height);
 <a class="jxr_linenumber" name="L135" href="#L135">135</a>     }
 <a class="jxr_linenumber" name="L136" href="#L136">136</a> 
 <a class="jxr_linenumber" name="L137" href="#L137">137</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getHeight() {
@@ -152,8 +152,8 @@
 <a class="jxr_linenumber" name="L144" href="#L144">144</a> <em class="jxr_javadoccomment">     * @param height Entiteetin korkeus</em>
 <a class="jxr_linenumber" name="L145" href="#L145">145</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L146" href="#L146">146</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setHeight(<strong class="jxr_keyword">int</strong> height) {
-<a class="jxr_linenumber" name="L147" href="#L147">147</a>         <strong class="jxr_keyword">this</strong>.height = height * Game.SCALE;
-<a class="jxr_linenumber" name="L148" href="#L148">148</a>         bounds.setSize(width, height * Game.SCALE);
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>         <strong class="jxr_keyword">this</strong>.height = height * Game.scale;
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>         bounds.setSize(width, height * Game.scale);
 <a class="jxr_linenumber" name="L149" href="#L149">149</a>     }
 <a class="jxr_linenumber" name="L150" href="#L150">150</a> 
 <a class="jxr_linenumber" name="L151" href="#L151">151</a>     <strong class="jxr_keyword">public</strong> Rectangle getBounds() {

@@ -52,10 +52,10 @@ public class Monster extends Entity {
         super.setWidth(24);
         super.setHeight(12);
         //y-suunnassa tiputaan kolme yksikköä
-        super.setYMovement(3 * Game.SCALE);
+        super.setYMovement(3 * Game.scale);
         super.setDy(super.getYMovement());
         //x-suunnassa napin painallus liikuttaa hirviötä 3 yksikköä
-        super.setXMovement(3);
+        super.setXMovement(3 * Game.scale);
         //Syötetään Monster-olio tekoälylle.
         ai = new MonsterAi(this);
         sprites = new HashMap();
@@ -109,7 +109,7 @@ public class Monster extends Entity {
         updateBounds();
         //Työn alla
         if (jumping && !falling) {
-            setY(getY() - 64 * Game.SCALE);
+            setY(getY() - 64 * Game.scale);
             jumping = false;
             falling = true;
         }

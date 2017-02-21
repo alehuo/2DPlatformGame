@@ -47,15 +47,12 @@ public class Game implements Runnable {
     /**
      * Pelin skaalaus.
      */
-    public static int SCALE = 2;
+    public static int scale = 2;
 
     /**
      * Aloitussiirtymä.
      */
     public static final int STARTINGOFFSET = WINDOWWIDTH / 2 - 64;
-
-    //Logger
-    private static final Logger LOG = Logger.getLogger(Game.class.getName());
 
     /**
      * Main -metodi aloittaa uuden pelin.
@@ -86,8 +83,8 @@ public class Game implements Runnable {
      * Konstruktori, missä luodaan sekä kehys, pelaaja että pelipaneeli.
      */
     public Game() {
-        if (SCALE > 2) {
-            SCALE = 2;
+        if (scale > 2) {
+            scale = 2;
         }
         //Luo kehys
         frame = new JFrame(windowTitle);
@@ -177,7 +174,6 @@ public class Game implements Runnable {
                 try {
                     Thread.sleep(1);
                 } catch (InterruptedException ex) {
-                    LOG.log(Level.SEVERE, null, ex);
                 }
             }
 

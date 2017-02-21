@@ -49,7 +49,7 @@ public class EntityTest {
         assertEquals(x, entity.getX());
         assertEquals(y, entity.getY());
 
-        Rectangle r = new Rectangle(x, y, width * Game.SCALE, height * Game.SCALE);
+        Rectangle r = new Rectangle(x, y, width * Game.scale, height * Game.scale);
         assertEquals(r, entity.getBounds());
 
         assertTrue(entity.isVisible());
@@ -85,21 +85,21 @@ public class EntityTest {
     @Test
     public void asettaaKorkeudenOikein() {
         entity.setHeight(88);
-        assertEquals(88 * Game.SCALE, entity.getHeight());
-        assertEquals(88 * Game.SCALE, entity.getBounds().getHeight(), 1.0);
+        assertEquals(88 * Game.scale, entity.getHeight());
+        assertEquals(88 * Game.scale, entity.getBounds().getHeight(), 1.0);
         entity.setHeight(77);
-        assertEquals(77 * Game.SCALE, entity.getHeight());
-        assertEquals(77 * Game.SCALE, entity.getBounds().getHeight(), 1.0);
+        assertEquals(77 * Game.scale, entity.getHeight());
+        assertEquals(77 * Game.scale, entity.getBounds().getHeight(), 1.0);
     }
 
     @Test
     public void asettaaLeveydenOikein() {
         entity.setWidth(54);
-        assertEquals(54 * Game.SCALE, entity.getWidth());
-        assertEquals(54 * Game.SCALE, entity.getBounds().getWidth(), 1.0);
+        assertEquals(54 * Game.scale, entity.getWidth());
+        assertEquals(54 * Game.scale, entity.getBounds().getWidth(), 1.0);
         entity.setWidth(32);
-        assertEquals(32 * Game.SCALE, entity.getWidth());
-        assertEquals(32 * Game.SCALE, entity.getBounds().getWidth(), 1.0);
+        assertEquals(32 * Game.scale, entity.getWidth());
+        assertEquals(32 * Game.scale, entity.getBounds().getWidth(), 1.0);
     }
 
     @Test

@@ -37,7 +37,7 @@ public class MonsterAi {
     /**
      * Konstruktori.
      *
-     * @param m
+     * @param m Hirviö
      */
     public MonsterAi(Monster m) {
         this.m = m;

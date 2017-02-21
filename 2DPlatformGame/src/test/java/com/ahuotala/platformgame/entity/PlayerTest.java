@@ -46,11 +46,11 @@ public class PlayerTest {
     public void alkutilaPelaajallaOikein() {
         assertEquals("X:ää ei aseteta oikein", Game.WINDOWWIDTH / 2, player.getX());
         assertEquals("Y:tä ei aseteta oikein", 0, player.getY());
-        assertEquals("Leveyttä ei aseteta oikein", 24 * Game.SCALE, player.getWidth());
-        assertEquals("Pituutta ei aseteta oikein", 32 * Game.SCALE, player.getHeight());
-        assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3 * Game.SCALE, player.getYMovement());
-        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4 * Game.SCALE, player.getXMovement());
-        assertEquals("Y-suuntaista putoamista ei aseteta oikein", 3 * Game.SCALE, player.getDy());
+        assertEquals("Leveyttä ei aseteta oikein", 24 * Game.scale, player.getWidth());
+        assertEquals("Korkeutta ei aseteta oikein", 32 * Game.scale, player.getHeight());
+        assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3 * Game.scale, player.getYMovement());
+        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4 * Game.scale, player.getXMovement());
+        assertEquals("Y-suuntaista putoamista ei aseteta oikein", 3 * Game.scale, player.getDy());
     }
 
     @Test
@@ -72,17 +72,17 @@ public class PlayerTest {
     @Test
     public void asettaaKorkeudenOikein() {
         player.setHeight(88);
-        assertEquals(88 * Game.SCALE, player.getHeight());
+        assertEquals(88 * Game.scale, player.getHeight());
         player.setHeight(77);
-        assertEquals(77 * Game.SCALE, player.getHeight());
+        assertEquals(77 * Game.scale, player.getHeight());
     }
 
     @Test
     public void asettaaLeveydenOikein() {
         player.setWidth(54);
-        assertEquals(54 * Game.SCALE, player.getWidth());
+        assertEquals(54 * Game.scale, player.getWidth());
         player.setWidth(32);
-        assertEquals(32 * Game.SCALE, player.getWidth());
+        assertEquals(32 * Game.scale, player.getWidth());
     }
 
     @Test

@@ -68,10 +68,10 @@
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>          <strong class="jxr_keyword">super</strong>.setHeight(32);
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>          <em class="jxr_comment">//y-suunnassa tiputaan kolme yksikköä</em>
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>          <strong class="jxr_keyword">super</strong>.setYMovement(3 * Game.SCALE);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          <strong class="jxr_keyword">super</strong>.setYMovement(3 * Game.scale);
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>          <strong class="jxr_keyword">super</strong>.setDy(<strong class="jxr_keyword">super</strong>.getYMovement());
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>          <em class="jxr_comment">//x-suunnassa napin painallus liikuttaa pelaajaa 4 yksikköä</em>
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>          <strong class="jxr_keyword">super</strong>.setXMovement(4 * Game.SCALE);
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          <strong class="jxr_keyword">super</strong>.setXMovement(4 * Game.scale);
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>  
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>          wd = WalkingDirection.RIGHT;
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>      }
@@ -167,7 +167,7 @@
 <a class="jxr_linenumber" name="L159" href="#L159">159</a>     @Override
 <a class="jxr_linenumber" name="L160" href="#L160">160</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> tick() {
 <a class="jxr_linenumber" name="L161" href="#L161">161</a>         <strong class="jxr_keyword">if</strong> (jumping &amp;&amp; !falling) {
-<a class="jxr_linenumber" name="L162" href="#L162">162</a>             setY(getY() - 64 * Game.SCALE);
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>             setY(getY() - 64 * Game.scale);
 <a class="jxr_linenumber" name="L163" href="#L163">163</a>             jumping = false;
 <a class="jxr_linenumber" name="L164" href="#L164">164</a>             falling = <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="L165" href="#L165">165</a>         }
@@ -196,15 +196,14 @@
 <a class="jxr_linenumber" name="L188" href="#L188">188</a>         }
 <a class="jxr_linenumber" name="L189" href="#L189">189</a> 
 <a class="jxr_linenumber" name="L190" href="#L190">190</a>         <strong class="jxr_keyword">for</strong> (Entity tile : tiles) {
-<a class="jxr_linenumber" name="L191" href="#L191">191</a>             ((<a href="../../../../com/ahuotala/platformgame/entity/Tile.html">Tile</a>) tile).updateBounds();
-<a class="jxr_linenumber" name="L192" href="#L192">192</a>             <strong class="jxr_keyword">if</strong> (tile.collides(<strong class="jxr_keyword">this</strong>)) {
-<a class="jxr_linenumber" name="L193" href="#L193">193</a>                 offsetX -= getDx();
-<a class="jxr_linenumber" name="L194" href="#L194">194</a>                 <strong class="jxr_keyword">break</strong>;
-<a class="jxr_linenumber" name="L195" href="#L195">195</a>             }
-<a class="jxr_linenumber" name="L196" href="#L196">196</a>         }
-<a class="jxr_linenumber" name="L197" href="#L197">197</a>     }
-<a class="jxr_linenumber" name="L198" href="#L198">198</a> 
-<a class="jxr_linenumber" name="L199" href="#L199">199</a> }
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>             <strong class="jxr_keyword">if</strong> (tile.collides(<strong class="jxr_keyword">this</strong>)) {
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>                 offsetX -= getDx();
+<a class="jxr_linenumber" name="L193" href="#L193">193</a>                 <strong class="jxr_keyword">break</strong>;
+<a class="jxr_linenumber" name="L194" href="#L194">194</a>             }
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>         }
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>     }
+<a class="jxr_linenumber" name="L197" href="#L197">197</a> 
+<a class="jxr_linenumber" name="L198" href="#L198">198</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>

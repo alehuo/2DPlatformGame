@@ -40,8 +40,8 @@ public class CoinTest {
 
     @Test
     public void alkutilaOikein() {
-        assertEquals(coinWidthHeight * Game.SCALE, coin.getHeight());
-        assertEquals(coinWidthHeight * Game.SCALE, coin.getWidth());
+        assertEquals(coinWidthHeight * Game.scale, coin.getHeight());
+        assertEquals(coinWidthHeight * Game.scale, coin.getWidth());
     }
 
     @Test
@@ -49,8 +49,8 @@ public class CoinTest {
         Coin coin2 = new Coin();
         assertEquals(0, coin2.getX());
         assertEquals(0, coin2.getY());
-        assertEquals(coinWidthHeight * Game.SCALE, coin2.getWidth());
-        assertEquals(coinWidthHeight * Game.SCALE, coin2.getHeight());
+        assertEquals(coinWidthHeight * Game.scale, coin2.getWidth());
+        assertEquals(coinWidthHeight * Game.scale, coin2.getHeight());
     }
 
     @Test
@@ -61,18 +61,18 @@ public class CoinTest {
         coin.setWidth(width);
         coin.setHeight(height);
 
-        assertEquals(width * Game.SCALE, coin.getWidth());
-        assertEquals(width * Game.SCALE, coin.getBounds().getWidth(), 1.0);
-        assertEquals(height * Game.SCALE, coin.getHeight());
-        assertEquals(height * Game.SCALE, coin.getBounds().getHeight(), 1.0);
+        assertEquals(width * Game.scale, coin.getWidth());
+        assertEquals(width * Game.scale, coin.getBounds().getWidth(), 1.0);
+        assertEquals(height * Game.scale, coin.getHeight());
+        assertEquals(height * Game.scale, coin.getBounds().getHeight(), 1.0);
 
         coin.setWidth(width + 3);
-        assertEquals((width + 3) * Game.SCALE, coin.getWidth());
-        assertEquals((width + 3) * Game.SCALE, coin.getBounds().getWidth(), 1.0);
+        assertEquals((width + 3) * Game.scale, coin.getWidth());
+        assertEquals((width + 3) * Game.scale, coin.getBounds().getWidth(), 1.0);
 
         coin.setHeight(height - 14);
-        assertEquals((height - 14) * Game.SCALE, coin.getHeight());
-        assertEquals((height - 14) * Game.SCALE, coin.getBounds().getHeight(), 1.0);
+        assertEquals((height - 14) * Game.scale, coin.getHeight());
+        assertEquals((height - 14) * Game.scale, coin.getBounds().getHeight(), 1.0);
     }
 
     @Test
