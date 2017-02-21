@@ -29,7 +29,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -79,6 +78,7 @@ public class GameLevel {
 
             //x-koordinaatti
             int x = Game.STARTINGOFFSET;
+            int finalY = 0;
 
             for (String line : fr.getLines()) {
 
@@ -111,22 +111,28 @@ public class GameLevel {
                     }
                     //Kasvata y:tä
                     y -= 32 * Game.SCALE;
+                    finalY = y;
                 }
                 //Kasvata x:ää
                 x += 32 * Game.SCALE;
                 levelWidth = x;
             }
 
+            //Lisätään vielä maaliviiva
+            int finishHeight = 2;
+            int finishX = x - 32 * Game.SCALE;
+            int startY = finalY - finishHeight * 32 * Game.SCALE + 32 * Game.SCALE;
+            for (int i = 0; i < finishHeight; i++) {
+                Tile finishTile = new Tile(finishX, startY + 32 * Game.SCALE * i, "finish");
+                finishTile.setCollisionDetectionEnabled(false);
+                tiles.add(finishTile);
+            }
+
         } catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            LOG.log(Level.SEVERE, null, ex);
         }
         stopWatch = new StopWatch();
         score = new Score(stopWatch);
         score.start();
-    }
-
-    public void setEntitites(List<Entity> entities) {
-        this.entities = new ArrayList(entities);
     }
 
     public List<Entity> getEntities() {
@@ -135,10 +141,6 @@ public class GameLevel {
 
     public List<Entity> getTiles() {
         return tiles;
-    }
-
-    public void setTiles(List<Entity> tiles) {
-        this.tiles = new ArrayList(tiles);
     }
 
     /**

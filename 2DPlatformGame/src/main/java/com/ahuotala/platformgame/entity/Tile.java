@@ -35,6 +35,8 @@ public class Tile extends Entity {
 
     private Sprite sprite;
 
+    private boolean collisionDetectionEnabled = true;
+
     /**
      * Konstruktori.
      *
@@ -103,7 +105,15 @@ public class Tile extends Entity {
     public boolean collides(Entity e) {
         //Päivittää rajat
         updateBounds();
-        return super.collides(e);
+        return isCollisionDetectionEnabled() && super.collides(e);
+    }
+
+    public void setCollisionDetectionEnabled(boolean collisionDetectionEnabled) {
+        this.collisionDetectionEnabled = collisionDetectionEnabled;
+    }
+
+    public boolean isCollisionDetectionEnabled() {
+        return collisionDetectionEnabled;
     }
 
 }

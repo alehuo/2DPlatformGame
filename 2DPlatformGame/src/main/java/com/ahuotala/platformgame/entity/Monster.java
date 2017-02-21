@@ -22,7 +22,6 @@ import com.ahuotala.platformgame.ai.MonsterAi;
 import com.ahuotala.platformgame.graphics.Sprite;
 import com.ahuotala.platformgame.graphics.SpriteLoader;
 import com.ahuotala.platformgame.level.GameLevel;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.List;
@@ -102,7 +101,7 @@ public class Monster extends Entity {
             sprites.put(WalkingDirection.RIGHT, SpriteLoader.getSprite("monster_right"));
         }
         g.drawImage(sprites.get(wd).getImage(), getX() - Player.offsetX, getY(), getWidth(), getHeight(), null);
-        drawBounds(g);
+//        drawBounds(g);
     }
 
     @Override

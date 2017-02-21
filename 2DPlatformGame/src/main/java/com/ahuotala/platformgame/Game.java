@@ -47,13 +47,12 @@ public class Game implements Runnable {
     /**
      * Pelin skaalaus.
      */
-    public static final int SCALE = 2;
+    public static int SCALE = 2;
 
     /**
      * Aloitussiirtymä.
      */
     public static final int STARTINGOFFSET = WINDOWWIDTH / 2 - 64;
-
 
     //Logger
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
@@ -67,7 +66,7 @@ public class Game implements Runnable {
         Game g = new Game();
         g.start();
     }
-    
+
     //Kehyksen otsikko
     private final String windowTitle = "2DPlatformGame";
 
@@ -87,6 +86,9 @@ public class Game implements Runnable {
      * Konstruktori, missä luodaan sekä kehys, pelaaja että pelipaneeli.
      */
     public Game() {
+        if (SCALE > 2) {
+            SCALE = 2;
+        }
         //Luo kehys
         frame = new JFrame(windowTitle);
         frame.setPreferredSize(new Dimension(WINDOWWIDTH, WINDOWHEIGHT));
