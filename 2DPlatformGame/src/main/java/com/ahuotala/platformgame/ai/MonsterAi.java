@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 alehuo
+ * Copyright (C) 2017 ahuotala
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,23 +17,30 @@
  */
 package com.ahuotala.platformgame.ai;
 
+import com.ahuotala.platformgame.entity.Monster;
+import com.ahuotala.platformgame.entity.Player;
+
 /**
  * Tekoäly hirviöille.
  *
  * @author ahuotala
  */
 public class MonsterAi {
-    //Työn alla
-    //Jos pelaaja liikkuu vasemmalle, liikuta myös hirviötä vasemmalle
-    //Jos pelaaja liikkuu oikealle ja on tarpeeksi lähellä, hirviö lähtee karkuun
-    //Jos pelaaja hyppää, anna mahdollisuus pelaajalle hypätä hirviön päälle (tällöin hidasta vauhtia / pysäytä hirviö)
-    //vasen, oikea, hyppäys
-    //lähesty , karkuun , freeze
+
+    private boolean canMove = false;
+
+    private Monster m;
+
+    //-1 = vasen, 1 = oikea, 0 = pysy paikallaan
+    private int move = 0;
 
     /**
      * Konstruktori.
+     *
+     * @param m
      */
-    public MonsterAi() {
+    public MonsterAi(Monster m) {
+        this.m = m;
     }
 
     /**
@@ -42,7 +49,29 @@ public class MonsterAi {
      * @return Seuraavaksi tehtävä liike.
      */
     public int nextMove() {
-        return 0;
+        return move;
+    }
+
+    /**
+     * Havaitse pelaajan sijainti ja liikuta hirviötä sen mukaan.
+     *
+     * @param p Pelaaja
+     */
+    public void detectPlayer(Player p) {
+        //Alue missä hirviö alkaa tunnistamaan pelaajan läsnäolon
+        canMove = Math.abs(m.getX() - p.getX() - Player.offsetX) < 500;
+
+        if (!canMove) {
+            move = 0;
+            return;
+        }
+
+        //Jos erotus on pienempää kuin nolla, niin tiedetään, että pelaaja on vasemmalla puolella
+        if (m.getX() - p.getX() - Player.offsetX < 0) {
+            move = 1;
+        } else {
+            move = -1;
+        }
     }
 
 }

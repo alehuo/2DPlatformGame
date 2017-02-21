@@ -165,6 +165,8 @@ public class GameLevel {
             //Jos entiteetti on monsteri, liikuta sitä
             if (entity instanceof Monster) {
                 ((Monster) entity).move(tileArray);
+                //Havaitse pelaaja ja yritä liikkua sen mukaan
+                ((Monster) entity).getAi().detectPlayer(player);
             } else if (entity instanceof Coin) {
                 //Jos kolikko osuu pelaajaan
                 if (entity.collides(player)) {

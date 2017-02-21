@@ -18,9 +18,13 @@
 package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.ai.MonsterAi;
+import com.ahuotala.platformgame.graphics.Sprite;
+import com.ahuotala.platformgame.graphics.SpriteLoader;
 import com.ahuotala.platformgame.level.GameLevel;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,6 +37,11 @@ public class Monster extends Entity {
     private boolean jumping = false;
     private boolean falling = true;
 
+    private WalkingDirection wd = WalkingDirection.LEFT;
+    private HashMap<WalkingDirection, Sprite> sprites;
+
+    private MonsterAi ai;
+
     /**
      * Konstruktori.
      *
@@ -40,15 +49,17 @@ public class Monster extends Entity {
      * @param y y-koordinaatti
      */
     public Monster(int x, int y) {
-        //Työn alla
         super(x, y);
-        super.setWidth(32);
-        super.setHeight(20);
+        super.setWidth(24);
+        super.setHeight(12);
         //y-suunnassa tiputaan kolme yksikköä
         super.setYMovement(3 * Game.SCALE);
         super.setDy(super.getYMovement());
-        //x-suunnassa napin painallus liikuttaa pelaajaa 4 yksikköä
-        super.setXMovement(2);
+        //x-suunnassa napin painallus liikuttaa hirviötä 3 yksikköä
+        super.setXMovement(3);
+        //Syötetään Monster-olio tekoälylle.
+        ai = new MonsterAi(this);
+        sprites = new HashMap();
     }
 
     /**
@@ -84,10 +95,13 @@ public class Monster extends Entity {
 
     @Override
     public void render(Graphics g) {
-        //Työn alla
-        g.setColor(Color.blue);
-        g.fillRect(x - Player.offsetX, getY(), getWidth(), getHeight());
-        g.setColor(Color.red);
+        if (sprites.get(WalkingDirection.LEFT) == null) {
+            sprites.put(WalkingDirection.LEFT, SpriteLoader.getSprite("monster_left"));
+        }
+        if (sprites.get(WalkingDirection.RIGHT) == null) {
+            sprites.put(WalkingDirection.RIGHT, SpriteLoader.getSprite("monster_right"));
+        }
+        g.drawImage(sprites.get(wd).getImage(), getX() - Player.offsetX, getY(), getWidth(), getHeight(), null);
         drawBounds(g);
     }
 
@@ -100,7 +114,20 @@ public class Monster extends Entity {
             jumping = false;
             falling = true;
         }
-        goRight();
+        //Tekoäly
+        switch (ai.nextMove()) {
+            case -1:
+                wd = WalkingDirection.LEFT;
+                goLeft();
+                break;
+            case 1:
+                wd = WalkingDirection.RIGHT;
+                goRight();
+                break;
+            case 0:
+                setDx(0);
+                break;
+        }
     }
 
     /**
@@ -146,14 +173,6 @@ public class Monster extends Entity {
     }
 
     @Override
-    public void drawBounds(Graphics g) {
-        g.setColor(Color.red);
-        g.draw3DRect((int) getBounds().getX(), (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
-//        g.draw3DRect((int) getBounds().getX(), (int) getBounds().getY(), (int) getBounds().getWidth(), (int) getBounds().getHeight(), true);
-
-    }
-
-    @Override
     public void setX(int x) {
         this.x = x;
         updateBounds();
@@ -165,4 +184,7 @@ public class Monster extends Entity {
         updateBounds();
     }
 
+    public MonsterAi getAi() {
+        return ai;
+    }
 }
