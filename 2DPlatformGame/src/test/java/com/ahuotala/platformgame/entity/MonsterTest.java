@@ -44,7 +44,7 @@ public class MonsterTest {
         assertEquals("Leveyttä ei aseteta oikein", 24 * Game.scale, monster.getWidth());
         assertEquals("Korkeutta ei aseteta oikein", 12 * Game.scale, monster.getHeight());
         assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3 * Game.scale, monster.getYMovement());
-        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 3 * Game.scale, monster.getXMovement());
+        assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 2 * Game.scale, monster.getXMovement());
         assertEquals("Y-suuntaista putoamista ei aseteta oikein", 3 * Game.scale, monster.getDy());
     }
 

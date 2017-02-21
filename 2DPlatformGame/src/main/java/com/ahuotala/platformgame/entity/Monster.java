@@ -54,8 +54,8 @@ public class Monster extends Entity {
         //y-suunnassa tiputaan kolme yksikköä
         super.setYMovement(3 * Game.scale);
         super.setDy(super.getYMovement());
-        //x-suunnassa napin painallus liikuttaa hirviötä 3 yksikköä
-        super.setXMovement(3 * Game.scale);
+        //x-suunnassa napin painallus liikuttaa hirviötä 2 yksikköä
+        super.setXMovement(2 * Game.scale);
         //Syötetään Monster-olio tekoälylle.
         ai = new MonsterAi(this);
         sprites = new HashMap();

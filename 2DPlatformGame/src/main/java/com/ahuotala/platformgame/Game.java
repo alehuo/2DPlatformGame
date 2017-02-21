@@ -96,7 +96,7 @@ public class Game implements Runnable {
         GameLevel gameLevel = new GameLevel();
 
         //Luo pelaaja
-        Player player = new Player(WINDOWWIDTH / 2, WINDOWHEIGHT / 2 + (int) Math.floor(0.1 * WINDOWHEIGHT / 2));
+        Player player = new Player(WINDOWWIDTH / 2, WINDOWHEIGHT / 2 - (int) Math.floor(0.4 * WINDOWHEIGHT / 2));
         gameLevel.setPlayer(player);
 
         //Luo pelipaneeli ja lisää pelitaso sinne
