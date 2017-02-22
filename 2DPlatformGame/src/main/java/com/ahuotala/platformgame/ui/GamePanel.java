@@ -20,6 +20,7 @@ package com.ahuotala.platformgame.ui;
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.level.GameLevel;
+import com.ahuotala.platformgame.level.Score;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -63,49 +64,70 @@ public class GamePanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
 
+        Player player = level.getPlayer();
+
         super.paintComponent(g);
 
         //Tausta
         Color c = new Color(93, 148, 251);
         g.setColor(c);
         g.fill3DRect(0, 0, Game.WINDOWWIDTH, Game.WINDOWHEIGHT, false);
+        if (!level.isGameOver()) {
+            //Taso
+            if (level != null) {
+                level.getTiles().forEach((tile) -> {
+                    tile.render(g);
+                });
+                level.getEntities().forEach((entity) -> {
+                    entity.render(g);
+                });
+                if (player != null) {
+                    player.render(g);
+                    g.setColor(Color.YELLOW);
+                }
+            }
 
-        //Taso
-        if (level != null) {
-            level.getTiles().forEach((tile) -> {
-                tile.render(g);
-            });
-            level.getEntities().forEach((entity) -> {
-                entity.render(g);
-            });
-        }
+            //Pelaaja
+            if (player != null) {
+                //Ohjeet
+                g.drawString("[A] Vasen  [D] Oikea  [Space]  Hyppää", 4, 20);
 
-        Player player = level.getPlayer();
+                //Debuggausta varten x:t ja y:t jne..
+                g.drawString("playerX: " + (player.getX() - Game.STARTINGOFFSET + Player.offsetX), 4, 35);
+                g.drawString("playerY: " + player.getY(), 4, 50);
+                g.drawString("isFalling: " + player.isFalling(), 4, 65);
+                g.drawString("walkingDirection: " + player.getWd(), 4, 80);
+                g.drawString("playerBoundsX: " + (player.getBounds().getX()), 4, 95);
+                g.drawString("playerBoundsY: " + (player.getBounds().getY()), 4, 110);
+                //Pisteytys
+                Font f = g.getFont();
+                Font newF = f.deriveFont(f.getSize() * 3F);
+                g.setFont(newF);
+                g.drawString("Score: " + level.getScore().getValue(), Game.WINDOWWIDTH / 2, 32);
+                g.drawString("Time: " + level.getScore().getCurrentTime() / 1000 + " s", Game.WINDOWWIDTH / 2, 70);
+            }
 
-        //Pelaaja
-        if (player != null) {
-            player.render(g);
-            g.setColor(Color.WHITE);
-
-            //Ohjeet
-            g.drawString("[A] Vasen  [D] Oikea  [Space]  Hyppää", 4, 20);
-
-            //Debuggausta varten x:t ja y:t jne..
-            g.drawString("playerX: " + (player.getX() - Game.STARTINGOFFSET + Player.offsetX), 4, 35);
-            g.drawString("playerY: " + player.getY(), 4, 50);
-            g.drawString("isFalling: " + player.isFalling(), 4, 65);
-            g.drawString("walkingDirection: " + player.getWd(), 4, 80);
-            g.drawString("playerBoundsX: " + (player.getBounds().getX()), 4, 95);
-            g.drawString("playerBoundsY: " + (player.getBounds().getY()), 4, 110);
+        } else {
+            Score score = level.getScore();
+            int textOffsetY = 128;
+            int textOffsetX = -Game.WINDOWWIDTH / 4;
+            //Pysäytä sekuntikello
+            if (score.getStopWatch().isRunning()) {
+                score.stop();
+            }
+            g.setColor(Color.YELLOW);
             //Pisteytys
             Font f = g.getFont();
-            Font newF = f.deriveFont(f.getSize() * 3F);
+            Font newF = f.deriveFont(f.getSize() * 4F);
             g.setFont(newF);
-            g.drawString("Score: " + level.getScore().getValue(), Game.WINDOWWIDTH / 2, 32);
-            g.drawString("Time: " + level.getScore().getCurrentTime() / 1000 + " s", Game.WINDOWWIDTH / 2, 70);
+            g.drawString("THE END", Game.WINDOWWIDTH / 2 + textOffsetX, 32 + textOffsetY);
+            g.drawString("Collected coins: " + score.getCollectedCoins(), Game.WINDOWWIDTH / 2 + textOffsetX, 160 + textOffsetY);
+            g.drawString("Defeated monsters: " + score.getDefeatedMonsters(), Game.WINDOWWIDTH / 2 + textOffsetX, 224 + textOffsetY);
+            g.drawString("Elapsed time: " + Math.ceil(score.getStopWatch().getTotalSeconds()) + " second(s) ", Game.WINDOWWIDTH / 2 + textOffsetX, 288 + textOffsetY);
+            g.drawString("Final score: " + score.getValue() + " points", Game.WINDOWWIDTH / 2 + textOffsetX, 352 + textOffsetY
+            );
         }
 
-        //Todo..
     }
 
     /**

@@ -61,6 +61,8 @@ public class GameLevel {
     //Sekuntikello
     private final StopWatch stopWatch;
 
+    private int finishX;
+
     /**
      * Tasoluokka. Ladataan ensin tiilet ja sen jälkeen entiteetit muistiin.
      */
@@ -120,7 +122,7 @@ public class GameLevel {
 
             //Lisätään vielä maaliviiva
             int finishHeight = 2;
-            int finishX = x - 32 * Game.scale;
+            finishX = x - 32 * Game.scale;
             int startY = finalY - finishHeight * 32 * Game.scale + 32 * Game.scale;
             for (int i = 0; i < finishHeight; i++) {
                 Tile finishTile = new Tile(finishX, startY + 32 * Game.scale * i, "finish");
@@ -195,4 +197,7 @@ public class GameLevel {
         return score;
     }
 
+    public boolean isGameOver() {
+        return player.getX() + Player.offsetX > finishX;
+    }
 }

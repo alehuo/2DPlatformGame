@@ -159,4 +159,8 @@ public class Score {
         return "Pistemäärä: " + value + ", kerätyt kolikot: " + collectedCoins + ", tapetut hirviöt: " + defeatedMonsters + ", tason suoritukseen kulunut aika: " + stopWatch.getTotalSeconds() + "s"; //To change body of generated methods, choose Tools | Templates.
     }
 
+    public StopWatch getStopWatch() {
+        return stopWatch;
+    }
+
 }
