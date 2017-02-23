@@ -43,6 +43,8 @@ public class Player extends Entity implements KeyListener {
 
     private HashMap<WalkingDirection, Sprite> sprites;
 
+    private int health = 1000;
+
     /**
      * Konstruktori.
      *
@@ -193,6 +195,18 @@ public class Player extends Entity implements KeyListener {
                 break;
             }
         }
+    }
+
+    public void damagePlayer(int amount) {
+        if (health - amount > 0) {
+            health -= amount;
+        } else {
+            health = 0;
+        }
+    }
+
+    public int getHealth() {
+        return health;
     }
 
 }

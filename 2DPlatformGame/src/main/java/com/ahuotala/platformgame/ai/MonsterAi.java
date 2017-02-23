@@ -29,10 +29,12 @@ public class MonsterAi {
 
     private boolean canMove = false;
 
-    private Monster m;
+    private final Monster m;
 
     //-1 = vasen, 1 = oikea, 0 = pysy paikallaan
     private int move = 0;
+
+    private int collideCount = 0;
 
     /**
      * Konstruktori.
@@ -53,11 +55,13 @@ public class MonsterAi {
     }
 
     /**
-     * Havaitse pelaajan sijainti ja liikuta hirviötä sen mukaan.
+     * Havaitse pelaajan sijainti ja liikuta hirviötä sen mukaan. Lisäksi
+     * vahingoita pelaajaa, jos pelaaja ei liiku hirviön alueelta pois tarpeeksi
+     * nopeasti.
      *
      * @param p Pelaaja
      */
-    public void detectPlayer(Player p) {
+    public void process(Player p) {
         //Alue missä hirviö alkaa tunnistamaan pelaajan läsnäolon
         canMove = Math.abs(m.getX() - p.getX() - Player.offsetX) < 500;
 
@@ -71,6 +75,16 @@ public class MonsterAi {
             move = 1;
         } else {
             move = -1;
+        }
+
+        if (p.collides(m)) {
+            collideCount++;
+            //Tässä otetaan pelaajalta elämää pois jos pelaaja osuu hirviöön eikä liiku hetkeen.
+            if (collideCount != 0 && collideCount % 15 == 0) {
+                p.damagePlayer(50);
+            }
+        } else {
+            collideCount = 0;
         }
     }
 

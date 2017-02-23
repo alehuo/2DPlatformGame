@@ -97,6 +97,7 @@ public class GamePanel extends JPanel {
                 g.setFont(newF);
                 g.drawString("Score: " + level.getScore().getValue(), Game.WINDOWWIDTH / 2, 32);
                 g.drawString("Time: " + level.getScore().getCurrentTime() / 1000 + " s", Game.WINDOWWIDTH / 2, 70);
+                g.drawString("Health: " + player.getHealth() + " hp", Game.WINDOWWIDTH / 2, 108);
             }
 
         } else {
