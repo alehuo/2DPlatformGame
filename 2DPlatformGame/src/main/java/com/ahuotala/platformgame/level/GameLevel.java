@@ -19,9 +19,7 @@ package com.ahuotala.platformgame.level;
 
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Cloud;
-import com.ahuotala.platformgame.entity.Coin;
 import com.ahuotala.platformgame.entity.Entity;
-import com.ahuotala.platformgame.entity.Monster;
 import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.entity.Tile;
 import com.ahuotala.platformgame.utils.FileReader;
@@ -64,6 +62,8 @@ public class GameLevel {
     private final StopWatch stopWatch;
 
     private int finishX;
+
+    private final GameUpdater updater = new GameUpdater();
 
     /**
      * Tasoluokka. Ladataan ensin tiilet ja sen jälkeen entiteetit muistiin.
@@ -141,52 +141,24 @@ public class GameLevel {
         score.start();
     }
 
-    public List<Entity> getEntities() {
-        return entities;
-    }
-
-    public List<Entity> getTiles() {
-        return tiles;
+    /**
+     * Palauttaa tiilet ja entiteetit yhtenä listana. Toiminnallisuutta
+     * käytetään GamePanel-luokassa.
+     *
+     * @return Lista entiteeteistä ja tiilistä
+     */
+    public List<Entity> getTilesAndEntities() {
+        List<Entity> entitiesAndTiles = new ArrayList();
+        entitiesAndTiles.addAll(entities);
+        entitiesAndTiles.addAll(tiles);
+        return entitiesAndTiles;
     }
 
     /**
      * tick() -metodi päivittää tason tiilet, entiteetit ja pelaajan.
      */
     public void tick() {
-        //Tiilet
-        List<Entity> tileArray = getTiles();
-        //Päivitä sekuntikello
-        if (stopWatch != null) {
-            stopWatch.tick();
-        }
-        //Päivitä tiilet
-        tileArray.stream().forEach((tile) -> {
-            tile.tick();
-        });
-        //Päivitä pelaaja
-        player.tick();
-        player.move(tileArray);
-
-        //Päivitä entiteetit
-        getEntities().stream().forEach((Entity entity) -> {
-            entity.tick();
-            //Jos entiteetti on monsteri, liikuta sitä
-            if (entity instanceof Monster) {
-                ((Monster) entity).move(tileArray);
-                //Kytketään hirviön tekoäly kiinni pelaajaan.
-                ((Monster) entity).getAi().process(player);
-            } else if (entity instanceof Coin) {
-                //Jos kolikko osuu pelaajaan
-                if (entity.collides(player)) {
-                    //Kerää kolikko
-                    score.collectCoin();
-                    //Aseta kolikko läpinäkymättömäksi
-                    entity.setVisible(false);
-                }
-            }
-
-        });
-
+        updater.updateAll(tiles, entities, stopWatch, player, score);
     }
 
     public void setPlayer(Player player) {
@@ -205,19 +177,18 @@ public class GameLevel {
         return player.getX() + Player.offsetX > finishX;
     }
 
-    //Luo satunnaiset pilvet.
+    //Luo 3-4 satunnaista pilveä peliin.
     private void generateClouds() {
-
         Random r = new Random();
-        int pilvienLkm = r.nextInt(1) + 3;
-        if (pilvienLkm < 2) {
-            pilvienLkm = 2;
+
+        int pilvienLkm = r.nextInt(2) + 3;
+
+        int xOffset = 60;
+        if (pilvienLkm < 4) {
+            xOffset = 160;
         }
-
-        int baseY = 40;
-
         for (int i = 0; i < pilvienLkm; i++) {
-            Cloud c = new Cloud(i * 128 * Game.scale + r.nextInt(20) + 150, baseY + r.nextInt(80) - r.nextInt(40));
+            Cloud c = new Cloud(i * 128 * Game.scale + xOffset, 50 + r.nextInt(80) - r.nextInt(40));
             entities.add(c);
         }
     }

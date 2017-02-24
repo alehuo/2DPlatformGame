@@ -75,11 +75,8 @@ public class GamePanel extends JPanel {
         if (!level.isGameOver()) {
             //Taso
             if (level != null) {
-                level.getEntities().forEach((entity) -> {
+                level.getTilesAndEntities().forEach((entity) -> {
                     entity.render(g);
-                });
-                level.getTiles().forEach((tile) -> {
-                    tile.render(g);
                 });
                 if (player != null) {
                     player.render(g);
