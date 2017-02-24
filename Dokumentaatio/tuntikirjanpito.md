@@ -21,4 +21,9 @@ Päivä | Tunnit | Kuvaus
 15.02.2017 | 1.5h | Päivitetty luokkien testejä ja lisätty mahdollisuus skaalata peliä.
 16.02.2017 | 1h | Paranneltu testejä rivikattavuuden ja mutaatioiden osalta.
 17.02.2017 | 1h | Päivitetty Javadoccia, Checkstyle- ja Pit- raportit sekä luotu Monster ja MonsterAi -luokat (Luokkia ei ole vielä liitetty mihinkään).
+20.02.2017 | 2h | Korjattu hirviön liikkuminen.
+21.02.2017 | 3h | Toteutettu hirviölle tekoäly ja lisätty hirviölle tekstuurit. Päivitetty lisäksi luokkakaavio.
+22.02.2017 | 2h | Toteutettu loppupisteiden näyttäminen, kun peli loppuu.
+23.02.2017 | 3h | Toteutettu toiminnallisuus, joka vahingoittaa pelaajaa jos pelaaja ei liiku monsterin alueelta pois tarpeeksi nopeasti (käyttää pelaajan health-järjestelmää).
+24.02.2017 | 4h | Pilkottu ohjelmaa paloihin, päivitetty JavaDoc, Checkstyle- ja Pit -raportit. Tehty tasosta pidempi ja lisätty pilvet taivaalle.
 ... | ... | ...
