@@ -7,10 +7,10 @@ Pelin lopussa näytetään loppupisteytys, joka koostuu suoritusajasta, kerätyi
 
 ## Dokumentaatio
 * [Aiheen kuvaus ja rakenne](Dokumentaatio/aiheenKuvausJaRakenne.md)
+* [Luokkakaavion rakennekuvaus](https://github.com/alehuo/2DPlatformGame/blob/master/Dokumentaatio/rakennekuvaus.md)
 * [Tuntikirjanpito](Dokumentaatio/tuntikirjanpito.md)
 * [CheckStyle-raportti](https://htmlpreview.github.io/?https://github.com/alehuo/2DPlatformGame/blob/master/Dokumentaatio/checkstyle-raportti/checkstyle.html)
 * [pit-raportti](https://htmlpreview.github.io/?https://github.com/alehuo/2DPlatformGame/blob/master/Dokumentaatio/pit-raportti/201702171953/index.html)
-* [Luokkakaavion rakennekuvaus](https://htmlpreview.github.io/?https://github.com/alehuo/2DPlatformGame/blob/master/Dokumentaatio/rakennekuvaus.md)
 
 ## Käyttöohjeet
 Suorita projekti IDE-ympäristöstä tai .jar -tiedostosta. Tämän jälkeen peli avautuu, ja sitä voi pelata välittömästi.
