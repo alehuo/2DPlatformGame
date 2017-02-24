@@ -82,14 +82,20 @@ public class Player extends Entity implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         //Vasen, oikea ja hyppy
-        if (e.getKeyCode() == KeyEvent.VK_A) {
-            wd = WalkingDirection.LEFT;
-            setDx(-getXMovement());
-        } else if (e.getKeyCode() == KeyEvent.VK_D) {
-            wd = WalkingDirection.RIGHT;
-            setDx(getXMovement());
-        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            jump();
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_A:
+                wd = WalkingDirection.LEFT;
+                setDx(-getXMovement());
+                break;
+            case KeyEvent.VK_D:
+                wd = WalkingDirection.RIGHT;
+                setDx(getXMovement());
+                break;
+            case KeyEvent.VK_SPACE:
+                jump();
+                break;
+            default:
+                break;
         }
     }
 
@@ -198,9 +204,9 @@ public class Player extends Entity implements KeyListener {
     }
 
     public void damagePlayer(int amount) {
-        if (health - amount > 0) {
+        if (health - amount > 0 && amount > 0) {
             health -= amount;
-        } else {
+        } else if (amount > 0) {
             health = 0;
         }
     }

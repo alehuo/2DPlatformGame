@@ -107,7 +107,6 @@ public class Monster extends Entity {
     @Override
     public void tick() {
         updateBounds();
-        //Työn alla
         if (jumping && !falling) {
             setY(getY() - 64 * Game.scale);
             jumping = false;
@@ -185,5 +184,13 @@ public class Monster extends Entity {
 
     public MonsterAi getAi() {
         return ai;
+    }
+
+    public boolean isJumping() {
+        return jumping;
+    }
+
+    public boolean isFalling() {
+        return falling;
     }
 }

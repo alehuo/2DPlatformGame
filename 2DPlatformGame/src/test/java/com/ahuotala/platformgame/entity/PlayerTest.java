@@ -51,6 +51,18 @@ public class PlayerTest {
         assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3 * Game.scale, player.getYMovement());
         assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 4 * Game.scale, player.getXMovement());
         assertEquals("Y-suuntaista putoamista ei aseteta oikein", 3 * Game.scale, player.getDy());
+        assertEquals("Pelaajan HP:ta ei aseteta oikein", 1000, player.getHealth());
+    }
+
+    @Test
+    public void vahingoittuuOikein() {
+        int startHealth = 1000;
+        int dmgAmount = 442;
+        assertEquals("Pelaajan HP:ta ei aseteta oikein", startHealth, player.getHealth());
+        player.damagePlayer(442);
+        assertEquals("Pelaaja ei vahingoitu oikein.", startHealth - dmgAmount, player.getHealth());
+        player.damagePlayer(-400);
+        assertEquals("Pelaajan ei kuuluisi vahingoittua negatiivista määrää.", startHealth - dmgAmount, player.getHealth());
     }
 
     @Test

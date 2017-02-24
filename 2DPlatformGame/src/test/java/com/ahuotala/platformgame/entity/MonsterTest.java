@@ -18,8 +18,13 @@
 package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
+import java.util.ArrayList;
+import java.util.List;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -46,6 +51,8 @@ public class MonsterTest {
         assertEquals("Y-suuntaista liikkumismatkaa ei aseteta oikein", 3 * Game.scale, monster.getYMovement());
         assertEquals("X-suuntaista liikkumismatkaa ei aseteta oikein", 2 * Game.scale, monster.getXMovement());
         assertEquals("Y-suuntaista putoamista ei aseteta oikein", 3 * Game.scale, monster.getDy());
+        assertTrue("Tippumistilaa ei aseteta oikein.", monster.isFalling());
+        assertFalse("Hyppäämistilaa ei aseteta oikein.", monster.isJumping());
     }
 
     @Test
@@ -105,6 +112,55 @@ public class MonsterTest {
     @Test
     public void hakeeTekoalynOikein() {
         assertNotNull(monster.getAi());
+    }
+
+    @Test
+    public void liikkuminenToimii() {
+        int xMovement = monster.getXMovement();
+        int yMovement = monster.getYMovement();
+
+        assertEquals(0, monster.getDx());
+
+        monster.goLeft();
+
+        assertEquals(-xMovement, monster.getDx());
+
+        monster.setDx(0);
+        monster.goRight();
+
+        assertEquals(xMovement, monster.getDx());
+
+        monster.setDx(0);
+
+        List<Entity> entities = new ArrayList();
+        for (int i = 0; i < 150; i++) {
+            Tile tmpTile = new Tile(i * 32, -2, "coin_1");
+            entities.add(tmpTile);
+        }
+
+        assertTrue(monster.isFalling());
+        for (int i = 0; i < 10; i++) {
+            monster.move(entities);
+        }
+
+        int preX = monster.getX();
+
+        monster.goLeft();
+//        Rectangle preBounds = monster.getBounds();
+        for (int i = 0; i < 55; i++) {
+            monster.move(entities);
+            assertEquals(preX - monster.getDx(), monster.getX());
+            assertEquals(preX - monster.getDx(), monster.getBounds().getX(), 1.0);
+            assertNotEquals(preX, monster.getBounds().getX(), 1.0);
+            preX = monster.getX();
+        }
+        assertFalse(monster.isFalling());
+        assertTrue(monster.isJumping());
+
+        monster.jump();
+
+        assertTrue(monster.isJumping());
+        assertEquals(yMovement, monster.getDy());
     }
 
 }
