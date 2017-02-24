@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 21,
-             Errors: 0,
+      <title>File: 22,
+             Errors: 1,
              Warnings: 0,
              Infos: 0
       </title>
@@ -69,7 +69,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                           <tr>
@@ -313,6 +313,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.Game.java">com/ahuotala/platformgame/Game.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.ahuotala.platformgame.level.GameUpdater.java">com/ahuotala/platformgame/level/GameUpdater.java</a>
                 </td>
                 <td>
                   0
