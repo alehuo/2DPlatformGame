@@ -25,7 +25,8 @@ import com.ahuotala.platformgame.utils.StopWatch;
 import java.util.List;
 
 /**
- * GameUpdater-luokka hoitaa kaikkien pelin tietojen päivittämisen.
+ * GameUpdater-luokka hoitaa pelin tiilten, entiteettien, sekuntikellon,
+ * pelaajan ja pisteytyksen päivityksen.
  *
  * @author ahuotala
  */

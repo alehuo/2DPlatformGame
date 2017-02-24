@@ -59,7 +59,7 @@ public class KeyHandler implements KeyListener {
     /**
      * Kun näppäin nostetaan, lähetetään KeyReleased-tapahtuma pelaajalle.
      *
-     * @param e
+     * @param e KeyEvent
      */
     @Override
     public void keyReleased(KeyEvent e) {
