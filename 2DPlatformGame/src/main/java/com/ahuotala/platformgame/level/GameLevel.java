@@ -18,6 +18,7 @@
 package com.ahuotala.platformgame.level;
 
 import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.entity.Cloud;
 import com.ahuotala.platformgame.entity.Coin;
 import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.entity.Monster;
@@ -29,6 +30,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Logger;
 
 /**
@@ -69,6 +71,8 @@ public class GameLevel {
     public GameLevel() {
         entities = new ArrayList();
         tiles = new ArrayList();
+
+        generateClouds();
 
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
@@ -199,5 +203,22 @@ public class GameLevel {
 
     public boolean isGameOver() {
         return player.getX() + Player.offsetX > finishX;
+    }
+
+    //Luo satunnaiset pilvet.
+    private void generateClouds() {
+
+        Random r = new Random();
+        int pilvienLkm = r.nextInt(1) + 3;
+        if (pilvienLkm < 2) {
+            pilvienLkm = 2;
+        }
+
+        int baseY = 40;
+
+        for (int i = 0; i < pilvienLkm; i++) {
+            Cloud c = new Cloud(i * 128 * Game.scale + r.nextInt(20) + 150, baseY + r.nextInt(80) - r.nextInt(40));
+            entities.add(c);
+        }
     }
 }

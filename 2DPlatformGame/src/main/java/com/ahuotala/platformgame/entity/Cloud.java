@@ -30,8 +30,8 @@ public class Cloud extends Entity {
 
     private Sprite sprite;
 
-    private final int cloudWidth = 128;
-    private final int cloudHeight = 64;
+    private final int cloudWidth = 64;
+    private final int cloudHeight = 32;
 
     /**
      * Konstruktori Pilvi-entiteetille.
@@ -71,8 +71,7 @@ public class Cloud extends Entity {
     @Override
     public void render(Graphics g) {
         if (sprite != null && isVisible()) {
-            g.drawImage(sprite.getImage(), getX() - Player.offsetX, getY(), getWidth(), getHeight(), null);
-            drawBounds(g);
+            g.drawImage(sprite.getImage(), getX(), getY(), getWidth(), getHeight(), null);
         }
     }
 
@@ -82,7 +81,7 @@ public class Cloud extends Entity {
      */
     @Override
     public void tick() {
-        getBounds().setBounds(getX() - Player.offsetX, getY(), getWidth(), getHeight());
+        getBounds().setBounds(getX(), getY(), getWidth(), getHeight());
     }
 
 }

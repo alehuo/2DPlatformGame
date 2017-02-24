@@ -75,11 +75,11 @@ public class GamePanel extends JPanel {
         if (!level.isGameOver()) {
             //Taso
             if (level != null) {
-                level.getTiles().forEach((tile) -> {
-                    tile.render(g);
-                });
                 level.getEntities().forEach((entity) -> {
                     entity.render(g);
+                });
+                level.getTiles().forEach((tile) -> {
+                    tile.render(g);
                 });
                 if (player != null) {
                     player.render(g);
@@ -93,11 +93,11 @@ public class GamePanel extends JPanel {
                 g.drawString("[A] Vasen  [D] Oikea  [Space]  Hyppää", 4, 20);
                 //Pisteytys
                 Font f = g.getFont();
-                Font newF = f.deriveFont(f.getSize() * 3F);
+                Font newF = f.deriveFont(f.getSize() * 2F);
                 g.setFont(newF);
-                g.drawString("Score: " + level.getScore().getValue(), Game.WINDOWWIDTH / 2, 32);
-                g.drawString("Time: " + level.getScore().getCurrentTime() / 1000 + " s", Game.WINDOWWIDTH / 2, 70);
-                g.drawString("Health: " + player.getHealth() + " hp", Game.WINDOWWIDTH / 2, 108);
+                g.drawString("Score: " + level.getScore().getValue(), Game.WINDOWWIDTH / 9, Game.WINDOWHEIGHT - 64);
+                g.drawString("Time: " + level.getScore().getCurrentTime() / 1000 + " s", Game.WINDOWWIDTH / 9 + 250, Game.WINDOWHEIGHT - 64);
+                g.drawString("Health: " + player.getHealth() + " hp", Game.WINDOWWIDTH / 9 + 500, Game.WINDOWHEIGHT - 64);
             }
 
         } else {

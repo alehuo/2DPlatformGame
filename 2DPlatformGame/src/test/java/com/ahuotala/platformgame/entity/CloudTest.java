@@ -38,8 +38,8 @@ public class CloudTest {
 
     @Test
     public void alkutilaOikein() {
-        assertEquals(128 * Game.scale, cloud.getWidth());
-        assertEquals(64 * Game.scale, cloud.getHeight());
+        assertEquals(64 * Game.scale, cloud.getWidth());
+        assertEquals(32 * Game.scale, cloud.getHeight());
         assertEquals(0, cloud.getX());
         assertEquals(0, cloud.getY());
     }
@@ -49,7 +49,7 @@ public class CloudTest {
         Cloud cloud2 = new Cloud(42, 55);
         assertEquals(42, cloud2.getX());
         assertEquals(55, cloud2.getY());
-        assertEquals(128 * Game.scale, cloud2.getWidth());
-        assertEquals(64 * Game.scale, cloud2.getHeight());
+        assertEquals(64 * Game.scale, cloud2.getWidth());
+        assertEquals(32 * Game.scale, cloud2.getHeight());
     }
 }
