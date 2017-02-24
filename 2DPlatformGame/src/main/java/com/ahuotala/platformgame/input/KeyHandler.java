@@ -28,7 +28,7 @@ import java.awt.event.KeyListener;
  */
 public class KeyHandler implements KeyListener {
 
-    private Player player;
+    private final Player player;
 
     /**
      * Näppäimistönkuuntelija, joka "injektoi" pelaajan sisälleen.
