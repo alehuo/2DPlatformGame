@@ -21,6 +21,7 @@ import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.graphics.Sprite;
 import com.ahuotala.platformgame.graphics.SpriteLoader;
 import com.ahuotala.platformgame.level.GameLevel;
+import com.ahuotala.platformgame.level.Score;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -177,12 +178,29 @@ public class Player extends Entity implements KeyListener {
      * move -metodi hoitaa pelaajan liikuttamisen.
      *
      * @param tiles Lista pelin tiileistä, joiden avulla tarkistetaan törmäys.
+     * @param monsters Lista pelin entiteeteistä (näistä poimitaan hirviöt)
+     * @param s Pisteytys
      */
-    public void move(List<Entity> tiles) {
+    public void move(List<Entity> tiles, List<Entity> monsters, Score s) {
+        boolean onGround = false;
         //Loopataan entiteetit ensin Y-suunnassa ja sitten X-suunnassa.
         setY(getY() + getDy());
         for (Entity tile : tiles) {
             if (tile.collides(this)) {
+                onGround = true;
+                falling = false;
+                setY(getY() - getDy());
+                break;
+            }
+        }
+
+        //Hirviön törmäyksentunnistus
+        for (Entity monster : monsters) {
+            if (monster.collides(this) && !onGround && monster instanceof Monster) {
+                ((Monster) monster).kill();
+                if (s != null) {
+                    s.defeatMonster();
+                }
                 falling = false;
                 setY(getY() - getDy());
                 break;

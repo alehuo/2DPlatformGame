@@ -149,8 +149,8 @@ public class GameLevel {
      */
     public List<Entity> getTilesAndEntities() {
         List<Entity> entitiesAndTiles = new ArrayList();
-        entitiesAndTiles.addAll(entities);
         entitiesAndTiles.addAll(tiles);
+        entitiesAndTiles.addAll(entities);
         return entitiesAndTiles;
     }
 

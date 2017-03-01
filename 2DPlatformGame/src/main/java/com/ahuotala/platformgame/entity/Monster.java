@@ -41,6 +41,8 @@ public class Monster extends Entity {
 
     private MonsterAi ai;
 
+    private boolean killed = false;
+
     /**
      * Konstruktori.
      *
@@ -101,31 +103,44 @@ public class Monster extends Entity {
             sprites.put(WalkingDirection.RIGHT, SpriteLoader.getSprite("monster_right"));
         }
         g.drawImage(sprites.get(wd).getImage(), getX() - Player.offsetX, getY(), getWidth(), getHeight(), null);
-//        drawBounds(g);
     }
 
     @Override
     public void tick() {
         updateBounds();
-        if (jumping && !falling) {
-            setY(getY() - 64 * Game.scale);
-            jumping = false;
-            falling = true;
+        if (killed) {
+            if (getY() < Game.WINDOWHEIGHT * 1.2) {
+                setY(getY() + 8);
+            }
+        } else {
+            if (jumping && !falling) {
+                setY(getY() - 64 * Game.scale);
+                jumping = false;
+                falling = true;
+            }
+            //Tekoäly
+            switch (ai.nextMove()) {
+                case -1:
+                    wd = WalkingDirection.LEFT;
+                    goLeft();
+                    break;
+                case 1:
+                    wd = WalkingDirection.RIGHT;
+                    goRight();
+                    break;
+                case 0:
+                    setDx(0);
+                    break;
+            }
         }
-        //Tekoäly
-        switch (ai.nextMove()) {
-            case -1:
-                wd = WalkingDirection.LEFT;
-                goLeft();
-                break;
-            case 1:
-                wd = WalkingDirection.RIGHT;
-                goRight();
-                break;
-            case 0:
-                setDx(0);
-                break;
-        }
+
+    }
+
+    /**
+     * Tappaa hirviön.
+     */
+    public void kill() {
+        killed = true;
     }
 
     /**

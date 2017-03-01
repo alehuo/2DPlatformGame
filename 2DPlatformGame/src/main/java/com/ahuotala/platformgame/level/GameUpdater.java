@@ -53,7 +53,7 @@ public class GameUpdater {
         });
         //Päivitä pelaaja
         player.tick();
-        player.move(tiles);
+        player.move(tiles, entities, score);
 
         //Päivitä entiteetit
         entities.stream().forEach((Entity entity) -> {

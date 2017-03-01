@@ -129,7 +129,7 @@ public class PlayerTest {
 
         List<Entity> entities = new ArrayList();
 
-        player.move(entities);
+        player.move(entities, new ArrayList(), null);
 
         assertEquals(xNyt + xMaara, player.getX() - Game.STARTINGOFFSET + Player.offsetX);
         assertEquals(yNyt + yMaara, player.getY());
