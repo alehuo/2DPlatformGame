@@ -181,7 +181,7 @@ public class Player extends Entity implements KeyListener {
      * @param monsters Lista pelin entiteeteistä (näistä poimitaan hirviöt)
      * @param s Pisteytys
      */
-    public void move(List<Entity> tiles, List<Entity> monsters, Score s) {
+    public void move(List<Entity> tiles, List<Entity> monsters) {
         boolean onGround = false;
         //Loopataan entiteetit ensin Y-suunnassa ja sitten X-suunnassa.
         setY(getY() + getDy());
@@ -197,10 +197,8 @@ public class Player extends Entity implements KeyListener {
         //Hirviön törmäyksentunnistus
         for (Entity monster : monsters) {
             if (monster.collides(this) && !onGround && monster instanceof Monster) {
+                //Merkkaa hirviö tapetuksi
                 ((Monster) monster).kill();
-                if (s != null) {
-                    s.defeatMonster();
-                }
                 falling = false;
                 setY(getY() - getDy());
                 break;

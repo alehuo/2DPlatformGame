@@ -53,13 +53,18 @@ public class GameUpdater {
         });
         //Päivitä pelaaja
         player.tick();
-        player.move(tiles, entities, score);
+        player.move(tiles, entities);
 
         //Päivitä entiteetit
         entities.stream().forEach((Entity entity) -> {
             entity.tick();
             //Jos entiteetti on monsteri, liikuta sitä
-            if (entity instanceof Monster) {
+            if (entity instanceof Monster && ((Monster) entity).isInGame()) {
+                //Jos monsteri on tapettu, anna siitä pisteet
+                if (((Monster) entity).isKilled()) {
+                    ((Monster) entity).setInGame(false);
+                    score.defeatMonster();
+                }
                 ((Monster) entity).move(tiles);
                 //Kytketään hirviön tekoäly kiinni pelaajaan.
                 ((Monster) entity).getAi().process(player);

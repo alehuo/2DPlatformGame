@@ -42,6 +42,7 @@ public class Monster extends Entity {
     private MonsterAi ai;
 
     private boolean killed = false;
+    private boolean inGame = true;
 
     /**
      * Konstruktori.
@@ -141,6 +142,18 @@ public class Monster extends Entity {
      */
     public void kill() {
         killed = true;
+    }
+
+    public boolean isKilled() {
+        return killed;
+    }
+
+    public boolean isInGame() {
+        return inGame;
+    }
+
+    public void setInGame(boolean inGame) {
+        this.inGame = inGame;
     }
 
     /**
