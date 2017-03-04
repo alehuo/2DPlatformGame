@@ -18,10 +18,9 @@
 package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
+import com.ahuotala.platformgame.entity.movement.PlayerMover;
 import com.ahuotala.platformgame.graphics.Sprite;
 import com.ahuotala.platformgame.graphics.SpriteLoader;
-import com.ahuotala.platformgame.level.GameLevel;
-import com.ahuotala.platformgame.level.Score;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -29,22 +28,25 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Pelaaja -luokka.
+ * Pelaaja-luokka.
  *
  * @author ahuotala
  */
 public class Player extends Entity implements KeyListener {
 
     public static int offsetX;
-
-    private boolean jumping = false;
-    private boolean falling = true;
-
-    private WalkingDirection wd;
-
-    private final HashMap<WalkingDirection, Sprite> sprites;
-
+    //Pelaajan hp
     private int health = 1000;
+    //Pelaajan liikkumissuunta
+    private WalkingDirection walkingDirection = WalkingDirection.RIGHT;
+    //Pelaajan hyppäämistila
+    private boolean jumping = false;
+    //Pelaajan tippumistila
+    private boolean falling = true;
+    //Pelaajan liikuttaja
+    private final PlayerMover playerMover = new PlayerMover();
+    //Lista pelaajan spriteistä
+    private final HashMap<WalkingDirection, Sprite> sprites = new HashMap();
 
     /**
      * Konstruktori.
@@ -54,21 +56,14 @@ public class Player extends Entity implements KeyListener {
      */
     public Player(int x, int y) {
         super(x, y);
-
-        //Alusta HashMap
-        sprites = new HashMap();
-
         //Pelaaja on 24x32 kokoinen (leveys x korkeus)
         super.setWidth(24);
         super.setHeight(32);
-
         //y-suunnassa tiputaan kolme yksikköä
         super.setYMovement(3 * Game.scale);
         super.setDy(super.getYMovement());
         //x-suunnassa napin painallus liikuttaa pelaajaa 4 yksikköä
         super.setXMovement(4 * Game.scale);
-
-        wd = WalkingDirection.RIGHT;
     }
 
     @Override
@@ -85,11 +80,11 @@ public class Player extends Entity implements KeyListener {
         //Vasen, oikea ja hyppy
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                wd = WalkingDirection.LEFT;
+                walkingDirection = WalkingDirection.LEFT;
                 setDx(-getXMovement());
                 break;
             case KeyEvent.VK_D:
-                wd = WalkingDirection.RIGHT;
+                walkingDirection = WalkingDirection.RIGHT;
                 setDx(getXMovement());
                 break;
             case KeyEvent.VK_SPACE:
@@ -137,12 +132,12 @@ public class Player extends Entity implements KeyListener {
         this.falling = falling;
     }
 
-    public WalkingDirection getWd() {
-        return wd;
+    public WalkingDirection getWalkingDirection() {
+        return walkingDirection;
     }
 
-    public void setWd(WalkingDirection wd) {
-        this.wd = wd;
+    public void setWalkingDirection(WalkingDirection walkingDirection) {
+        this.walkingDirection = walkingDirection;
     }
 
     /**
@@ -158,12 +153,11 @@ public class Player extends Entity implements KeyListener {
         if (sprites.get(WalkingDirection.RIGHT) == null) {
             sprites.put(WalkingDirection.RIGHT, SpriteLoader.getSprite("plr_right"));
         }
-        g.drawImage(sprites.get(wd).getImage(), getX(), getY(), getWidth(), getHeight(), null);
+        g.drawImage(sprites.get(walkingDirection).getImage(), getX(), getY(), getWidth(), getHeight(), null);
     }
 
     /**
-     * Pelaajan tick -toiminnallisuus on vastuussa pelaajan y-suuntaisesta
-     * hyppimisestä.
+     * Pelaajan tick -toiminnallisuus hoitaa hyppimisen.
      */
     @Override
     public void tick() {
@@ -179,44 +173,9 @@ public class Player extends Entity implements KeyListener {
      *
      * @param tiles Lista pelin tiileistä, joiden avulla tarkistetaan törmäys.
      * @param monsters Lista pelin entiteeteistä (näistä poimitaan hirviöt)
-     * @param s Pisteytys
      */
     public void move(List<Entity> tiles, List<Entity> monsters) {
-        boolean onGround = false;
-        //Loopataan entiteetit ensin Y-suunnassa ja sitten X-suunnassa.
-        setY(getY() + getDy());
-        for (Entity tile : tiles) {
-            if (tile.collides(this)) {
-                onGround = true;
-                falling = false;
-                setY(getY() - getDy());
-                break;
-            }
-        }
-
-        //Hirviön törmäyksentunnistus
-        for (Entity monster : monsters) {
-            if (monster.collides(this) && !onGround && monster instanceof Monster) {
-                //Merkkaa hirviö tapetuksi
-                ((Monster) monster).kill();
-                falling = false;
-                setY(getY() - getDy());
-                break;
-            }
-        }
-        offsetX += getDx();
-
-        //Estetään pelaajan liikkuminen kartan rajojen yli
-        if (getX() - Game.STARTINGOFFSET + offsetX < 0 || getX() - Game.STARTINGOFFSET + offsetX > GameLevel.levelWidth - Game.STARTINGOFFSET - getWidth()) {
-            offsetX -= getDx();
-        }
-
-        for (Entity tile : tiles) {
-            if (tile.collides(this)) {
-                offsetX -= getDx();
-                break;
-            }
-        }
+        playerMover.movePlayer(this, tiles, monsters);
     }
 
     /**

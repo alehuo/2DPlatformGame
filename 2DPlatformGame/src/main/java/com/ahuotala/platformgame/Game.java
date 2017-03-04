@@ -50,7 +50,7 @@ public class Game implements Runnable {
     /**
      * Aloitussiirtymä.
      */
-    public static final int STARTINGOFFSET = WINDOWWIDTH / 2 - 64;
+    public static int startingOffset = WINDOWWIDTH / 2 - 64;
 
     /**
      * Main -metodi aloittaa uuden pelin.

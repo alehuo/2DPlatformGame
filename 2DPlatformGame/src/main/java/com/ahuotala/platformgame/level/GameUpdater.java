@@ -53,6 +53,7 @@ public class GameUpdater {
         });
         //Päivitä pelaaja
         player.tick();
+        //Liikuta pelaajaa
         player.move(tiles, entities);
 
         //Päivitä entiteetit

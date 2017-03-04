@@ -125,7 +125,27 @@ public class StopWatchTest {
         assertEquals(5555, s.getEndingTime());
     }
 
-    public void updateCurrentMs() {
-        s.currentMs(System.currentTimeMillis());
+    @Test
+    public void resetToimii() throws InterruptedException {
+        updateCurrentMs();
+        s.start();
+        Thread.sleep(500);
+        updateCurrentMs();
+        s.stop();
+        assertTrue(s.getStartingTime() > 0);
+        assertTrue(s.getEndingTime() > 0);
+
+        s.reset();
+        assertEquals(0, s.getStartingTime());
+        assertEquals(0, s.getEndingTime());
+        assertFalse(s.isRunning());
+        assertFalse(s.getStartingTime() != 0);
+        assertFalse(s.getEndingTime() != 0);
+    }
+
+    public long updateCurrentMs() {
+        long currentMillis = System.currentTimeMillis();
+        s.currentMs(currentMillis);
+        return currentMillis;
     }
 }

@@ -69,6 +69,10 @@ public class Animation {
         return index;
     }
 
+    public int getCount() {
+        return count;
+    }
+
     /**
      * Kasvattaa indeksiä yhdellä (ja siirtyy nollaan, jos kehyksen indeksi on
      * suurin mahdollinen).

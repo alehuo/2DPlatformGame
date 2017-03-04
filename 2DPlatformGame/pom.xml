@@ -51,7 +51,6 @@
                         <param>render</param>
                         <param>drawBounds</param>
                         <param>collides</param>
-                        <param>tick</param>
                     </excludedMethods>
                 </configuration>
             </plugin>

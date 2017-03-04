@@ -163,4 +163,18 @@ public class Score {
         return stopWatch;
     }
 
+    /**
+     * Palauttaa pistemäärän, joka riippuu suoritusajasta.
+     *
+     * @return Pistemäärä
+     */
+    public int getTimedScore() {
+        //Pisteistä vähennetään yksi piste 90 millisekunnin välein (noin 0,09s välein)
+        int finalScore = (int) (value - (stopWatch.getCurrentMilliseconds() / 90.0));
+        if (finalScore < 0) {
+            return 0;
+        }
+        return finalScore;
+    }
+
 }

@@ -19,9 +19,9 @@ package com.ahuotala.platformgame.entity;
 
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.ai.MonsterAi;
+import com.ahuotala.platformgame.entity.movement.MonsterMover;
 import com.ahuotala.platformgame.graphics.Sprite;
 import com.ahuotala.platformgame.graphics.SpriteLoader;
-import com.ahuotala.platformgame.level.GameLevel;
 import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.List;
@@ -33,16 +33,18 @@ import java.util.List;
  */
 public class Monster extends Entity {
 
+    private final MonsterAi ai = new MonsterAi(this);
+
     private boolean jumping = false;
     private boolean falling = true;
-
-    private WalkingDirection wd = WalkingDirection.LEFT;
-    private HashMap<WalkingDirection, Sprite> sprites;
-
-    private MonsterAi ai;
-
     private boolean killed = false;
     private boolean inGame = true;
+
+    private WalkingDirection walkingDirection = WalkingDirection.LEFT;
+
+    private final HashMap<WalkingDirection, Sprite> sprites = new HashMap();
+
+    private final MonsterMover monsterMover = new MonsterMover();
 
     /**
      * Konstruktori.
@@ -59,9 +61,6 @@ public class Monster extends Entity {
         super.setDy(super.getYMovement());
         //x-suunnassa napin painallus liikuttaa hirviötä 2 yksikköä
         super.setXMovement(2 * Game.scale);
-        //Syötetään Monster-olio tekoälylle.
-        ai = new MonsterAi(this);
-        sprites = new HashMap();
     }
 
     /**
@@ -103,7 +102,7 @@ public class Monster extends Entity {
         if (sprites.get(WalkingDirection.RIGHT) == null) {
             sprites.put(WalkingDirection.RIGHT, SpriteLoader.getSprite("monster_right"));
         }
-        g.drawImage(sprites.get(wd).getImage(), getX() - Player.offsetX, getY(), getWidth(), getHeight(), null);
+        g.drawImage(sprites.get(walkingDirection).getImage(), getX() - Player.offsetX, getY(), getWidth(), getHeight(), null);
     }
 
     @Override
@@ -119,20 +118,7 @@ public class Monster extends Entity {
                 jumping = false;
                 falling = true;
             }
-            //Tekoäly
-            switch (ai.nextMove()) {
-                case -1:
-                    wd = WalkingDirection.LEFT;
-                    goLeft();
-                    break;
-                case 1:
-                    wd = WalkingDirection.RIGHT;
-                    goRight();
-                    break;
-                case 0:
-                    setDx(0);
-                    break;
-            }
+            ai.tick();
         }
 
     }
@@ -163,32 +149,7 @@ public class Monster extends Entity {
      * @param tiles Lista pelin tiileistä, joiden avulla tarkistetaan törmäys.
      */
     public void move(List<Entity> tiles) {
-        //Loopataan entiteetit ensin Y-suunnassa ja sitten X-suunnassa.
-        setY(getY() + getDy());
-        for (Entity tile : tiles) {
-            if (tile.collides(this)) {
-                falling = false;
-                setY(getY() - getDy());
-                break;
-            }
-        }
-
-        setX(getX() + getDx());
-
-        //Estetään monsterin liikkuminen kartan rajojen yli
-        if (getX() - Game.STARTINGOFFSET + Player.offsetX < 0 || getX() - Game.STARTINGOFFSET > GameLevel.levelWidth - Game.STARTINGOFFSET - getWidth()) {
-            setX(getX() - getDx());
-
-        }
-
-        for (Entity tile : tiles) {
-            if (tile.collides(this)) {
-                jump();
-                setX(getX() - getDx());
-                break;
-            }
-        }
-        updateBounds();
+        monsterMover.moveMonster(this, tiles);
     }
 
     /**
@@ -221,4 +182,17 @@ public class Monster extends Entity {
     public boolean isFalling() {
         return falling;
     }
+
+    public void setJumping(boolean jumping) {
+        this.jumping = jumping;
+    }
+
+    public void setFalling(boolean falling) {
+        this.falling = falling;
+    }
+
+    public void setWalkingDirection(WalkingDirection walkingDirection) {
+        this.walkingDirection = walkingDirection;
+    }
+
 }

@@ -118,7 +118,7 @@ public class PlayerTest {
         //Asetetaan kentän leveys, ettei rajojen tarkistus hajota testiä
         GameLevel.levelWidth = 9001;
 
-        int xNyt = player.getX() - Game.STARTINGOFFSET + Player.offsetX;
+        int xNyt = player.getX() - Game.startingOffset + Player.offsetX;
         int yNyt = player.getY();
 
         int xMaara = 22;
@@ -131,7 +131,7 @@ public class PlayerTest {
 
         player.move(entities, new ArrayList());
 
-        assertEquals(xNyt + xMaara, player.getX() - Game.STARTINGOFFSET + Player.offsetX);
+        assertEquals(xNyt + xMaara, player.getX() - Game.startingOffset + Player.offsetX);
         assertEquals(yNyt + yMaara, player.getY());
     }
 
@@ -183,11 +183,11 @@ public class PlayerTest {
 
     @Test
     public void liikkumissuuntaOikein() {
-        assertEquals(WalkingDirection.RIGHT, player.getWd());
+        assertEquals(WalkingDirection.RIGHT, player.getWalkingDirection());
 
-        player.setWd(WalkingDirection.LEFT);
+        player.setWalkingDirection(WalkingDirection.LEFT);
 
-        assertEquals(WalkingDirection.LEFT, player.getWd());
+        assertEquals(WalkingDirection.LEFT, player.getWalkingDirection());
     }
 
     @Test
@@ -195,7 +195,42 @@ public class PlayerTest {
         player.setDy(0);
         player.setFalling(false);
         player.jump();
+        assertTrue(player.isJumping());
         assertEquals(player.getYMovement(), player.getDy());
+    }
+
+    @Test
+    public void eiLiikuRajojenYli() {
+
+        Game.startingOffset = 0;
+        GameLevel.levelWidth = 5000;
+
+        JTextField inputField = new JTextField();
+
+        //Vasen
+        KeyEvent vasen = new KeyEvent(inputField, 0, System.currentTimeMillis(), 0, KeyEvent.VK_A);
+        //Oikea
+        KeyEvent oikea = new KeyEvent(inputField, 0, System.currentTimeMillis(), 0, KeyEvent.VK_D);
+
+        for (int i = 0; i < 50000; i++) {
+            int vanhaX = player.getX();
+            //Painetaan A -nappia
+            player.keyPressed(vasen);
+
+            player.move(new ArrayList<>(), new ArrayList<>());
+            assertTrue(player.getX() == vanhaX || player.getX() == vanhaX + player.getXMovement());
+            assertTrue(player.getX() - Game.startingOffset + Player.offsetX > 0);
+        }
+
+        for (int i = 0; i < 50000; i++) {
+            int vanhaX = player.getX();
+            //Painetaan D -nappia
+            player.keyPressed(oikea);
+            player.move(new ArrayList<>(), new ArrayList<>());
+            assertTrue(player.getX() == vanhaX || player.getX() == vanhaX + player.getXMovement());
+            assertTrue(player.getX() - Game.startingOffset + Player.offsetX < GameLevel.levelWidth - Game.startingOffset - player.getWidth());
+        }
+
     }
 
 }

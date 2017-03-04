@@ -19,6 +19,7 @@ package com.ahuotala.platformgame.level;
 
 import com.ahuotala.platformgame.utils.StopWatch;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -110,7 +111,10 @@ public class ScoreTest {
 
     @Test
     public void kaynnistysJaPysaytysToimii() throws InterruptedException {
+        stopWatch.currentMs(558);
+        assertTrue(score.getCurrentTime() != 0);
         score.start();
+        assertEquals(0, score.getCurrentTime());
         assertEquals(0, score.getValue());
         assertEquals(0, score.getCollectedCoins());
         assertEquals(0, score.getDefeatedMonsters());

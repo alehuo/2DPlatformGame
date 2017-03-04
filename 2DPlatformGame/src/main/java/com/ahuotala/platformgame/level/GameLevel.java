@@ -83,7 +83,7 @@ public class GameLevel {
             FileReader fr = new FileReader(stream);
 
             //x-koordinaatti
-            int x = Game.STARTINGOFFSET;
+            int x = Game.startingOffset;
             int finalY = 0;
 
             for (String line : fr.getLines()) {
@@ -173,16 +173,19 @@ public class GameLevel {
         return score;
     }
 
+    /**
+     * Palauttaa, onko peli loppunut.
+     *
+     * @return Pelin loppumistila
+     */
     public boolean isGameOver() {
-        return player.getX() + Player.offsetX > finishX;
+        return player.getX() + Player.offsetX > finishX || player.getHealth() == 0;
     }
 
     //Luo 3-4 satunnaista pilveä peliin.
     private void generateClouds() {
         Random r = new Random();
-
         int pilvienLkm = r.nextInt(2) + 3;
-
         int xOffset = 60;
         if (pilvienLkm < 4) {
             xOffset = 160;
