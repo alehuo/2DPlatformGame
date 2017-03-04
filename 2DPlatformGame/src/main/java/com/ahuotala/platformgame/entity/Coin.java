@@ -31,13 +31,16 @@ import java.util.Random;
 public class Coin extends Entity {
 
     private int yModifier = 0;
+    private final int yDelta = 5;
     private int index = 0;
-    private boolean visible = true;
+
+    private final int coinWidthHeight = 18;
 
     //Kolikon animaatio
     private Animation coinAnimation;
 
-    private int coinWidthHeight = 18;
+    //Random-olio
+    private Random r;
 
     /**
      * Konstruktori.
@@ -49,6 +52,7 @@ public class Coin extends Entity {
         super(x, y);
         super.setWidth(coinWidthHeight);
         super.setHeight(coinWidthHeight);
+        r = new Random();
     }
 
     /**
@@ -72,7 +76,6 @@ public class Coin extends Entity {
             g.setColor(Color.YELLOW);
             g.drawImage(coinAnimation.currentFrame().getImage(), getX() - Player.offsetX, getY() + yModifier, getWidth(), getHeight(), null);
             super.getBounds().setBounds(getX() - Player.offsetX, getY() + yModifier, getWidth(), getHeight());
-//            drawBounds(g);
         }
     }
 
@@ -81,13 +84,10 @@ public class Coin extends Entity {
      */
     @Override
     public void tick() {
-
-        int yDelta = 5;
-
         if (coinAnimation != null) {
             coinAnimation.tick();
         }
-        Random r = new Random();
+        //yModifier on satunnaisesti arvottu kokonaisluku, joka siirtää kolikkoa y-akselilla.
         yModifier = (int) Math.ceil(3 * Math.sin(Math.toRadians(index)));
         if (index == 360) {
             index = 0;

@@ -92,31 +92,41 @@ public class GamePanel extends JPanel {
                 Font f = g.getFont();
                 Font newF = f.deriveFont(f.getSize() * 2F);
                 g.setFont(newF);
-                g.drawString("Score: " + level.getScore().getValue(), Game.WINDOWWIDTH / 9, Game.WINDOWHEIGHT - 64);
+                g.drawString("Score: " + level.getScore().getTimedScore(), Game.WINDOWWIDTH / 9, Game.WINDOWHEIGHT - 64);
                 g.drawString("Time: " + level.getScore().getCurrentTime() / 1000 + " s", Game.WINDOWWIDTH / 9 + 250, Game.WINDOWHEIGHT - 64);
                 g.drawString("Health: " + player.getHealth() + " hp", Game.WINDOWWIDTH / 9 + 500, Game.WINDOWHEIGHT - 64);
             }
 
         } else {
-            //player.getX() - Game.STARTINGOFFSET + Player.offsetX
-            Score score = level.getScore();
             int textOffsetY = 128;
-            int textOffsetX = -Game.WINDOWWIDTH / 4;
-            //Pysäytä sekuntikello
-            if (score.getStopWatch().isRunning()) {
-                score.stop();
-            }
-            g.setColor(Color.YELLOW);
-            //Pisteytys
+            int textOffsetX = -Game.WINDOWWIDTH / 4 - 64;
             Font f = g.getFont();
             Font newF = f.deriveFont(f.getSize() * 4F);
             g.setFont(newF);
-            g.drawString("THE END", Game.WINDOWWIDTH / 2 + textOffsetX, 32 + textOffsetY);
-            g.drawString("Collected coins: " + score.getCollectedCoins(), Game.WINDOWWIDTH / 2 + textOffsetX, 160 + textOffsetY);
-            g.drawString("Defeated monsters: " + score.getDefeatedMonsters(), Game.WINDOWWIDTH / 2 + textOffsetX, 224 + textOffsetY);
-            g.drawString("Elapsed time: " + Math.ceil(score.getStopWatch().getTotalSeconds()) + " second(s) ", Game.WINDOWWIDTH / 2 + textOffsetX, 288 + textOffsetY);
-            g.drawString("Final score: " + score.getValue() + " points", Game.WINDOWWIDTH / 2 + textOffsetX, 352 + textOffsetY
-            );
+            g.setColor(Color.BLACK);
+            g.fill3DRect(0, 0, Game.WINDOWWIDTH, Game.WINDOWHEIGHT, false);
+            if (player.getHealth() == 0) {
+                g.setColor(Color.RED);
+                g.drawString("GAME OVER - YOU DIED", Game.WINDOWWIDTH / 2 + textOffsetX, 32 + textOffsetY);
+            } else {
+                //player.getX() - Game.startingOffset + Player.offsetX
+                Score score = level.getScore();
+
+                //Pysäytä sekuntikello
+                if (score.getStopWatch().isRunning()) {
+                    score.stop();
+                }
+                g.setColor(Color.YELLOW);
+                //Pisteytys
+                g.setFont(newF);
+                g.drawString("YOU WIN!", Game.WINDOWWIDTH / 2 + textOffsetX, 32 + textOffsetY);
+                g.drawString("Collected coins: " + score.getCollectedCoins(), Game.WINDOWWIDTH / 2 + textOffsetX, 160 + textOffsetY);
+                g.drawString("Defeated monsters: " + score.getDefeatedMonsters(), Game.WINDOWWIDTH / 2 + textOffsetX, 224 + textOffsetY);
+                g.drawString("Elapsed time: " + Math.ceil(score.getStopWatch().getTotalSeconds()) + " second(s) ", Game.WINDOWWIDTH / 2 + textOffsetX, 288 + textOffsetY);
+                g.drawString("Final score: " + score.getTimedScore() + " points", Game.WINDOWWIDTH / 2 + textOffsetX, 352 + textOffsetY
+                );
+            }
+
         }
 
     }

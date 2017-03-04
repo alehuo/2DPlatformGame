@@ -141,7 +141,9 @@ public class StopWatch implements Clock, Tickable {
 
     @Override
     public void tick() {
-        currentMs(System.currentTimeMillis());
+        if (running) {
+            currentMs(System.currentTimeMillis());
+        }
     }
 
 }

@@ -10,10 +10,10 @@ Päivä | Tunnit | Kuvaus
 23.01.2017 | 1h | Luotu Tiili -luokka joka on Entiteetti -luokan aliluokka
 24.01.2017 | 1h | Toteutettu perus hyppytoiminnallisuus pelaajalle. Pelaaja myös pysyy nyt tasolla, eikä tipu sen läpi.
 27.01.2017 | 2h | Saatu pelaaja pysymään kentässä. Nyt pelaaja pysähtyy jos vastaan tulee korkeampi este, eikä mene sen läpi niin kuin aiemmin. Lisätty muutama JUnit -testi ja päivitetty Pit- sekä Checkstyle -raportit. Lisäksi muutettu pelin rakennetta siten, että kaikki entiteetit ladataan tasoon.
-2.02.2017 | 4h | Pelitaso liikkuu nyt pelaajan mukana. Lisäksi päivitetty spritesheet.
-3.02.2017 | 3h | Lisätty mahdollisuus lisätä entiteettejä suoraan tasotiedostoon ja luotu Score -luokka. Lisätty testit Score -luokalle sekä paranneltu vanhoja testejä. Pelaajan pistemäärä näkyy nyt näytöllä.
-6.02.2017 | 2h | Luotu FileReader-luokka tiedostojen lukemista varten. Siirretty pistekirjanpito GameLevel -luokkaan, koska pisteet ovat tasokohtaisia.
-7.02.2017 | 2h | Korjauttu törmäyksentunnistus ja lisätty ohjeistusta, että miten pelissä liikutaan.
+02.02.2017 | 4h | Pelitaso liikkuu nyt pelaajan mukana. Lisäksi päivitetty spritesheet.
+03.02.2017 | 3h | Lisätty mahdollisuus lisätä entiteettejä suoraan tasotiedostoon ja luotu Score -luokka. Lisätty testit Score -luokalle sekä paranneltu vanhoja testejä. Pelaajan pistemäärä näkyy nyt näytöllä.
+06.02.2017 | 2h | Luotu FileReader-luokka tiedostojen lukemista varten. Siirretty pistekirjanpito GameLevel -luokkaan, koska pisteet ovat tasokohtaisia.
+07.02.2017 | 2h | Korjauttu törmäyksentunnistus ja lisätty ohjeistusta, että miten pelissä liikutaan.
 10.02.2017 | 3h | Luotu Animaatio -luokka sekä animaatioita lataava AnimationLoader. Lisäksi tehty kolikon pyörimisanimaatio Pyxel Edit -ohjelmiston avulla ja lisätty se peliin.
 11.02.2017 | 1h | Paranneltu kolikon pyörimisanimaatiota ja lisätty valmius pelaajan kävelemisanimaatioille.
 12.02.2017 | 1h | Siirretty sekuntikello omaksi luokakseen Score -luokasta. Lisäksi luotu Clock -rajapinta, joka mahdollistaa Sekuntikellon testauksen helposti.
@@ -26,4 +26,6 @@ Päivä | Tunnit | Kuvaus
 22.02.2017 | 2h | Toteutettu loppupisteiden näyttäminen, kun peli loppuu.
 23.02.2017 | 3h | Toteutettu toiminnallisuus, joka vahingoittaa pelaajaa jos pelaaja ei liiku monsterin alueelta pois tarpeeksi nopeasti (käyttää pelaajan health-järjestelmää).
 24.02.2017 | 4h | Pilkottu ohjelmaa paloihin, päivitetty JavaDoc, Checkstyle- ja Pit -raportit. Tehty tasosta pidempi ja lisätty pilvet taivaalle.
+01.03.2017 | 2h | Eritelty hirviön tuhoamislogiikkaa pelaajan luokasta. Nyt pelaaja pystyy myös tuhoamaan hirviön hyppäämällä sen päälle.
+04.03.2017 | 4h | Pilkottu pelaajan ja hirviön toimintaa paloihin. Luotu PlayerMover ja MonsterMover -luokat, jotka hoitavat pelaajan sekä hirviöiden liikkumisen. Pistemäärä laskee nyt ajan mukaan - mitä nopeammin tason pääsee läpi sitä korkeammat ovat lopulliset pisteet. Päivitetty JavaDoc ja Checkstyle- ja Pit -raportit.
 ... | ... | ...

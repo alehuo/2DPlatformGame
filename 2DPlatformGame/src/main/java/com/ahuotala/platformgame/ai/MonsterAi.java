@@ -19,13 +19,15 @@ package com.ahuotala.platformgame.ai;
 
 import com.ahuotala.platformgame.entity.Monster;
 import com.ahuotala.platformgame.entity.Player;
+import com.ahuotala.platformgame.entity.WalkingDirection;
+import com.ahuotala.platformgame.utils.Tickable;
 
 /**
  * Tekoäly hirviöille.
  *
  * @author ahuotala
  */
-public class MonsterAi {
+public class MonsterAi implements Tickable {
 
     private boolean canMove = false;
 
@@ -63,9 +65,7 @@ public class MonsterAi {
      */
     public void process(Player p) {
         //Alue missä hirviö alkaa tunnistamaan pelaajan läsnäolon
-        canMove = Math.abs(m.getX() - p.getX() - Player.offsetX) < 500;
-
-        if (!canMove) {
+        if (Math.abs(m.getX() - p.getX() - Player.offsetX) >= 500) {
             move = 0;
             return;
         }
@@ -80,11 +80,29 @@ public class MonsterAi {
         if (p.collides(m)) {
             collideCount++;
             //Tässä otetaan pelaajalta elämää pois jos pelaaja osuu hirviöön eikä liiku hetkeen.
-            if (collideCount != 0 && collideCount % 15 == 0) {
+            if (collideCount != 0 && collideCount % 4 == 0) {
                 p.damagePlayer(50);
             }
         } else {
             collideCount = 0;
+        }
+    }
+
+    @Override
+    public void tick() {
+        //Tekoäly
+        switch (nextMove()) {
+            case -1:
+                m.setWalkingDirection(WalkingDirection.LEFT);
+                m.goLeft();
+                break;
+            case 1:
+                m.setWalkingDirection(WalkingDirection.RIGHT);
+                m.goRight();
+                break;
+            case 0:
+                m.setDx(0);
+                break;
         }
     }
 

@@ -39,6 +39,8 @@ public class AnimationTest {
     public void alkutilaOikein() {
         assertEquals(0, ani.getFrames().size());
         assertNotNull(ani.getFrames());
+        assertEquals(0, ani.getIndex());
+        assertEquals(0, ani.getCount());
     }
 
     @Test
@@ -88,5 +90,42 @@ public class AnimationTest {
     public void intervalToimii() {
         ani.setInterval(55);
         assertEquals(55, ani.getInterval());
+    }
+
+    @Test
+    public void tickToimii() {
+        int size = 50;
+        Animation ani2 = new Animation(size);
+        lisaaKehyksia(ani2, size);
+        for (int i = 0; i < size + 1; i++) {
+            assertEquals(0, ani2.getIndex());
+            assertEquals(i, ani2.getCount());
+            ani2.tick();
+        }
+        assertEquals(1, ani2.getIndex());
+        assertEquals(0, ani2.getCount());
+
+        size = 2;
+        ani2 = new Animation(size);
+        lisaaKehyksia(ani2, size);
+        assertEquals(0, ani2.getIndex());
+        for (int i = 0; i < 20; i++) {
+            if (i % 2 == 0) {
+                assertEquals(0, ani2.getIndex());
+            } else {
+                assertEquals(1, ani2.getIndex());
+            }
+            for (int j = 0; j < 3; j++) {
+                ani2.tick();
+            }
+        }
+
+    }
+
+    public void lisaaKehyksia(Animation ani, int lkm) {
+        Sprite spr = new Sprite();
+        for (int i = 0; i < lkm; i++) {
+            ani.addFrame(spr);
+        }
     }
 }
