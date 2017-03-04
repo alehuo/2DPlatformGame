@@ -149,16 +149,6 @@ public class Score {
         value += 250;
     }
 
-    /**
-     * toString -metodi palauttaa pisteytyksen yhteenvedon.
-     *
-     * @return
-     */
-    @Override
-    public String toString() {
-        return "Pistemäärä: " + value + ", kerätyt kolikot: " + collectedCoins + ", tapetut hirviöt: " + defeatedMonsters + ", tason suoritukseen kulunut aika: " + stopWatch.getTotalSeconds() + "s"; //To change body of generated methods, choose Tools | Templates.
-    }
-
     public StopWatch getStopWatch() {
         return stopWatch;
     }

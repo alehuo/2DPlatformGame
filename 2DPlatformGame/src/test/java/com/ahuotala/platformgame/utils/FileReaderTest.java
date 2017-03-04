@@ -31,9 +31,20 @@ public class FileReaderTest {
     public void lukeeTiedostonOikein() throws IOException {
         //Class loader
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
-        
+
         //Tiedostonlukija
         FileReader f = new FileReader(cl.getResourceAsStream("test/FileReaderTest.txt"));
+
+        assertEquals("123", f.getLines().get(0));
+        assertEquals("456", f.getLines().get(1));
+        assertEquals("789", f.getLines().get(2));
+        assertEquals(3, f.getLines().size());
+    }
+
+    @Test
+    public void lukeeTiedostonOikein2() throws IOException {
+        //Tiedostonlukija
+        FileReader f = new FileReader("src/main/resources/test/FileReaderTest.txt");
 
         assertEquals("123", f.getLines().get(0));
         assertEquals("456", f.getLines().get(1));

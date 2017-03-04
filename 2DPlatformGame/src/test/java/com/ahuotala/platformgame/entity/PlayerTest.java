@@ -192,10 +192,13 @@ public class PlayerTest {
 
     @Test
     public void hyppaaOikein() {
+        int vanhaY = player.getY();
         player.setDy(0);
         player.setFalling(false);
         player.jump();
         assertTrue(player.isJumping());
+        player.tick();
+        assertEquals(vanhaY - 64 * Game.scale, player.getY());
         assertEquals(player.getYMovement(), player.getDy());
     }
 
@@ -231,6 +234,73 @@ public class PlayerTest {
             assertTrue(player.getX() - Game.startingOffset + Player.offsetX < GameLevel.levelWidth - Game.startingOffset - player.getWidth());
         }
 
+    }
+
+    @Test
+    public void liikkuminenToimii() {
+
+        JTextField inputField = new JTextField();
+
+        //Vasemmalle
+        KeyEvent vas = new KeyEvent(inputField, 0, System.currentTimeMillis(), 0, KeyEvent.VK_A);
+        //Oikealle
+        KeyEvent oik = new KeyEvent(inputField, 0, System.currentTimeMillis(), 0, KeyEvent.VK_D);
+        //Hyppy
+        KeyEvent hyp = new KeyEvent(inputField, 0, System.currentTimeMillis(), 0, KeyEvent.VK_SPACE);
+
+        int xMovement = player.getXMovement();
+        int yMovement = player.getYMovement();
+
+        assertEquals(0, player.getDx());
+
+        player.keyPressed(vas);
+
+        assertEquals(-xMovement, player.getDx());
+
+        player.keyReleased(vas);
+
+        assertEquals(0, player.getDx());
+
+        player.keyPressed(oik);
+
+        assertEquals(xMovement, player.getDx());
+
+        player.setDx(0);
+
+        List<Entity> entities = new ArrayList();
+        for (int i = 0; i < 150; i++) {
+            Tile tmpTile = new Tile(i * 32, -2, "coin_1");
+            entities.add(tmpTile);
+        }
+
+        assertTrue(player.isFalling());
+        for (int i = 0; i < 10; i++) {
+            player.move(entities, new ArrayList<>());
+        }
+
+        int preX = player.getX();
+
+        player.keyPressed(vas);
+//
+        for (int i = 0; i < 55; i++) {
+            player.move(entities, new ArrayList<>());
+            assertEquals(preX - player.getDx() - 8, player.getX());
+            assertEquals(preX - player.getDx() - 8, player.getBounds().getX(), 1.0);
+            assertNotEquals(preX - 8, player.getBounds().getX(), 1.0);
+            preX = player.getX();
+        }
+//
+//        player.tick();
+//
+//        assertFalse(player.isFalling());
+//
+//        player.jump();
+//        assertTrue(player.isJumping());
+//
+//        player.keyPressed(hyp);
+//
+//        assertTrue(player.isJumping());
+//        assertEquals(yMovement, player.getDy());
     }
 
 }

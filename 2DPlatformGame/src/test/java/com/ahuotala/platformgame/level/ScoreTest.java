@@ -20,6 +20,7 @@ package com.ahuotala.platformgame.level;
 import com.ahuotala.platformgame.utils.StopWatch;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,6 +48,7 @@ public class ScoreTest {
         assertEquals(0, score.getDefeatedMonsters());
         assertEquals(0, score.getValue());
         assertEquals(0, score.getDeltaTime());
+        assertNotNull(score.getStopWatch());
     }
 
     @Test
