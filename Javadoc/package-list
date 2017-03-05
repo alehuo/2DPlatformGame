@@ -1,0 +1,9 @@
+com.ahuotala.platformgame
+com.ahuotala.platformgame.ai
+com.ahuotala.platformgame.entity
+com.ahuotala.platformgame.entity.movement
+com.ahuotala.platformgame.graphics
+com.ahuotala.platformgame.input
+com.ahuotala.platformgame.level
+com.ahuotala.platformgame.ui
+com.ahuotala.platformgame.utils

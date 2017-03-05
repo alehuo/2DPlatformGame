@@ -51,7 +51,7 @@ public class MonsterMover {
         monster.setX(monster.getX() + monster.getDx());
 
         //Estetään monsterin liikkuminen kartan rajojen yli
-        if (monster.getX() - Game.startingOffset + Player.offsetX < 0 || monster.getX() - Game.startingOffset > GameLevel.levelWidth - Game.startingOffset - monster.getWidth()) {
+        if (monster.getX() - Game.startingOffset < 0 || monster.getX() - Game.startingOffset > GameLevel.levelWidth - Game.startingOffset - monster.getWidth()) {
             monster.setX(monster.getX() - monster.getDx());
         }
 

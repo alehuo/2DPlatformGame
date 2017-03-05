@@ -59,15 +59,22 @@
         </properties>
     </action>
     <action>
-            <actionName>rebuild</actionName>
-            <packagings>
-                <packaging>*</packaging>
-            </packagings>
-            <goals>
-                <goal>clean</goal>
-                <goal>install</goal>
+        <actionName>rebuild</actionName>
+        <packagings>
+            <packaging>*</packaging>
+        </packagings>
+        <goals>
+            <goal>clean</goal>
+            <goal>install</goal>
                 
                 
-            </goals>
-        </action>
+        </goals>
+    </action>
+    <action>
+        <actionName>CUSTOM-Javadoc</actionName>
+        <displayName>Javadoc</displayName>
+        <goals>
+            <goal>javadoc:javadoc</goal>
+        </goals>
+    </action>
 </actions>

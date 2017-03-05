@@ -29,8 +29,6 @@ import com.ahuotala.platformgame.utils.Tickable;
  */
 public class MonsterAi implements Tickable {
 
-    private boolean canMove = false;
-
     private final Monster m;
 
     //-1 = vasen, 1 = oikea, 0 = pysy paikallaan
