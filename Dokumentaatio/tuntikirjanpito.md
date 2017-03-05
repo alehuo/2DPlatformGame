@@ -28,4 +28,5 @@ Päivä | Tunnit | Kuvaus
 24.02.2017 | 4h | Pilkottu ohjelmaa paloihin, päivitetty JavaDoc, Checkstyle- ja Pit -raportit. Tehty tasosta pidempi ja lisätty pilvet taivaalle.
 01.03.2017 | 2h | Eritelty hirviön tuhoamislogiikkaa pelaajan luokasta. Nyt pelaaja pystyy myös tuhoamaan hirviön hyppäämällä sen päälle.
 04.03.2017 | 4h | Pilkottu pelaajan ja hirviön toimintaa paloihin. Luotu PlayerMover ja MonsterMover -luokat, jotka hoitavat pelaajan sekä hirviöiden liikkumisen. Pistemäärä laskee nyt ajan mukaan - mitä nopeammin tason pääsee läpi sitä korkeammat ovat lopulliset pisteet. Päivitetty JavaDoc ja Checkstyle- ja Pit -raportit.
+05.03.2017 | 2h | Kytketty antialiasointi päälle. Päivitetty Pit- ja Checkstyle- raportit sekä luotu suoritettava .jar-tiedosto. Javadocille tehty linkki Readme-tiedostoon. Testausdokumentaation täydennystä.
 ... | ... | ...

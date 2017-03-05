@@ -11,4 +11,5 @@ Pelin lopussa näytetään loppupisteytys, joka koostuu suoritusajasta, kerätyi
 * [Käyttöohjeet] (https://github.com/alehuo/2DPlatformGame/blob/master/Dokumentaatio/kayttoohjeet.md)
 * [Tuntikirjanpito](Dokumentaatio/tuntikirjanpito.md)
 * [CheckStyle-raportti](https://htmlpreview.github.io/?https://github.com/alehuo/2DPlatformGame/blob/master/Dokumentaatio/checkstyle-raportti/checkstyle.html)
-* [pit-raportti](https://htmlpreview.github.io/?https://github.com/alehuo/2DPlatformGame/blob/master/Dokumentaatio/pit-raportti/201703050019/index.html)
+* [pit-raportti](https://htmlpreview.github.io/?https://github.com/alehuo/2DPlatformGame/blob/master/Dokumentaatio/pit-raportti/201703051600/index.html)
+* [Javadoc](https://htmlpreview.github.io/?https://github.com/alehuo/2DPlatformGame/Javadoc/index.html)

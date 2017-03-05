@@ -68,9 +68,8 @@ public class GamePanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
 
         //Antialiasointi
-        RenderingHints rh = new RenderingHints(RenderingHints.KEY_TEXT_ANTIALIASING,
+        g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        g2d.setRenderingHints(rh);
 
         Player player = level.getPlayer();
 
@@ -143,6 +142,8 @@ public class GamePanel extends JPanel {
      * Antaa päivityskutsun tasolle.
      */
     public void tick() {
-        level.tick();
+        if (!level.isGameOver()) {
+            level.tick();
+        }
     }
 }

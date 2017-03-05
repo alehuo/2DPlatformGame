@@ -185,7 +185,7 @@ public class Game implements Runnable {
 
             if (System.currentTimeMillis() - lastTimer >= interval) {
                 lastTimer += interval;
-                frame.setTitle(windowTitle + " (" + frames + " fps, " + ticks + " ticks)");
+//                frame.setTitle(windowTitle + " (" + frames + " fps, " + ticks + " ticks)");
                 frames = 0;
                 ticks = 0;
             }
