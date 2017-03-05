@@ -20,7 +20,6 @@ package com.ahuotala.platformgame.entity.movement;
 import com.ahuotala.platformgame.Game;
 import com.ahuotala.platformgame.entity.Entity;
 import com.ahuotala.platformgame.entity.Monster;
-import com.ahuotala.platformgame.entity.Player;
 import com.ahuotala.platformgame.level.GameLevel;
 import java.util.List;
 

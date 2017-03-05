@@ -24,6 +24,8 @@ import com.ahuotala.platformgame.level.Score;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 /**
@@ -63,51 +65,57 @@ public class GamePanel extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+
+        //Antialiasointi
+        RenderingHints rh = new RenderingHints(RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g2d.setRenderingHints(rh);
 
         Player player = level.getPlayer();
 
-        super.paintComponent(g);
+        super.paintComponent(g2d);
 
         //Tausta
         Color c = new Color(93, 148, 251);
-        g.setColor(c);
-        g.fill3DRect(0, 0, Game.WINDOWWIDTH, Game.WINDOWHEIGHT, false);
+        g2d.setColor(c);
+        g2d.fill3DRect(0, 0, Game.WINDOWWIDTH, Game.WINDOWHEIGHT, false);
         if (!level.isGameOver()) {
             //Taso
             if (level != null) {
                 level.getTilesAndEntities().forEach((entity) -> {
-                    entity.render(g);
+                    entity.render(g2d);
                 });
                 if (player != null) {
-                    player.render(g);
-                    g.setColor(Color.YELLOW);
+                    player.render(g2d);
+                    g2d.setColor(Color.YELLOW);
                 }
             }
 
             //Pelaaja
             if (player != null) {
                 //Ohjeet
-                g.drawString("[A] Vasen  [D] Oikea  [Space]  Hyppää", 4, 20);
+                g2d.drawString("[A] Vasen  [D] Oikea  [Space]  Hyppää", 4, 20);
                 //Pisteytys
-                Font f = g.getFont();
+                Font f = g2d.getFont();
                 Font newF = f.deriveFont(f.getSize() * 2F);
-                g.setFont(newF);
-                g.drawString("Score: " + level.getScore().getTimedScore(), Game.WINDOWWIDTH / 9, Game.WINDOWHEIGHT - 64);
-                g.drawString("Time: " + level.getScore().getCurrentTime() / 1000 + " s", Game.WINDOWWIDTH / 9 + 250, Game.WINDOWHEIGHT - 64);
-                g.drawString("Health: " + player.getHealth() + " hp", Game.WINDOWWIDTH / 9 + 500, Game.WINDOWHEIGHT - 64);
+                g2d.setFont(newF);
+                g2d.drawString("Score: " + level.getScore().getTimedScore(), Game.WINDOWWIDTH / 9, Game.WINDOWHEIGHT - 64);
+                g2d.drawString("Time: " + level.getScore().getCurrentTime() / 1000 + " s", Game.WINDOWWIDTH / 9 + 250, Game.WINDOWHEIGHT - 64);
+                g2d.drawString("Health: " + player.getHealth() + " hp", Game.WINDOWWIDTH / 9 + 500, Game.WINDOWHEIGHT - 64);
             }
 
         } else {
             int textOffsetY = 128;
             int textOffsetX = -Game.WINDOWWIDTH / 4 - 64;
-            Font f = g.getFont();
+            Font f = g2d.getFont();
             Font newF = f.deriveFont(f.getSize() * 4F);
-            g.setFont(newF);
-            g.setColor(Color.BLACK);
-            g.fill3DRect(0, 0, Game.WINDOWWIDTH, Game.WINDOWHEIGHT, false);
+            g2d.setFont(newF);
+            g2d.setColor(Color.BLACK);
+            g2d.fill3DRect(0, 0, Game.WINDOWWIDTH, Game.WINDOWHEIGHT, false);
             if (player.getHealth() == 0) {
-                g.setColor(Color.RED);
-                g.drawString("GAME OVER - YOU DIED", Game.WINDOWWIDTH / 2 + textOffsetX, 32 + textOffsetY);
+                g2d.setColor(Color.RED);
+                g2d.drawString("GAME OVER - YOU DIED", Game.WINDOWWIDTH / 2 + textOffsetX, 32 + textOffsetY);
             } else {
                 //player.getX() - Game.startingOffset + Player.offsetX
                 Score score = level.getScore();
@@ -116,14 +124,14 @@ public class GamePanel extends JPanel {
                 if (score.getStopWatch().isRunning()) {
                     score.stop();
                 }
-                g.setColor(Color.YELLOW);
+                g2d.setColor(Color.YELLOW);
                 //Pisteytys
-                g.setFont(newF);
-                g.drawString("YOU WIN!", Game.WINDOWWIDTH / 2 + textOffsetX, 32 + textOffsetY);
-                g.drawString("Collected coins: " + score.getCollectedCoins(), Game.WINDOWWIDTH / 2 + textOffsetX, 160 + textOffsetY);
-                g.drawString("Defeated monsters: " + score.getDefeatedMonsters(), Game.WINDOWWIDTH / 2 + textOffsetX, 224 + textOffsetY);
-                g.drawString("Elapsed time: " + Math.ceil(score.getStopWatch().getTotalSeconds()) + " second(s) ", Game.WINDOWWIDTH / 2 + textOffsetX, 288 + textOffsetY);
-                g.drawString("Final score: " + score.getTimedScore() + " points", Game.WINDOWWIDTH / 2 + textOffsetX, 352 + textOffsetY
+                g2d.setFont(newF);
+                g2d.drawString("YOU WIN!", Game.WINDOWWIDTH / 2 + textOffsetX, 32 + textOffsetY);
+                g2d.drawString("Collected coins: " + score.getCollectedCoins(), Game.WINDOWWIDTH / 2 + textOffsetX, 160 + textOffsetY);
+                g2d.drawString("Defeated monsters: " + score.getDefeatedMonsters(), Game.WINDOWWIDTH / 2 + textOffsetX, 224 + textOffsetY);
+                g2d.drawString("Elapsed time: " + Math.ceil(score.getStopWatch().getTotalSeconds()) + " second(s) ", Game.WINDOWWIDTH / 2 + textOffsetX, 288 + textOffsetY);
+                g2d.drawString("Final score: " + score.getTimedScore() + " points", Game.WINDOWWIDTH / 2 + textOffsetX, 352 + textOffsetY
                 );
             }
 
